@@ -150,6 +150,12 @@
       <Project>{700bead5-3d42-491b-842c-6b80eb9be930}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="EngineCore.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EngineCore.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
