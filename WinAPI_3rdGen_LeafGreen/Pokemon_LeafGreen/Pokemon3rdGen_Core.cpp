@@ -1,4 +1,5 @@
 #include "Pokemon3rdGen_Core.h"
+#include "TitleLevel.h"
 
 Pokemon3rdGen_Core::Pokemon3rdGen_Core()
 {
@@ -9,16 +10,14 @@ Pokemon3rdGen_Core::~Pokemon3rdGen_Core()
 }
 
 // 게임시작
-void Pokemon3rdGen_Core::Start()
+void Pokemon3rdGen_Core::BeginPlay()
 {
-	//MainWindow.SetTitle();
-	//MainWindow.SetScale();
+	CreateLevel<UTitleLevel>("TitleLevel");
 
-	// 이때되면 이미 윈도우 창은 만들어져있는 상태일거라고 
-	int a = 0;
+	ChangeLevel("TitleLevel");
 }
 
-void Pokemon3rdGen_Core::Update()
+void Pokemon3rdGen_Core::Tick(float _DeltaTime)
 {
 	int a = 0;
 }

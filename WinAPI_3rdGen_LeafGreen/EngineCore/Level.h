@@ -1,7 +1,10 @@
 #pragma once
 #include "NameObject.h"
+#include <map>
+#include <list>
 
-// 설명 : U는 그냥 엔진 속해있다는 것을 의미.
+class AActor;
+
 class ULevel : public UNameObject
 {
 public:
@@ -15,9 +18,25 @@ public:
 	ULevel& operator=(const ULevel& _Other) = delete;
 	ULevel& operator=(ULevel&& _Other) noexcept = delete;
 
+	virtual void BeginPlay() {};
+	virtual void Tick(float _DeltaTime) {};
+
+	template<typename ActorType>
+	ActorType* SpawnActor(int _Order = 0)
+	{
+		ActorType* NewActor = new ActorType();
+		ActorInit(NewActor);
+		AllActor[_Order].push_back(NewActor);
+		return NewActor;
+	}
+
+	void ActorTick(float _DeltaTime);
+
 protected:
 
 private:
+	std::map<int, std::list<AActor*>> AllActor;
 
+	void ActorInit(AActor* _NewActor);
 };
 

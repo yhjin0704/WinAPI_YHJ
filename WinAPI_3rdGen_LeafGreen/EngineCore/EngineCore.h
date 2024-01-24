@@ -1,10 +1,11 @@
 #pragma once
 #include <EngineBase\EngineDebug.h>
 #include <EnginePlatform\EngineWindow.h>
+#include <EngineBase\EngineString.h>
 #include <map>
 
 class ULevel;
-// 설명 :
+
 class EngineCore
 {
 public:
@@ -16,39 +17,47 @@ public:
 	EngineCore& operator=(const EngineCore& _Other) = delete;
 	EngineCore& operator=(EngineCore&& _Other) noexcept = delete;
 
-	// 하나는 무조건 만들어지고 사라질일이 없을것이므ㅗ.
-	// 코어가 윈도우를 가지고
+	//코어가 윈도우를 가진다.
 	EngineWindow MainWindow;
 
 	static void EngineStart(HINSTANCE _hInstance, EngineCore* _UserCore);
 
 	void CoreInit(HINSTANCE _Init);
 
-	virtual void Start();
-	virtual void Update();
+	virtual void BeginPlay();
+	virtual void Tick(float _DeltaTime);
 	virtual void End();
 
 	template<typename LevelType>
 	void CreateLevel(std::string_view _Name)
 	{
-		if (true == AllLevel.contains(_Name.data()))
+		std::string UpperName = EngineString::ToUpper(_Name);
+
+		if (true == AllLevel.contains(UpperName))
 		{
 			MsgBoxAssert(std::string(_Name) + "이라는 이름의 Level을 또 만들려고 했습니다");
 		}
 
 		LevelType* NewLevel = new LevelType();
-		AllLevel.insert(std::pair<std::string, ULevel*>(_Name, NewLevel));
+		LevelInit(NewLevel);
+		AllLevel.insert(std::pair<std::string, ULevel*>(UpperName, NewLevel));
 	}
+
+	void ChangeLevel(std::string_view _Name);
 
 protected:
 	EngineCore();
 
 private:
 	bool EngineInit = false;
-	std::map<std::string, ULevel*> AllLevel;
 
-	static void EngineUpdate();
+	std::map<std::string, ULevel*> AllLevel;
+	ULevel* CurLevel = nullptr;
+
+	static void EngineTick();
 	static void EngineEnd();
+
+	void LevelInit(ULevel* _Level);
 };
 
 extern EngineCore* GEngine;
