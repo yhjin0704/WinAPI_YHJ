@@ -9,7 +9,7 @@ Pokemon3rdGen_Core::~Pokemon3rdGen_Core()
 }
 
 // 게임시작
-void Pokemon3rdGen_Core::EngineStart()
+void Pokemon3rdGen_Core::Start()
 {
 	//MainWindow.SetTitle();
 	//MainWindow.SetScale();
@@ -18,12 +18,12 @@ void Pokemon3rdGen_Core::EngineStart()
 	int a = 0;
 }
 
-void Pokemon3rdGen_Core::EngineUpdate()
+void Pokemon3rdGen_Core::Update()
 {
 	int a = 0;
 }
 
-void Pokemon3rdGen_Core::EngineEnd()
+void Pokemon3rdGen_Core::End()
 {
 	int a = 0;
 }

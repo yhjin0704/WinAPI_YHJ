@@ -15,9 +15,9 @@ public:
 	Pokemon3rdGen_Core& operator=(Pokemon3rdGen_Core&& _Other) noexcept = delete;
 
 protected:
-	void EngineStart() override;
-	void EngineUpdate() override;
-	void EngineEnd() override;
+	void Start() override;
+	void Update() override;
+	void End() override;
 
 private:
 
