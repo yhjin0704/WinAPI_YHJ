@@ -1,8 +1,9 @@
 #pragma once
-// 전부다 std의 헤더만
+// 전부다 std의 헤더뿐이다.
 #include <string>
 #include <string_view>
 
+// 설명 :
 class EngineString
 {
 public:

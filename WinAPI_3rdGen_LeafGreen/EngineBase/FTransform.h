@@ -1,12 +1,19 @@
 #pragma once
 #include "EngineMath.h"
 
+// Ό³Έν :
 class FTransform
 {
 public:
 	// constrcuter destructer
 	FTransform();
 	~FTransform();
+
+	// delete Function
+	//FTransform(const FTransform& _Other) = delete;
+	//FTransform(FTransform&& _Other) noexcept = delete;
+	//FTransform& operator=(const FTransform& _Other) = delete;
+	//FTransform& operator=(FTransform&& _Other) noexcept = delete;
 
 public:
 	void SetScale(FVector _Value)
@@ -20,6 +27,10 @@ public:
 	void SetPosition(FVector _Value)
 	{
 		Position = _Value;
+	}
+	void AddPosition(FVector _Value)
+	{
+		Position += _Value;
 	}
 	FVector GetPosition()
 	{

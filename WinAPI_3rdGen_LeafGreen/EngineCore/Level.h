@@ -4,7 +4,7 @@
 #include <list>
 
 class AActor;
-
+// 설명 : U는 그냥 엔진 속해있다는 것을 의미.
 class ULevel : public UNameObject
 {
 public:
@@ -38,5 +38,6 @@ private:
 	std::map<int, std::list<AActor*>> AllActor;
 
 	void ActorInit(AActor* _NewActor);
+
 };
 

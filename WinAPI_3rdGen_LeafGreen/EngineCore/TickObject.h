@@ -1,5 +1,6 @@
 #pragma once
 
+// 설명 :
 class UTickObject
 {
 public:
@@ -25,8 +26,10 @@ public:
 
 	bool IsOn()
 	{
+		// 내가 켜져있고         죽지도 않았다면
 		return IsUpdateValue && IsDeathValue == false;
 	}
+
 
 	void Death()
 	{

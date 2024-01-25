@@ -1,7 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <string>
-
+// Ό³Έν :
 class EngineWindow
 {
 public:
