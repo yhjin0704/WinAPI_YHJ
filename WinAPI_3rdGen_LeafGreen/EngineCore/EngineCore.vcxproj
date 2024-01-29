@@ -163,7 +163,9 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="ActorComponent.cpp" />
     <ClCompile Include="EngineCore.cpp" />
+    <ClCompile Include="ImageRenderer.cpp" />
     <ClCompile Include="Level.cpp">
       <SubType>
       </SubType>
@@ -172,6 +174,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SceneComponent.cpp" />
     <ClCompile Include="TickObject.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -179,7 +182,9 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="ActorComponent.h" />
     <ClInclude Include="EngineCore.h" />
+    <ClInclude Include="ImageRenderer.h" />
     <ClInclude Include="Level.h">
       <SubType>
       </SubType>
@@ -188,6 +193,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SceneComponent.h" />
     <ClInclude Include="TickObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
