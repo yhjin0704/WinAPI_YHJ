@@ -45,9 +45,6 @@
     <ClInclude Include="ImageRenderer.h">
       <Filter>Object\Component\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="Image.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
     <ClInclude Include="EngineResourcesManager.h">
       <Filter>Resources</Filter>
     </ClInclude>
@@ -78,9 +75,6 @@
       <Filter>Object\Component\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="EngineResourcesManager.cpp">
-      <Filter>Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="Image.cpp">
       <Filter>Resources</Filter>
     </ClCompile>
   </ItemGroup>

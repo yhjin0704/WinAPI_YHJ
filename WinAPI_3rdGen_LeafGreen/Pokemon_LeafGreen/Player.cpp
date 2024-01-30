@@ -17,12 +17,12 @@ void Player::BeginPlay()
 
 	{
 		Renderer = CreateImageRenderer(0);
-		Renderer->SetPosition({ 0, 30 });
-		Renderer->SetScale({ 8, 8 });
+		Renderer->SetPosition({ 0, 0 });
+		Renderer->SetImageToScale("Dragonite.bmp");
 	}
 
 	SetActorLocation({ 100, 100 });
-	SetActorScale({ 8, 8 });
+	SetActorScale({ 100, 100 });
 }
 
 void Player::Tick(float _DeltaTime)
