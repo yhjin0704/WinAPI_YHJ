@@ -162,6 +162,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FieldLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Pokemon3rdGen_Core.cpp">
       <SubType>
       </SubType>
@@ -169,6 +177,14 @@
     <ClCompile Include="TitleLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FieldLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Pokemon3rdGen_Core.h">
       <SubType>
       </SubType>

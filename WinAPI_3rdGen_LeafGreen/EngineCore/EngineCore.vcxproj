@@ -165,6 +165,8 @@
     </ClCompile>
     <ClCompile Include="ActorComponent.cpp" />
     <ClCompile Include="EngineCore.cpp" />
+    <ClCompile Include="EngineResourcesManager.cpp" />
+    <ClCompile Include="Image.cpp" />
     <ClCompile Include="ImageRenderer.cpp" />
     <ClCompile Include="Level.cpp">
       <SubType>
@@ -184,6 +186,8 @@
     </ClInclude>
     <ClInclude Include="ActorComponent.h" />
     <ClInclude Include="EngineCore.h" />
+    <ClInclude Include="EngineResourcesManager.h" />
+    <ClInclude Include="Image.h" />
     <ClInclude Include="ImageRenderer.h" />
     <ClInclude Include="Level.h">
       <SubType>

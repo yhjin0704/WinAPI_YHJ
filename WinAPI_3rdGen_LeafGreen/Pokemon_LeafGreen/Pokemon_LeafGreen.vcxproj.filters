@@ -3,9 +3,13 @@
   <ItemGroup>
     <ClCompile Include="Pokemon3rdGen_Core.cpp" />
     <ClCompile Include="TitleLevel.cpp" />
+    <ClCompile Include="FieldLevel.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
     <ClInclude Include="TitleLevel.h" />
+    <ClInclude Include="FieldLevel.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
 </Project>

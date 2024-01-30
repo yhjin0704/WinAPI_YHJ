@@ -1,7 +1,10 @@
 #include "Pokemon3rdGen_Core.h"
+#include "Player.h"
 #include "TitleLevel.h"
+#include "FieldLevel.h"
 
 Pokemon3rdGen_Core::Pokemon3rdGen_Core()
+	: EngineCore()
 {
 }
 
@@ -12,17 +15,18 @@ Pokemon3rdGen_Core::~Pokemon3rdGen_Core()
 // 게임시작
 void Pokemon3rdGen_Core::BeginPlay()
 {
-	CreateLevel<UTitleLevel>("TitleLevel");
+	SetFrame(60);
 
-	ChangeLevel("TitleLevel");
+	CreateLevel<UTitleLevel>("TitleLevel");
+	CreateLevel<UFieldLevel>("FieldLevel");
+
+	ChangeLevel("FieldLevel");
 }
 
 void Pokemon3rdGen_Core::Tick(float _DeltaTime)
 {
-	int a = 0;
 }
 
 void Pokemon3rdGen_Core::End()
 {
-	int a = 0;
 }
