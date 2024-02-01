@@ -13,16 +13,17 @@ void APlayer::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	Renderer = CreateImageRenderer();
+	Renderer = CreateImageRenderer(1);
 	Renderer->SetImage("player alone.png");
-	SetActorLocation({ 120 * 3, 80 * 3 });
-	Renderer->SetTransform({ {120 * 3, 80 * 3}, {100, 100} });
-	Renderer->SetImageCuttingTransform({ {0,0}, {200, 200} });
+
+	SetActorLocation({ 50, 50 });
+
+	Renderer->SetTransform({ {0, 0}, {42, 57} });
 }
 
 void APlayer::Tick(float _DeltaTime)
 {
-	/*if (true == EngineInput::IsPress('A'))
+	if (true == EngineInput::IsPress('A'))
 	{
 		AddActorLocation(FVector::Left * 600.0f * _DeltaTime);
 	}
@@ -40,5 +41,5 @@ void APlayer::Tick(float _DeltaTime)
 	if (true == EngineInput::IsPress('S'))
 	{
 		AddActorLocation(FVector::Down * 600.0f * _DeltaTime);
-	}*/
+	}
 }

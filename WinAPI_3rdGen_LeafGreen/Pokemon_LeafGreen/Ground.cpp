@@ -1,4 +1,5 @@
 #include "Ground.h"
+#include "Player.h"
 #include <EnginePlatform\EngineInput.h>
 
 AGround::AGround()
@@ -13,32 +14,15 @@ void AGround::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	Renderer = CreateImageRenderer();
-	Renderer->SetImage("West_Full_Map.bmp");
+	Renderer = CreateImageRenderer(0);
+	Renderer->SetImage("Full_Map.png");
+
 	SetActorLocation({ 0, 0 });
-	Renderer->SetTransform({ {120 * 3, 80 * 3}, {100, 100} });
-	Renderer->SetImageCuttingTransform({ {0,0}, {200, 200} });
+
+	Renderer->SetTransform({ {360, 240}, {720, 480} });
+	Renderer->SetImageCuttingTransform({ {1100, 4250}, {240, 160} });
 }
 
 void AGround::Tick(float _DeltaTime)
 {
-	if (true == EngineInput::IsPress('A'))
-	{
-		AddActorLocation(FVector::Right * 600.0f * _DeltaTime);
-	}
-
-	if (true == EngineInput::IsPress('D'))
-	{
-		AddActorLocation(FVector::Left * 600.0f * _DeltaTime);
-	}
-
-	if (true == EngineInput::IsPress('W'))
-	{
-		AddActorLocation(FVector::Down * 600.0f * _DeltaTime);
-	}
-
-	if (true == EngineInput::IsPress('S'))
-	{
-		AddActorLocation(FVector::Up * 600.0f * _DeltaTime);
-	}
 }

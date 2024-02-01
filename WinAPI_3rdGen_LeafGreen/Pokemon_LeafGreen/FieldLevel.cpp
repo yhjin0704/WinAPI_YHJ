@@ -27,6 +27,5 @@ void UFieldLevel::BeginPlay()
 		UEngineResourcesManager::GetInst().LoadImg(File.GetFullPath());
 	}
 
-	this->SpawnActor<AGround>();
 	this->SpawnActor<APlayer>();
 }

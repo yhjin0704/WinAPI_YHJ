@@ -5,6 +5,13 @@
 UEnginePath::UEnginePath() 
 	: Path(std::filesystem::current_path())
 {
+	// 과거의 방식
+	//char Arr[100];
+	//GetCurrentDirectoryA(100, Arr);
+	//StringPath = Arr;
+
+	// 내부에서는 윈도우의 함수를 사용하고 있다
+	// 내부에서 
 }
 
 UEnginePath::UEnginePath(std::filesystem::path _Path)
@@ -16,13 +23,13 @@ UEnginePath::~UEnginePath()
 {
 }
 
-std::string UEnginePath::GetExtension()
+std::string UEnginePath::GetExtension() const
 {
 	std::filesystem::path Text = Path.extension();
 	return Text.string();
 }
 
-std::string UEnginePath::GetFileName()
+std::string UEnginePath::GetFileName() const
 {
 	std::filesystem::path Text = Path.filename();
 	return Text.string();
@@ -59,4 +66,9 @@ bool UEnginePath::IsFile()
 bool UEnginePath::IsDirectory()
 {
 	return std::filesystem::is_directory(Path);
+}
+
+std::string UEnginePath::AppendPath(std::string_view _Path)
+{
+	return Path.string() + "\\" + std::string(_Path);
 }
