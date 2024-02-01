@@ -17,10 +17,10 @@ private:
 		friend EngineInput;
 
 	public:
-		bool Down = false; // 누른 순간
-		bool Press = false; // 계속 누르면
-		bool Up = false; // 떼어진 순간
-		bool Free = true; // 누리지 않으면
+		bool Down = false;  // 누른 순간
+		bool Press = false; // 계속 누름
+		bool Up = false;    // 뗀 순간
+		bool Free = true;   // 땐 이후
 
 		float PressTime = 0.0f;
 

@@ -1,7 +1,7 @@
 #pragma once
 #include <EngineCore\EngineCore.h>
 
-class Pokemon3rdGen_Core : public EngineCore
+class Pokemon3rdGen_Core : public UEngineCore
 {
 public:
 	// constrcuter destructer
