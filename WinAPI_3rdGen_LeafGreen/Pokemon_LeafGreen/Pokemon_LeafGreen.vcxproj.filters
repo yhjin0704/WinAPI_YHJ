@@ -2,14 +2,70 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Pokemon3rdGen_Core.cpp" />
-    <ClCompile Include="TitleLevel.cpp" />
-    <ClCompile Include="FieldLevel.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="BattleLevel.cpp">
+      <Filter>Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingLevel.cpp">
+      <Filter>Ending</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldLevel.cpp">
+      <Filter>Field</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleLevel.cpp">
+      <Filter>Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>Field\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Field\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
-    <ClInclude Include="TitleLevel.h" />
-    <ClInclude Include="FieldLevel.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="BattleLevel.h">
+      <Filter>Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingLevel.h">
+      <Filter>Ending</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldLevel.h">
+      <Filter>Field</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleLevel.h">
+      <Filter>Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Field\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>Field\Actor</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Field">
+      <UniqueIdentifier>{b247fbe1-6d37-41a0-8def-5b5214fa5ca4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Title">
+      <UniqueIdentifier>{845b9e6d-473d-4fb7-ac0c-243b75105d23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ending">
+      <UniqueIdentifier>{5ad4cdad-2aa9-4ff1-b62a-cfe6f5d82393}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle">
+      <UniqueIdentifier>{bda51325-540e-4bac-a929-ada0dbdd4966}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\Actor">
+      <UniqueIdentifier>{4b574258-7b27-44e2-9df0-2e49580e5543}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ending\Actor">
+      <UniqueIdentifier>{e551c22a-6082-4e7d-a763-4ad37f42b0aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\Actor">
+      <UniqueIdentifier>{f1ccbb1f-ada8-4f85-82a9-8bb5d2cb5542}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Title\Actor">
+      <UniqueIdentifier>{bf9a5d7a-1cdd-4683-92c8-c8e764bc60f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

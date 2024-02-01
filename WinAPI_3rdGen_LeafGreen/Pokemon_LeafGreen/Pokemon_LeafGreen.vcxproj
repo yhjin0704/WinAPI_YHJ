@@ -162,10 +162,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BattleLevel.cpp" />
+    <ClCompile Include="EndingLevel.cpp" />
     <ClCompile Include="FieldLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Ground.cpp" />
     <ClCompile Include="Player.cpp">
       <SubType>
       </SubType>
@@ -177,10 +180,13 @@
     <ClCompile Include="TitleLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleLevel.h" />
+    <ClInclude Include="EndingLevel.h" />
     <ClInclude Include="FieldLevel.h">
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Ground.h" />
     <ClInclude Include="Player.h">
       <SubType>
       </SubType>
