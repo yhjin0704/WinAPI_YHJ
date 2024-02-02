@@ -14,7 +14,7 @@ void AGround::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	Renderer = CreateImageRenderer(0);
+	Renderer = CreateImageRenderer(-10);
 	Renderer->SetImage("Full_Map.png");
 
 	SetActorLocation({ 0, 0 });
