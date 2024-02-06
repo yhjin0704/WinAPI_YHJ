@@ -1,4 +1,5 @@
 #include "Pokemon3rdGen_Core.h"
+#include "Global.h"
 #include "Player.h"
 #include "TitleLevel.h"
 #include "FieldLevel.h"
@@ -15,14 +16,13 @@ Pokemon3rdGen_Core::~Pokemon3rdGen_Core()
 // 게임시작
 void Pokemon3rdGen_Core::BeginPlay()
 {
-	MainWindow.SetWindowScale({ 720.0f, 480.0f });
-
+	MainWindow.SetWindowScale({ FScreen_X, FScreen_Y });
 	SetFrame(60);
 
 	CreateLevel<UTitleLevel>("TitleLevel");
 	CreateLevel<UFieldLevel>("FieldLevel");
 
-	ChangeLevel("FieldLevel");
+	ChangeLevel("TitleLevel");
 }
 
 void Pokemon3rdGen_Core::Tick(float _DeltaTime)

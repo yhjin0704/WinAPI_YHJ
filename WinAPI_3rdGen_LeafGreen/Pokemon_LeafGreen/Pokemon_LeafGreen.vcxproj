@@ -166,9 +166,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="TitleActor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleLevel.cpp" />
     <ClCompile Include="EndingLevel.cpp" />
     <ClCompile Include="FieldLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Global.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -184,9 +192,17 @@
     <ClCompile Include="TitleLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="TitleActor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleLevel.h" />
     <ClInclude Include="EndingLevel.h" />
     <ClInclude Include="FieldLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Global.h">
       <SubType>
       </SubType>
     </ClInclude>

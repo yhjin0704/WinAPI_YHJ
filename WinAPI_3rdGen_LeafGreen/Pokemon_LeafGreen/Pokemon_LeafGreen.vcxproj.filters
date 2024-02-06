@@ -20,6 +20,10 @@
     <ClCompile Include="Player.cpp">
       <Filter>Field\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="Global.cpp" />
+    <ClCompile Include="TitleActor.cpp">
+      <Filter>Title\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -40,6 +44,10 @@
     </ClInclude>
     <ClInclude Include="Ground.h">
       <Filter>Field\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h" />
+    <ClInclude Include="TitleActor.h">
+      <Filter>Title\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
