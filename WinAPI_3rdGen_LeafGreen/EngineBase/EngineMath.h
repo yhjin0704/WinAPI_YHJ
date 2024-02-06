@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 struct float4
 {
@@ -11,9 +12,9 @@ public:
 	static const float4 Up;
 	static const float4 Down;
 
-	union 
+	union
 	{
-		struct 
+		struct
 		{
 			float X; // 2D
 			float Y; // 2D
@@ -71,6 +72,16 @@ public:
 
 
 public:
+	std::string ToString()
+	{
+		return "[X : " + std::to_string(X) + " Y : " + std::to_string(Y) + " Z : " + std::to_string(Z) + " W : " + std::to_string(W) + "]";
+	}
+
+	float4 Half2D()
+	{
+		return { hX(), hY() };
+	}
+
 	int iX() const
 	{
 		return static_cast<int>(X);
@@ -192,9 +203,9 @@ public:
 	static const Color8Bit Blue;
 	static const Color8Bit White;
 
-	union 
+	union
 	{
-		struct 
+		struct
 		{
 			unsigned char R;
 			unsigned char G;
@@ -202,9 +213,36 @@ public:
 			unsigned char A;
 		};
 
-		unsigned char Arr1D[4] = {0,0,0,255};
+		unsigned char Arr1D[4] = { 0,0,0,255 };
 		unsigned int Color;
 	};
+
+	Color8Bit()
+	{
+
+	}
+
+	Color8Bit(
+		unsigned char _R,
+		unsigned char _G,
+		unsigned char _B,
+		unsigned char _A
+	)
+		:R(_R), G(_G), B(_B), A(_A)
+	{
+
+	}
+
+
+	bool operator==(Color8Bit _Color)
+	{
+		return Color == _Color.Color;
+	}
+
+	Color8Bit ZeroAlphaColor() const
+	{
+		return Color8Bit{ R,G,B,0 };
+	}
 };
 
 // Ό³Έν :
