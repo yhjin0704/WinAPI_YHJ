@@ -4,6 +4,7 @@
 #include <EngineCore\EngineResourcesManager.h>
 #include <EngineBase\EngineDirectory.h>
 #include <EngineBase\EngineFile.h>
+#include "global.h"
 
 UFieldLevel::UFieldLevel()
 {
@@ -26,6 +27,9 @@ void UFieldLevel::BeginPlay()
 	{
 		UEngineResourcesManager::GetInst().LoadImg(File.GetFullPath());
 	}
+
+	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Walk_Down.png", ITile_Scale, ITile_Scale * 2);
+
 	this->SpawnActor<APlayer>();
 	this->SpawnActor<AGround>();
 }

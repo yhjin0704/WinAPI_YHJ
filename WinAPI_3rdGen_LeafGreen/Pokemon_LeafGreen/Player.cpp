@@ -1,5 +1,6 @@
 #include "Player.h"
 #include <EnginePlatform\EngineInput.h>
+#include <EngineCore\EngineResourcesManager.h>
 #include "Global.h"
 
 APlayer::APlayer()
@@ -14,12 +15,16 @@ void APlayer::BeginPlay()
 {
 	AActor::BeginPlay();
 
+
+
 	SetActorLocation({ FHSceen_X , FHSceen_Y });
 
 	Renderer = CreateImageRenderer(0);
 	Renderer->SetImage("Player_Boy_Walk_Down.png");
-	Renderer->SetTransform({ {0, -FScreen_Tile_Scale / 2}, {FScreen_Tile_Scale, FScreen_Tile_Scale * 2} });
-	Renderer->SetImageCuttingTransform({ {FTile_Scale, 0}, {FTile_Scale, FTile_Scale * 2} });
+	Renderer->SetTransform({ {0, 0}, {FTile_Scale, FTile_Scale * 2} });
+	Renderer->CreateAnimation("Boy_Idle_Down", "Player_Boy_Walk_Down.png", 0, 3, 0.1f, true);
+
+	Renderer->ChangeAnimation("Boy_Idle_Down");
 }
 
 void APlayer::Tick(float _DeltaTime)

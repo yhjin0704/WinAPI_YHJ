@@ -17,6 +17,7 @@ Pokemon3rdGen_Core::~Pokemon3rdGen_Core()
 void Pokemon3rdGen_Core::BeginPlay()
 {
 	MainWindow.SetWindowScale({ FScreen_X, FScreen_Y });
+
 	SetFrame(60);
 
 	CreateLevel<UTitleLevel>("TitleLevel");
