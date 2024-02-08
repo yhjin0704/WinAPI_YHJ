@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore\Actor.h>
+#include "Global.h"
 
 class APlayer : public AActor
 {
@@ -20,5 +21,8 @@ protected:
 
 private:
 	UImageRenderer* Renderer;
+	EDirState PrevDirinput = EDirState::Down;
+	bool PrevFootRight = false;
+	EPlayerMoveState MoveState = EPlayerMoveState::Walk;
 };
 

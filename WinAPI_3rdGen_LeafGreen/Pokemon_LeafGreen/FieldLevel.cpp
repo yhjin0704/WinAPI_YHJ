@@ -1,6 +1,5 @@
 #include "FieldLevel.h"
 #include "Player.h"
-#include "Ground.h"
 #include <EngineCore\EngineResourcesManager.h>
 #include <EngineBase\EngineDirectory.h>
 #include <EngineBase\EngineFile.h>
@@ -20,6 +19,7 @@ void UFieldLevel::BeginPlay()
 	NewPath.MoveParent();
 	NewPath.Move("Resources");
 	NewPath.Move("Field");
+	NewPath.Move("Player");
 
 	std::list<UEngineFile> AllFileList = NewPath.AllFile({ ".png", ".bmp" }, true);
 	
@@ -28,8 +28,10 @@ void UFieldLevel::BeginPlay()
 		UEngineResourcesManager::GetInst().LoadImg(File.GetFullPath());
 	}
 
-	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Walk_Down.png", ITile_Scale, ITile_Scale * 2);
+	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Walk_Down.png", 4, 1);
+	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Walk_Up.png", 4, 1);
+	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Walk_Left.png", 4, 1);
+	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Walk_Right.png", 4, 1);
 
 	this->SpawnActor<APlayer>();
-	this->SpawnActor<AGround>();
 }

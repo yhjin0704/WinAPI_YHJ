@@ -21,7 +21,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 	SetFrame(60);
 
 	CreateLevel<UTitleLevel>("TitleLevel");
-	CreateLevel<UFieldLevel>("FieldLevel");
+	CreateLevel<UFieldLevel>("WestFieldLevel");
 
 	ChangeLevel("TitleLevel");
 }

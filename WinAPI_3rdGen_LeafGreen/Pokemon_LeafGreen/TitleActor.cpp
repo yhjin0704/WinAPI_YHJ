@@ -37,7 +37,7 @@ void ATitleActor::Tick(float _DeltaTime)
 			break;
 
 		case 1:
-			GEngine->ChangeLevel("FieldLevel");
+			GEngine->ChangeLevel("WestFieldLevel");
 			break;
 
 		default:

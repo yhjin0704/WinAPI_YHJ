@@ -1,29 +1,28 @@
-#include "Ground.h"
+#include "WestFieldGround.h"
 #include "Player.h"
 #include <EnginePlatform\EngineInput.h>
 #include "Global.h"
 
-AGround::AGround()
+AWestFieldGround::AWestFieldGround()
 {
 }
 
-AGround::~AGround()
+AWestFieldGround::~AWestFieldGround()
 {
 }
 
-void AGround::BeginPlay()
+void AWestFieldGround::BeginPlay()
 {
 	AActor::BeginPlay();
 
 	SetActorLocation({ 0, 0 });
 
-	Renderer = CreateImageRenderer(-10);
+	Renderer = CreateImageRenderer(Map);
 	Renderer->SetImage("West_Map.png");
 	Renderer->SetTransform({ {FGBAScreen_X * 1.5f, FGBAScreen_Y * 1.5f}, {FScreen_X, FScreen_Y} });
-	Renderer->SetImageCuttingTransform({ {1146, 3510}, {FGBAScreen_X, FGBAScreen_Y} });
 }
 
-void AGround::Tick(float _DeltaTime)
+void AWestFieldGround::Tick(float _DeltaTime)
 {
 }
 

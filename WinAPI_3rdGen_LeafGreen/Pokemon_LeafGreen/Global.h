@@ -1,4 +1,30 @@
 #pragma once
+
+enum ERenderOrder
+{
+	ColMap,
+	Map,
+	Player,
+	CoverObject
+};
+
+enum class EDirState
+{
+	Idle,
+	Down,
+	Up,
+	Left,
+	Right
+};
+
+enum class EPlayerMoveState
+{
+	Walk,
+	Run,
+	Bike,
+	Surf
+};
+
 class Global
 {
 public:

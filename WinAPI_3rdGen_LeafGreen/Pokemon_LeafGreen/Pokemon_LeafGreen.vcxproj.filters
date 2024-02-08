@@ -14,15 +14,18 @@
     <ClCompile Include="TitleLevel.cpp">
       <Filter>Title</Filter>
     </ClCompile>
-    <ClCompile Include="Ground.cpp">
-      <Filter>Field\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Field\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="TitleActor.cpp">
       <Filter>Title\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="WestFieldGround.cpp">
+      <Filter>Field\WestFieldLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="WestFieldLevel.cpp">
+      <Filter>Field\WestFieldLevel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -42,12 +45,15 @@
     <ClInclude Include="Player.h">
       <Filter>Field\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="Ground.h">
-      <Filter>Field\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="Global.h" />
     <ClInclude Include="TitleActor.h">
       <Filter>Title\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="WestFieldGround.h">
+      <Filter>Field\WestFieldLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="WestFieldLevel.h">
+      <Filter>Field\WestFieldLevel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +80,12 @@
     </Filter>
     <Filter Include="Title\Actor">
       <UniqueIdentifier>{bf9a5d7a-1cdd-4683-92c8-c8e764bc60f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\WestFieldLevel">
+      <UniqueIdentifier>{b7c8026b-f0a3-48f9-8b39-35ed8c18abf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\WestFieldLevel\Actor">
+      <UniqueIdentifier>{80937f5a-dbab-45ca-8dac-075693d0cb9b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
