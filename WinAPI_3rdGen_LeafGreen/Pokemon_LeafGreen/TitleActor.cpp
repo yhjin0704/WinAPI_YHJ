@@ -30,7 +30,7 @@ void ATitleActor::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	if (EngineInput::IsAnykeyDown())
+	if (UEngineInput::IsAnykeyDown())
 	{
 		switch (TitleOrder)
 		{

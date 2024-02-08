@@ -38,7 +38,7 @@ void APlayer::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	if (true == EngineInput::IsPress('S'))
+	if (true == UEngineInput::IsPress('S'))
 	{
 		if (EPlayerMoveState::Walk == MoveState)
 		{
@@ -57,7 +57,7 @@ void APlayer::Tick(float _DeltaTime)
 		PrevDirinput = EDirState::Down;
 	}
 
-	if (true == EngineInput::IsPress('W'))
+	if (true == UEngineInput::IsPress('W'))
 	{
 		if (EPlayerMoveState::Walk == MoveState)
 		{
@@ -76,7 +76,7 @@ void APlayer::Tick(float _DeltaTime)
 		PrevDirinput = EDirState::Up;
 	}
 
-	if (true == EngineInput::IsPress('A'))
+	if (true == UEngineInput::IsPress('A'))
 	{
 		if (EPlayerMoveState::Walk == MoveState)
 		{
@@ -95,7 +95,7 @@ void APlayer::Tick(float _DeltaTime)
 		PrevDirinput = EDirState::Left;
 	}
 
-	if (true == EngineInput::IsPress('D'))
+	if (true == UEngineInput::IsPress('D'))
 	{
 		if (EPlayerMoveState::Walk == MoveState)
 		{
