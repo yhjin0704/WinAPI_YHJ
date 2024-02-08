@@ -17,11 +17,8 @@ UWestFieldLevel::~UWestFieldLevel()
 void UWestFieldLevel::BeginPlay()
 {
 	UFieldLevel::BeginPlay();
-	UEngineDirectory NewPath;
-	NewPath.MoveParent();
-	NewPath.Move("Resources");
-	NewPath.Move("Field");
-	NewPath.Move("WestField");
+	
+	FieldPath.Move("WestField");
 
 	this->SpawnActor<AWestFieldGround>();
 }

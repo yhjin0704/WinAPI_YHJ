@@ -17,10 +17,10 @@ private:
 		friend EngineInput;
 
 	public:
-		bool Down = false;  // 누른 순간
-		bool Press = false; // 계속 누름
-		bool Up = false;    // 뗀 순간
-		bool Free = true;   // 땐 이후
+		bool Down = false; // 누른 순간
+		bool Press = false; // 계속 누르면
+		bool Up = false; // 떼어진 순간
+		bool Free = true; // 누리지 않으면
 
 		float PressTime = 0.0f;
 
@@ -91,11 +91,33 @@ public:
 		return AllKeys[_Key].Free;
 	}
 
+	static bool IsAnykeyDown()
+	{
+		return AnykeyDown;
+	}
+	static bool IsAnykeyPress()
+	{
+		return AnykeyPress;
+	}
+	static bool IsAnykeyUp()
+	{
+		return AnykeyUp;
+	}
+	static bool IsAnykeyFree()
+	{
+		return AnykeyFree;
+	}
+
 	static void KeyCheckTick(float _DeltaTime);
 
 protected:
 	//              'A'  상태가 어때?
 	static std::map<int, EngineKey> AllKeys;
+
+	static bool AnykeyDown;
+	static bool AnykeyPress;
+	static bool AnykeyUp;
+	static bool AnykeyFree;
 
 	int Value;
 

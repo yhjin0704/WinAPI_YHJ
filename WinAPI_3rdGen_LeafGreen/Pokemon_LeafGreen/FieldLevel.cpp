@@ -15,13 +15,13 @@ UFieldLevel::~UFieldLevel()
 
 void UFieldLevel::BeginPlay()
 {
-	UEngineDirectory NewPath;
-	NewPath.MoveParent();
-	NewPath.Move("Resources");
-	NewPath.Move("Field");
-	NewPath.Move("Player");
+	
+	FieldPath.MoveParent();
+	FieldPath.Move("Resources");
+	FieldPath.Move("Field");
+	FieldPath.Move("Player");
 
-	std::list<UEngineFile> AllFileList = NewPath.AllFile({ ".png", ".bmp" }, true);
+	std::list<UEngineFile> AllFileList = FieldPath.AllFile({ ".png", ".bmp" }, true);
 	
 	for (UEngineFile& File : AllFileList)
 	{
