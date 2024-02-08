@@ -20,5 +20,7 @@ void UWestFieldLevel::BeginPlay()
 	
 	FieldPath.Move("WestField");
 
-	this->SpawnActor<AWestFieldGround>();
+	AWestFieldGround* Ground = SpawnActor<AWestFieldGround>();
+	Ground->SetMapImage("West_Map.png");
+	Ground->SetColMapImage("Col_West_Map.png");
 }

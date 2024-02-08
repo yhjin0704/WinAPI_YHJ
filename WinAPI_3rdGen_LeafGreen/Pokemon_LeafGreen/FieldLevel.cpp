@@ -33,5 +33,5 @@ void UFieldLevel::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Walk_Left.png", 4, 1);
 	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Walk_Right.png", 4, 1);
 
-	this->SpawnActor<APlayer>();
+	APlayer* Player = SpawnActor<APlayer>();
 }

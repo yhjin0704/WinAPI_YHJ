@@ -14,11 +14,15 @@ public:
 	AWestFieldGround& operator=(const AWestFieldGround& _Other) = delete;
 	AWestFieldGround& operator=(AWestFieldGround&& _Other) noexcept = delete;
 
+	void SetMapImage(std::string_view _MapImageName);
+	void SetColMapImage(std::string_view _MapImageName);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 private:
-	UImageRenderer* Renderer;
+	UImageRenderer* MapRenderer;
+	UImageRenderer* ColMapRenderer = nullptr;
 };
 
