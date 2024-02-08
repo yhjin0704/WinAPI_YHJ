@@ -1,4 +1,5 @@
 #include "TitleActor.h"
+#include <EnginePlatform\EngineInput.h>
 #include <EngineCore/EngineCore.h>
 #include "Global.h"
 
@@ -27,7 +28,9 @@ void ATitleActor::BeginPlay()
 
 void ATitleActor::Tick(float _DeltaTime)
 {
-	if (EngineInput::IsDown(' '))
+	AActor::Tick(_DeltaTime);
+
+	if (EngineInput::IsAnykeyDown())
 	{
 		switch (TitleOrder)
 		{

@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore\Level.h>
+#include <EngineBase\EngineDirectory.h>
 
 class UFieldLevel : public ULevel
 {

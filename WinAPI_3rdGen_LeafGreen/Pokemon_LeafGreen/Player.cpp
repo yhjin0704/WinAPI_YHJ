@@ -15,8 +15,6 @@ void APlayer::BeginPlay()
 {
 	AActor::BeginPlay();
 
-
-
 	SetActorLocation({ FHSceen_X , (FHSceen_Y - (FScreen_Tile_Scale / 2)) });
 
 	Renderer = CreateImageRenderer(Player);
@@ -38,6 +36,8 @@ void APlayer::BeginPlay()
 
 void APlayer::Tick(float _DeltaTime)
 {
+	AActor::Tick(_DeltaTime);
+
 	if (true == EngineInput::IsPress('S'))
 	{
 		if (EPlayerMoveState::Walk == MoveState)

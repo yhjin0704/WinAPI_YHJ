@@ -24,5 +24,6 @@ void AWestFieldGround::BeginPlay()
 
 void AWestFieldGround::Tick(float _DeltaTime)
 {
+	AActor::Tick(_DeltaTime);
 }
 
