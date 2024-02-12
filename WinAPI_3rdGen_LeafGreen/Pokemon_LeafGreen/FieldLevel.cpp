@@ -33,7 +33,7 @@ void UFieldLevel::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Walk_Right.png", 4, 1);
 
 	APlayer* Player = SpawnActor<APlayer>();
-	Player->SetActorLocation({ (1136 + (FTile_Scale / 2)) * FScale_Multiple , (2032) * FScale_Multiple });
+	Player->SetActorLocation({ (1136 + (FTileScale / 2)) * FScaleMultiple , (2032) * FScaleMultiple });
 }
 
 void UFieldLevel::Tick(float _DeltaTime)

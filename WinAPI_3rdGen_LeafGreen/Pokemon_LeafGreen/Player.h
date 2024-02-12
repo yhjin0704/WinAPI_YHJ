@@ -21,9 +21,18 @@ protected:
 
 private:
 	UImageRenderer* Renderer;
-	FVector FieldPos = FVector::Zero;
+
+	FVector PrevFieldPos = FVector::Zero;
+
+	bool IsPlayerMove = false;
 	EDirState PrevDirinput = EDirState::Down;
 	bool PrevFootRight = false;
 	EPlayerMoveState MoveState = EPlayerMoveState::Walk;
+	float WalkTime = FWalkTime;
+
+	bool IsActionDelay = false;
+	float CurDelayTime = 0.0f;
+
+	void InputDelayCheck(float _DeltaTime);
 };
 

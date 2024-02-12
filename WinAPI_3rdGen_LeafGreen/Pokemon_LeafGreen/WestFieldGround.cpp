@@ -17,7 +17,7 @@ void AWestFieldGround::SetMapImage(std::string_view _MapImageName)
 	MapRenderer->SetImage(_MapImageName);
 	UWindowImage* MapImage = MapRenderer->GetImage();
 	FVector ImageScale = MapImage->GetScale();
-	MapRenderer->SetTransform({ (ImageScale.Half2D() * FScale_Multiple), (ImageScale * FScale_Multiple)});
+	MapRenderer->SetTransform({ (ImageScale.Half2D() * FScaleMultiple), (ImageScale * FScaleMultiple)});
 	int a = 0;
 }
 
@@ -27,7 +27,7 @@ void AWestFieldGround::SetColMapImage(std::string_view _MapImageName)
 	UWindowImage* ColMapImage = ColMapRenderer->GetImage();
 	FVector ImageScale = ColMapImage->GetScale();
 	//UContentsHelper::ColMapImage = Image;
-	ColMapRenderer->SetTransform({ (ImageScale.Half2D() * FScale_Multiple), (ImageScale * FScale_Multiple) });
+	ColMapRenderer->SetTransform({ (ImageScale.Half2D() * FScaleMultiple), (ImageScale * FScaleMultiple) });
 }
 
 void AWestFieldGround::BeginPlay()

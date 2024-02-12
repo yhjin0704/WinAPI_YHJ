@@ -17,17 +17,18 @@ void APlayer::BeginPlay()
 
 	Renderer = CreateImageRenderer(Player);
 	Renderer->SetImage("Player_Boy_Walk_Down.png");
-	Renderer->SetTransform({ {0, 0}, {FScreen_Tile_Scale, FScreen_Tile_Scale * 2} });
+	Renderer->SetTransform({ {0, 0}, {FScreenTileScale, FScreenTileScale * 2} });
 
-	Renderer->CreateAnimation("Boy_Walk_Down_R", "Player_Boy_Walk_Down.png", 0, 1, 0.5f, false);
-	Renderer->CreateAnimation("Boy_Walk_UP_R", "Player_Boy_Walk_UP.png", 0, 1, 0.5f, false);
-	Renderer->CreateAnimation("Boy_Walk_Left_R", "Player_Boy_Walk_Left.png", 0, 1, 0.5f, false);
-	Renderer->CreateAnimation("Boy_Walk_Right_R", "Player_Boy_Walk_Right.png", 0, 1, 0.5f, false);
+	
+	Renderer->CreateAnimation("Boy_Walk_Down_R", "Player_Boy_Walk_Down.png", 0, 1, (WalkTime / 2), false);
+	Renderer->CreateAnimation("Boy_Walk_UP_R", "Player_Boy_Walk_UP.png", 0, 1, (WalkTime / 2), false);
+	Renderer->CreateAnimation("Boy_Walk_Left_R", "Player_Boy_Walk_Left.png", 0, 1, (WalkTime / 2), false);
+	Renderer->CreateAnimation("Boy_Walk_Right_R", "Player_Boy_Walk_Right.png", 0, 1, (WalkTime / 2), false);
 
-	Renderer->CreateAnimation("Boy_Walk_Down_L", "Player_Boy_Walk_Down.png", 2, 3, 0.5f, false);
-	Renderer->CreateAnimation("Boy_Walk_UP_L", "Player_Boy_Walk_UP.png", 2, 3, 0.5f, false);
-	Renderer->CreateAnimation("Boy_Walk_Left_L", "Player_Boy_Walk_Left.png", 2, 3, 0.5f, false);
-	Renderer->CreateAnimation("Boy_Walk_Right_L", "Player_Boy_Walk_Right.png", 2, 3, 0.5f, false);
+	Renderer->CreateAnimation("Boy_Walk_Down_L", "Player_Boy_Walk_Down.png", 2, 3, (WalkTime / 2), false);
+	Renderer->CreateAnimation("Boy_Walk_UP_L", "Player_Boy_Walk_UP.png", 2, 3, (WalkTime / 2), false);
+	Renderer->CreateAnimation("Boy_Walk_Left_L", "Player_Boy_Walk_Left.png", 2, 3, (WalkTime / 2), false);
+	Renderer->CreateAnimation("Boy_Walk_Right_L", "Player_Boy_Walk_Right.png", 2, 3, (WalkTime / 2), false);
 
 	Renderer->SetImage("Player_Boy_Walk_Down.png", 1);
 }
@@ -38,82 +39,161 @@ void APlayer::Tick(float _DeltaTime)
 
 	GetWorld()->SetCameraPos(GetActorLocation() - FVector(FHSceen_X, FHSceen_Y));
 
-	if (true == UEngineInput::IsPress('S'))
+	InputDelayCheck(_DeltaTime);
+
+	if (true == IsPlayerMove)
 	{
 		if (EPlayerMoveState::Walk == MoveState)
 		{
-			if (false == PrevFootRight)
+			if (EDirState::Down == PrevDirinput)
 			{
-				Renderer->ChangeAnimation("Boy_Walk_Down_R");
-				PrevFootRight = true;
+				if (false == IsActionDelay)
+				{
+					IsPlayerMove = false;
+					return;
+				}
+				float DeltaTimeMove = FScreenTileScale / FWalkTime;
+				AddActorLocation(FVector::Down * DeltaTimeMove * _DeltaTime);
+				
 			}
-			else
+
+			if (EDirState::Up == PrevDirinput)
 			{
-				Renderer->ChangeAnimation("Boy_Walk_Down_L");
-				PrevFootRight = false;
+				if (false == IsActionDelay)
+				{
+					IsPlayerMove = false;
+					return;
+				}
+				float DeltaTimeMove = FScreenTileScale / FWalkTime;
+				AddActorLocation(FVector::Up * DeltaTimeMove * _DeltaTime);
 			}
-			AddActorLocation(FVector::Down * 600.0f * _DeltaTime);
+
+			if (EDirState::Left == PrevDirinput)
+			{
+				if (false == IsActionDelay)
+				{
+					IsPlayerMove = false;
+					return;
+				}
+				float DeltaTimeMove = FScreenTileScale / FWalkTime;
+				AddActorLocation(FVector::Left * DeltaTimeMove * _DeltaTime);
+			}
+
+			if (EDirState::Right == PrevDirinput)
+			{
+				if (false == IsActionDelay)
+				{
+					IsPlayerMove = false;
+					return;
+				}
+				float DeltaTimeMove = FScreenTileScale / FWalkTime;
+				AddActorLocation(FVector::Right * DeltaTimeMove * _DeltaTime);
+			}
 		}
-		PrevDirinput = EDirState::Down;
+	}
+
+	if (true == UEngineInput::IsPress('S'))
+	{
+		if (false == IsActionDelay)
+		{
+			if (EPlayerMoveState::Walk == MoveState)
+			{
+				CurDelayTime = FWalkTime;
+				if (false == PrevFootRight)
+				{
+					Renderer->ChangeAnimation("Boy_Walk_Down_R");
+					PrevFootRight = true;
+				}
+				else
+				{
+					Renderer->ChangeAnimation("Boy_Walk_Down_L");
+					PrevFootRight = false;
+				}
+				IsPlayerMove = true;
+			}
+			PrevDirinput = EDirState::Down;
+		}
 	}
 
 	if (true == UEngineInput::IsPress('W'))
 	{
-		if (EPlayerMoveState::Walk == MoveState)
+		if (false == IsActionDelay)
 		{
-			if (false == PrevFootRight)
+			if (EPlayerMoveState::Walk == MoveState)
 			{
-				Renderer->ChangeAnimation("Boy_Walk_Up_R");
-				PrevFootRight = true;
+				CurDelayTime = FWalkTime;
+				if (false == PrevFootRight)
+				{
+					Renderer->ChangeAnimation("Boy_Walk_Up_R");
+					PrevFootRight = true;
+				}
+				else
+				{
+					Renderer->ChangeAnimation("Boy_Walk_Up_L");
+					PrevFootRight = false;
+				}
+				IsPlayerMove = true;
 			}
-			else
-			{
-				Renderer->ChangeAnimation("Boy_Walk_Up_L");
-				PrevFootRight = false;
-			}
-			AddActorLocation(FVector::Up * 600.0f * _DeltaTime);
+			PrevDirinput = EDirState::Up;
 		}
-		PrevDirinput = EDirState::Up;
 	}
 
 	if (true == UEngineInput::IsPress('A'))
 	{
-		if (EPlayerMoveState::Walk == MoveState)
+		if (false == IsActionDelay)
 		{
-			if (false == PrevFootRight)
+			if (EPlayerMoveState::Walk == MoveState)
 			{
-				Renderer->ChangeAnimation("Boy_Walk_Left_R");
-				PrevFootRight = true;
+				CurDelayTime = FWalkTime;
+				if (false == PrevFootRight)
+				{
+					Renderer->ChangeAnimation("Boy_Walk_Left_R");
+					PrevFootRight = true;
+				}
+				else
+				{
+					Renderer->ChangeAnimation("Boy_Walk_Left_L");
+					PrevFootRight = false;
+				}
+				IsPlayerMove = true;
 			}
-			else
-			{
-				Renderer->ChangeAnimation("Boy_Walk_Left_L");
-				PrevFootRight = false;
-			}
-			AddActorLocation(FVector::Left * 600.0f * _DeltaTime);
+			PrevDirinput = EDirState::Left;
 		}
-		PrevDirinput = EDirState::Left;
 	}
 
 	if (true == UEngineInput::IsPress('D'))
 	{
-		if (EPlayerMoveState::Walk == MoveState)
+		if (false == IsActionDelay)
 		{
-			if (false == PrevFootRight)
+			if (EPlayerMoveState::Walk == MoveState)
 			{
-				Renderer->ChangeAnimation("Boy_Walk_Right_R");
-				PrevFootRight = true;
+				CurDelayTime = FWalkTime;
+				if (false == PrevFootRight)
+				{
+					Renderer->ChangeAnimation("Boy_Walk_Right_R");
+					PrevFootRight = true;
+				}
+				else
+				{
+					Renderer->ChangeAnimation("Boy_Walk_Right_L");
+					PrevFootRight = false;
+				}
+				IsPlayerMove = true;
 			}
-			else
-			{
-				Renderer->ChangeAnimation("Boy_Walk_Right_L");
-				PrevFootRight = false;
-			}
-			AddActorLocation(FVector::Right * 600.0f * _DeltaTime);
+			PrevDirinput = EDirState::Right;
 		}
-		PrevDirinput = EDirState::Right;
 	}
+}
 
-	//if (true == EngineKey::Free)
-	
+void APlayer::InputDelayCheck(float _DeltaTime)
+{
+	if (CurDelayTime > 0.0f)
+	{
+		IsActionDelay = true;
+		CurDelayTime -= _DeltaTime;
+	}
+	else
+	{
+		IsActionDelay = false;
+	}
 }
