@@ -33,4 +33,5 @@ const float Global::GFHGBAScreen_Y      = std::lround(GIHGBAScreen_Y);
 const float Global::GFHSceen_X		    = std::lround(GIHSceen_X);
 const float Global::GFHSceen_Y	  	    = std::lround(GIHSceen_Y);
 
+const float Global::GIdleTime = 0.1f;
 const float Global::GWalkTime = 0.5f;

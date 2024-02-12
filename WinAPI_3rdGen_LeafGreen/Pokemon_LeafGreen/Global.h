@@ -10,7 +10,6 @@ enum ERenderOrder
 
 enum class EDirState
 {
-	Idle,
 	Down,
 	Up,
 	Left,
@@ -19,6 +18,7 @@ enum class EDirState
 
 enum class EPlayerMoveState
 {
+	Idle,
 	Walk,
 	Run,
 	Bike,
@@ -52,6 +52,7 @@ public:
 	static const float GFHSceen_X;
 	static const float GFHSceen_Y;
 
+	static const float GIdleTime;
 	static const float GWalkTime;
 
 	// constrcuter destructer
@@ -91,4 +92,4 @@ private:
 #define	FHSceen_Y Global::GFHSceen_Y
 
 #define FWalkTime Global::GWalkTime;
-
+#define FIdleTime Global::GIdleTime;

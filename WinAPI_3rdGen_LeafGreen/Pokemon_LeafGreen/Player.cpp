@@ -16,9 +16,12 @@ void APlayer::BeginPlay()
 	AActor::BeginPlay();
 
 	Renderer = CreateImageRenderer(Player);
-	Renderer->SetImage("Player_Boy_Walk_Down.png");
 	Renderer->SetTransform({ {0, 0}, {FScreenTileScale, FScreenTileScale * 2} });
 
+	Renderer->CreateAnimation("Boy_Idle_Down", "Player_Boy_Walk_Down.png", 1, 1, 0.0f, false);
+	Renderer->CreateAnimation("Boy_Idle_UP", "Player_Boy_Walk_UP.png", 1, 1, 0.0f, false);
+	Renderer->CreateAnimation("Boy_Idle_Left", "Player_Boy_Walk_Left.png", 1, 1, 0.0f, false);
+	Renderer->CreateAnimation("Boy_Idle_Right", "Player_Boy_Walk_Right.png", 1, 1, 0.0f, false);
 	
 	Renderer->CreateAnimation("Boy_Walk_Down_R", "Player_Boy_Walk_Down.png", 0, 1, (WalkTime / 2), false);
 	Renderer->CreateAnimation("Boy_Walk_UP_R", "Player_Boy_Walk_UP.png", 0, 1, (WalkTime / 2), false);
@@ -96,22 +99,30 @@ void APlayer::Tick(float _DeltaTime)
 	{
 		if (false == IsActionDelay)
 		{
-			if (EPlayerMoveState::Walk == MoveState)
+			if (EDirState::Down == PrevDirinput)
 			{
-				CurDelayTime = FWalkTime;
-				if (false == PrevFootRight)
+				if (EPlayerMoveState::Walk == MoveState)
 				{
-					Renderer->ChangeAnimation("Boy_Walk_Down_R");
-					PrevFootRight = true;
+					CurDelayTime = FWalkTime;
+					if (false == PrevFootRight)
+					{
+						Renderer->ChangeAnimation("Boy_Walk_Down_R");
+						PrevFootRight = true;
+					}
+					else
+					{
+						Renderer->ChangeAnimation("Boy_Walk_Down_L");
+						PrevFootRight = false;
+					}
+					IsPlayerMove = true;
 				}
-				else
-				{
-					Renderer->ChangeAnimation("Boy_Walk_Down_L");
-					PrevFootRight = false;
-				}
-				IsPlayerMove = true;
 			}
-			PrevDirinput = EDirState::Down;
+			else
+			{
+				CurDelayTime = FIdleTime;
+				Renderer->ChangeAnimation("Boy_Idle_Down");
+				PrevDirinput = EDirState::Down;
+			}
 		}
 	}
 
@@ -119,22 +130,30 @@ void APlayer::Tick(float _DeltaTime)
 	{
 		if (false == IsActionDelay)
 		{
-			if (EPlayerMoveState::Walk == MoveState)
+			if (EDirState::Up == PrevDirinput)
 			{
-				CurDelayTime = FWalkTime;
-				if (false == PrevFootRight)
+				if (EPlayerMoveState::Walk == MoveState)
 				{
-					Renderer->ChangeAnimation("Boy_Walk_Up_R");
-					PrevFootRight = true;
+					CurDelayTime = FWalkTime;
+					if (false == PrevFootRight)
+					{
+						Renderer->ChangeAnimation("Boy_Walk_Up_R");
+						PrevFootRight = true;
+					}
+					else
+					{
+						Renderer->ChangeAnimation("Boy_Walk_Up_L");
+						PrevFootRight = false;
+					}
+					IsPlayerMove = true;
 				}
-				else
-				{
-					Renderer->ChangeAnimation("Boy_Walk_Up_L");
-					PrevFootRight = false;
-				}
-				IsPlayerMove = true;
 			}
-			PrevDirinput = EDirState::Up;
+			else
+			{
+				CurDelayTime = FIdleTime;
+				Renderer->ChangeAnimation("Boy_Idle_Up");
+				PrevDirinput = EDirState::Up;
+			}
 		}
 	}
 
@@ -142,22 +161,30 @@ void APlayer::Tick(float _DeltaTime)
 	{
 		if (false == IsActionDelay)
 		{
-			if (EPlayerMoveState::Walk == MoveState)
+			if (EDirState::Left == PrevDirinput)
 			{
-				CurDelayTime = FWalkTime;
-				if (false == PrevFootRight)
+				if (EPlayerMoveState::Walk == MoveState)
 				{
-					Renderer->ChangeAnimation("Boy_Walk_Left_R");
-					PrevFootRight = true;
+					CurDelayTime = FWalkTime;
+					if (false == PrevFootRight)
+					{
+						Renderer->ChangeAnimation("Boy_Walk_Left_R");
+						PrevFootRight = true;
+					}
+					else
+					{
+						Renderer->ChangeAnimation("Boy_Walk_Left_L");
+						PrevFootRight = false;
+					}
+					IsPlayerMove = true;
 				}
-				else
-				{
-					Renderer->ChangeAnimation("Boy_Walk_Left_L");
-					PrevFootRight = false;
-				}
-				IsPlayerMove = true;
 			}
-			PrevDirinput = EDirState::Left;
+			else
+			{
+				CurDelayTime = FIdleTime;
+				Renderer->ChangeAnimation("Boy_Idle_Left");
+				PrevDirinput = EDirState::Left;
+			}
 		}
 	}
 
@@ -165,22 +192,30 @@ void APlayer::Tick(float _DeltaTime)
 	{
 		if (false == IsActionDelay)
 		{
-			if (EPlayerMoveState::Walk == MoveState)
+			if (EDirState::Right == PrevDirinput)
 			{
-				CurDelayTime = FWalkTime;
-				if (false == PrevFootRight)
+				if (EPlayerMoveState::Walk == MoveState)
 				{
-					Renderer->ChangeAnimation("Boy_Walk_Right_R");
-					PrevFootRight = true;
+					CurDelayTime = FWalkTime;
+					if (false == PrevFootRight)
+					{
+						Renderer->ChangeAnimation("Boy_Walk_Right_R");
+						PrevFootRight = true;
+					}
+					else
+					{
+						Renderer->ChangeAnimation("Boy_Walk_Right_L");
+						PrevFootRight = false;
+					}
+					IsPlayerMove = true;
 				}
-				else
-				{
-					Renderer->ChangeAnimation("Boy_Walk_Right_L");
-					PrevFootRight = false;
-				}
-				IsPlayerMove = true;
 			}
-			PrevDirinput = EDirState::Right;
+			else
+			{
+				CurDelayTime = FIdleTime;
+				Renderer->ChangeAnimation("Boy_Idle_Right");
+				PrevDirinput = EDirState::Right;
+			}
 		}
 	}
 }
