@@ -2,7 +2,7 @@
 #include "Global.h"
 #include "Player.h"
 #include "TitleLevel.h"
-#include "FieldLevel.h"
+#include "WestFieldLevel.h"
 
 Pokemon3rdGen_Core::Pokemon3rdGen_Core()
 	: UEngineCore()
@@ -21,7 +21,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 	SetFrame(60);
 
 	CreateLevel<UTitleLevel>("TitleLevel");
-	CreateLevel<UFieldLevel>("WestFieldLevel");
+	CreateLevel<UWestFieldLevel>("WestFieldLevel");
 
 	ChangeLevel("TitleLevel");
 }

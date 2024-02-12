@@ -9,19 +9,19 @@ Global::~Global()
 {
 }
 
-const int Global::GIPixel_Scale		  = 3;
+const int Global::GIScale_Multiple		  = 3;
 const int Global::GIGBAScreen_X		  = 240;
 const int Global::GIGBAScreen_Y		  = 160;
-const int Global::GIScreen_X		  = GIGBAScreen_X * GIPixel_Scale;
-const int Global::GIScreen_Y		  = GIGBAScreen_Y * GIPixel_Scale;
+const int Global::GIScreen_X		  = GIGBAScreen_X * GIScale_Multiple;
+const int Global::GIScreen_Y		  = GIGBAScreen_Y * GIScale_Multiple;
 const int Global::GITile_Scale		  = 16;
-const int Global::GIScreen_Tile_Scale = GITile_Scale * GIPixel_Scale;
+const int Global::GIScreen_Tile_Scale = GITile_Scale * GIScale_Multiple;
 const int Global::GIHGBAScreen_X      = (GIGBAScreen_X / 2);
 const int Global::GIHGBAScreen_Y      = (GIGBAScreen_Y / 2);
 const int Global::GIHSceen_X          = (GIScreen_X / 2);	
 const int Global::GIHSceen_Y          = (GIScreen_Y / 2);
 				  
-const int Global::GFPixel_Scale		  = std::lround(GIPixel_Scale);
+const int Global::GFScale_Multiple		  = std::lround(GIScale_Multiple);
 const int Global::GFGBAScreen_X		  = std::lround(GFGBAScreen_X);
 const int Global::GFGBAScreen_Y       = std::lround(GFGBAScreen_Y);
 const int Global::GFScreen_X	   	  = std::lround(GIScreen_X);

@@ -28,7 +28,7 @@ enum class EPlayerMoveState
 class Global
 {
 public:
-	static const int GIPixel_Scale;
+	static const int GIScale_Multiple;
 	static const int GIGBAScreen_X;
 	static const int GIGBAScreen_Y;
 	static const int GIScreen_X;
@@ -40,7 +40,7 @@ public:
 	static const int GIHSceen_X;
 	static const int GIHSceen_Y;
 					 
-	static const int GFPixel_Scale;
+	static const int GFScale_Multiple;
 	static const int GFGBAScreen_X;
 	static const int GFGBAScreen_Y;
 	static const int GFScreen_X;
@@ -68,7 +68,7 @@ private:
 
 };
 
-#define IPixel_Scale Global::GIPixel_Scale
+#define IScale_Multiple Global::GIScale_Multiple
 #define IGBAScreen_X Global::GIGBAScreen_X
 #define IGBAScreen_Y Global::GIGBAScreen_Y
 #define IScreen_X Global::GIScreen_X
@@ -78,7 +78,7 @@ private:
 #define	IHSceen_X Global::GIHSceen_X
 #define	IHSceen_Y Global::GIHSceen_Y
 		
-#define FPixel_Scale Global::GFPixel_Scale
+#define FScale_Multiple Global::GFScale_Multiple
 #define FGBAScreen_X Global::GFGBAScreen_X
 #define FGBAScreen_Y Global::GFGBAScreen_Y
 #define	FScreen_X Global::GFScreen_X

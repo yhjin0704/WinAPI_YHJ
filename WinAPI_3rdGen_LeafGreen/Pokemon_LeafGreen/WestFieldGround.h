@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore\Actor.h>
+#include <EngineBase\EngineDirectory.h>
 
 class AWestFieldGround : public AActor 
 {
@@ -22,6 +23,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
+	UEngineDirectory WestFieldPath;
 	UImageRenderer* MapRenderer;
 	UImageRenderer* ColMapRenderer = nullptr;
 };

@@ -21,6 +21,7 @@ protected:
 
 private:
 	UImageRenderer* Renderer;
+	FVector FieldPos = FVector::Zero;
 	EDirState PrevDirinput = EDirState::Down;
 	bool PrevFootRight = false;
 	EPlayerMoveState MoveState = EPlayerMoveState::Walk;

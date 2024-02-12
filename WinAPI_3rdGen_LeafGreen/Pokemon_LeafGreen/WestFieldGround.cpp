@@ -1,6 +1,7 @@
 #include "WestFieldGround.h"
 #include "Player.h"
 #include <EnginePlatform\EngineInput.h>
+#include <EngineBase\EngineDirectory.h>
 #include "Global.h"
 
 AWestFieldGround::AWestFieldGround()
@@ -15,21 +16,23 @@ void AWestFieldGround::SetMapImage(std::string_view _MapImageName)
 {
 	MapRenderer->SetImage(_MapImageName);
 	UWindowImage* MapImage = MapRenderer->GetImage();
-	MapRenderer->SetTransform({ {FGBAScreen_X * 1.5f, FGBAScreen_Y * 1.5f}, {FScreen_X, FScreen_Y} });
+	FVector ImageScale = MapImage->GetScale();
+	MapRenderer->SetTransform({ (ImageScale.Half2D() * FScale_Multiple), (ImageScale * FScale_Multiple)});
+	int a = 0;
 }
 
 void AWestFieldGround::SetColMapImage(std::string_view _MapImageName)
 {
 	ColMapRenderer->SetImage(_MapImageName);
-	UWindowImage* Image = ColMapRenderer->GetImage();
+	UWindowImage* ColMapImage = ColMapRenderer->GetImage();
+	FVector ImageScale = ColMapImage->GetScale();
 	//UContentsHelper::ColMapImage = Image;
-	ColMapRenderer->SetTransform({ {FGBAScreen_X * 1.5f, FGBAScreen_Y * 1.5f}, {FScreen_X, FScreen_Y} });
+	ColMapRenderer->SetTransform({ (ImageScale.Half2D() * FScale_Multiple), (ImageScale * FScale_Multiple) });
 }
 
 void AWestFieldGround::BeginPlay()
 {
 	AActor::BeginPlay();
-
 	MapRenderer = CreateImageRenderer(Map);
 	ColMapRenderer = CreateImageRenderer(ColMap);
 	ColMapRenderer->SetActive(false);

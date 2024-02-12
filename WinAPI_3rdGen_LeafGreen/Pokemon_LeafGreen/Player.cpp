@@ -15,8 +15,6 @@ void APlayer::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	SetActorLocation({ FHSceen_X , (FHSceen_Y - (FScreen_Tile_Scale / 2)) });
-
 	Renderer = CreateImageRenderer(Player);
 	Renderer->SetImage("Player_Boy_Walk_Down.png");
 	Renderer->SetTransform({ {0, 0}, {FScreen_Tile_Scale, FScreen_Tile_Scale * 2} });
@@ -37,6 +35,8 @@ void APlayer::BeginPlay()
 void APlayer::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
+
+	GetWorld()->SetCameraPos(GetActorLocation() - FVector(FHSceen_X, FHSceen_Y));
 
 	if (true == UEngineInput::IsPress('S'))
 	{
