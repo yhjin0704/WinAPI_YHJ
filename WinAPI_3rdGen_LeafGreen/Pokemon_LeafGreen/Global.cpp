@@ -1,14 +1,6 @@
 #include "Global.h"
 #include <cmath>
 
-Global::Global()
-{
-}
-
-Global::~Global()
-{
-}
-
 const int Global::GIScaleMultiple	  = 3;
 const int Global::GIGBAScreen_X		  = 240;
 const int Global::GIGBAScreen_Y		  = 160;
@@ -35,3 +27,13 @@ const float Global::GFHSceen_Y	  	    = std::lround(GIHSceen_Y);
 
 const float Global::GIdleTime = 0.1f;
 const float Global::GWalkTime = 0.5f;
+
+UWindowImage* Global::GColMapImage = nullptr;
+
+Global::Global()
+{
+}
+
+Global::~Global()
+{
+}

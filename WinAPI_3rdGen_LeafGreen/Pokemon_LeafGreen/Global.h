@@ -1,4 +1,5 @@
 #pragma once
+#include <EngineCore\ImageRenderer.h>
 
 enum ERenderOrder
 {
@@ -54,6 +55,8 @@ public:
 
 	static const float GIdleTime;
 	static const float GWalkTime;
+
+	static UWindowImage* GColMapImage;
 
 	// constrcuter destructer
 	Global();

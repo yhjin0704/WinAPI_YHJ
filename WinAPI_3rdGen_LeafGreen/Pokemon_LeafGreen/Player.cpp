@@ -46,51 +46,56 @@ void APlayer::Tick(float _DeltaTime)
 
 	if (true == IsPlayerMove)
 	{
-		if (EPlayerMoveState::Walk == MoveState)
+		bool DefaltColCheck = false;
+		DefaltColCheck = ColCheck(PrevDirinput);
+		if (false == DefaltColCheck)
 		{
-			if (EDirState::Down == PrevDirinput)
+			if (EPlayerMoveState::Walk == MoveState)
 			{
-				if (false == IsActionDelay)
+				if (EDirState::Down == PrevDirinput)
 				{
-					IsPlayerMove = false;
-					return;
-				}
-				float DeltaTimeMove = FScreenTileScale / FWalkTime;
-				AddActorLocation(FVector::Down * DeltaTimeMove * _DeltaTime);
-				
-			}
+					if (false == IsActionDelay)
+					{
+						IsPlayerMove = false;
+						return;
+					}
+					float DeltaTimeMove = FScreenTileScale / FWalkTime;
+					AddActorLocation(FVector::Down * DeltaTimeMove * _DeltaTime);
 
-			if (EDirState::Up == PrevDirinput)
-			{
-				if (false == IsActionDelay)
-				{
-					IsPlayerMove = false;
-					return;
 				}
-				float DeltaTimeMove = FScreenTileScale / FWalkTime;
-				AddActorLocation(FVector::Up * DeltaTimeMove * _DeltaTime);
-			}
 
-			if (EDirState::Left == PrevDirinput)
-			{
-				if (false == IsActionDelay)
+				if (EDirState::Up == PrevDirinput)
 				{
-					IsPlayerMove = false;
-					return;
+					if (false == IsActionDelay)
+					{
+						IsPlayerMove = false;
+						return;
+					}
+					float DeltaTimeMove = FScreenTileScale / FWalkTime;
+					AddActorLocation(FVector::Up * DeltaTimeMove * _DeltaTime);
 				}
-				float DeltaTimeMove = FScreenTileScale / FWalkTime;
-				AddActorLocation(FVector::Left * DeltaTimeMove * _DeltaTime);
-			}
 
-			if (EDirState::Right == PrevDirinput)
-			{
-				if (false == IsActionDelay)
+				if (EDirState::Left == PrevDirinput)
 				{
-					IsPlayerMove = false;
-					return;
+					if (false == IsActionDelay)
+					{
+						IsPlayerMove = false;
+						return;
+					}
+					float DeltaTimeMove = FScreenTileScale / FWalkTime;
+					AddActorLocation(FVector::Left * DeltaTimeMove * _DeltaTime);
 				}
-				float DeltaTimeMove = FScreenTileScale / FWalkTime;
-				AddActorLocation(FVector::Right * DeltaTimeMove * _DeltaTime);
+
+				if (EDirState::Right == PrevDirinput)
+				{
+					if (false == IsActionDelay)
+					{
+						IsPlayerMove = false;
+						return;
+					}
+					float DeltaTimeMove = FScreenTileScale / FWalkTime;
+					AddActorLocation(FVector::Right * DeltaTimeMove * _DeltaTime);
+				}
 			}
 		}
 	}
@@ -218,6 +223,13 @@ void APlayer::Tick(float _DeltaTime)
 			}
 		}
 	}
+}
+
+bool APlayer::ColCheck(EDirState _PrevDirinput)
+{
+	IsColCheckPos = GetActorLocation() + (FVector::Down * FScreenTileScale);
+	Color8Bit ColColor = Global::GColMapImage->GetColor(IsColCheckPos.iX(), IsColCheckPos.iY() , Color8Bit::MagentaA);
+	return ColColor == Color8Bit::MagentaA;
 }
 
 void APlayer::InputDelayCheck(float _DeltaTime)

@@ -18,16 +18,29 @@ void AWestFieldGround::SetMapImage(std::string_view _MapImageName)
 	UWindowImage* MapImage = MapRenderer->GetImage();
 	FVector ImageScale = MapImage->GetScale();
 	MapRenderer->SetTransform({ (ImageScale.Half2D() * FScaleMultiple), (ImageScale * FScaleMultiple)});
-	int a = 0;
 }
 
 void AWestFieldGround::SetColMapImage(std::string_view _MapImageName)
 {
 	ColMapRenderer->SetImage(_MapImageName);
 	UWindowImage* ColMapImage = ColMapRenderer->GetImage();
+	Global::GColMapImage = ColMapImage;
 	FVector ImageScale = ColMapImage->GetScale();
-	//UContentsHelper::ColMapImage = Image;
 	ColMapRenderer->SetTransform({ (ImageScale.Half2D() * FScaleMultiple), (ImageScale * FScaleMultiple) });
+}
+
+void AWestFieldGround::SwitchDebug()
+{
+	if (true == MapRenderer->IsActive())
+	{
+		MapRenderer->SetActive(false, 10.0f);
+		ColMapRenderer->SetActive(true);
+	}
+	else
+	{
+		MapRenderer->SetActive(true);
+		ColMapRenderer->SetActive(false);
+	}
 }
 
 void AWestFieldGround::BeginPlay()
@@ -41,5 +54,10 @@ void AWestFieldGround::BeginPlay()
 void AWestFieldGround::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
+
+	if (UEngineInput::IsDown('0'))
+	{
+		SwitchDebug();
+	}
 }
 

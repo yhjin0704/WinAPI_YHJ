@@ -30,9 +30,13 @@ private:
 	EPlayerMoveState MoveState = EPlayerMoveState::Walk;
 	float WalkTime = FWalkTime;
 
+	
+	FVector IsColCheckPos = FVector::Zero;
+
 	bool IsActionDelay = false;
 	float CurDelayTime = 0.0f;
 
+	bool ColCheck(EDirState _PrevDirinput);
 	void InputDelayCheck(float _DeltaTime);
 };
 
