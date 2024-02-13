@@ -52,49 +52,44 @@ void APlayer::Tick(float _DeltaTime)
 		{
 			if (EPlayerMoveState::Walk == MoveState)
 			{
-				if (EDirState::Down == PrevDirinput)
+
+				float DeltaTimeMove = FScreenTileScale / FWalkTime;
+				switch (PrevDirinput)
 				{
+				case EDirState::Down:
 					if (false == IsActionDelay)
 					{
 						IsPlayerMove = false;
-						return;
+						break;
 					}
-					float DeltaTimeMove = FScreenTileScale / FWalkTime;
 					AddActorLocation(FVector::Down * DeltaTimeMove * _DeltaTime);
-
-				}
-
-				if (EDirState::Up == PrevDirinput)
-				{
+					break;
+				case EDirState::Up:
 					if (false == IsActionDelay)
 					{
 						IsPlayerMove = false;
-						return;
+						break;
 					}
-					float DeltaTimeMove = FScreenTileScale / FWalkTime;
 					AddActorLocation(FVector::Up * DeltaTimeMove * _DeltaTime);
-				}
-
-				if (EDirState::Left == PrevDirinput)
-				{
+					break;
+				case EDirState::Left:
 					if (false == IsActionDelay)
 					{
 						IsPlayerMove = false;
-						return;
+						break;
 					}
-					float DeltaTimeMove = FScreenTileScale / FWalkTime;
 					AddActorLocation(FVector::Left * DeltaTimeMove * _DeltaTime);
-				}
-
-				if (EDirState::Right == PrevDirinput)
-				{
+					break;
+				case EDirState::Right:
 					if (false == IsActionDelay)
 					{
 						IsPlayerMove = false;
-						return;
+						break;
 					}
-					float DeltaTimeMove = FScreenTileScale / FWalkTime;
 					AddActorLocation(FVector::Right * DeltaTimeMove * _DeltaTime);
+					break;
+				default:
+					break;
 				}
 			}
 		}
@@ -223,26 +218,23 @@ void APlayer::Tick(float _DeltaTime)
 
 bool APlayer::ColCheck(EDirState _PrevDirinput)
 {
-	if (EDirState::Down == _PrevDirinput)
+	switch (_PrevDirinput)
 	{
+	case EDirState::Down:
 		IsColCheckPos = GetActorLocation() + (FVector::Down * FColCheckDown);
-	}
-
-	if (EDirState::Up == _PrevDirinput)
-	{
+		break;
+	case EDirState::Up:
 		IsColCheckPos = GetActorLocation() + (FVector::Up * FColCheckUp);
-	}
-
-	if (EDirState::Left == _PrevDirinput)
-	{
+		break;
+	case EDirState::Left:
 		IsColCheckPos = GetActorLocation() + (FVector::Left * FColCheckLeft);
-	}
-
-	if (EDirState::Right == _PrevDirinput)
-	{
+		break;
+	case EDirState::Right:
 		IsColCheckPos = GetActorLocation() + (FVector::Right * FColCheckRight);
+		break;
+	default:
+		break;
 	}
-	
 	Color8Bit ColColor = Global::GColMapImage->GetColor((IsColCheckPos.iX() / FScaleMultiple), (IsColCheckPos.iY() / FScaleMultiple) , Color8Bit::MagentaA);
 	return ColColor == Color8Bit::MagentaA;
 }
