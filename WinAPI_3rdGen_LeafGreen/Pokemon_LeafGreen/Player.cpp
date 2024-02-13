@@ -111,12 +111,12 @@ void APlayer::Tick(float _DeltaTime)
 					CurDelayTime = FWalkTime;
 					if (false == PrevFootRight)
 					{
-						Renderer->ChangeAnimation("Boy_Walk_Down_R");
+						Renderer->ChangeAnimation("Boy_Walk_Down_R", false, 0, FWalkTime);
 						PrevFootRight = true;
 					}
 					else
 					{
-						Renderer->ChangeAnimation("Boy_Walk_Down_L");
+						Renderer->ChangeAnimation("Boy_Walk_Down_L", false, 0, FWalkTime);
 						PrevFootRight = false;
 					}
 					IsPlayerMove = true;
@@ -124,7 +124,6 @@ void APlayer::Tick(float _DeltaTime)
 			}
 			else
 			{
-				CurDelayTime = FIdleTime;
 				Renderer->ChangeAnimation("Boy_Idle_Down");
 				PrevDirinput = EDirState::Down;
 			}
@@ -142,12 +141,12 @@ void APlayer::Tick(float _DeltaTime)
 					CurDelayTime = FWalkTime;
 					if (false == PrevFootRight)
 					{
-						Renderer->ChangeAnimation("Boy_Walk_Up_R");
+						Renderer->ChangeAnimation("Boy_Walk_Up_R", false, 0, FWalkTime);
 						PrevFootRight = true;
 					}
 					else
 					{
-						Renderer->ChangeAnimation("Boy_Walk_Up_L");
+						Renderer->ChangeAnimation("Boy_Walk_Up_L", false, 0, FWalkTime);
 						PrevFootRight = false;
 					}
 					IsPlayerMove = true;
@@ -155,7 +154,6 @@ void APlayer::Tick(float _DeltaTime)
 			}
 			else
 			{
-				CurDelayTime = FIdleTime;
 				Renderer->ChangeAnimation("Boy_Idle_Up");
 				PrevDirinput = EDirState::Up;
 			}
@@ -173,12 +171,12 @@ void APlayer::Tick(float _DeltaTime)
 					CurDelayTime = FWalkTime;
 					if (false == PrevFootRight)
 					{
-						Renderer->ChangeAnimation("Boy_Walk_Left_R");
+						Renderer->ChangeAnimation("Boy_Walk_Left_R", false, 0, FWalkTime);
 						PrevFootRight = true;
 					}
 					else
 					{
-						Renderer->ChangeAnimation("Boy_Walk_Left_L");
+						Renderer->ChangeAnimation("Boy_Walk_Left_L", false, 0, FWalkTime);
 						PrevFootRight = false;
 					}
 					IsPlayerMove = true;
@@ -186,7 +184,6 @@ void APlayer::Tick(float _DeltaTime)
 			}
 			else
 			{
-				CurDelayTime = FIdleTime;
 				Renderer->ChangeAnimation("Boy_Idle_Left");
 				PrevDirinput = EDirState::Left;
 			}
@@ -204,12 +201,12 @@ void APlayer::Tick(float _DeltaTime)
 					CurDelayTime = FWalkTime;
 					if (false == PrevFootRight)
 					{
-						Renderer->ChangeAnimation("Boy_Walk_Right_R");
+						Renderer->ChangeAnimation("Boy_Walk_Right_R", false, 0, FWalkTime);
 						PrevFootRight = true;
 					}
 					else
 					{
-						Renderer->ChangeAnimation("Boy_Walk_Right_L");
+						Renderer->ChangeAnimation("Boy_Walk_Right_L", false, 0, FWalkTime);
 						PrevFootRight = false;
 					}
 					IsPlayerMove = true;
@@ -217,7 +214,6 @@ void APlayer::Tick(float _DeltaTime)
 			}
 			else
 			{
-				CurDelayTime = FIdleTime;
 				Renderer->ChangeAnimation("Boy_Idle_Right");
 				PrevDirinput = EDirState::Right;
 			}
@@ -229,22 +225,22 @@ bool APlayer::ColCheck(EDirState _PrevDirinput)
 {
 	if (EDirState::Down == _PrevDirinput)
 	{
-		IsColCheckPos = GetActorLocation() + (FVector::Down * FScreenTileScale);
+		IsColCheckPos = GetActorLocation() + (FVector::Down * FColCheckDown);
 	}
 
 	if (EDirState::Up == _PrevDirinput)
 	{
-		IsColCheckPos = GetActorLocation() + (FVector::Up);
+		IsColCheckPos = GetActorLocation() + (FVector::Up * FColCheckUp);
 	}
 
 	if (EDirState::Left == _PrevDirinput)
 	{
-		IsColCheckPos = GetActorLocation() + (FVector::Left * ColCheckLeft);
+		IsColCheckPos = GetActorLocation() + (FVector::Left * FColCheckLeft);
 	}
 
 	if (EDirState::Right == _PrevDirinput)
 	{
-		IsColCheckPos = GetActorLocation() + (FVector::Right * FHScreenTileScale);
+		IsColCheckPos = GetActorLocation() + (FVector::Right * FColCheckRight);
 	}
 	
 	Color8Bit ColColor = Global::GColMapImage->GetColor((IsColCheckPos.iX() / FScaleMultiple), (IsColCheckPos.iY() / FScaleMultiple) , Color8Bit::MagentaA);

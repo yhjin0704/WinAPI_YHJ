@@ -30,7 +30,10 @@ const float Global::GFHSceen_Y	  	    = std::lround(GIHSceen_Y);
 const float Global::GIdleTime = 0.2f;
 const float Global::GWalkTime = 0.5f;
 
-const float Global::GColCheckLeft = GFHScreenTileScale + GFScaleMultiple;
+const float Global::GColCheckDown = GFScreenTileScale;
+const float Global::GColCheckUp = 1.0f;
+const float Global::GColCheckLeft = GFHScreenTileScale + (GFScaleMultiple / 2);
+const float Global::GColCheckRight = GFHScreenTileScale;
 
 UWindowImage* Global::GColMapImage = nullptr;
 

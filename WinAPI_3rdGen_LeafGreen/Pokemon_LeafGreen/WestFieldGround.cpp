@@ -33,7 +33,7 @@ void AWestFieldGround::SwitchDebug()
 {
 	if (true == MapRenderer->IsActive())
 	{
-		MapRenderer->SetActive(false, 10.0f);
+		MapRenderer->SetActive(false);
 		ColMapRenderer->SetActive(true);
 	}
 	else

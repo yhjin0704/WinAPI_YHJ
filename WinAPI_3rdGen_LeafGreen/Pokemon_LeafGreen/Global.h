@@ -58,7 +58,10 @@ public:
 	static const float GIdleTime;
 	static const float GWalkTime;
 
+	static const float GColCheckDown;
+	static const float GColCheckUp;
 	static const float GColCheckLeft;
+	static const float GColCheckRight;
 
 	static UWindowImage* GColMapImage;
 
@@ -103,4 +106,7 @@ private:
 #define FWalkTime Global::GWalkTime
 #define FIdleTime Global::GIdleTime
 
-#define ColCheckLeft Global::GColCheckLeft
+#define FColCheckDown Global::GColCheckDown
+#define FColCheckUp Global::GColCheckUp
+#define FColCheckLeft Global::GColCheckLeft
+#define FColCheckRight Global::GColCheckRight
