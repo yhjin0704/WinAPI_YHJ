@@ -43,7 +43,7 @@ void APlayer::Tick(float _DeltaTime)
 	GetWorld()->SetCameraPos(GetActorLocation() - FVector(FHSceen_X, FHSceen_Y));
 
 	InputDelayCheck(_DeltaTime);
-
+	
 	if (true == IsPlayerMove)
 	{
 		bool DefaltColCheck = false;
@@ -227,8 +227,27 @@ void APlayer::Tick(float _DeltaTime)
 
 bool APlayer::ColCheck(EDirState _PrevDirinput)
 {
-	IsColCheckPos = GetActorLocation() + (FVector::Down * FScreenTileScale);
-	Color8Bit ColColor = Global::GColMapImage->GetColor(IsColCheckPos.iX(), IsColCheckPos.iY() , Color8Bit::MagentaA);
+	if (EDirState::Down == _PrevDirinput)
+	{
+		IsColCheckPos = GetActorLocation() + (FVector::Down * FScreenTileScale);
+	}
+
+	if (EDirState::Up == _PrevDirinput)
+	{
+		IsColCheckPos = GetActorLocation() + (FVector::Up);
+	}
+
+	if (EDirState::Left == _PrevDirinput)
+	{
+		IsColCheckPos = GetActorLocation() + (FVector::Left * ColCheckLeft);
+	}
+
+	if (EDirState::Right == _PrevDirinput)
+	{
+		IsColCheckPos = GetActorLocation() + (FVector::Right * FHScreenTileScale);
+	}
+	
+	Color8Bit ColColor = Global::GColMapImage->GetColor((IsColCheckPos.iX() / FScaleMultiple), (IsColCheckPos.iY() / FScaleMultiple) , Color8Bit::MagentaA);
 	return ColColor == Color8Bit::MagentaA;
 }
 

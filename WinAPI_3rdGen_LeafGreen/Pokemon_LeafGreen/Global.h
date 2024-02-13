@@ -36,6 +36,7 @@ public:
 	static const int GIScreen_Y;
 	static const int GITileScale;
 	static const int GIScreenTileScale;
+	static const int GIHScreenTileScale;
 	static const int GIHGBAScreen_X;
 	static const int GIHGBAScreen_Y;
 	static const int GIHSceen_X;
@@ -48,6 +49,7 @@ public:
 	static const float GFScreen_Y;
 	static const float GFTileScale;
 	static const float GFScreenTileScale;
+	static const float GFHScreenTileScale;
 	static const float GFHGBAScreen_X;
 	static const float GFHGBAScreen_Y;
 	static const float GFHSceen_X;
@@ -55,6 +57,8 @@ public:
 
 	static const float GIdleTime;
 	static const float GWalkTime;
+
+	static const float GColCheckLeft;
 
 	static UWindowImage* GColMapImage;
 
@@ -81,6 +85,7 @@ private:
 #define	IScreen_Y Global::GIScreen_Y
 #define	ITileScale Global::GITileScale
 #define	IScreenTileScale Global::GIScreenTileScale
+#define	IHScreenTileScale Global::GIHScreenTileScale
 #define	IHSceen_X Global::GIHSceen_X
 #define	IHSceen_Y Global::GIHSceen_Y
 		
@@ -91,8 +96,11 @@ private:
 #define	FScreen_Y Global::GFScreen_Y
 #define	FTileScale Global::GFTileScale
 #define	FScreenTileScale Global::GFScreenTileScale
+#define	FHScreenTileScale Global::GFHScreenTileScale
 #define	FHSceen_X Global::GFHSceen_X
 #define	FHSceen_Y Global::GFHSceen_Y
 
-#define FWalkTime Global::GWalkTime;
-#define FIdleTime Global::GIdleTime;
+#define FWalkTime Global::GWalkTime
+#define FIdleTime Global::GIdleTime
+
+#define ColCheckLeft Global::GColCheckLeft
