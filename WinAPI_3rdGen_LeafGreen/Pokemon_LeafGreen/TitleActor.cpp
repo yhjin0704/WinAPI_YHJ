@@ -35,7 +35,7 @@ void ATitleActor::Tick(float _DeltaTime)
 		switch (TitleOrder)
 		{
 		case 0:
-			TitleOrder++;
+ 			++TitleOrder;
 			Title_StartImg->ActiveOff();
 			LeafGreen_Tile_K->SetTransform({ {0, 0}, {FScreen_X, FScreen_Y} });
 			break;

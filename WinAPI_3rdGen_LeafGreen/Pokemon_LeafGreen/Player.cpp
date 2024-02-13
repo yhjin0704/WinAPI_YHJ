@@ -16,7 +16,7 @@ void APlayer::BeginPlay()
 	AActor::BeginPlay();
 
 	Renderer = CreateImageRenderer(Player);
-	Renderer->SetTransform({ {0, 0}, {FScreenTileScale, FScreenTileScale * 2} });
+	Renderer->SetTransform({ {0, 0}, {FScreenTileScale * 2.0f, FScreenTileScale * 2.0f} });
 
 	Renderer->CreateAnimation("Boy_Idle_Down", "Player_Boy_Walk_Down.png", 1, 1, 0.0f, false);
 	Renderer->CreateAnimation("Boy_Idle_UP", "Player_Boy_Walk_UP.png", 1, 1, 0.0f, false);
