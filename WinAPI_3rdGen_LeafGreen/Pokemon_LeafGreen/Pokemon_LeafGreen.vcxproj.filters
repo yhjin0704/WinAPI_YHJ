@@ -27,6 +27,9 @@
     <ClCompile Include="WestFieldLevel.cpp">
       <Filter>Field\WestFieldLevel</Filter>
     </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Field\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -54,6 +57,9 @@
     </ClInclude>
     <ClInclude Include="WestFieldLevel.h">
       <Filter>Field\WestFieldLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Field\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

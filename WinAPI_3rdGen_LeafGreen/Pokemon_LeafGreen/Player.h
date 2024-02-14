@@ -1,8 +1,8 @@
 #pragma once
-#include <EngineCore\Actor.h>
+#include "Character.h"
 #include "Global.h"
 
-class APlayer : public AActor
+class APlayer : public ACharacter
 {
 public:
 	// constrcuter destructer
@@ -20,23 +20,17 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-	UImageRenderer* Renderer;
-
 	FVector PrevFieldPos = FVector::Zero;
 
 	bool IsPlayerMove = false;
-	EDirState PrevDirinput = EDirState::Down;
-	bool PrevFootRight = false;
-	EPlayerMoveState MoveState = EPlayerMoveState::Walk;
 	float WalkTime = FWalkTime;
-
-	
-	FVector IsColCheckPos = FVector::Zero;
 
 	bool IsActionDelay = false;
 	float CurDelayTime = 0.0f;
-
-	bool ColCheck(EDirState _PrevDirinput);
+	
+	void KeyInputMove(float _DeltaTime);
+	void SetKeyInputAnimation(EDirState _InputDir);
+	void SetCurDelayTime();
 	void InputDelayCheck(float _DeltaTime);
 };
 

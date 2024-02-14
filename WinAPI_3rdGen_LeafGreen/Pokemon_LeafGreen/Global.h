@@ -17,13 +17,19 @@ enum class EDirState
 	Right
 };
 
-enum class EPlayerMoveState
+enum class EMoveState
 {
-	Idle,
 	Walk,
 	Run,
 	Bike,
 	Surf
+};
+
+enum class EPrevFoot
+{
+	Idle,
+	Left,
+	Right
 };
 
 class Global

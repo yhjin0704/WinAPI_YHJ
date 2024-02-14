@@ -30,12 +30,13 @@ void ATitleActor::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
+	
 	if (UEngineInput::IsAnykeyDown())
 	{
 		switch (TitleOrder)
 		{
 		case 0:
- 			++TitleOrder;
+			++TitleOrder;
 			Title_StartImg->ActiveOff();
 			LeafGreen_Tile_K->SetTransform({ {0, 0}, {FScreen_X, FScreen_Y} });
 			break;

@@ -13,27 +13,27 @@ APlayer::~APlayer()
 
 void APlayer::BeginPlay()
 {
-	AActor::BeginPlay();
+	ACharacter::BeginPlay();
 
-	Renderer = CreateImageRenderer(Player);
-	Renderer->SetTransform({ {0, 0}, {FScreenTileScale * 2.0f, FScreenTileScale * 2.0f} });
+	CharacterRenderer = CreateImageRenderer(Player);
+	CharacterRenderer->SetTransform({ {0, 0}, {FScreenTileScale * 2.0f, FScreenTileScale * 2.0f} });
 
-	Renderer->CreateAnimation("Boy_Idle_Down", "Player_Boy_Walk_Down.png", 1, 1, 0.0f, false);
-	Renderer->CreateAnimation("Boy_Idle_UP", "Player_Boy_Walk_UP.png", 1, 1, 0.0f, false);
-	Renderer->CreateAnimation("Boy_Idle_Left", "Player_Boy_Walk_Left.png", 1, 1, 0.0f, false);
-	Renderer->CreateAnimation("Boy_Idle_Right", "Player_Boy_Walk_Right.png", 1, 1, 0.0f, false);
-	
-	Renderer->CreateAnimation("Boy_Walk_Down_R", "Player_Boy_Walk_Down.png", 0, 1, (WalkTime / 2), false);
-	Renderer->CreateAnimation("Boy_Walk_UP_R", "Player_Boy_Walk_UP.png", 0, 1, (WalkTime / 2), false);
-	Renderer->CreateAnimation("Boy_Walk_Left_R", "Player_Boy_Walk_Left.png", 0, 1, (WalkTime / 2), false);
-	Renderer->CreateAnimation("Boy_Walk_Right_R", "Player_Boy_Walk_Right.png", 0, 1, (WalkTime / 2), false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Walk_Down_Idle", "Player_Boy_Walk_Down.png", 1, 1, 0.0f, false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Walk_UP_Idle", "Player_Boy_Walk_UP.png", 1, 1, 0.0f, false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Walk_Left_Idle", "Player_Boy_Walk_Left.png", 1, 1, 0.0f, false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Walk_Right_Idle", "Player_Boy_Walk_Right.png", 1, 1, 0.0f, false);
 
-	Renderer->CreateAnimation("Boy_Walk_Down_L", "Player_Boy_Walk_Down.png", 2, 3, (WalkTime / 2), false);
-	Renderer->CreateAnimation("Boy_Walk_UP_L", "Player_Boy_Walk_UP.png", 2, 3, (WalkTime / 2), false);
-	Renderer->CreateAnimation("Boy_Walk_Left_L", "Player_Boy_Walk_Left.png", 2, 3, (WalkTime / 2), false);
-	Renderer->CreateAnimation("Boy_Walk_Right_L", "Player_Boy_Walk_Right.png", 2, 3, (WalkTime / 2), false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Walk_Down_R", "Player_Boy_Walk_Down.png", 0, 1, (WalkTime / 2), false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Walk_UP_R", "Player_Boy_Walk_UP.png", 0, 1, (WalkTime / 2), false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Walk_Left_R", "Player_Boy_Walk_Left.png", 0, 1, (WalkTime / 2), false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Walk_Right_R", "Player_Boy_Walk_Right.png", 0, 1, (WalkTime / 2), false);
 
-	Renderer->SetImage("Player_Boy_Walk_Down.png", 1);
+	CharacterRenderer->CreateAnimation("Player_Boy_Walk_Down_L", "Player_Boy_Walk_Down.png", 2, 3, (WalkTime / 2), false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Walk_UP_L", "Player_Boy_Walk_UP.png", 2, 3, (WalkTime / 2), false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Walk_Left_L", "Player_Boy_Walk_Left.png", 2, 3, (WalkTime / 2), false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Walk_Right_L", "Player_Boy_Walk_Right.png", 2, 3, (WalkTime / 2), false);
+
+	CharacterRenderer->SetImage("Player_Boy_Walk_Down.png", 1);
 }
 
 void APlayer::Tick(float _DeltaTime)
@@ -42,201 +42,76 @@ void APlayer::Tick(float _DeltaTime)
 
 	GetWorld()->SetCameraPos(GetActorLocation() - FVector(FHSceen_X, FHSceen_Y));
 
-	InputDelayCheck(_DeltaTime);
-	
-	if (true == IsPlayerMove)
-	{
-		bool DefaltColCheck = false;
-		DefaltColCheck = ColCheck(PrevDirinput);
-		if (false == DefaltColCheck)
-		{
-			if (EPlayerMoveState::Walk == MoveState)
-			{
+	KeyInputMove(_DeltaTime);
+}
 
-				float DeltaTimeMove = FScreenTileScale / FWalkTime;
-				switch (PrevDirinput)
-				{
-				case EDirState::Down:
-					if (false == IsActionDelay)
-					{
-						IsPlayerMove = false;
-						break;
-					}
-					AddActorLocation(FVector::Down * DeltaTimeMove * _DeltaTime);
-					break;
-				case EDirState::Up:
-					if (false == IsActionDelay)
-					{
-						IsPlayerMove = false;
-						break;
-					}
-					AddActorLocation(FVector::Up * DeltaTimeMove * _DeltaTime);
-					break;
-				case EDirState::Left:
-					if (false == IsActionDelay)
-					{
-						IsPlayerMove = false;
-						break;
-					}
-					AddActorLocation(FVector::Left * DeltaTimeMove * _DeltaTime);
-					break;
-				case EDirState::Right:
-					if (false == IsActionDelay)
-					{
-						IsPlayerMove = false;
-						break;
-					}
-					AddActorLocation(FVector::Right * DeltaTimeMove * _DeltaTime);
-					break;
-				default:
-					break;
-				}
-			}
-		}
-	}
-
+void APlayer::KeyInputMove(float _DeltaTime)
+{
 	if (true == UEngineInput::IsPress('S'))
 	{
-		if (false == IsActionDelay)
-		{
-			if (EDirState::Down == PrevDirinput)
-			{
-				if (EPlayerMoveState::Walk == MoveState)
-				{
-					CurDelayTime = FWalkTime;
-					if (false == PrevFootRight)
-					{
-						Renderer->ChangeAnimation("Boy_Walk_Down_R", false, 0, FWalkTime);
-						PrevFootRight = true;
-					}
-					else
-					{
-						Renderer->ChangeAnimation("Boy_Walk_Down_L", false, 0, FWalkTime);
-						PrevFootRight = false;
-					}
-					IsPlayerMove = true;
-				}
-			}
-			else
-			{
-				Renderer->ChangeAnimation("Boy_Idle_Down");
-				PrevDirinput = EDirState::Down;
-			}
-		}
+		SetKeyInputAnimation(EDirState::Down);
+	}
+	else if (true == UEngineInput::IsPress('W'))
+	{
+		SetKeyInputAnimation(EDirState::Up);
+	}
+	else if (true == UEngineInput::IsPress('A'))
+	{
+		SetKeyInputAnimation(EDirState::Left);
+	}
+	else if (true == UEngineInput::IsPress('D'))
+	{
+		SetKeyInputAnimation(EDirState::Right);
 	}
 
-	if (true == UEngineInput::IsPress('W'))
+	InputDelayCheck(_DeltaTime);
+
+	if (false == IsActionDelay)
 	{
-		if (false == IsActionDelay)
-		{
-			if (EDirState::Up == PrevDirinput)
-			{
-				if (EPlayerMoveState::Walk == MoveState)
-				{
-					CurDelayTime = FWalkTime;
-					if (false == PrevFootRight)
-					{
-						Renderer->ChangeAnimation("Boy_Walk_Up_R", false, 0, FWalkTime);
-						PrevFootRight = true;
-					}
-					else
-					{
-						Renderer->ChangeAnimation("Boy_Walk_Up_L", false, 0, FWalkTime);
-						PrevFootRight = false;
-					}
-					IsPlayerMove = true;
-				}
-			}
-			else
-			{
-				Renderer->ChangeAnimation("Boy_Idle_Up");
-				PrevDirinput = EDirState::Up;
-			}
-		}
+		IsPlayerMove = false;
 	}
 
-	if (true == UEngineInput::IsPress('A'))
+	if (true == IsPlayerMove)
 	{
-		if (false == IsActionDelay)
-		{
-			if (EDirState::Left == PrevDirinput)
-			{
-				if (EPlayerMoveState::Walk == MoveState)
-				{
-					CurDelayTime = FWalkTime;
-					if (false == PrevFootRight)
-					{
-						Renderer->ChangeAnimation("Boy_Walk_Left_R", false, 0, FWalkTime);
-						PrevFootRight = true;
-					}
-					else
-					{
-						Renderer->ChangeAnimation("Boy_Walk_Left_L", false, 0, FWalkTime);
-						PrevFootRight = false;
-					}
-					IsPlayerMove = true;
-				}
-			}
-			else
-			{
-				Renderer->ChangeAnimation("Boy_Idle_Left");
-				PrevDirinput = EDirState::Left;
-			}
-		}
+		MovePos(MoveState, _DeltaTime);
 	}
+}
 
-	if (true == UEngineInput::IsPress('D'))
+void APlayer::SetKeyInputAnimation(EDirState _InputDir)
+{
+	if (false == IsActionDelay)
 	{
-		if (false == IsActionDelay)
+		if (_InputDir == PrevDirInput)
 		{
-			if (EDirState::Right == PrevDirinput)
-			{
-				if (EPlayerMoveState::Walk == MoveState)
-				{
-					CurDelayTime = FWalkTime;
-					if (false == PrevFootRight)
-					{
-						Renderer->ChangeAnimation("Boy_Walk_Right_R", false, 0, FWalkTime);
-						PrevFootRight = true;
-					}
-					else
-					{
-						Renderer->ChangeAnimation("Boy_Walk_Right_L", false, 0, FWalkTime);
-						PrevFootRight = false;
-					}
-					IsPlayerMove = true;
-				}
-			}
-			else
-			{
-				Renderer->ChangeAnimation("Boy_Idle_Right");
-				PrevDirinput = EDirState::Right;
-			}
+			SetCurDelayTime();
+			PlayMoveAnimation();
+			IsPlayerMove = true;
+		}
+		else
+		{
+			CurDelayTime = FIdleTime;
+			PrevDirInput = _InputDir;
+			PlayIdleAnimation();
 		}
 	}
 }
 
-bool APlayer::ColCheck(EDirState _PrevDirinput)
+void APlayer::SetCurDelayTime()
 {
-	switch (_PrevDirinput)
+	switch (MoveState)
 	{
-	case EDirState::Down:
-		IsColCheckPos = GetActorLocation() + (FVector::Down * FColCheckDown);
+	case EMoveState::Walk:
+		CurDelayTime = FWalkTime;
 		break;
-	case EDirState::Up:
-		IsColCheckPos = GetActorLocation() + (FVector::Up * FColCheckUp);
+	case EMoveState::Run:
 		break;
-	case EDirState::Left:
-		IsColCheckPos = GetActorLocation() + (FVector::Left * FColCheckLeft);
+	case EMoveState::Bike:
 		break;
-	case EDirState::Right:
-		IsColCheckPos = GetActorLocation() + (FVector::Right * FColCheckRight);
+	case EMoveState::Surf:
 		break;
 	default:
 		break;
 	}
-	Color8Bit ColColor = Global::GColMapImage->GetColor((IsColCheckPos.iX() / FScaleMultiple), (IsColCheckPos.iY() / FScaleMultiple) , Color8Bit::MagentaA);
-	return ColColor == Color8Bit::MagentaA;
 }
 
 void APlayer::InputDelayCheck(float _DeltaTime)
