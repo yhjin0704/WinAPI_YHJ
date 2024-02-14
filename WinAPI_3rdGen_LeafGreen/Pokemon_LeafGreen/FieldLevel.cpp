@@ -15,7 +15,6 @@ UFieldLevel::~UFieldLevel()
 
 void UFieldLevel::BeginPlay()
 {
-	
 	FieldPath.MoveParent();
 	FieldPath.Move("Resources");
 	FieldPath.Move("Field");

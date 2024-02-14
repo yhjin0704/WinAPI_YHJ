@@ -1,8 +1,7 @@
 #pragma once
-#include <EngineCore\Actor.h>
-#include <EngineBase\EngineDirectory.h>
+#include "Ground.h"
 
-class AWestFieldGround : public AActor 
+class AWestFieldGround : public AGround
 {
 public:
 	// constrcuter destructer
@@ -15,18 +14,10 @@ public:
 	AWestFieldGround& operator=(const AWestFieldGround& _Other) = delete;
 	AWestFieldGround& operator=(AWestFieldGround&& _Other) noexcept = delete;
 
-	void SetMapImage(std::string_view _MapImageName);
-	void SetColMapImage(std::string_view _MapImageName);
-
-	void SwitchDebug();
-
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 private:
-	UEngineDirectory WestFieldPath;
-	UImageRenderer* MapRenderer;
-	UImageRenderer* ColMapRenderer = nullptr;
 };
 
