@@ -46,8 +46,8 @@ void AWestFieldGround::SwitchDebug()
 void AWestFieldGround::BeginPlay()
 {
 	AActor::BeginPlay();
-	MapRenderer = CreateImageRenderer(Map);
-	ColMapRenderer = CreateImageRenderer(ColMap);
+	MapRenderer = CreateImageRenderer(ERenderOrder::Map);
+	ColMapRenderer = CreateImageRenderer(ERenderOrder::ColMap);
 	ColMapRenderer->SetActive(false);
 }
 

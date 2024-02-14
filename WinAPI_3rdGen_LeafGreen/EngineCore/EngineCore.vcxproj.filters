@@ -19,6 +19,9 @@
     <Filter Include="Resources">
       <UniqueIdentifier>{5f222612-0044-4365-81e8-5c96a9c4a48f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Component\Collision">
+      <UniqueIdentifier>{b6d43976-6791-4a18-bb22-9b3bad6428d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineCore.h">
@@ -28,9 +31,6 @@
       <Filter>Object\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Level.h">
-      <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="NameObject.h">
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="TickObject.h">
@@ -48,6 +48,9 @@
     <ClInclude Include="EngineResourcesManager.h">
       <Filter>Resources</Filter>
     </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Object\Component\Collision</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EngineCore.cpp">
@@ -57,9 +60,6 @@
       <Filter>Object\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Level.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
-    <ClCompile Include="NameObject.cpp">
       <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="TickObject.cpp">
@@ -76,6 +76,9 @@
     </ClCompile>
     <ClCompile Include="EngineResourcesManager.cpp">
       <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Object\Component\Collision</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

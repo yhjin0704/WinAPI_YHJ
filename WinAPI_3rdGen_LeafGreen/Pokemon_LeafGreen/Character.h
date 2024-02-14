@@ -28,15 +28,15 @@ protected:
 	std::string Name = "";
 	std::string CharacterAnimation = "";
 
-	EPrevFoot PrevFoot = EPrevFoot::Left;
+	EMoveState PrevFoot = EMoveState::Left;
 	FVector IsColCheckPos = FVector::Zero;
-	EMoveState MoveState = EMoveState::Walk;
+	EMoveType MoveType = EMoveType::Walk;
 	EDirState PrevDirInput = EDirState::Down;
 
 	bool ColCheck(EDirState _PrevDirInput);
-	void MovePos(EMoveState _MoveState, float _DeltaTime);
+	void MovePos(EMoveType _MoveType, float _DeltaTime);
 
-	std::string GetAnimationName(std::string _Name, EMoveState _Move, EDirState _Dir, EPrevFoot _PrevFoot = EPrevFoot::Idle);
+	std::string GetAnimationName(std::string _Name, EMoveType _Move, EDirState _Dir, EMoveState _MoveState = EMoveState::Idle);
 	void PlayMoveAnimation();
 	void PlayIdleAnimation();
 

@@ -168,14 +168,11 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ActorComponent.cpp" />
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="EngineCore.cpp" />
     <ClCompile Include="EngineResourcesManager.cpp" />
     <ClCompile Include="ImageRenderer.cpp" />
     <ClCompile Include="Level.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="NameObject.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -188,14 +185,11 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="ActorComponent.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="EngineCore.h" />
     <ClInclude Include="EngineResourcesManager.h" />
     <ClInclude Include="ImageRenderer.h" />
     <ClInclude Include="Level.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="NameObject.h">
       <SubType>
       </SubType>
     </ClInclude>

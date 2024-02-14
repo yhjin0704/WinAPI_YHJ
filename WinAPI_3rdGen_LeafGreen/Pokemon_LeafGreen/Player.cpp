@@ -15,7 +15,7 @@ void APlayer::BeginPlay()
 {
 	ACharacter::BeginPlay();
 
-	CharacterRenderer = CreateImageRenderer(Player);
+	CharacterRenderer = CreateImageRenderer(ERenderOrder::Player);
 	CharacterRenderer->SetTransform({ {0, 0}, {FScreenTileScale * 2.0f, FScreenTileScale * 2.0f} });
 
 	CharacterRenderer->CreateAnimation("Player_Boy_Walk_Down_Idle", "Player_Boy_Walk_Down.png", 1, 1, 0.0f, false);
@@ -73,7 +73,7 @@ void APlayer::KeyInputMove(float _DeltaTime)
 
 	if (true == IsPlayerMove)
 	{
-		MovePos(MoveState, _DeltaTime);
+		MovePos(MoveType, _DeltaTime);
 	}
 }
 
@@ -98,16 +98,16 @@ void APlayer::SetKeyInputAnimation(EDirState _InputDir)
 
 void APlayer::SetCurDelayTime()
 {
-	switch (MoveState)
+	switch (MoveType)
 	{
-	case EMoveState::Walk:
+	case EMoveType::Walk:
 		CurDelayTime = FWalkTime;
 		break;
-	case EMoveState::Run:
+	case EMoveType::Run:
 		break;
-	case EMoveState::Bike:
+	case EMoveType::Bike:
 		break;
-	case EMoveState::Surf:
+	case EMoveType::Surf:
 		break;
 	default:
 		break;

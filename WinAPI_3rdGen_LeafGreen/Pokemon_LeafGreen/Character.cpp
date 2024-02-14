@@ -18,7 +18,7 @@ void ACharacter::Tick(float _DeltaTime)
 
 }
 
-std::string ACharacter::GetAnimationName(std::string _Name, EMoveState _Move, EDirState _Dir, EPrevFoot _PrevFoot)
+std::string ACharacter::GetAnimationName(std::string _Name, EMoveType _Move, EDirState _Dir, EMoveState _MoveState)
 {
 	std::string MoveName = "";
 	std::string DirName = "";
@@ -26,16 +26,16 @@ std::string ACharacter::GetAnimationName(std::string _Name, EMoveState _Move, ED
 
 	switch (_Move)
 	{
-	case EMoveState::Walk:
+	case EMoveType::Walk:
 		MoveName = "_Walk";
 		break;
-	case EMoveState::Run:
+	case EMoveType::Run:
 		MoveName = "_Run";
 		break;
-	case EMoveState::Bike:
+	case EMoveType::Bike:
 		MoveName = "_Bike";
 		break;
-	case EMoveState::Surf:
+	case EMoveType::Surf:
 		MoveName = "_Surf";
 		break;
 	default:
@@ -60,15 +60,15 @@ std::string ACharacter::GetAnimationName(std::string _Name, EMoveState _Move, ED
 		break;
 	}
 
-	switch (_PrevFoot)
+	switch (_MoveState)
 	{
-	case EPrevFoot::Idle:
+	case EMoveState::Idle:
 		FootName = "_Idle";
 		break;
-	case EPrevFoot::Left:
+	case EMoveState::Left:
 		FootName = "_R";
 		break;
-	case EPrevFoot::Right:
+	case EMoveState::Right:
 		FootName = "_L";
 		break;
 	default:
@@ -101,7 +101,7 @@ bool ACharacter::ColCheck(EDirState _PrevDirInput)
 	return ColColor == Color8Bit::MagentaA;
 }
 
-void ACharacter::MovePos(EMoveState _MoveState, float _DeltaTime)
+void ACharacter::MovePos(EMoveType _MoveType, float _DeltaTime)
 {
 	bool DefaltColCheck = false;
 	float DeltaTimeMove = 0;
@@ -109,16 +109,16 @@ void ACharacter::MovePos(EMoveState _MoveState, float _DeltaTime)
 
 	if (false == DefaltColCheck)
 	{
-		switch (_MoveState)
+		switch (_MoveType)
 		{
-		case EMoveState::Walk:
+		case EMoveType::Walk:
 			DeltaTimeMove = FScreenTileScale / FWalkTime;
 			break;
-		case EMoveState::Run:
+		case EMoveType::Run:
 			break;
-		case EMoveState::Bike:
+		case EMoveType::Bike:
 			break;
-		case EMoveState::Surf:
+		case EMoveType::Surf:
 			break;
 		default:
 			break;
@@ -146,22 +146,22 @@ void ACharacter::MovePos(EMoveState _MoveState, float _DeltaTime)
 
 void ACharacter::PlayMoveAnimation()
 {
-	if (EPrevFoot::Left == PrevFoot)
+	if (EMoveState::Left == PrevFoot)
 	{
-		CharacterAnimation = GetAnimationName(Name, MoveState, PrevDirInput, PrevFoot);
+		CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput, PrevFoot);
 		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, FWalkTime);
-		PrevFoot = EPrevFoot::Right;
+		PrevFoot = EMoveState::Right;
 	}
 	else
 	{
-		CharacterAnimation = GetAnimationName(Name, MoveState, PrevDirInput, PrevFoot);
+		CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput, PrevFoot);
 		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, FWalkTime);
-		PrevFoot = EPrevFoot::Left;
+		PrevFoot = EMoveState::Left;
 	}
 }
 
 void ACharacter::PlayIdleAnimation()
 {
-	CharacterAnimation = GetAnimationName(Name, MoveState, PrevDirInput);
+	CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput);
 	CharacterRenderer->ChangeAnimation(CharacterAnimation);
 }

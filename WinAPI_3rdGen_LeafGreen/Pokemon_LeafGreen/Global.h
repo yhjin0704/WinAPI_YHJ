@@ -1,12 +1,17 @@
 #pragma once
 #include <EngineCore\ImageRenderer.h>
 
-enum ERenderOrder
+enum class ERenderOrder
 {
 	ColMap,
 	Map,
 	Player,
 	CoverObject
+};
+
+enum class ECollisionOrder
+{
+	Player
 };
 
 enum class EDirState
@@ -17,7 +22,7 @@ enum class EDirState
 	Right
 };
 
-enum class EMoveState
+enum class EMoveType
 {
 	Walk,
 	Run,
@@ -25,11 +30,12 @@ enum class EMoveState
 	Surf
 };
 
-enum class EPrevFoot
+enum class EMoveState
 {
 	Idle,
 	Left,
-	Right
+	Right,
+	Jump
 };
 
 class Global
