@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
+#include "EngineString.h"
 
+// Ό³Έν :
 class UNameObject
 {
 public:
@@ -16,7 +18,7 @@ public:
 
 	void SetName(std::string_view _View)
 	{
-		Name = _View;
+		Name = UEngineString::ToUpper(_View);
 	}
 
 	std::string GetName()
