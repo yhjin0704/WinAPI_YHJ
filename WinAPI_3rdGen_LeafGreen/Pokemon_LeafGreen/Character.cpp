@@ -101,7 +101,30 @@ bool ACharacter::ColCheck(EDirState _PrevDirInput)
 		break;
 	}
 	Color8Bit ColColor = Global::GColMapImage->GetColor((IsColCheckPos.iX() / FScaleMultiple), (IsColCheckPos.iY() / FScaleMultiple), Color8Bit::MagentaA);
-	return ColColor == Color8Bit::MagentaA;
+	if (Color8Bit::MagentaA == ColColor)
+	{
+		return true;
+	}
+	else if (Color8Bit::BlueA == ColColor)
+	{
+		return true;
+	}
+	else if (Color8Bit(0,255,255,0) == ColColor)
+	{
+		if (EDirState::Down == PrevDirInput)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	else
+	{
+		return false;
+	}
+	
 }
 
 void ACharacter::MovePos(EMoveType _MoveType, float _DeltaTime)
