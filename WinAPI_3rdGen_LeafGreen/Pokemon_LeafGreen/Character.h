@@ -28,9 +28,9 @@ protected:
 	std::string Name = "";
 	std::string CharacterAnimation = "";
 
-	EMoveState PrevFoot = EMoveState::Left;
 	FVector IsColCheckPos = FVector::Zero;
 	EMoveType MoveType = EMoveType::Walk;
+	EMoveState PrevFoot = EMoveState::Left;
 	EDirState PrevDirInput = EDirState::Down;
 
 	bool ColCheck(EDirState _PrevDirInput);

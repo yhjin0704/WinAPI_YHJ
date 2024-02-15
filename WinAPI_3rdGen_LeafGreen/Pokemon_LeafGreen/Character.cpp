@@ -71,6 +71,9 @@ std::string ACharacter::GetAnimationName(std::string _Name, EMoveType _Move, EDi
 	case EMoveState::Right:
 		FootName = "_L";
 		break;
+	case EMoveState::Jump:
+		FootName = "_Jump";
+		break;
 	default:
 		break;
 	}
@@ -112,7 +115,7 @@ void ACharacter::MovePos(EMoveType _MoveType, float _DeltaTime)
 		switch (_MoveType)
 		{
 		case EMoveType::Walk:
-			DeltaTimeMove = FScreenTileScale / FWalkTime;
+				DeltaTimeMove = FScreenTileScale / FWalkTime;
 			break;
 		case EMoveType::Run:
 			break;
@@ -146,17 +149,25 @@ void ACharacter::MovePos(EMoveType _MoveType, float _DeltaTime)
 
 void ACharacter::PlayMoveAnimation()
 {
-	if (EMoveState::Left == PrevFoot)
+	switch (PrevFoot)
 	{
+	case EMoveState::Left:
 		CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput, PrevFoot);
-		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, FWalkTime);
+		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, FWalkTime / 2.0f);
 		PrevFoot = EMoveState::Right;
-	}
-	else
-	{
+		break;
+	case EMoveState::Right:
 		CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput, PrevFoot);
-		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, FWalkTime);
+		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, FWalkTime / 2.0f);
 		PrevFoot = EMoveState::Left;
+		break;
+	case EMoveState::Jump:
+		CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput, PrevFoot);
+		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, FWalkTime / 13.0f * 2.0f);
+		PrevFoot = EMoveState::Left;
+		break;
+	default:
+		break;
 	}
 }
 

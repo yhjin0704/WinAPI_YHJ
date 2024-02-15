@@ -23,7 +23,6 @@ private:
 	FVector PrevFieldPos = FVector::Zero;
 
 	bool IsPlayerMove = false;
-	float WalkTime = FWalkTime;
 
 	bool IsActionDelay = false;
 	float CurDelayTime = 0.0f;
