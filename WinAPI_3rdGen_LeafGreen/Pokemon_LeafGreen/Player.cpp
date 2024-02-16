@@ -54,14 +54,13 @@ void APlayer::Tick(float _DeltaTime)
 
 void APlayer::KeyInputMove(float _DeltaTime)
 {
-	SetColCheckPos(PrevDirInput);
-	if (Color8Bit(0, 255, 255, 0) == Global::GColMapImage->GetColor((IsColCheckPos.iX() / FScaleMultiple), (IsColCheckPos.iY() / FScaleMultiple), Color8Bit::MagentaA))
-	{
-		PrevFoot = EMoveState::Jump;
-	}
-
 	if (true == UEngineInput::IsPress('S'))
 	{
+		SetColCheckPos(PrevDirInput);
+		if (Color8Bit(0, 255, 255, 0) == Global::GColMapImage->GetColor((IsColCheckPos.iX() / FScaleMultiple), (IsColCheckPos.iY() / FScaleMultiple), Color8Bit::MagentaA))
+		{
+			PrevFoot = EMoveState::Jump;
+		}
 		SetKeyInputAnimation(EDirState::Down);
 	}
 	else if (true == UEngineInput::IsPress('W'))
@@ -76,10 +75,13 @@ void APlayer::KeyInputMove(float _DeltaTime)
 	{
 		SetKeyInputAnimation(EDirState::Right);
 	}
-
-	if (true)
+	if (EMoveState::Jump == PrevFoot)
 	{
-
+		SetColCheckPos(PrevDirInput);
+		if (Color8Bit(0, 255, 255, 0) != Global::GColMapImage->GetColor((IsColCheckPos.iX() / FScaleMultiple), (IsColCheckPos.iY() / FScaleMultiple), Color8Bit::MagentaA))
+		{
+			PrevFoot = EMoveState::Left;
+		}
 	}
 
 	InputDelayCheck(_DeltaTime);
