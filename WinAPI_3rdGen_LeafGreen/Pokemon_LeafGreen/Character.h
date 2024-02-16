@@ -35,7 +35,7 @@ protected:
 
 	void SetColCheckPos(EDirState _PrevDirInput);
 	bool ColCheck(EDirState _PrevDirInput);
-	void MovePos(EMoveType _MoveType, float _DeltaTime);
+	void MovePos(float _DeltaTime);
 
 	std::string GetAnimationName(std::string _Name, EMoveType _Move, EDirState _Dir, EMoveState _MoveState = EMoveState::Idle);
 	void PlayMoveAnimation();

@@ -28,7 +28,8 @@ const float Global::GFHSceen_X		    = std::lround(GIHSceen_X);
 const float Global::GFHSceen_Y	  	    = std::lround(GIHSceen_Y);
 
 const float Global::GIdleTime = 0.1f;
-const float Global::GWalkTime = 0.5f;
+const float Global::GWalkTime = 0.25f;
+const float Global::GRunTime = 0.15f;
 
 const float Global::GColCheckDown = GFScreenTileScale;
 const float Global::GColCheckUp = 1.0f;

@@ -24,6 +24,7 @@ enum class EDirState
 
 enum class EMoveType
 {
+	Test,
 	Walk,
 	Run,
 	Bike,
@@ -69,6 +70,7 @@ public:
 
 	static const float GIdleTime;
 	static const float GWalkTime;
+	static const float GRunTime;
 
 	static const float GColCheckDown;
 	static const float GColCheckUp;
@@ -115,8 +117,9 @@ private:
 #define	FHSceen_X Global::GFHSceen_X
 #define	FHSceen_Y Global::GFHSceen_Y
 
-#define FWalkTime Global::GWalkTime
 #define FIdleTime Global::GIdleTime
+#define FWalkTime Global::GWalkTime
+#define FRunTime Global::GRunTime
 
 #define FColCheckDown Global::GColCheckDown
 #define FColCheckUp Global::GColCheckUp

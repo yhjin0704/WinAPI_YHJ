@@ -33,6 +33,11 @@ void UFieldLevel::BeginPlay()
 
 	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Walk_Down_Jump.png", 7, 2);
 
+	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Run_Down.png", 4, 1);
+	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Run_Up.png", 4, 1);
+	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Run_Left.png", 4, 1);
+	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Run_Right.png", 4, 1);
+
 	APlayer* Player = SpawnActor<APlayer>();
 	Player->SetCharacterName("Player_Boy");
 	Player->SetActorLocation({ (1136 + (FTileScale / 2)) * FScaleMultiple , (2032) * FScaleMultiple });

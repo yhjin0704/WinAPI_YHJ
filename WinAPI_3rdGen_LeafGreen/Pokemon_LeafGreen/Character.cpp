@@ -114,7 +114,7 @@ bool ACharacter::ColCheck(EDirState _PrevDirInput)
 	{
 		return true;
 	}
-	else if (Color8Bit(0,255,255,0) == ColColor)
+	else if (Color8Bit(0, 255, 255, 0) == ColColor)
 	{
 		if (EDirState::Down == PrevDirInput)
 		{
@@ -129,69 +129,82 @@ bool ACharacter::ColCheck(EDirState _PrevDirInput)
 	{
 		return false;
 	}
-	
+
 }
 
-void ACharacter::MovePos(EMoveType _MoveType, float _DeltaTime)
+void ACharacter::MovePos(float _DeltaTime)
 {
-	bool DefaltColCheck = false;
 	float DeltaTimeMove = 0;
-	DefaltColCheck = ColCheck(PrevDirInput);
-
-	if (false == DefaltColCheck)
+	switch (MoveType)
 	{
-		switch (_MoveType)
-		{
-		case EMoveType::Walk:
-				DeltaTimeMove = FScreenTileScale / FWalkTime;
-			break;
-		case EMoveType::Run:
-			break;
-		case EMoveType::Bike:
-			break;
-		case EMoveType::Surf:
-			break;
-		default:
-			break;
-		}
+	case EMoveType::Walk:
+		DeltaTimeMove = FScreenTileScale / FWalkTime;
+		break;
+	case EMoveType::Run:
+		DeltaTimeMove = FScreenTileScale / FRunTime;
+		break;
+	case EMoveType::Bike:
+		break;
+	case EMoveType::Surf:
+		break;
+	default:
+		break;
+	}
 
-		switch (PrevDirInput)
-		{
-		case EDirState::Down:
-			AddActorLocation(FVector::Down * DeltaTimeMove * _DeltaTime);
-			break;
-		case EDirState::Up:
-			AddActorLocation(FVector::Up * DeltaTimeMove * _DeltaTime);
-			break;
-		case EDirState::Left:
-			AddActorLocation(FVector::Left * DeltaTimeMove * _DeltaTime);
-			break;
-		case EDirState::Right:
-			AddActorLocation(FVector::Right * DeltaTimeMove * _DeltaTime);
-			break;
-		default:
-			break;
-		}
+	switch (PrevDirInput)
+	{
+	case EDirState::Down:
+		AddActorLocation(FVector::Down * DeltaTimeMove * _DeltaTime);
+		break;
+	case EDirState::Up:
+		AddActorLocation(FVector::Up * DeltaTimeMove * _DeltaTime);
+		break;
+	case EDirState::Left:
+		AddActorLocation(FVector::Left * DeltaTimeMove * _DeltaTime);
+		break;
+	case EDirState::Right:
+		AddActorLocation(FVector::Right * DeltaTimeMove * _DeltaTime);
+		break;
+	default:
+		break;
 	}
 }
 
 void ACharacter::PlayMoveAnimation()
 {
+	float MoveAnimationTime = 0.0f;
+
+	switch (MoveType)
+	{
+	case EMoveType::Walk:
+		MoveAnimationTime = FWalkTime;
+		break;
+	case EMoveType::Run:
+		MoveAnimationTime = FRunTime;
+		break;
+	case EMoveType::Bike:
+		break;
+	case EMoveType::Surf:
+		break;
+	default:
+		break;
+	}
+
 	switch (PrevFoot)
 	{
 	case EMoveState::Left:
 		CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput, PrevFoot);
-		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, FWalkTime / 2.0f);
+		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, MoveAnimationTime / 2.0f);
 		PrevFoot = EMoveState::Right;
 		break;
 	case EMoveState::Right:
 		CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput, PrevFoot);
-		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, FWalkTime / 2.0f);
+		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, MoveAnimationTime / 2.0f);
 		PrevFoot = EMoveState::Left;
 		break;
 	case EMoveState::Jump:
 		CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput, PrevFoot);
-		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, FWalkTime / 13.0f * 2.0f);
+		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, MoveAnimationTime / 13.0f * 2.0f);
 		PrevFoot = EMoveState::Left;
 		break;
 	default:
