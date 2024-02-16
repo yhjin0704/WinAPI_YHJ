@@ -54,6 +54,12 @@ void APlayer::Tick(float _DeltaTime)
 
 void APlayer::KeyInputMove(float _DeltaTime)
 {
+	SetColCheckPos(PrevDirInput);
+	if (Color8Bit(0, 255, 255, 0) == Global::GColMapImage->GetColor((IsColCheckPos.iX() / FScaleMultiple), (IsColCheckPos.iY() / FScaleMultiple), Color8Bit::MagentaA))
+	{
+		PrevFoot = EMoveState::Jump;
+	}
+
 	if (true == UEngineInput::IsPress('S'))
 	{
 		SetKeyInputAnimation(EDirState::Down);
@@ -69,6 +75,11 @@ void APlayer::KeyInputMove(float _DeltaTime)
 	else if (true == UEngineInput::IsPress('D'))
 	{
 		SetKeyInputAnimation(EDirState::Right);
+	}
+
+	if (true)
+	{
+
 	}
 
 	InputDelayCheck(_DeltaTime);

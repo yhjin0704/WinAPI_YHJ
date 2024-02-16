@@ -33,6 +33,7 @@ protected:
 	EMoveState PrevFoot = EMoveState::Left;
 	EDirState PrevDirInput = EDirState::Down;
 
+	void SetColCheckPos(EDirState _PrevDirInput);
 	bool ColCheck(EDirState _PrevDirInput);
 	void MovePos(EMoveType _MoveType, float _DeltaTime);
 

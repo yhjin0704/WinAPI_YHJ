@@ -81,7 +81,7 @@ std::string ACharacter::GetAnimationName(std::string _Name, EMoveType _Move, EDi
 	return _Name + MoveName + DirName + FootName;
 }
 
-bool ACharacter::ColCheck(EDirState _PrevDirInput)
+void ACharacter::SetColCheckPos(EDirState _PrevDirInput)
 {
 	switch (_PrevDirInput)
 	{
@@ -100,6 +100,11 @@ bool ACharacter::ColCheck(EDirState _PrevDirInput)
 	default:
 		break;
 	}
+}
+
+bool ACharacter::ColCheck(EDirState _PrevDirInput)
+{
+	SetColCheckPos(_PrevDirInput);
 	Color8Bit ColColor = Global::GColMapImage->GetColor((IsColCheckPos.iX() / FScaleMultiple), (IsColCheckPos.iY() / FScaleMultiple), Color8Bit::MagentaA);
 	if (Color8Bit::MagentaA == ColColor)
 	{
