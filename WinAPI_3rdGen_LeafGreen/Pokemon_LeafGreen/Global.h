@@ -48,8 +48,8 @@ public:
 	static const int GIScreen_X;
 	static const int GIScreen_Y;
 	static const int GITileScale;
-	static const int GIScreenTileScale;
-	static const int GIHScreenTileScale;
+	static const int GIGameTileScale;
+	static const int GIHGameTileScale;
 	static const int GIHGBAScreen_X;
 	static const int GIHGBAScreen_Y;
 	static const int GIHSceen_X;
@@ -61,8 +61,8 @@ public:
 	static const float GFScreen_X;
 	static const float GFScreen_Y;
 	static const float GFTileScale;
-	static const float GFScreenTileScale;
-	static const float GFHScreenTileScale;
+	static const float GFGameTileScale;
+	static const float GFHGameTileScale;
 	static const float GFHGBAScreen_X;
 	static const float GFHGBAScreen_Y;
 	static const float GFHSceen_X;
@@ -101,8 +101,8 @@ private:
 #define IScreen_X Global::GIScreen_X
 #define	IScreen_Y Global::GIScreen_Y
 #define	ITileScale Global::GITileScale
-#define	IScreenTileScale Global::GIScreenTileScale
-#define	IHScreenTileScale Global::GIHScreenTileScale
+#define	IGameTileScale Global::GIGameTileScale
+#define	IHGameTileScale Global::GIHGameTileScale
 #define	IHSceen_X Global::GIHSceen_X
 #define	IHSceen_Y Global::GIHSceen_Y
 		
@@ -112,8 +112,8 @@ private:
 #define	FScreen_X Global::GFScreen_X
 #define	FScreen_Y Global::GFScreen_Y
 #define	FTileScale Global::GFTileScale
-#define	FScreenTileScale Global::GFScreenTileScale
-#define	FHScreenTileScale Global::GFHScreenTileScale
+#define	FGameTileScale Global::GFGameTileScale
+#define	FHGameTileScale Global::GFHGameTileScale
 #define	FHSceen_X Global::GFHSceen_X
 #define	FHSceen_Y Global::GFHSceen_Y
 

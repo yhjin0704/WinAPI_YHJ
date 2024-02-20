@@ -16,7 +16,7 @@ void APlayer::BeginPlay()
 	ACharacter::BeginPlay();
 
 	CharacterRenderer = CreateImageRenderer(ERenderOrder::Player);
-	CharacterRenderer->SetTransform({ {0, 0}, {FScreenTileScale * 2.0f, FScreenTileScale * 2.0f} });
+	CharacterRenderer->SetTransform({ {0, 0}, {FGameTileScale * 2.0f, FGameTileScale * 2.0f} });
 
 	CharacterRenderer->CreateAnimation("Player_Boy_Walk_Down_Idle", "Player_Boy_Walk_Down.png", 1, 1, 0.0f, false);
 	CharacterRenderer->CreateAnimation("Player_Boy_Walk_UP_Idle", "Player_Boy_Walk_UP.png", 1, 1, 0.0f, false);
@@ -55,7 +55,7 @@ void APlayer::BeginPlay()
 	CharacterRenderer->SetImage("Player_Boy_Walk_Down.png", 1);
 
 	PlayerCollision = CreateCollision(0);
-	PlayerCollision->SetScale({ IScreenTileScale, IScreenTileScale });
+	PlayerCollision->SetScale({ IGameTileScale, IGameTileScale });
 	PlayerCollision->SetColType(ECollisionType::Rect);
 }
 
@@ -183,6 +183,7 @@ void APlayer::PlayerMovePos(float _DeltaTime)
 	if (false == DefaltColCheck)
 	{
 		MovePos(_DeltaTime);
+		IsPlayerMove = false;
 	}
 }
 

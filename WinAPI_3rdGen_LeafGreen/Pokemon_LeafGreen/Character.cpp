@@ -134,14 +134,14 @@ bool ACharacter::ColCheck(EDirState _PrevDirInput)
 
 void ACharacter::MovePos(float _DeltaTime)
 {
-	float DeltaTimeMove = 0;
+	float MoveTime = 0;
 	switch (MoveType)
 	{
 	case EMoveType::Walk:
-		DeltaTimeMove = FScreenTileScale / FWalkTime;
+		MoveTime = FWalkTime;
 		break;
 	case EMoveType::Run:
-		DeltaTimeMove = FScreenTileScale / FRunTime;
+		MoveTime = FRunTime;
 		break;
 	case EMoveType::Bike:
 		break;
@@ -151,19 +151,28 @@ void ACharacter::MovePos(float _DeltaTime)
 		break;
 	}
 
+	StartPos = GetTransform().GetPosition();
+
 	switch (PrevDirInput)
 	{
 	case EDirState::Down:
-		AddActorLocation(FVector::Down * DeltaTimeMove * _DeltaTime);
+		MoveTime += _DeltaTime;
+		TargetPos = StartPos + (FVector::Down * FGameTileScale);
+		MovingPos = FVector::Lerp(StartPos, GetTransform().GetPosition(), MoveTime);
+		SetActorLocation(MovingPos);
+		if (1.0f <= MoveTime)
+		{
+			MoveTime = 0.0f;
+		}
 		break;
 	case EDirState::Up:
-		AddActorLocation(FVector::Up * DeltaTimeMove * _DeltaTime);
+		AddActorLocation(FVector::Up * MoveTime * _DeltaTime);
 		break;
 	case EDirState::Left:
-		AddActorLocation(FVector::Left * DeltaTimeMove * _DeltaTime);
+		AddActorLocation(FVector::Left * MoveTime * _DeltaTime);
 		break;
 	case EDirState::Right:
-		AddActorLocation(FVector::Right * DeltaTimeMove * _DeltaTime);
+		AddActorLocation(FVector::Right * MoveTime * _DeltaTime);
 		break;
 	default:
 		break;

@@ -33,6 +33,10 @@ protected:
 	EMoveState PrevFoot = EMoveState::Left;
 	EDirState PrevDirInput = EDirState::Down;
 
+	FVector StartPos = FVector::Zero;
+	FVector TargetPos = FVector::Zero;
+	FVector MovingPos = FVector::Zero;
+
 	void SetColCheckPos(EDirState _PrevDirInput);
 	bool ColCheck(EDirState _PrevDirInput);
 	void MovePos(float _DeltaTime);
