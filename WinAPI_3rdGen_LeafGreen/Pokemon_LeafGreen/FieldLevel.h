@@ -1,6 +1,7 @@
 #pragma once
 #include <EngineCore\Level.h>
 #include <EngineBase\EngineDirectory.h>
+#include "Player.h"
 
 class UFieldLevel : public ULevel
 {
@@ -20,6 +21,8 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	UEngineDirectory FieldPath;
+
+	APlayer* Player;
 
 private:
 

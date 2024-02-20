@@ -67,51 +67,56 @@ void APlayer::Tick(float _DeltaTime)
 
 	UseRunningShoes();
 	KeyInputMove(_DeltaTime);
+	if (EMoveState::Idle == MoveState)
+	{
+		PlayIdleAnimation();
+	}
 }
 
 void APlayer::KeyInputMove(float _DeltaTime)
 {
-	if (true == UEngineInput::IsPress('S'))
+	if (false == IsActionDelay)
 	{
-		SetColCheckPos(PrevDirInput);
-		if (Color8Bit(0, 255, 255, 0) == Global::GColMapImage->GetColor((IsColCheckPos.iX() / FScaleMultiple), (IsColCheckPos.iY() / FScaleMultiple), Color8Bit::MagentaA))
+		if (true == UEngineInput::IsPress('S'))
 		{
-			PrevFoot = EMoveState::Jump;
+			SetColCheckPos(PrevDirInput);
+			if (Color8Bit(0, 255, 255, 0) == Global::GColMapImage->GetColor((IsColCheckPos.iX() / IScaleMultiple), (IsColCheckPos.iY() / IScaleMultiple), Color8Bit::MagentaA))
+			{
+				MoveState = EMoveState::Jump;
+			}
+			SetKeyInputAnimation(EDirState::Down);
 		}
-		SetKeyInputAnimation(EDirState::Down);
-	}
-	else if (true == UEngineInput::IsPress('W'))
-	{
-		SetKeyInputAnimation(EDirState::Up);
-	}
-	else if (true == UEngineInput::IsPress('A'))
-	{
-		SetKeyInputAnimation(EDirState::Left);
-	}
-	else if (true == UEngineInput::IsPress('D'))
-	{
-		SetKeyInputAnimation(EDirState::Right);
+		else if (true == UEngineInput::IsPress('W'))
+		{
+			SetColCheckPos(PrevDirInput);
+			SetKeyInputAnimation(EDirState::Up);
+		}
+		else if (true == UEngineInput::IsPress('A'))
+		{
+			SetColCheckPos(PrevDirInput);
+			SetKeyInputAnimation(EDirState::Left);
+		}
+		else if (true == UEngineInput::IsPress('D'))
+		{
+			SetColCheckPos(PrevDirInput);
+			SetKeyInputAnimation(EDirState::Right);
+		}
 	}
 
-	if (EMoveState::Jump == PrevFoot)
+	if (EMoveState::Jump == MoveState)
 	{
 		SetColCheckPos(PrevDirInput);
 		if (Color8Bit(0, 255, 255, 0) != Global::GColMapImage->GetColor((IsColCheckPos.iX() / FScaleMultiple), (IsColCheckPos.iY() / FScaleMultiple), Color8Bit::MagentaA))
 		{
-			PrevFoot = EMoveState::Left;
+			MoveState = EMoveState::Idle;
 		}
 	}
 
 	InputDelayCheck(_DeltaTime);
 
-	if (false == IsActionDelay)
+	if (true == IsMove)
 	{
-		IsPlayerMove = false;
-	}
-
-	if (true == IsPlayerMove)
-	{
-		PlayerMovePos(_DeltaTime);
+		MovePos(_DeltaTime);
 	}
 }
 
@@ -121,16 +126,19 @@ void APlayer::SetKeyInputAnimation(EDirState _InputDir)
 	{
 		if (_InputDir == PrevDirInput)
 		{
-			SetCurDelayTime();
-			PlayMoveAnimation();
-			IsPlayerMove = true;
+			if (EMoveState::Jump != MoveState)
+			{
+				MoveState = EMoveState::Move;
+			}
+			PlayerMovePos();
 		}
 		else
 		{
-			CurDelayTime = FIdleTime;
+			MoveState = EMoveState::Idle;
 			PrevDirInput = _InputDir;
-			PlayIdleAnimation();
 		}
+		PlayMoveAnimation();
+		SetCurDelayTime();
 	}
 }
 
@@ -141,14 +149,14 @@ void APlayer::SetCurDelayTime()
 	{
 	case EMoveType::Walk:
 		CurDelayTime = FWalkTime;
-		if (EMoveState::Jump == PrevFoot)
+		if (EMoveState::Jump == MoveState)
 		{
 			CurDelayTime += FWalkTime;
 		}
 		break;
 	case EMoveType::Run:
 		CurDelayTime = FRunTime;
-		if (EMoveState::Jump == PrevFoot)
+		if (EMoveState::Jump == MoveState)
 		{
 			CurDelayTime += FRunTime;
 		}
@@ -160,11 +168,16 @@ void APlayer::SetCurDelayTime()
 	default:
 		break;
 	}
+	if (EMoveState::Idle == MoveState)
+	{
+		CurDelayTime = FIdleTime;
+	}
+	IsActionDelay = true;
 }
 
 void APlayer::InputDelayCheck(float _DeltaTime)
 {
-	if (CurDelayTime >= 0.0f)
+	if (0.0f < CurDelayTime)
 	{
 		IsActionDelay = true;
 		CurDelayTime -= _DeltaTime;
@@ -175,15 +188,14 @@ void APlayer::InputDelayCheck(float _DeltaTime)
 	}
 }
 
-void APlayer::PlayerMovePos(float _DeltaTime)
+void APlayer::PlayerMovePos()
 {
 	bool DefaltColCheck = false;
 	DefaltColCheck = ColCheck(PrevDirInput);
 
 	if (false == DefaltColCheck)
 	{
-		MovePos(_DeltaTime);
-		IsPlayerMove = false;
+		SetMovePos();
 	}
 }
 

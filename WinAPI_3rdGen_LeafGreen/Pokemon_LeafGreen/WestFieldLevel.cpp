@@ -20,6 +20,7 @@ void UWestFieldLevel::BeginPlay()
 	AWestFieldGround* Ground = SpawnActor<AWestFieldGround>();
 	Ground->SetMapImage("West_Map.png");
 	Ground->SetColMapImage("Col_West_Map.png");
+	Player->SetActorLocation({ (1136 + (FTileScale / 2)) * FScaleMultiple , (2032) * FScaleMultiple });
 }
 
 void UWestFieldLevel::Tick(float _DeltaTime)

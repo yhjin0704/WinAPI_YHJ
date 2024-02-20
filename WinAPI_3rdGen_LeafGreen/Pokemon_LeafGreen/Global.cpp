@@ -1,7 +1,7 @@
 #include "Global.h"
 #include <cmath>
 
-const int Global::GIScaleMultiple	= 6;
+const int Global::GIScaleMultiple	= 4;
 const int Global::GIGBAScreen_X		= 240;
 const int Global::GIGBAScreen_Y		= 160;
 const int Global::GIScreen_X		= GIGBAScreen_X * GIScaleMultiple;

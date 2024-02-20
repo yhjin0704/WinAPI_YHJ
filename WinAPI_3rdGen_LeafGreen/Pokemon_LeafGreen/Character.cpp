@@ -132,16 +132,69 @@ bool ACharacter::ColCheck(EDirState _PrevDirInput)
 
 }
 
+void ACharacter::SetMovePos()
+{
+	if (false == IsMove)
+	{
+		IsMove = true;
+		StartPos = GetTransform().GetPosition();
+
+		switch (PrevDirInput)
+		{
+		case EDirState::Down:
+			if (EMoveState::Jump == MoveState)
+			{
+				TargetPos = StartPos + (FVector::Down * FGameTileScale * 2);
+			}
+			else
+			{
+				TargetPos = StartPos + (FVector::Down * FGameTileScale);
+			}
+			break;
+		case EDirState::Up:
+			TargetPos = StartPos + (FVector::Up * FGameTileScale);
+			break;
+		case EDirState::Left:
+			if (EMoveState::Jump == MoveState)
+			{
+				TargetPos = StartPos + (FVector::Left * FGameTileScale * 2);
+			}
+			else
+			{
+				TargetPos = StartPos + (FVector::Left * FGameTileScale);
+			}
+			break;
+		case EDirState::Right:
+			if (EMoveState::Jump == MoveState)
+			{
+				TargetPos = StartPos + (FVector::Right * FGameTileScale * 2);
+			}
+			else
+			{
+				TargetPos = StartPos + (FVector::Right * FGameTileScale);
+			}
+			break;
+		}
+	}
+}
+
 void ACharacter::MovePos(float _DeltaTime)
 {
-	float MoveTime = 0;
+	float MoveStateTime = 0.0f;
 	switch (MoveType)
 	{
 	case EMoveType::Walk:
-		MoveTime = FWalkTime;
+		if (EMoveState::Jump == MoveState)
+		{
+			MoveStateTime = _DeltaTime / FWalkTime;
+		}
+		else
+		{
+			MoveStateTime = _DeltaTime / FWalkTime / 2;
+		}
 		break;
 	case EMoveType::Run:
-		MoveTime = FRunTime;
+		MoveStateTime = _DeltaTime / FRunTime;
 		break;
 	case EMoveType::Bike:
 		break;
@@ -150,32 +203,14 @@ void ACharacter::MovePos(float _DeltaTime)
 	default:
 		break;
 	}
-
-	StartPos = GetTransform().GetPosition();
-
-	switch (PrevDirInput)
+	MoveTime += MoveStateTime;
+	MovingPos = FVector::Lerp(StartPos, TargetPos, MoveTime);
+	SetActorLocation(MovingPos);
+	if (1.0f <= MoveTime)
 	{
-	case EDirState::Down:
-		MoveTime += _DeltaTime;
-		TargetPos = StartPos + (FVector::Down * FGameTileScale);
-		MovingPos = FVector::Lerp(StartPos, GetTransform().GetPosition(), MoveTime);
-		SetActorLocation(MovingPos);
-		if (1.0f <= MoveTime)
-		{
-			MoveTime = 0.0f;
-		}
-		break;
-	case EDirState::Up:
-		AddActorLocation(FVector::Up * MoveTime * _DeltaTime);
-		break;
-	case EDirState::Left:
-		AddActorLocation(FVector::Left * MoveTime * _DeltaTime);
-		break;
-	case EDirState::Right:
-		AddActorLocation(FVector::Right * MoveTime * _DeltaTime);
-		break;
-	default:
-		break;
+		MoveTime = 0.0f;
+		IsMove = false;
+		MoveState = EMoveState::Idle;
 	}
 }
 
@@ -199,25 +234,32 @@ void ACharacter::PlayMoveAnimation()
 		break;
 	}
 
-	switch (PrevFoot)
+	if (EMoveState::Move == MoveState)
 	{
-	case EMoveState::Left:
-		CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput, PrevFoot);
-		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, MoveAnimationTime / 2.0f);
-		PrevFoot = EMoveState::Right;
-		break;
-	case EMoveState::Right:
-		CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput, PrevFoot);
-		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, MoveAnimationTime / 2.0f);
-		PrevFoot = EMoveState::Left;
-		break;
-	case EMoveState::Jump:
-		CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput, PrevFoot);
-		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, MoveAnimationTime / 13.0f * 2.0f);
-		PrevFoot = EMoveState::Left;
-		break;
-	default:
-		break;
+		switch (PrevFoot)
+		{
+		case EMoveState::Left:
+			CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput, PrevFoot);
+			CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, MoveAnimationTime / 2.0f);
+			PrevFoot = EMoveState::Right;
+			break;
+		case EMoveState::Right:
+			CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput, PrevFoot);
+			CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, MoveAnimationTime / 2.0f);
+			PrevFoot = EMoveState::Left;
+			break;
+		default:
+			break;
+		}
+	}
+	else if (EMoveState::Jump == MoveState)
+	{
+		CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput, MoveState);
+		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, MoveAnimationTime * 13.0f / 2.0f);
+	}
+	else
+	{
+		PlayIdleAnimation();
 	}
 }
 

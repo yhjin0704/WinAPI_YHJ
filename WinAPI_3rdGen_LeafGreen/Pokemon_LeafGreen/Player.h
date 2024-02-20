@@ -23,8 +23,6 @@ private:
 	FVector PrevFieldPos = FVector::Zero;
 	UCollision* PlayerCollision = nullptr;
 
-	bool IsPlayerMove = false;
-
 	bool IsActionDelay = false;
 	float CurDelayTime = 0.0f;
 	
@@ -32,7 +30,7 @@ private:
 	void SetKeyInputAnimation(EDirState _InputDir);
 	void SetCurDelayTime();
 	void InputDelayCheck(float _DeltaTime);
-	void PlayerMovePos(float _DeltaTime);
+	void PlayerMovePos();
 
 	void UseRunningShoes();
 };

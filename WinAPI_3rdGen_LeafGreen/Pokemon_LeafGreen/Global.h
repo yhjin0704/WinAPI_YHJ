@@ -34,9 +34,10 @@ enum class EMoveType
 enum class EMoveState
 {
 	Idle,
+	Move,
+	Jump,
 	Left,
-	Right,
-	Jump
+	Right
 };
 
 class Global
