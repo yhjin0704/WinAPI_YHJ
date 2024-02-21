@@ -201,7 +201,7 @@ void ACharacter::MovePos(float _DeltaTime)
 	case EMoveType::Run:
 		if (EMoveState::Jump == MoveState)
 		{
-			MoveStateTime = _DeltaTime / (FRunTime * 2.0f);
+			MoveStateTime = _DeltaTime / (FWalkTime * 2.0f);
 		}
 		else
 		{
@@ -209,6 +209,14 @@ void ACharacter::MovePos(float _DeltaTime)
 		}
 		break;
 	case EMoveType::Bike:
+		if (EMoveState::Jump == MoveState)
+		{
+			MoveStateTime = _DeltaTime / (FWalkTime * 2.0f);
+		}
+		else
+		{
+			MoveStateTime = _DeltaTime / FBikeTime;
+		}
 		break;
 	case EMoveType::Surf:
 		break;
@@ -239,6 +247,7 @@ void ACharacter::PlayMoveAnimation()
 		MoveAnimationTime = FRunTime;
 		break;
 	case EMoveType::Bike:
+		MoveAnimationTime = FBikeTime;
 		break;
 	case EMoveType::Surf:
 		break;
@@ -267,7 +276,7 @@ void ACharacter::PlayMoveAnimation()
 	else if (EMoveState::Jump == MoveState)
 	{
 		CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput, MoveState);
-		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, MoveAnimationTime / 13.0f * 2.0f);
+		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, FWalkTime / 13.0f * 2.0f);
 	}
 	else
 	{

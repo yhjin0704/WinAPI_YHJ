@@ -72,6 +72,7 @@ public:
 	static const float GIdleTime;
 	static const float GWalkTime;
 	static const float GRunTime;
+	static const float GBikeTime;
 
 	static const float GColCheckDown;
 	static const float GColCheckUp;
@@ -121,6 +122,7 @@ private:
 #define FIdleTime Global::GIdleTime
 #define FWalkTime Global::GWalkTime
 #define FRunTime Global::GRunTime
+#define FBikeTime Global::GBikeTime
 
 #define FColCheckDown Global::GColCheckDown
 #define FColCheckUp Global::GColCheckUp

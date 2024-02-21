@@ -50,7 +50,24 @@ void APlayer::BeginPlay()
 	CharacterRenderer->CreateAnimation("Player_Boy_Run_Left_L", "Player_Boy_Run_Left.png", 2, 3, (FRunTime / 2), false);
 	CharacterRenderer->CreateAnimation("Player_Boy_Run_Right_L", "Player_Boy_Run_Right.png", 2, 3, (FRunTime / 2), false);
 
-	CharacterRenderer->CreateAnimation("Player_Boy_Run_Down_Jump", "Player_Boy_Walk_Down_Jump.png", 0, 12, (FRunTime / 13.0f * 2.0f), false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Run_Down_Jump", "Player_Boy_Walk_Down_Jump.png", 0, 12, (FWalkTime / 13.0f * 2.0f), false);
+
+	CharacterRenderer->CreateAnimation("Player_Boy_Bike_Down_Idle", "Player_Boy_Bike_Down.png", 1, 1, 0.0f, false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Bike_UP_Idle", "Player_Boy_Bike_UP.png", 1, 1, 0.0f, false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Bike_Left_Idle", "Player_Boy_Bike_Left.png", 1, 1, 0.0f, false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Bike_Right_Idle", "Player_Boy_Bike_Right.png", 1, 1, 0.0f, false);
+
+	CharacterRenderer->CreateAnimation("Player_Boy_Bike_Down_R", "Player_Boy_Bike_Down.png", 0, 1, (FBikeTime / 2), false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Bike_UP_R", "Player_Boy_Bike_UP.png", 0, 1, (FBikeTime / 2), false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Bike_Left_R", "Player_Boy_Bike_Left.png", 0, 1, (FBikeTime / 2), false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Bike_Right_R", "Player_Boy_Bike_Right.png", 0, 1, (FBikeTime / 2), false);
+
+	CharacterRenderer->CreateAnimation("Player_Boy_Bike_Down_L", "Player_Boy_Bike_Down.png", 2, 3, (FBikeTime / 2), false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Bike_UP_L", "Player_Boy_Bike_UP.png", 2, 3, (FBikeTime / 2), false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Bike_Left_L", "Player_Boy_Bike_Left.png", 2, 3, (FBikeTime / 2), false);
+	CharacterRenderer->CreateAnimation("Player_Boy_Bike_Right_L", "Player_Boy_Bike_Right.png", 2, 3, (FBikeTime / 2), false);
+
+	CharacterRenderer->CreateAnimation("Player_Boy_Bike_Down_Jump", "Player_Boy_Bike_Down_Jump.png", 0, 12, (FWalkTime / 13.0f * 2.0f), false);
 
 	CharacterRenderer->SetImage("Player_Boy_Walk_Down.png", 1);
 
@@ -68,6 +85,7 @@ void APlayer::Tick(float _DeltaTime)
 	if (EMoveState::Idle == MoveState)
 	{
 		UseRunningShoes();
+		UseBike();
 	}
 
 	KeyInputMove(_DeltaTime);
@@ -154,10 +172,15 @@ void APlayer::SetCurDelayTime()
 		CurDelayTime = FRunTime;
 		if (EMoveState::Jump == MoveState)
 		{
-			CurDelayTime += FRunTime;
+			CurDelayTime = (FWalkTime * 2);
 		}
 		break;
 	case EMoveType::Bike:
+		CurDelayTime = FBikeTime;
+		if (EMoveState::Jump == MoveState)
+		{
+			CurDelayTime = (FWalkTime * 2);
+		}
 		break;
 	case EMoveType::Surf:
 		break;
@@ -210,6 +233,22 @@ void APlayer::UseRunningShoes()
 			{
 				MoveType = EMoveType::Walk;
 			}
+		}
+	}
+}
+
+void APlayer::UseBike()
+{
+	if (true == UEngineInput::IsDown(' '))
+	{
+		if (EMoveType::Walk == MoveType || EMoveType::Run == MoveType)
+		{
+			PrevMoveType = MoveType;
+			MoveType = EMoveType::Bike;
+		}
+		else if (EMoveType::Bike == MoveType)
+		{
+			MoveType = PrevMoveType;
 		}
 	}
 }

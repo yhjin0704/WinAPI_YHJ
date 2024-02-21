@@ -25,6 +25,8 @@ private:
 
 	bool IsActionDelay = false;
 	float CurDelayTime = 0.0f;
+
+	EMoveType PrevMoveType = EMoveType::Walk;
 	
 	void KeyInputMove(float _DeltaTime);
 	void SetKeyInputAnimation(EDirState _InputDir);
@@ -33,5 +35,6 @@ private:
 	void SetPlayerMovePos();
 
 	void UseRunningShoes();
+	void UseBike();
 };
 
