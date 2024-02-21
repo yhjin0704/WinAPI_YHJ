@@ -216,7 +216,7 @@ void ACharacter::MovePos(float _DeltaTime)
 		break;
 	}
 	MoveTime += MoveStateTime;
-	MovingPos = FVector::LerpClemp(StartPos, TargetPos, MoveTime);
+	MovingPos = FVector::LerpClamp(StartPos, TargetPos, MoveTime);
 	SetActorLocation(MovingPos);
 	if (1.0f <= MoveTime)
 	{

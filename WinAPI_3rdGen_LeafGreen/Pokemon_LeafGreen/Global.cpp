@@ -29,7 +29,7 @@ const float Global::GFHSceen_Y		 = std::lround(GIHSceen_Y);
 
 const float Global::GIdleTime = 0.1f;
 const float Global::GWalkTime = 0.3f;
-const float Global::GRunTime = 0.2f;
+const float Global::GRunTime = 0.175f;
 
 const float Global::GColCheckDown = GFGameTileScale;
 const float Global::GColCheckUp = 1.0f;

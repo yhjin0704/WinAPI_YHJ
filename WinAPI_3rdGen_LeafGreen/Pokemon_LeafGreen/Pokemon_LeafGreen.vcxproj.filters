@@ -11,14 +11,14 @@
     <ClCompile Include="FieldLevel.cpp">
       <Filter>Field</Filter>
     </ClCompile>
-    <ClCompile Include="TitleLevel.cpp">
+    <ClCompile Include="TitleLevel1.cpp">
       <Filter>Title</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Field\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Global.cpp" />
-    <ClCompile Include="TitleActor.cpp">
+    <ClCompile Include="TitleActor1.cpp">
       <Filter>Title\Actor</Filter>
     </ClCompile>
     <ClCompile Include="WestFieldGround.cpp">
@@ -33,6 +33,15 @@
     <ClCompile Include="Ground.cpp">
       <Filter>Field\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="TitleLevel2.cpp">
+      <Filter>Title</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleActor2.cpp">
+      <Filter>Title\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="TiltleLevel3.cpp">
+      <Filter>Title</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -45,14 +54,14 @@
     <ClInclude Include="FieldLevel.h">
       <Filter>Field</Filter>
     </ClInclude>
-    <ClInclude Include="TitleLevel.h">
+    <ClInclude Include="TitleLevel1.h">
       <Filter>Title</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Field\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Global.h" />
-    <ClInclude Include="TitleActor.h">
+    <ClInclude Include="TitleActor1.h">
       <Filter>Title\Actor</Filter>
     </ClInclude>
     <ClInclude Include="WestFieldGround.h">
@@ -66,6 +75,15 @@
     </ClInclude>
     <ClInclude Include="Ground.h">
       <Filter>Field\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleLevel2.h">
+      <Filter>Title</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleActor2.h">
+      <Filter>Title\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="TiltleLevel3.h">
+      <Filter>Title</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

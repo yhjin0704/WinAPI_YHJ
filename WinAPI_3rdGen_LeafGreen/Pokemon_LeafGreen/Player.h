@@ -30,7 +30,7 @@ private:
 	void SetKeyInputAnimation(EDirState _InputDir);
 	void SetCurDelayTime();
 	void InputDelayCheck(float _DeltaTime);
-	void PlayerMovePos();
+	void SetPlayerMovePos();
 
 	void UseRunningShoes();
 };

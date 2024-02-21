@@ -28,6 +28,6 @@ protected:
 
 private:
 	FMOD::Sound* SoundHandle = nullptr;
-	
+
 };
 

@@ -63,7 +63,7 @@ void APlayer::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	GetWorld()->SetCameraPos(GetActorLocation() - FVector(FHSceen_X, FHSceen_Y));
+	GetWorld()->SetCameraPos(GetActorLocation() - FVector(FHScreen_X, FHScreen_Y));
 
 	if (EMoveState::Idle == MoveState)
 	{
@@ -126,7 +126,7 @@ void APlayer::SetKeyInputAnimation(EDirState _InputDir)
 			{
 				MoveState = EMoveState::Move;
 			}
-			PlayerMovePos();
+			SetPlayerMovePos();
 		}
 		else
 		{
@@ -180,11 +180,12 @@ void APlayer::InputDelayCheck(float _DeltaTime)
 	}
 	else
 	{
+		MoveState = EMoveState::Idle;
 		IsActionDelay = false;
 	}
 }
 
-void APlayer::PlayerMovePos()
+void APlayer::SetPlayerMovePos()
 {
 	bool DefaltColCheck = false;
 	DefaltColCheck = ColCheck(PrevDirInput);

@@ -166,6 +166,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="TitleActor2.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Ground.cpp">
       <SubType>
       </SubType>
@@ -174,7 +178,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="TitleActor.cpp">
+    <ClCompile Include="TitleActor1.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -188,6 +192,14 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TitleLevel2.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TiltleLevel3.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="WestFieldGround.cpp" />
     <ClCompile Include="Player.cpp">
       <SubType>
@@ -197,13 +209,17 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="TitleLevel.cpp" />
+    <ClCompile Include="TitleLevel1.cpp" />
     <ClCompile Include="WestFieldLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="TitleActor2.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Ground.h">
       <SubType>
       </SubType>
@@ -212,7 +228,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="TitleActor.h">
+    <ClInclude Include="TitleActor1.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -226,6 +242,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TitleLevel2.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TiltleLevel3.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="WestFieldGround.h" />
     <ClInclude Include="Player.h">
       <SubType>
@@ -235,7 +259,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="TitleLevel.h" />
+    <ClInclude Include="TitleLevel1.h" />
     <ClInclude Include="WestFieldLevel.h">
       <SubType>
       </SubType>

@@ -104,8 +104,8 @@ private:
 #define	ITileScale Global::GITileScale
 #define	IGameTileScale Global::GIGameTileScale
 #define	IHGameTileScale Global::GIHGameTileScale
-#define	IHSceen_X Global::GIHSceen_X
-#define	IHSceen_Y Global::GIHSceen_Y
+#define	IHScreen_X Global::GIHSceen_X
+#define	IHScreen_Y Global::GIHSceen_Y
 		
 #define FScaleMultiple Global::GFScaleMultiple
 #define FGBAScreen_X Global::GFGBAScreen_X
@@ -115,8 +115,8 @@ private:
 #define	FTileScale Global::GFTileScale
 #define	FGameTileScale Global::GFGameTileScale
 #define	FHGameTileScale Global::GFHGameTileScale
-#define	FHSceen_X Global::GFHSceen_X
-#define	FHSceen_Y Global::GFHSceen_Y
+#define	FHScreen_X Global::GFHSceen_X
+#define	FHScreen_Y Global::GFHSceen_Y
 
 #define FIdleTime Global::GIdleTime
 #define FWalkTime Global::GWalkTime
