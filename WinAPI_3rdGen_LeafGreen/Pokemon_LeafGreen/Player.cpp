@@ -65,8 +65,13 @@ void APlayer::Tick(float _DeltaTime)
 
 	GetWorld()->SetCameraPos(GetActorLocation() - FVector(FHSceen_X, FHSceen_Y));
 
-	UseRunningShoes();
+	if (EMoveState::Idle == MoveState)
+	{
+		UseRunningShoes();
+	}
+
 	KeyInputMove(_DeltaTime);
+
 	if (EMoveState::Idle == MoveState)
 	{
 		PlayIdleAnimation();
@@ -100,15 +105,6 @@ void APlayer::KeyInputMove(float _DeltaTime)
 		{
 			SetColCheckPos(PrevDirInput);
 			SetKeyInputAnimation(EDirState::Right);
-		}
-	}
-
-	if (EMoveState::Jump == MoveState)
-	{
-		SetColCheckPos(PrevDirInput);
-		if (Color8Bit(0, 255, 255, 0) != Global::GColMapImage->GetColor((IsColCheckPos.iX() / FScaleMultiple), (IsColCheckPos.iY() / FScaleMultiple), Color8Bit::MagentaA))
-		{
-			MoveState = EMoveState::Idle;
 		}
 	}
 

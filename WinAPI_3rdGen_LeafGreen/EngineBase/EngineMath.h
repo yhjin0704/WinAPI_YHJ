@@ -85,7 +85,7 @@ public:
 			d1 = 1.0f;
 		}
 
-		return LerpClemp(p1, p2, d1);
+		return Lerp(p1, p2, d1);
 	}
 
 	// p1 p2          d1의 비율로 간다.

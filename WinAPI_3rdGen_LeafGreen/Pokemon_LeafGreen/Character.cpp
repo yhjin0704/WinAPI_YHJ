@@ -86,15 +86,19 @@ void ACharacter::SetColCheckPos(EDirState _PrevDirInput)
 	switch (_PrevDirInput)
 	{
 	case EDirState::Down:
+		IsColCheckPos = GetActorLocation();
 		IsColCheckPos = GetActorLocation() + (FVector::Down * FColCheckDown);
 		break;
 	case EDirState::Up:
+		IsColCheckPos = GetActorLocation();
 		IsColCheckPos = GetActorLocation() + (FVector::Up * FColCheckUp);
 		break;
 	case EDirState::Left:
+		IsColCheckPos = GetActorLocation();
 		IsColCheckPos = GetActorLocation() + (FVector::Left * FColCheckLeft);
 		break;
 	case EDirState::Right:
+		IsColCheckPos = GetActorLocation();
 		IsColCheckPos = GetActorLocation() + (FVector::Right * FColCheckRight);
 		break;
 	default:
@@ -139,39 +143,40 @@ void ACharacter::SetMovePos()
 		IsMove = true;
 		StartPos = GetTransform().GetPosition();
 
+		float OneTile = FGameTileScale;
 		switch (PrevDirInput)
 		{
 		case EDirState::Down:
 			if (EMoveState::Jump == MoveState)
 			{
-				TargetPos = StartPos + (FVector::Down * FGameTileScale * 2);
+				TargetPos = StartPos + (FVector::Down * OneTile * 2);
 			}
 			else
 			{
-				TargetPos = StartPos + (FVector::Down * FGameTileScale);
+				TargetPos = StartPos + (FVector::Down * OneTile);
 			}
 			break;
 		case EDirState::Up:
-			TargetPos = StartPos + (FVector::Up * FGameTileScale);
+			TargetPos = StartPos + (FVector::Up * OneTile);
 			break;
 		case EDirState::Left:
 			if (EMoveState::Jump == MoveState)
 			{
-				TargetPos = StartPos + (FVector::Left * FGameTileScale * 2);
+				TargetPos = StartPos + (FVector::Left * OneTile * 2);
 			}
 			else
 			{
-				TargetPos = StartPos + (FVector::Left * FGameTileScale);
+				TargetPos = StartPos + (FVector::Left * OneTile);
 			}
 			break;
 		case EDirState::Right:
 			if (EMoveState::Jump == MoveState)
 			{
-				TargetPos = StartPos + (FVector::Right * FGameTileScale * 2);
+				TargetPos = StartPos + (FVector::Right * OneTile * 2);
 			}
 			else
 			{
-				TargetPos = StartPos + (FVector::Right * FGameTileScale);
+				TargetPos = StartPos + (FVector::Right * OneTile);
 			}
 			break;
 		}
@@ -186,15 +191,22 @@ void ACharacter::MovePos(float _DeltaTime)
 	case EMoveType::Walk:
 		if (EMoveState::Jump == MoveState)
 		{
-			MoveStateTime = _DeltaTime / FWalkTime;
+			MoveStateTime = _DeltaTime / (FWalkTime * 2.0f);
 		}
 		else
 		{
-			MoveStateTime = _DeltaTime / FWalkTime / 2;
+			MoveStateTime = _DeltaTime / FWalkTime;
 		}
 		break;
 	case EMoveType::Run:
-		MoveStateTime = _DeltaTime / FRunTime;
+		if (EMoveState::Jump == MoveState)
+		{
+			MoveStateTime = _DeltaTime / (FRunTime * 2.0f);
+		}
+		else
+		{
+			MoveStateTime = _DeltaTime / FRunTime;
+		}
 		break;
 	case EMoveType::Bike:
 		break;
@@ -204,7 +216,7 @@ void ACharacter::MovePos(float _DeltaTime)
 		break;
 	}
 	MoveTime += MoveStateTime;
-	MovingPos = FVector::Lerp(StartPos, TargetPos, MoveTime);
+	MovingPos = FVector::LerpClemp(StartPos, TargetPos, MoveTime);
 	SetActorLocation(MovingPos);
 	if (1.0f <= MoveTime)
 	{
@@ -255,7 +267,7 @@ void ACharacter::PlayMoveAnimation()
 	else if (EMoveState::Jump == MoveState)
 	{
 		CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput, MoveState);
-		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, MoveAnimationTime * 13.0f / 2.0f);
+		CharacterRenderer->ChangeAnimation(CharacterAnimation, false, 0, MoveAnimationTime / 13.0f * 2.0f);
 	}
 	else
 	{
