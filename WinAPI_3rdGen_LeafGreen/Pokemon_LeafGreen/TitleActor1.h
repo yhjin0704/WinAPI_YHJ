@@ -21,7 +21,7 @@ public:
 protected:
 
 private:
-	int TitleOrder = 0;
+	int StartCheck = 0;
 
 	float TitleIntro1Time = 5.0f;
 

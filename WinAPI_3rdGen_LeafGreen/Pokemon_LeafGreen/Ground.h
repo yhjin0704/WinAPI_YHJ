@@ -17,7 +17,7 @@ public:
 
 	void SetMapImage(std::string_view _MapImageName);
 	void SetColMapImage(std::string_view _MapImageName);
-	//void SetCoverMapImage(std::string_view _MapImageName);
+	void SetCoverMapImage(std::string_view _MapImageName);
 
 	void SwitchDebug();
 
@@ -28,7 +28,7 @@ protected:
 
 	UImageRenderer* MapRenderer;
 	UImageRenderer* ColMapRenderer;
-	//UImageRenderer* CoverMapRenderer;
+	UImageRenderer* CoverMapRenderer;
 
 private:
 };

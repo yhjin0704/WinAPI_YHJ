@@ -16,13 +16,13 @@ void AGround::SwitchDebug()
 	{
 		MapRenderer->SetActive(false);
 		ColMapRenderer->SetActive(true);
-		//CoverMapRenderer->SetActive(false);
+		CoverMapRenderer->SetActive(false);
 	}
 	else
 	{
 		MapRenderer->SetActive(true);
 		ColMapRenderer->SetActive(false);
-		//CoverMapRenderer->SetActive(true);
+		CoverMapRenderer->SetActive(true);
 	}
 }
 
@@ -31,7 +31,7 @@ void AGround::BeginPlay()
 	AActor::BeginPlay();
 	MapRenderer = CreateImageRenderer(ERenderOrder::Map);
 	ColMapRenderer = CreateImageRenderer(ERenderOrder::ColMap);
-	//CoverMapRenderer = CreateImageRenderer(ERenderOrder::CoverMap);
+	CoverMapRenderer = CreateImageRenderer(ERenderOrder::CoverMap);
 	ColMapRenderer->SetActive(false);
 }
 
@@ -62,10 +62,10 @@ void AGround::SetColMapImage(std::string_view _MapImageName)
 	ColMapRenderer->SetTransform({ (ImageScale.Half2D() * FScaleMultiple), (ImageScale * FScaleMultiple) });
 }
 
-//void SetCoverMapImage(std::string_view _MapImageName)
-//{
-//	CoverMapRenderer->SetImage(_MapImageName);
-//	UWindowImage* CoverMapImage = CoverMapRenderer->GetImage();
-//	FVector ImageScale = CoverMapImage->GetScale();
-//	CoverMapRenderer->SetTransform({ (ImageScale.Half2D() * FScaleMultiple), (ImageScale * FScaleMultiple) });
-//}
+void AGround::SetCoverMapImage(std::string_view _MapImageName)
+{
+	CoverMapRenderer->SetImage(_MapImageName);
+	UWindowImage* CoverMapImage = CoverMapRenderer->GetImage();
+	FVector ImageScale = CoverMapImage->GetScale();
+	CoverMapRenderer->SetTransform({ (ImageScale.Half2D() * FScaleMultiple), (ImageScale * FScaleMultiple) });
+}

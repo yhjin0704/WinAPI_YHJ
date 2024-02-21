@@ -25,38 +25,52 @@ void ATitleActor3::BeginPlay()
 
 	TitleIntro3List = TitlePath.AllFile({ ".png", ".bmp" }, true);
 
-	TitleIntro3StartIter = TitleIntro3List.begin();
 	TitleIntro3EndIter = TitleIntro3List.end();
 
 	TitleIntroRen3 = CreateImageRenderer(0);
 
 	TitleIntroRen3->SetTransform({ {FHScreen_X, FHScreen_Y}, {FScreen_X, FScreen_Y} });
-
-	UEngineFile& File = (*TitleIntro3StartIter);
-	UEngineResourcesManager::GetInst().LoadImg(File.GetFullPath());
-	TitleIntroRen3->SetImage(File.GetFileName());
-	++TitleIntro3StartIter;
 }
 
 void ATitleActor3::Tick(float _DeltaTime)
 {
-	Time += _DeltaTime;
-	if (Time >= FrameTime)
+	AActor::Tick(_DeltaTime);
+
+	if (0 == StartCheck)
 	{
+		TitleIntro3StartIter = TitleIntro3List.begin();
+
 		UEngineFile& File = (*TitleIntro3StartIter);
 		UEngineResourcesManager::GetInst().LoadImg(File.GetFullPath());
 		TitleIntroRen3->SetImage(File.GetFileName());
 		++TitleIntro3StartIter;
-		Time = _DeltaTime - FrameTime;
-	}
 
-	if (TitleIntro3StartIter == TitleIntro3EndIter)
-	{
-		GEngine->ChangeLevel("TitleLevel4");
+		++StartCheck;
 	}
-
-	if (UEngineInput::IsAnykeyDown())
+	else if (1 == StartCheck)
 	{
-		GEngine->ChangeLevel("TitleLevel4");
+		Time += _DeltaTime;
+		if (Time >= FrameTime)
+		{
+			UEngineFile& File = (*TitleIntro3StartIter);
+			UEngineResourcesManager::GetInst().LoadImg(File.GetFullPath());
+			TitleIntroRen3->SetImage(File.GetFileName());
+			++TitleIntro3StartIter;
+			Time = _DeltaTime - FrameTime;
+		}
+
+		if (TitleIntro3StartIter == TitleIntro3EndIter)
+		{
+			StartCheck = 0;
+			TitleIntroRen3->ActiveOff();
+			GEngine->ChangeLevel("TitleLevel4");
+		}
+
+		if (UEngineInput::IsAnykeyDown())
+		{
+			StartCheck = 0;
+			TitleIntroRen3->ActiveOff();
+			GEngine->ChangeLevel("TitleLevel4");
+		}
 	}
 }

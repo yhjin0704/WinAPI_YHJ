@@ -20,6 +20,8 @@ public:
 protected:
 
 private:
+	int StartCheck = 0;
+
 	float Time = 0.0f;
 	float FrameTime = 0.016f;
 
