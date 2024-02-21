@@ -52,6 +52,11 @@ void ATitleActor2::Tick(float _DeltaTime)
 
 	if (TitleIntro2StartIter == TitleIntro2EndIter)
 	{
-		GEngine->ChangeLevel("WestFieldLevel");
+		GEngine->ChangeLevel("TitleLevel3");
+	}
+
+	if (UEngineInput::IsAnykeyDown())
+	{
+		GEngine->ChangeLevel("TitleLevel3");
 	}
 }

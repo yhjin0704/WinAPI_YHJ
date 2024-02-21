@@ -39,8 +39,15 @@
     <ClCompile Include="TitleActor2.cpp">
       <Filter>Title\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="TiltleLevel3.cpp">
+    <ClCompile Include="TitleLevel3.cpp" />
+    <ClCompile Include="TitleActor3.cpp">
+      <Filter>Title\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleLevel4.cpp">
       <Filter>Title</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleActor4.cpp">
+      <Filter>Title\Actor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -82,8 +89,17 @@
     <ClInclude Include="TitleActor2.h">
       <Filter>Title\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="TiltleLevel3.h">
+    <ClInclude Include="TitleLevel3.h">
       <Filter>Title</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleActor3.h">
+      <Filter>Title\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleLevel4.h">
+      <Filter>Title</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleActor4.h">
+      <Filter>Title\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

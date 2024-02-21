@@ -3,6 +3,8 @@
 #include "Player.h"
 #include "TitleLevel1.h"
 #include "TitleLevel2.h"
+#include "TitleLevel3.h"
+#include "TitleLevel4.h"
 #include "WestFieldLevel.h"
 
 Pokemon3rdGen_Core::Pokemon3rdGen_Core()
@@ -23,6 +25,8 @@ void Pokemon3rdGen_Core::BeginPlay()
 
 	CreateLevel<UTitleLevel1>("TitleLevel1");
 	CreateLevel<UTitleLevel2>("TitleLevel2");
+	CreateLevel<UTitleLevel3>("TitleLevel3");
+	CreateLevel<UTitleLevel4>("TitleLevel4");
 	CreateLevel<UWestFieldLevel>("WestFieldLevel");
 
 	ChangeLevel("TitleLevel1");

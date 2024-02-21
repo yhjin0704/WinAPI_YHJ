@@ -6,7 +6,7 @@ enum class ERenderOrder
 	ColMap,
 	Map,
 	Player,
-	CoverObject
+	CoverMap
 };
 
 enum class ECollisionOrder

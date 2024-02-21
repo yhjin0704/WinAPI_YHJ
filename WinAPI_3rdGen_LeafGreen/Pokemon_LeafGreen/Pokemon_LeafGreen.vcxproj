@@ -192,14 +192,17 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TitleActor3.cpp" />
+    <ClCompile Include="TitleActor4.cpp" />
     <ClCompile Include="TitleLevel2.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="TiltleLevel3.cpp">
+    <ClCompile Include="TitleLevel3.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TitleLevel4.cpp" />
     <ClCompile Include="WestFieldGround.cpp" />
     <ClCompile Include="Player.cpp">
       <SubType>
@@ -216,6 +219,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="TitleActor3.h" />
     <ClInclude Include="TitleActor2.h">
       <SubType>
       </SubType>
@@ -242,14 +246,16 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TitleActor4.h" />
     <ClInclude Include="TitleLevel2.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="TiltleLevel3.h">
+    <ClInclude Include="TitleLevel3.h">
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TitleLevel4.h" />
     <ClInclude Include="WestFieldGround.h" />
     <ClInclude Include="Player.h">
       <SubType>
