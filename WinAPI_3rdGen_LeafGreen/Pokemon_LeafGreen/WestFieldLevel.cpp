@@ -25,3 +25,11 @@ void UWestFieldLevel::BeginPlay()
 void UWestFieldLevel::Tick(float _DeltaTime)
 {
 }
+
+void UWestFieldLevel::LevelStart(ULevel* _PrevLevel)
+{
+}
+
+void UWestFieldLevel::LevelEnd(ULevel* _NextLevel)
+{
+}

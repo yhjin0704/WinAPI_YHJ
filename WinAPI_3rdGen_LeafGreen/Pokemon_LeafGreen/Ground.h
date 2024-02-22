@@ -26,9 +26,9 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	UImageRenderer* MapRenderer;
-	UImageRenderer* ColMapRenderer;
-	UImageRenderer* CoverMapRenderer;
+	UImageRenderer* MapRenderer = nullptr;
+	UImageRenderer* ColMapRenderer = nullptr;
+	UImageRenderer* CoverMapRenderer = nullptr;
 
 private:
 };

@@ -15,6 +15,11 @@ public:
 	UFieldLevel& operator=(const UFieldLevel& _Other) = delete;
 	UFieldLevel& operator=(UFieldLevel&& _Other) noexcept = delete;
 
+	APlayer* GetPlayer()
+	{
+		return Player;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

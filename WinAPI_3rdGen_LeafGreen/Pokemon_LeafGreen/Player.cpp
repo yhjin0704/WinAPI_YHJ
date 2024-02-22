@@ -71,7 +71,7 @@ void APlayer::BeginPlay()
 
 	CharacterRenderer->SetImage("Player_Boy_Walk_Down.png", 1);
 
-	PlayerCollision = CreateCollision(0);
+	PlayerCollision = CreateCollision(ECollisionOrder::Player);
 	PlayerCollision->SetScale({ IGameTileScale, IGameTileScale });
 	PlayerCollision->SetColType(ECollisionType::Rect);
 }

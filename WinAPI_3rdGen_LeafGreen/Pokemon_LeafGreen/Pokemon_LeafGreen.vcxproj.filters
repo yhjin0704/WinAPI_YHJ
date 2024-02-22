@@ -52,13 +52,13 @@
       <Filter>Title</Filter>
     </ClCompile>
     <ClCompile Include="PlayerHome1FLevel.cpp">
-      <Filter>Field\WestFieldLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerHome1FGround.cpp">
-      <Filter>Field\WestFieldLevel\Actor</Filter>
+      <Filter>Field\WestFieldLevel\PlayerHome</Filter>
     </ClCompile>
     <ClCompile Include="PlayerHomeDoor.cpp">
-      <Filter>Field\WestFieldLevel\Actor</Filter>
+      <Filter>Field\WestFieldLevel\PlayerHome\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHome1FGround.cpp">
+      <Filter>Field\WestFieldLevel\PlayerHome\Actor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -113,13 +113,13 @@
       <Filter>Title\Actor</Filter>
     </ClInclude>
     <ClInclude Include="PlayerHome1FLevel.h">
-      <Filter>Field\WestFieldLevel</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerHome1FGround.h">
-      <Filter>Field\WestFieldLevel\Actor</Filter>
+      <Filter>Field\WestFieldLevel\PlayerHome</Filter>
     </ClInclude>
     <ClInclude Include="PlayerHomeDoor.h">
-      <Filter>Field\WestFieldLevel\Actor</Filter>
+      <Filter>Field\WestFieldLevel\PlayerHome\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHome1FGround.h">
+      <Filter>Field\WestFieldLevel\PlayerHome\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +152,12 @@
     </Filter>
     <Filter Include="Field\WestFieldLevel\Actor">
       <UniqueIdentifier>{80937f5a-dbab-45ca-8dac-075693d0cb9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\WestFieldLevel\PlayerHome">
+      <UniqueIdentifier>{4fac5fa3-1691-4ebd-aae0-40944344860b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\WestFieldLevel\PlayerHome\Actor">
+      <UniqueIdentifier>{c8a965c9-e353-4283-820f-2c3d8eaca706}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

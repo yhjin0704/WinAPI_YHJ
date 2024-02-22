@@ -20,6 +20,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
+
 	FVector PrevFieldPos = FVector::Zero;
 	UCollision* PlayerCollision = nullptr;
 

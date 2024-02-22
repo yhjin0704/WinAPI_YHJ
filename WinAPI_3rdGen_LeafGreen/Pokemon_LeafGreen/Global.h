@@ -11,7 +11,8 @@ enum class ERenderOrder
 
 enum class ECollisionOrder
 {
-	Player
+	Player,
+	Door
 };
 
 enum class EDirState
