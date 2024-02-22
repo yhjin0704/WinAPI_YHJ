@@ -39,7 +39,6 @@
     <ClCompile Include="TitleActor2.cpp">
       <Filter>Title\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="TitleLevel3.cpp" />
     <ClCompile Include="TitleActor3.cpp">
       <Filter>Title\Actor</Filter>
     </ClCompile>
@@ -48,6 +47,18 @@
     </ClCompile>
     <ClCompile Include="TitleActor4.cpp">
       <Filter>Title\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleLevel3.cpp">
+      <Filter>Title</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHome1FLevel.cpp">
+      <Filter>Field\WestFieldLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHome1FGround.cpp">
+      <Filter>Field\WestFieldLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHomeDoor.cpp">
+      <Filter>Field\WestFieldLevel\Actor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +111,15 @@
     </ClInclude>
     <ClInclude Include="TitleActor4.h">
       <Filter>Title\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHome1FLevel.h">
+      <Filter>Field\WestFieldLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHome1FGround.h">
+      <Filter>Field\WestFieldLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHomeDoor.h">
+      <Filter>Field\WestFieldLevel\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

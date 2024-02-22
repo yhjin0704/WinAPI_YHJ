@@ -1,5 +1,6 @@
 #pragma once
 #include "FieldLevel.h"
+#include <EngineBase\EngineDirectory.h>
 
 class UWestFieldLevel : public UFieldLevel
 {
@@ -19,5 +20,5 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-
+	UEngineDirectory GroundPath;
 };

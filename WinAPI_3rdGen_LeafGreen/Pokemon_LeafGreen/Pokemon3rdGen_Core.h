@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore\EngineCore.h>
+#include <EngineBase\EngineDirectory.h>
 
 class Pokemon3rdGen_Core : public UEngineCore
 {
@@ -18,6 +19,8 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 	void End() override;
+
+	UEngineDirectory FieldPath;
 
 private:
 

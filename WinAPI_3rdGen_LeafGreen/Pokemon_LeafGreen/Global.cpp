@@ -34,7 +34,7 @@ const float Global::GBikeTime = 0.12f;
 
 const float Global::GColCheckDown = GFGameTileScale;
 const float Global::GColCheckUp = 1.0f;
-const float Global::GColCheckLeft = GFHGameTileScale + (GFScaleMultiple / 2);
+const float Global::GColCheckLeft = GFHGameTileScale + (GFScaleMultiple / 2) + 1.0f;
 const float Global::GColCheckRight = GFHGameTileScale;
 
 UWindowImage* Global::GColMapImage = nullptr;

@@ -166,6 +166,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="PlayerHomeDoor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerHome1FGround.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="TitleActor2.cpp">
       <SubType>
       </SubType>
@@ -203,6 +211,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="TitleLevel4.cpp" />
+    <ClCompile Include="PlayerHome1FLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="WestFieldGround.cpp" />
     <ClCompile Include="Player.cpp">
       <SubType>
@@ -219,6 +231,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PlayerHomeDoor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerHome1FGround.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TitleActor3.h" />
     <ClInclude Include="TitleActor2.h">
       <SubType>
@@ -256,6 +276,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="TitleLevel4.h" />
+    <ClInclude Include="PlayerHome1FLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="WestFieldGround.h" />
     <ClInclude Include="Player.h">
       <SubType>

@@ -6,6 +6,9 @@
 #include "TitleLevel3.h"
 #include "TitleLevel4.h"
 #include "WestFieldLevel.h"
+#include "PlayerHome1FLevel.h"
+#include <EngineCore\EngineResourcesManager.h>
+#include <EngineBase\EngineFile.h>
 
 Pokemon3rdGen_Core::Pokemon3rdGen_Core()
 	: UEngineCore()
@@ -23,13 +26,26 @@ void Pokemon3rdGen_Core::BeginPlay()
 	MainWindow.SetClearColor(Color8Bit::BlackA);
 	SetFrame(60);
 
+	FieldPath.MoveParent();
+	FieldPath.Move("Resources");
+	FieldPath.Move("Field");
+
+	std::list<UEngineFile> AllFileList = FieldPath.AllFile({ ".png", ".bmp" }, true);
+
+	for (UEngineFile& File : AllFileList)
+	{
+		UEngineResourcesManager::GetInst().LoadImg(File.GetFullPath());
+	}
+
 	CreateLevel<UTitleLevel1>("TitleLevel1");
 	CreateLevel<UTitleLevel2>("TitleLevel2");
 	CreateLevel<UTitleLevel3>("TitleLevel3");
 	CreateLevel<UTitleLevel4>("TitleLevel4");
-	CreateLevel<UWestFieldLevel>("WestFieldLevel");
 
-	ChangeLevel("TitleLevel1");
+	CreateLevel<UWestFieldLevel>("WestFieldLevel");
+	CreateLevel<UPlayerHome1FLevel>("PlayerHome1FLevel");
+
+	ChangeLevel("PlayerHome1FLevel");
 }
 
 void Pokemon3rdGen_Core::Tick(float _DeltaTime)
