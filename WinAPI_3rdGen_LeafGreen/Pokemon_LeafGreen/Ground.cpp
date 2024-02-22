@@ -56,8 +56,7 @@ void AGround::SetMapImage(std::string_view _MapImageName)
 void AGround::SetColMapImage(std::string_view _MapImageName)
 {
 	ColMapRenderer->SetImage(_MapImageName);
-	UWindowImage* ColMapImage = ColMapRenderer->GetImage();
-	Global::GColMapImage = ColMapImage;
+	ColMapImage = ColMapRenderer->GetImage();
 	FVector ImageScale = ColMapImage->GetScale();
 	ColMapRenderer->SetTransform({ (ImageScale.Half2D() * FScaleMultiple), (ImageScale * FScaleMultiple) });
 }

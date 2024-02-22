@@ -1,5 +1,7 @@
 #pragma once
 #include "FieldLevel.h"
+#include "WestFieldGround.h"
+#include "PlayerHomeDoorOut.h"
 
 class UWestFieldLevel : public UFieldLevel
 {
@@ -21,4 +23,6 @@ protected:
 	void LevelEnd(ULevel* _NextLevel) override;
 
 private:
+	AWestFieldGround* Ground;
+	APlayerHomeDoorOut* Door;
 };

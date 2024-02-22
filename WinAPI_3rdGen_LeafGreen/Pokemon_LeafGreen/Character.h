@@ -20,6 +20,11 @@ public:
 		Name = _Name;
 	}
 
+	void SetCharacterDir(EDirState _Dir)
+	{
+		PrevDirInput = _Dir;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

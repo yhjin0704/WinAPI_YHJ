@@ -60,6 +60,9 @@
     <ClCompile Include="PlayerHome1FGround.cpp">
       <Filter>Field\WestFieldLevel\PlayerHome\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerHomeDoorOut.cpp">
+      <Filter>Field\WestFieldLevel\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -120,6 +123,9 @@
     </ClInclude>
     <ClInclude Include="PlayerHome1FGround.h">
       <Filter>Field\WestFieldLevel\PlayerHome\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHomeDoorOut.h">
+      <Filter>Field\WestFieldLevel\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

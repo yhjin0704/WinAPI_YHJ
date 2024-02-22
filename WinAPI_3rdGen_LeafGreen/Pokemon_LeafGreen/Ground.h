@@ -19,12 +19,19 @@ public:
 	void SetColMapImage(std::string_view _MapImageName);
 	void SetCoverMapImage(std::string_view _MapImageName);
 
+	UWindowImage* GetColMapImage()
+	{
+		return ColMapImage;
+	}
+
 	void SwitchDebug();
 
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
+
+	UWindowImage* ColMapImage = nullptr;
 
 	UImageRenderer* MapRenderer = nullptr;
 	UImageRenderer* ColMapRenderer = nullptr;
