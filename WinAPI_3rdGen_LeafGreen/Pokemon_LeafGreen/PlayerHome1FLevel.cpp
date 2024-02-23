@@ -20,7 +20,7 @@ void UPlayerHome1FLevel::BeginPlay()
 	Ground = SpawnActor<PlayerHome1FGround>();
 	Door = SpawnActor<APlayerHomeDoor>();
 
-	Door->SetActorLocation({ (64 + FTileScale) * FScaleMultiple , (144 + (FTileScale)) * FScaleMultiple });
+	Door->SetActorLocation({ (64 + (FTileScale / 2)) * FScaleMultiple , (144 + (FTileScale)) * FScaleMultiple });
 
 	Player->SetActorLocation({ (64 + (FTileScale / 2)) * FScaleMultiple , (128) * FScaleMultiple });
 }

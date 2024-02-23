@@ -86,19 +86,15 @@ void ACharacter::SetColCheckPos(EDirState _PrevDirInput)
 	switch (_PrevDirInput)
 	{
 	case EDirState::Down:
-		IsColCheckPos = GetActorLocation();
 		IsColCheckPos = GetActorLocation() + (FVector::Down * FColCheckDown);
 		break;
 	case EDirState::Up:
-		IsColCheckPos = GetActorLocation();
 		IsColCheckPos = GetActorLocation() + (FVector::Up * FColCheckUp);
 		break;
 	case EDirState::Left:
-		IsColCheckPos = GetActorLocation();
 		IsColCheckPos = GetActorLocation() + (FVector::Left * FColCheckLeft);
 		break;
 	case EDirState::Right:
-		IsColCheckPos = GetActorLocation();
 		IsColCheckPos = GetActorLocation() + (FVector::Right * FColCheckRight);
 		break;
 	default:
@@ -106,10 +102,10 @@ void ACharacter::SetColCheckPos(EDirState _PrevDirInput)
 	}
 }
 
-bool ACharacter::ColCheck(EDirState _PrevDirInput)
+bool ACharacter::ColCheck(EDirState _PrevDirInput)//FScaleMultiple
 {
 	SetColCheckPos(_PrevDirInput);
-	Color8Bit ColColor = Global::GColMapImage->GetColor((IsColCheckPos.iX() / FScaleMultiple), (IsColCheckPos.iY() / FScaleMultiple), Color8Bit::MagentaA);
+	Color8Bit ColColor = Global::GColMapImage->GetColor((IsColCheckPos.iX() / IScaleMultiple), (IsColCheckPos.iY() / IScaleMultiple), Color8Bit::MagentaA);
 	if (Color8Bit::MagentaA == ColColor)
 	{
 		return true;
