@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore\Level.h>
+#include <EnginePlatform\EngineSound.h>
 #include "Player.h"
 
 class UFieldLevel : public ULevel
@@ -25,6 +26,10 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	APlayer* Player;
+	UEngineSoundPlayer BGMPlayer;
+	std::string PrevMusic = "";
+
+	void ChangeBGM(std::string_view _BGMName);
 
 private:
 

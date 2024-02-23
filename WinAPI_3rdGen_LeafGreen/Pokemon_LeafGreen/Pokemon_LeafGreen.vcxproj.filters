@@ -51,17 +51,29 @@
     <ClCompile Include="TitleLevel3.cpp">
       <Filter>Title</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerHome1FLevel.cpp">
-      <Filter>Field\WestFieldLevel\PlayerHome</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerHomeDoor.cpp">
-      <Filter>Field\WestFieldLevel\PlayerHome\Actor</Filter>
+      <Filter>Field\WestFieldLevel\PlayerHome\1F\Actor</Filter>
     </ClCompile>
     <ClCompile Include="PlayerHome1FGround.cpp">
-      <Filter>Field\WestFieldLevel\PlayerHome\Actor</Filter>
+      <Filter>Field\WestFieldLevel\PlayerHome\1F\Actor</Filter>
     </ClCompile>
     <ClCompile Include="PlayerHomeDoorOut.cpp">
       <Filter>Field\WestFieldLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHome1FStairs.cpp">
+      <Filter>Field\WestFieldLevel\PlayerHome\1F\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHome1FLevel.cpp">
+      <Filter>Field\WestFieldLevel\PlayerHome\1F</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHome2FLevel.cpp">
+      <Filter>Field\WestFieldLevel\PlayerHome\2F</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHome2FGround.cpp">
+      <Filter>Field\WestFieldLevel\PlayerHome\2F\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHome2FStairs.cpp">
+      <Filter>Field\WestFieldLevel\PlayerHome\2F\Actor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -115,17 +127,29 @@
     <ClInclude Include="TitleActor4.h">
       <Filter>Title\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerHome1FLevel.h">
-      <Filter>Field\WestFieldLevel\PlayerHome</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerHomeDoor.h">
-      <Filter>Field\WestFieldLevel\PlayerHome\Actor</Filter>
+      <Filter>Field\WestFieldLevel\PlayerHome\1F\Actor</Filter>
     </ClInclude>
     <ClInclude Include="PlayerHome1FGround.h">
-      <Filter>Field\WestFieldLevel\PlayerHome\Actor</Filter>
+      <Filter>Field\WestFieldLevel\PlayerHome\1F\Actor</Filter>
     </ClInclude>
     <ClInclude Include="PlayerHomeDoorOut.h">
       <Filter>Field\WestFieldLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHome1FStairs.h">
+      <Filter>Field\WestFieldLevel\PlayerHome\1F\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHome1FLevel.h">
+      <Filter>Field\WestFieldLevel\PlayerHome\1F</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHome2FLevel.h">
+      <Filter>Field\WestFieldLevel\PlayerHome\2F</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHome2FGround.h">
+      <Filter>Field\WestFieldLevel\PlayerHome\2F\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHome2FStairs.h">
+      <Filter>Field\WestFieldLevel\PlayerHome\2F\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -162,8 +186,17 @@
     <Filter Include="Field\WestFieldLevel\PlayerHome">
       <UniqueIdentifier>{4fac5fa3-1691-4ebd-aae0-40944344860b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Field\WestFieldLevel\PlayerHome\Actor">
+    <Filter Include="Field\WestFieldLevel\PlayerHome\1F">
+      <UniqueIdentifier>{24931602-1856-48fe-adf5-93e0565837e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\WestFieldLevel\PlayerHome\2F">
+      <UniqueIdentifier>{e74648dc-f2f0-4431-9566-add4bd26f416}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\WestFieldLevel\PlayerHome\1F\Actor">
       <UniqueIdentifier>{c8a965c9-e353-4283-820f-2c3d8eaca706}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\WestFieldLevel\PlayerHome\2F\Actor">
+      <UniqueIdentifier>{d58b9173-6688-42aa-a20d-62ee5b195385}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

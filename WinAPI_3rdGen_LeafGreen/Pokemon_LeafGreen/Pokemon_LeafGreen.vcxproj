@@ -170,6 +170,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="PlayerHome2FStairs.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerHome1FStairs.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerHome2FGround.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PlayerHomeDoorOut.cpp">
       <SubType>
       </SubType>
@@ -223,6 +235,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="PlayerHome2FLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="WestFieldGround.cpp" />
     <ClCompile Include="Player.cpp">
       <SubType>
@@ -239,6 +255,18 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PlayerHome2FStairs.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerHome1FStairs.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerHome2FGround.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PlayerHomeDoorOut.h">
       <SubType>
       </SubType>
@@ -289,6 +317,10 @@
     </ClInclude>
     <ClInclude Include="TitleLevel4.h" />
     <ClInclude Include="PlayerHome1FLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerHome2FLevel.h">
       <SubType>
       </SubType>
     </ClInclude>

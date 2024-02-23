@@ -1,6 +1,5 @@
 #pragma once
 #include "FieldLevel.h"
-#include <EnginePlatform\EngineSound.h>
 #include "WestFieldGround.h"
 #include "PlayerHomeDoorOut.h"
 
@@ -26,5 +25,5 @@ protected:
 private:
 	AWestFieldGround* Ground;
 	APlayerHomeDoorOut* Door;
-	UEngineSoundPlayer BGMPlayer;
+
 };

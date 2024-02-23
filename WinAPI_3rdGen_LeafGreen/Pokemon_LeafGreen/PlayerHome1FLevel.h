@@ -2,6 +2,7 @@
 #include "FieldLevel.h"
 #include "PlayerHome1FGround.h"
 #include "PlayerHomeDoor.h"
+#include "PlayerHome1FStairs.h"
 
 class UPlayerHome1FLevel : public UFieldLevel
 {
@@ -25,5 +26,6 @@ protected:
 private:
 	PlayerHome1FGround* Ground;
 	APlayerHomeDoor* Door;
+	APlayerHome1FStairs* Stairs;
 };
 

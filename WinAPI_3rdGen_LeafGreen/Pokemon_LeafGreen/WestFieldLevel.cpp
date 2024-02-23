@@ -28,14 +28,19 @@ void UWestFieldLevel::BeginPlay()
 
 void UWestFieldLevel::Tick(float _DeltaTime)
 {
-	if (GetPlayer()->GetActorLocation().iY() == (1872 * IScaleMultiple))
-	{
-		BGMPlayer.Off();
-	}
 	if (GetPlayer()->GetActorLocation().iY() == (1888 * IScaleMultiple))
 	{
-		BGMPlayer.Off();
-		BGMPlayer = UEngineSound::SoundPlay("Pallet_Town.mp3");
+		if ("Route_1.mp3" != PrevMusic)
+		{
+			ChangeBGM("Route_1.mp3");
+		}
+	}
+	if (GetPlayer()->GetActorLocation().iY() == (1904 * IScaleMultiple))
+	{
+		if ("Pallet_Town.mp3" != PrevMusic)
+		{
+			ChangeBGM("Pallet_Town.mp3");
+		}
 	}
 }
 
@@ -54,8 +59,7 @@ void UWestFieldLevel::LevelStart(ULevel* _PrevLevel)
 	}
 	else
 	{
-		BGMPlayer = UEngineSound::SoundPlay("Pallet_Town.mp3");
-		BGMPlayer.Loop();
+		ChangeBGM("Pallet_Town.mp3");
 	}
 }
 
@@ -63,11 +67,5 @@ void UWestFieldLevel::LevelEnd(ULevel* _NextLevel)
 {
 	if (nullptr != _NextLevel)
 	{
-		UFieldLevel* Field = dynamic_cast<UFieldLevel*>(_NextLevel);
-		if (UEngineString::ToUpper("PlayerHome1FLevel") == Field->GetName())
-		{
-			GetPlayer()->SetActorLocation({ (64 + (FTileScale / 2)) * FScaleMultiple , (128) * FScaleMultiple });
-			GetPlayer()->SetCharacterDir(EDirState::Up);
-		}
 	}
 }

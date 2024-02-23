@@ -7,6 +7,7 @@
 #include "TitleLevel4.h"
 #include "WestFieldLevel.h"
 #include "PlayerHome1FLevel.h"
+#include "PlayerHome2FLevel.h"
 #include <EnginePlatform\EngineSound.h>
 #include <EngineBase\EngineDirectory.h>
 #include <EngineCore\EngineResourcesManager.h>
@@ -57,6 +58,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 
 	CreateLevel<UWestFieldLevel>("WestFieldLevel");
 	CreateLevel<UPlayerHome1FLevel>("PlayerHome1FLevel");
+	CreateLevel<UPlayerHome2FLevel>("PlayerHome2FLevel");
 
 	ChangeLevel("WestFieldLevel");
 }

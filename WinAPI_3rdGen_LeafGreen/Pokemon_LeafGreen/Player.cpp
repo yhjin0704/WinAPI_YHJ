@@ -96,19 +96,8 @@ void APlayer::Tick(float _DeltaTime)
 		PlayIdleAnimation();
 	}
 
-	if (UEngineInput::IsDown('9'))
-	{
-		if (false == IsTextDebugView)
-		{
-			IsTextDebugView = true;
-		}
-		else
-		{
-			IsTextDebugView = false;
-		}
-	}
-	UEngineDebug::DebugTextPrint("PlayerPos : " + GetTransform().GetPosition().ToString(), 15.0f);
-	UEngineDebug::DebugTextPrint("PlayerScale : " + GetTransform().GetPosition().ToString(), 20.0f);
+	FVector Pos = GetActorLocation();
+	int a = 0;
 }
 
 void APlayer::KeyInputMove(float _DeltaTime)
