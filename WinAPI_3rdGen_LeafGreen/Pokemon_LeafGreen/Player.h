@@ -28,6 +28,8 @@ private:
 	float CurDelayTime = 0.0f;
 
 	EMoveType PrevMoveType = EMoveType::Walk;
+
+	bool IsTextDebugView = false;
 	
 	void KeyInputMove(float _DeltaTime);
 	void SetKeyInputAnimation(EDirState _InputDir);

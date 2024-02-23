@@ -1,6 +1,7 @@
 #include "Player.h"
 #include <EnginePlatform\EngineInput.h>
 #include <EngineCore\EngineResourcesManager.h>
+#include <EngineCore\EngineDebug.h>
 #include "Global.h"
 
 APlayer::APlayer()
@@ -94,6 +95,20 @@ void APlayer::Tick(float _DeltaTime)
 	{
 		PlayIdleAnimation();
 	}
+
+	if (UEngineInput::IsDown('9'))
+	{
+		if (false == IsTextDebugView)
+		{
+			IsTextDebugView = true;
+		}
+		else
+		{
+			IsTextDebugView = false;
+		}
+	}
+	UEngineDebug::DebugTextPrint("PlayerPos : " + GetTransform().GetPosition().ToString(), 15.0f);
+	UEngineDebug::DebugTextPrint("PlayerScale : " + GetTransform().GetPosition().ToString(), 20.0f);
 }
 
 void APlayer::KeyInputMove(float _DeltaTime)

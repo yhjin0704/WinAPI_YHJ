@@ -33,6 +33,10 @@ void UWestFieldLevel::Tick(float _DeltaTime)
 void UWestFieldLevel::LevelStart(ULevel* _PrevLevel)
 {
 	Global::GColMapImage = Ground->GetColMapImage();
+
+	BGMPlayer = UEngineSound::SoundPlay("Pallet_Town.mp3");
+	BGMPlayer.Loop();
+
 	if (nullptr != _PrevLevel)
 	{
 		UFieldLevel* Field = dynamic_cast<UFieldLevel*>(_PrevLevel);

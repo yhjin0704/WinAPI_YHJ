@@ -7,6 +7,8 @@
 #include "TitleLevel4.h"
 #include "WestFieldLevel.h"
 #include "PlayerHome1FLevel.h"
+#include <EnginePlatform\EngineSound.h>
+#include <EngineBase\EngineDirectory.h>
 #include <EngineCore\EngineResourcesManager.h>
 #include <EngineBase\EngineFile.h>
 
@@ -26,15 +28,26 @@ void Pokemon3rdGen_Core::BeginPlay()
 	MainWindow.SetClearColor(Color8Bit::BlackA);
 	SetFrame(60);
 
-	FieldPath.MoveParent();
-	FieldPath.Move("Resources");
-	FieldPath.Move("Field");
-
-	std::list<UEngineFile> AllFileList = FieldPath.AllFile({ ".png", ".bmp" }, true);
-
-	for (UEngineFile& File : AllFileList)
 	{
-		UEngineResourcesManager::GetInst().LoadImg(File.GetFullPath());
+		FieldPath.MoveParent();
+		FieldPath.Move("Resources");
+		FieldPath.Move("Field");
+
+		std::list<UEngineFile> AllGraphicList = FieldPath.AllFile({ ".png", ".bmp" }, true);
+
+		for (UEngineFile& File : AllGraphicList)
+		{
+			UEngineResourcesManager::GetInst().LoadImg(File.GetFullPath());
+		}
+	}
+
+	{
+		std::list<UEngineFile> NewSoundsList = FieldPath.AllFile({ ".wav", ".mp3" }, true);
+
+		for (UEngineFile& File : NewSoundsList)
+		{
+			UEngineSound::Load(File.GetFullPath());
+		}
 	}
 
 	CreateLevel<UTitleLevel1>("TitleLevel1");
