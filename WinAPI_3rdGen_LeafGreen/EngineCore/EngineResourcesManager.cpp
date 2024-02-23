@@ -37,8 +37,6 @@ UWindowImage* UEngineResourcesManager::LoadImg(std::string_view _Path, std::stri
 
 	if (true == Images.contains(UpperName))
 	{
-
-
 		// 에디터 모드나 디버그에서는 속력을 따질필요가 없다.
 		// 게임에서 실제 실행되지 않을 내용에 대해서는 속력을 따지지 않는다.
 		MsgBoxAssert(std::string("경로 : ") + std::string(_Path) + "파일명 : " + std::string(_Name) + "이미 로드한 파일을 또 로드하려고 했습니다");
@@ -117,5 +115,5 @@ UWindowImage* UEngineResourcesManager::LoadFolder(std::string_view _Path, std::s
 	// 그래서 Png를 출력하는것도 아니고 부분 반투명
 	Images[UpperName] = NewImage;
 
-	return nullptr;
+	return NewImage;
 }

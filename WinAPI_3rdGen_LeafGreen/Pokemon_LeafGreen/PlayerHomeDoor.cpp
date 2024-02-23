@@ -15,6 +15,7 @@ void APlayerHomeDoor::BeginPlay()
 	HomeDoorCollision = CreateCollision(ECollisionOrder::Door);
 	HomeDoorCollision->SetScale({ IGameTileScale, IGameTileScale });
 	HomeDoorCollision->SetColType(ECollisionType::Rect);
+	HomeDoorCollision->DebugRender(GetWorld()->GetCameraPos());
 }
 
 void APlayerHomeDoor::Tick(float _DeltaTime) 

@@ -21,7 +21,7 @@ void UWestFieldLevel::BeginPlay()
 	Ground = SpawnActor<AWestFieldGround>();
 	Door = SpawnActor<APlayerHomeDoorOut>();
 
-	Door->SetActorLocation({ (1136 + FTileScale) * FScaleMultiple , (2016 - FTileScale + 1) * FScaleMultiple });
+	Door->SetActorLocation({ (1136 + FTileScale) * FScaleMultiple , (2016 - FTileScale) * FScaleMultiple });
 
 	Player->SetActorLocation({ (1136 + (FTileScale / 2)) * FScaleMultiple , (2032) * FScaleMultiple });
 }
@@ -32,23 +32,20 @@ void UWestFieldLevel::Tick(float _DeltaTime)
 
 void UWestFieldLevel::LevelStart(ULevel* _PrevLevel)
 {
-	Ground->SetActive(true);
-	Door->SetActive(true);
+	Global::GColMapImage = Ground->GetColMapImage();
 	if (nullptr != _PrevLevel)
 	{
 		UFieldLevel* Field = dynamic_cast<UFieldLevel*>(_PrevLevel);
 		if (UEngineString::ToUpper("PlayerHome1FLevel") == Field->GetName())
 		{
-			GetPlayer()->SetActorLocation({ (1136 + (FTileScale / 2)) * FScaleMultiple , (2032) * FScaleMultiple });
 			GetPlayer()->SetCharacterDir(EDirState::Down);
+			GetPlayer()->SetActorLocation({ (1136 + (FTileScale / 2)) * FScaleMultiple , (2032) * FScaleMultiple });
 		}
 	}
 }
 
 void UWestFieldLevel::LevelEnd(ULevel* _NextLevel)
 {
-	Ground->SetActive(false);
-	Door->SetActive(false);
 	if (nullptr != _NextLevel)
 	{
 		UFieldLevel* Field = dynamic_cast<UFieldLevel*>(_NextLevel);
