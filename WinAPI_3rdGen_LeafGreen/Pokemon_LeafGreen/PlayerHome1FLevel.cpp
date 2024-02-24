@@ -24,7 +24,7 @@ void UPlayerHome1FLevel::BeginPlay()
 	Stairs = SpawnActor<APlayerHome1FStairs>();
 
 	Door->SetActorLocation({ (64 + (FTileScale / 2)) * FScaleMultiple , (144 + (FTileScale)) * FScaleMultiple });
-	Stairs->SetActorLocation({ (176 + (FTileScale)) * FScaleMultiple , (32 + (FTileScale / 2)) * FScaleMultiple });
+	Stairs->SetActorLocation({ (176 + FTileScale + (FTileScale / 2)) * FScaleMultiple , (32 + (FTileScale / 2)) * FScaleMultiple });
 }
 
 void UPlayerHome1FLevel::Tick(float _DeltaTime)
@@ -45,12 +45,16 @@ void UPlayerHome1FLevel::LevelStart(ULevel* _PrevLevel)
 		else if (UEngineString::ToUpper("PlayerHome2FLevel") == Field->GetName())
 		{
 			GetPlayer()->SetCharacterDir(EDirState::Left);
-			GetPlayer()->SetActorLocation({ (160 + (FTileScale / 2)) * FScaleMultiple , (32 + (FTileScale)) * FScaleMultiple });
+			GetPlayer()->SetActorLocation({ (160 + (FTileScale / 2)) * FScaleMultiple , (32) * FScaleMultiple });
 		}
 
-		if (UEngineString::ToUpper("WestFieldLevel") != Field->GetName()|| UEngineString::ToUpper("PlayerHome2FLevel") != Field->GetName())
+		if (UEngineString::ToUpper("WestFieldLevel") != Field->GetName())
 		{
 			ChangeBGM("Pallet_Town.mp3");
+		}
+		else if (UEngineString::ToUpper("PlayerHome2FLevel") != Field->GetName())
+		{
+			//ChangeBGM("Pallet_Town.mp3");
 		}
 	}
 }
@@ -59,5 +63,6 @@ void UPlayerHome1FLevel::LevelEnd(ULevel* _NextLevel)
 {
 	if (nullptr != _NextLevel)
 	{
+
 	}
 }

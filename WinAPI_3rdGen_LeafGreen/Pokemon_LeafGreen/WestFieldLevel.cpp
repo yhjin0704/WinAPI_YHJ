@@ -48,15 +48,16 @@ void UWestFieldLevel::LevelStart(ULevel* _PrevLevel)
 {
 	Global::GColMapImage = Ground->GetColMapImage();
 
-	if (nullptr != _PrevLevel)
-	{
 		UFieldLevel* Field = dynamic_cast<UFieldLevel*>(_PrevLevel);
-		if (UEngineString::ToUpper("PlayerHome1FLevel") == Field->GetName())
+		if (nullptr != Field && UEngineString::ToUpper("TitleLevel4") != Field->GetName())
 		{
-			GetPlayer()->SetCharacterDir(EDirState::Down);
-			GetPlayer()->SetActorLocation({ (1136 + (FTileScale / 2)) * FScaleMultiple , (2032) * FScaleMultiple });
+
+			if (UEngineString::ToUpper("PlayerHome1FLevel") == Field->GetName())
+			{
+				GetPlayer()->SetCharacterDir(EDirState::Down);
+				GetPlayer()->SetActorLocation({ (1136 + (FTileScale / 2)) * FScaleMultiple , (2032) * FScaleMultiple });
+			}
 		}
-	}
 	else
 	{
 		ChangeBGM("Pallet_Town.mp3");

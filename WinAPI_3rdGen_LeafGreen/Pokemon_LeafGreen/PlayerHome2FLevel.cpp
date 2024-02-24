@@ -20,9 +20,9 @@ void UPlayerHome2FLevel::BeginPlay()
 	Ground = SpawnActor<PlayerHome2FGround>();
 	Stairs = SpawnActor<APlayerHome2FStairs>();
 
-	Stairs->SetActorLocation({ (144) * FScaleMultiple , (48 + (FTileScale / 2)) * FScaleMultiple });
+	Stairs->SetActorLocation({ (144 - (FTileScale / 2)) * FScaleMultiple , (48 + (FTileScale / 2)) * FScaleMultiple });
 
-	Player->SetActorLocation({ (96 + (FTileScale / 2)) * FScaleMultiple , (112) * FScaleMultiple });
+	Player->SetActorLocation({ (64 + (FTileScale / 2)) * FScaleMultiple , (112) * FScaleMultiple });
 }
 
 void UPlayerHome2FLevel::Tick(float _DeltaTime)
@@ -52,5 +52,6 @@ void UPlayerHome2FLevel::LevelEnd(ULevel* _NextLevel)
 {
 	if (nullptr != _NextLevel)
 	{
+
 	}
 }

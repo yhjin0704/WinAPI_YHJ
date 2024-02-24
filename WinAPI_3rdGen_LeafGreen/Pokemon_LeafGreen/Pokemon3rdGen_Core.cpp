@@ -60,7 +60,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 	CreateLevel<UPlayerHome1FLevel>("PlayerHome1FLevel");
 	CreateLevel<UPlayerHome2FLevel>("PlayerHome2FLevel");
 
-	ChangeLevel("WestFieldLevel");
+	ChangeLevel("TitleLevel1");
 }
 
 void Pokemon3rdGen_Core::Tick(float _DeltaTime)
