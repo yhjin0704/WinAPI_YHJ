@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore\Actor.h>
+#include "Player.h"
 #include "Global.h"
 
 class AMenu : public AActor
@@ -20,6 +21,6 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-
+	UImageRenderer* MenuRenderer;
 };
 

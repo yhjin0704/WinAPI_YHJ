@@ -1,5 +1,6 @@
 #include "FieldLevel.h"
 #include "Player.h"
+#include "Menu.h"
 #include <EngineCore\EngineResourcesManager.h>
 #include <EngineBase\EngineDirectory.h>
 #include <EngineBase\EngineFile.h>
@@ -38,6 +39,7 @@ void UFieldLevel::BeginPlay()
 	Player->SetCharacterName("Player_Boy");
 
 	Menu = SpawnActor<AMenu>();
+	//Menu->ActiveOff();
 }
 
 void UFieldLevel::Tick(float _DeltaTime)

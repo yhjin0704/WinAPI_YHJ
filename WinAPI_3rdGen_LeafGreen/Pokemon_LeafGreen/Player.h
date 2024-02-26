@@ -5,6 +5,8 @@
 class APlayer : public ACharacter
 {
 public:
+	static APlayer* GetMainPlayer();
+
 	// constrcuter destructer
 	APlayer();
 	~APlayer();
@@ -20,6 +22,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
+	static APlayer* MainPlayer;
 
 	FVector PrevFieldPos = FVector::Zero;
 	UCollision* PlayerCollision = nullptr;

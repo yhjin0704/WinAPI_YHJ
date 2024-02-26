@@ -6,6 +6,13 @@
 #include "Global.h"
 #include "PlayerHelper.h"
 
+APlayer* APlayer::MainPlayer = nullptr;
+
+APlayer* APlayer::GetMainPlayer()
+{
+	return MainPlayer;
+}
+
 APlayer::APlayer()
 {
 }
