@@ -30,14 +30,14 @@ void UWestFieldLevel::Tick(float _DeltaTime)
 {
 	if (GetPlayer()->GetActorLocation().iY() == (1888 * IScaleMultiple))
 	{
-		if ("Route_1.mp3" != PrevMusic)
+		if ("Route_1.mp3" != PrevBGM)
 		{
 			ChangeBGM("Route_1.mp3");
 		}
 	}
 	if (GetPlayer()->GetActorLocation().iY() == (1904 * IScaleMultiple))
 	{
-		if ("Pallet_Town.mp3" != PrevMusic)
+		if ("Pallet_Town.mp3" != PrevBGM)
 		{
 			ChangeBGM("Pallet_Town.mp3");
 		}

@@ -36,6 +36,8 @@ void UFieldLevel::BeginPlay()
 
 	Player = SpawnActor<APlayer>();
 	Player->SetCharacterName("Player_Boy");
+
+	Menu = SpawnActor<AMenu>();
 }
 
 void UFieldLevel::Tick(float _DeltaTime)
@@ -45,8 +47,8 @@ void UFieldLevel::Tick(float _DeltaTime)
 
 void UFieldLevel::ChangeBGM(std::string_view _BGMName)
 {
-	Global::BGMPlayer.Off();
-	Global::BGMPlayer = UEngineSound::SoundPlay(_BGMName);
-	Global::PrevBGM = _BGMName;
-	Global::BGMPlayer.Loop();
+	BGMPlayer.Off();
+	BGMPlayer = UEngineSound::SoundPlay(_BGMName);
+	PrevBGM = _BGMName;
+	BGMPlayer.Loop();
 }

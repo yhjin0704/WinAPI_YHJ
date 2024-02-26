@@ -16,6 +16,8 @@ public:
 	AMenu& operator=(AMenu&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
 
 private:
 
