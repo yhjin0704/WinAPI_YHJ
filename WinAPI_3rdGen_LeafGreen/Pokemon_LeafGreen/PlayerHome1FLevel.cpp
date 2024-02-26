@@ -48,13 +48,9 @@ void UPlayerHome1FLevel::LevelStart(ULevel* _PrevLevel)
 			GetPlayer()->SetActorLocation({ (160 + (FTileScale / 2)) * FScaleMultiple , (32) * FScaleMultiple });
 		}
 
-		if (UEngineString::ToUpper("WestFieldLevel") != Field->GetName())
+		if (UEngineString::ToUpper("WestFieldLevel") != Field->GetName() && UEngineString::ToUpper("PlayerHome2FLevel") != Field->GetName())
 		{
 			ChangeBGM("Pallet_Town.mp3");
-		}
-		else if (UEngineString::ToUpper("PlayerHome2FLevel") != Field->GetName())
-		{
-			//ChangeBGM("Pallet_Town.mp3");
 		}
 	}
 }
