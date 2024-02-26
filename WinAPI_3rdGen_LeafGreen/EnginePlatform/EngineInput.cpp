@@ -144,7 +144,7 @@ void UEngineInput::InputInit()
 	AllKeys[VK_F7] = EngineKey(VK_F7);
 	AllKeys[VK_F8] = EngineKey(VK_F8);
 	AllKeys[VK_F9] = EngineKey(VK_F9);
-	//AllKeys[VK_F10] = EngineKey(VK_F10);
+	AllKeys[VK_F10] = EngineKey(VK_F10);
 	AllKeys[VK_F11] = EngineKey(VK_F11);
 	AllKeys[VK_F12] = EngineKey(VK_F12);
 	AllKeys[VK_F13] = EngineKey(VK_F13);
