@@ -54,6 +54,10 @@ void UPlayerHome1FLevel::LevelStart(ULevel* _PrevLevel)
 			ChangeBGM("Pallet_Town.mp3");
 		}
 	}
+	else
+	{
+		ChangeBGM("Pallet_Town.mp3");
+	}
 }
 
 void UPlayerHome1FLevel::LevelEnd(ULevel* _NextLevel)
