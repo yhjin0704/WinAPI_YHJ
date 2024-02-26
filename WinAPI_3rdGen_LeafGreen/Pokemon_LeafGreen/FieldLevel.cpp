@@ -44,11 +44,3 @@ void UFieldLevel::Tick(float _DeltaTime)
 {
 	ULevel::Tick(_DeltaTime);
 }
-
-void UFieldLevel::ChangeBGM(std::string_view _BGMName)
-{
-	BGMPlayer.Off();
-	BGMPlayer = UEngineSound::SoundPlay(_BGMName);
-	PrevBGM = _BGMName;
-	BGMPlayer.Loop();
-}

@@ -85,6 +85,9 @@ public:
 
 	static UWindowImage* GColMapImage;
 
+	static UEngineSoundPlayer BGMPlayer;
+	static std::string PrevBGM;
+
 	// constrcuter destructer
 	Global();
 	~Global();
@@ -94,6 +97,8 @@ public:
 	Global(Global&& _Other) noexcept = delete;
 	Global& operator=(const Global& _Other) = delete;
 	Global& operator=(Global&& _Other) noexcept = delete;
+
+	static void ChangeBGM(std::string_view _BGMName);
 
 protected:
 

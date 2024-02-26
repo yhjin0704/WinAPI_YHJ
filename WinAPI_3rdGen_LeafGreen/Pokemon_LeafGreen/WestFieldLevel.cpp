@@ -4,7 +4,8 @@
 #include "PlayerHomeDoorOut.h"
 #include <EngineCore\EngineResourcesManager.h>
 #include <EngineBase\EngineFile.h>
-#include "global.h"
+#include "Global.h"
+#include "PlayerHelper.h"
 
 UWestFieldLevel::UWestFieldLevel()
 {
@@ -30,16 +31,16 @@ void UWestFieldLevel::Tick(float _DeltaTime)
 {
 	if (GetPlayer()->GetActorLocation().iY() == (1888 * IScaleMultiple))
 	{
-		if ("Route_1.mp3" != PrevBGM)
+		if ("Route_1.mp3" != Global::PrevBGM)
 		{
-			ChangeBGM("Route_1.mp3");
+			Global::ChangeBGM("Route_1.mp3");
 		}
 	}
 	if (GetPlayer()->GetActorLocation().iY() == (1904 * IScaleMultiple))
 	{
-		if ("Pallet_Town.mp3" != PrevBGM)
+		if ("Pallet_Town.mp3" != Global::PrevBGM)
 		{
-			ChangeBGM("Pallet_Town.mp3");
+			Global::ChangeBGM("Pallet_Town.mp3");
 		}
 	}
 }
@@ -47,6 +48,7 @@ void UWestFieldLevel::Tick(float _DeltaTime)
 void UWestFieldLevel::LevelStart(ULevel* _PrevLevel)
 {
 	Global::GColMapImage = Ground->GetColMapImage();
+	GetPlayer()->SetMoveType(PlayerHelper::PlayerMoveType);
 
 	UFieldLevel* Field = dynamic_cast<UFieldLevel*>(_PrevLevel);
 	if (nullptr != Field && UEngineString::ToUpper("TitleLevel4") != Field->GetName())
@@ -59,7 +61,7 @@ void UWestFieldLevel::LevelStart(ULevel* _PrevLevel)
 	}
 	else
 	{
-		ChangeBGM("Pallet_Town.mp3");
+		Global::ChangeBGM("Pallet_Town.mp3");
 	}
 }
 
@@ -67,5 +69,6 @@ void UWestFieldLevel::LevelEnd(ULevel* _NextLevel)
 {
 	if (nullptr != _NextLevel)
 	{
+		PlayerHelper::PlayerMoveType = GetPlayer()->GetMoveType();
 	}
 }

@@ -3,6 +3,7 @@
 #include <EngineCore\EngineResourcesManager.h>
 #include <EngineCore\EngineDebug.h>
 #include "Global.h"
+#include "PlayerHelper.h"
 
 APlayer::APlayer()
 {
@@ -246,14 +247,15 @@ void APlayer::UseBike()
 {
 	if (true == UEngineInput::IsDown(' '))
 	{
+		
 		if (EMoveType::Walk == MoveType || EMoveType::Run == MoveType)
 		{
-			PrevMoveType = MoveType;
+			PlayerHelper::PrevMoveType = MoveType;
 			MoveType = EMoveType::Bike;
 		}
 		else if (EMoveType::Bike == MoveType)
 		{
-			MoveType = PrevMoveType;
+			MoveType = PlayerHelper::PrevMoveType;
 		}
 	}
 }

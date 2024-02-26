@@ -25,6 +25,16 @@ public:
 		PrevDirInput = _Dir;
 	}
 
+	EMoveType GetMoveType()
+	{
+		return MoveType;
+	}
+
+	void SetMoveType(EMoveType _MoveType)
+	{
+		MoveType = _MoveType;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

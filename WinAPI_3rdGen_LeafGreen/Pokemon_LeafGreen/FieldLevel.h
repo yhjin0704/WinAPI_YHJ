@@ -22,6 +22,11 @@ public:
 		return Player;
 	}
 
+	bool GetIsOutside()
+	{
+		return IsOutside;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -29,10 +34,7 @@ protected:
 	APlayer* Player;
 	AMenu* Menu;
 
-	UEngineSoundPlayer BGMPlayer;
-	std::string PrevBGM = "";
-
-	void ChangeBGM(std::string_view _BGMName);
+	bool IsOutside = true;
 
 private:
 

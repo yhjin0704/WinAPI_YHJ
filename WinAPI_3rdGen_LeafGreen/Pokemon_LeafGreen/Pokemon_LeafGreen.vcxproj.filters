@@ -78,6 +78,7 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Field\UI</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -157,6 +158,7 @@
     <ClInclude Include="Menu.h">
       <Filter>Field\UI</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Field">

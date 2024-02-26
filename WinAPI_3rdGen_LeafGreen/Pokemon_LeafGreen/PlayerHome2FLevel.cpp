@@ -4,6 +4,7 @@
 #include "PlayerHome2FStairs.h"
 #include "PlayerHome1FLevel.h"
 #include "global.h"
+#include "PlayerHelper.h"
 
 UPlayerHome2FLevel::UPlayerHome2FLevel()
 {
@@ -16,6 +17,8 @@ UPlayerHome2FLevel::~UPlayerHome2FLevel()
 void UPlayerHome2FLevel::BeginPlay()
 {
 	UFieldLevel::BeginPlay();
+
+	IsOutside = false;
 
 	Ground = SpawnActor<PlayerHome2FGround>();
 	Stairs = SpawnActor<APlayerHome2FStairs>();
@@ -32,6 +35,7 @@ void UPlayerHome2FLevel::Tick(float _DeltaTime)
 void UPlayerHome2FLevel::LevelStart(ULevel* _PrevLevel)
 {
 	Global::GColMapImage = Ground->GetColMapImage();
+	GetPlayer()->SetMoveType(PlayerHelper::PlayerMoveType);
 
 	UFieldLevel* Field = dynamic_cast<UFieldLevel*>(_PrevLevel);
 	if (nullptr != Field && UEngineString::ToUpper("TitleLevel4") != Field->GetName())
@@ -44,12 +48,12 @@ void UPlayerHome2FLevel::LevelStart(ULevel* _PrevLevel)
 
 		if (UEngineString::ToUpper("PlayerHome1FLevel") != Field->GetName())
 		{
-			ChangeBGM("Pallet_Town.mp3");
+			Global::ChangeBGM("Pallet_Town.mp3");
 		}
 	}
 	else
 	{
-		ChangeBGM("Pallet_Town.mp3");
+		Global::ChangeBGM("Pallet_Town.mp3");
 	}
 }
 
@@ -57,6 +61,6 @@ void UPlayerHome2FLevel::LevelEnd(ULevel* _NextLevel)
 {
 	if (nullptr != _NextLevel)
 	{
-
+		PlayerHelper::PlayerMoveType = GetPlayer()->GetMoveType();
 	}
 }

@@ -39,10 +39,21 @@ const float Global::GColCheckRight = GFHGameTileScale;
 
 UWindowImage* Global::GColMapImage = nullptr;
 
+UEngineSoundPlayer Global::BGMPlayer;
+std::string Global::PrevBGM;
+
 Global::Global()
 {
 }
 
 Global::~Global()
 {
+}
+
+void Global::ChangeBGM(std::string_view _BGMName)
+{
+	BGMPlayer.Off();
+	BGMPlayer = UEngineSound::SoundPlay(_BGMName);
+	PrevBGM = _BGMName;
+	BGMPlayer.Loop();
 }
