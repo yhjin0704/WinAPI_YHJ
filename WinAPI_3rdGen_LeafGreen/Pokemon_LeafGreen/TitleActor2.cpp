@@ -56,6 +56,7 @@ void ATitleActor2::Tick(float _DeltaTime)
 			UEngineResourcesManager::GetInst().LoadImg(File.GetFullPath());
 			TitleIntroRen2->SetImage(File.GetFileName());
 			++TitleIntro2StartIter;
+
 			Time = _DeltaTime - FrameTime;
 		}
 

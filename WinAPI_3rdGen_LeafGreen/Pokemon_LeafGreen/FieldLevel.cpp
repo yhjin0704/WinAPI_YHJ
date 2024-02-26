@@ -45,8 +45,8 @@ void UFieldLevel::Tick(float _DeltaTime)
 
 void UFieldLevel::ChangeBGM(std::string_view _BGMName)
 {
-	BGMPlayer.Off();
-	BGMPlayer = UEngineSound::SoundPlay(_BGMName);
-	PrevMusic = _BGMName;
-	BGMPlayer.Loop();
+	Global::BGMPlayer.Off();
+	Global::BGMPlayer = UEngineSound::SoundPlay(_BGMName);
+	Global::PrevBGM = _BGMName;
+	Global::BGMPlayer.Loop();
 }

@@ -74,6 +74,7 @@ void APlayer::BeginPlay()
 
 	PlayerCollision = CreateCollision(ECollisionOrder::Player);
 	PlayerCollision->SetScale({ IGameTileScale, IGameTileScale });
+	PlayerCollision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + FHGameTileScale });
 	PlayerCollision->SetColType(ECollisionType::Rect);
 }
 
@@ -96,8 +97,8 @@ void APlayer::Tick(float _DeltaTime)
 		PlayIdleAnimation();
 	}
 
-	FVector Pos = GetActorLocation();
-	int a = 0;
+	FVector PlayerPosDebug = { (GetTransform().GetPosition().X - FHGameTileScale) / FScaleMultiple, GetTransform().GetPosition().Y / FScaleMultiple };
+	UEngineDebug::DebugTextPrint("플레이어 좌표 : " + PlayerPosDebug.ToString(), 15.0f);
 }
 
 void APlayer::KeyInputMove(float _DeltaTime)

@@ -65,6 +65,12 @@ void Pokemon3rdGen_Core::BeginPlay()
 
 void Pokemon3rdGen_Core::Tick(float _DeltaTime)
 {
+	UEngineCore::Tick(_DeltaTime);
+
+	if (true == UEngineInput::IsDown('9'))
+	{
+		GEngine->EngineDebugSwitch();
+	}
 }
 
 void Pokemon3rdGen_Core::End()

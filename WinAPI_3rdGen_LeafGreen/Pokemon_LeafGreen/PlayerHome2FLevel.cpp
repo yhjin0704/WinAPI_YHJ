@@ -20,9 +20,9 @@ void UPlayerHome2FLevel::BeginPlay()
 	Ground = SpawnActor<PlayerHome2FGround>();
 	Stairs = SpawnActor<APlayerHome2FStairs>();
 
-	Stairs->SetActorLocation({ (144 - (FTileScale / 2)) * FScaleMultiple , (48 + (FTileScale / 2)) * FScaleMultiple });
+	Stairs->SetActorLocation({ (128 + (FTileScale / 2)) * FScaleMultiple , (48 + (FTileScale / 2)) * FScaleMultiple });
 
-	Player->SetActorLocation({ (64 + (FTileScale / 2)) * FScaleMultiple , (112) * FScaleMultiple });
+	Player->SetActorLocation({ (96 + (FTileScale / 2)) * FScaleMultiple , (112) * FScaleMultiple });
 }
 
 void UPlayerHome2FLevel::Tick(float _DeltaTime)
@@ -32,9 +32,10 @@ void UPlayerHome2FLevel::Tick(float _DeltaTime)
 void UPlayerHome2FLevel::LevelStart(ULevel* _PrevLevel)
 {
 	Global::GColMapImage = Ground->GetColMapImage();
-	if (nullptr != _PrevLevel)
+
+	UFieldLevel* Field = dynamic_cast<UFieldLevel*>(_PrevLevel);
+	if (nullptr != Field && UEngineString::ToUpper("TitleLevel4") != Field->GetName())
 	{
-		UFieldLevel* Field = dynamic_cast<UFieldLevel*>(_PrevLevel);
 		if (UEngineString::ToUpper("PlayerHome1FLevel") == Field->GetName())
 		{
 			GetPlayer()->SetCharacterDir(EDirState::Right);

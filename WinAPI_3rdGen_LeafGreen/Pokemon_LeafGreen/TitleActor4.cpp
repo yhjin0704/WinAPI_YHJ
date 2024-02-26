@@ -62,15 +62,13 @@ void ATitleActor4::Tick(float _DeltaTime)
 		if (TitleIntro4StartIter == TitleIntro4EndIter)
 		{
 			StartCheck = 0;
-			//TitleIntroRen4->ActiveOff();
-			GEngine->ChangeLevel("WestFieldLevel");
+			GEngine->ChangeLevel("PlayerHome2FLevel");
 		}
 
 		if (UEngineInput::IsAnykeyDown())
 		{
 			StartCheck = 0;
-			//TitleIntroRen4->ActiveOff();
-			GEngine->ChangeLevel("WestFieldLevel");
+			GEngine->ChangeLevel("PlayerHome2FLevel");
 		}
 	}
 }

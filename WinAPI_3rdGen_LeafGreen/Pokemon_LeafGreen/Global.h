@@ -1,12 +1,15 @@
 #pragma once
 #include <EngineCore\ImageRenderer.h>
+#include <EnginePlatform\EngineSound.h>
 
 enum class ERenderOrder
 {
 	ColMap,
 	Map,
 	Player,
-	CoverMap
+	CoverMap,
+	Menu,
+	Text
 };
 
 enum class ECollisionOrder

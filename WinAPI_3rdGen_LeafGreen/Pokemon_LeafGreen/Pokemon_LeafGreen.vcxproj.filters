@@ -24,9 +24,6 @@
     <ClCompile Include="WestFieldGround.cpp">
       <Filter>Field\WestFieldLevel\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="WestFieldLevel.cpp">
-      <Filter>Field\WestFieldLevel</Filter>
-    </ClCompile>
     <ClCompile Include="Character.cpp">
       <Filter>Field\Actor</Filter>
     </ClCompile>
@@ -75,6 +72,12 @@
     <ClCompile Include="PlayerHome2FStairs.cpp">
       <Filter>Field\WestFieldLevel\PlayerHome\2F\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="WestFieldLevel.cpp">
+      <Filter>Field\WestFieldLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Field\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -99,9 +102,6 @@
     </ClInclude>
     <ClInclude Include="WestFieldGround.h">
       <Filter>Field\WestFieldLevel\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="WestFieldLevel.h">
-      <Filter>Field\WestFieldLevel</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
       <Filter>Field\Actor</Filter>
@@ -151,6 +151,12 @@
     <ClInclude Include="PlayerHome2FStairs.h">
       <Filter>Field\WestFieldLevel\PlayerHome\2F\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="WestFieldLevel.h">
+      <Filter>Field\WestFieldLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Field\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Field">
@@ -197,6 +203,9 @@
     </Filter>
     <Filter Include="Field\WestFieldLevel\PlayerHome\2F\Actor">
       <UniqueIdentifier>{d58b9173-6688-42aa-a20d-62ee5b195385}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\UI">
+      <UniqueIdentifier>{45285810-1d44-432d-829c-2f3b6fcd0217}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

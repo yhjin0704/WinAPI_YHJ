@@ -62,14 +62,12 @@ void ATitleActor3::Tick(float _DeltaTime)
 		if (TitleIntro3StartIter == TitleIntro3EndIter)
 		{
 			StartCheck = 0;
-			TitleIntroRen3->ActiveOff();
 			GEngine->ChangeLevel("TitleLevel4");
 		}
 
 		if (UEngineInput::IsAnykeyDown())
 		{
 			StartCheck = 0;
-			TitleIntroRen3->ActiveOff();
 			GEngine->ChangeLevel("TitleLevel4");
 		}
 	}

@@ -21,7 +21,7 @@ void UWestFieldLevel::BeginPlay()
 	Ground = SpawnActor<AWestFieldGround>();
 	Door = SpawnActor<APlayerHomeDoorOut>();
 
-	Door->SetActorLocation({ (1136 + FTileScale / 2) * FScaleMultiple , (2016 - FTileScale) * FScaleMultiple });
+	Door->SetActorLocation({ (1136 + (FTileScale / 2)) * FScaleMultiple , (2000 + (FTileScale / 2)) * FScaleMultiple });
 
 	Player->SetActorLocation({ (1136 + (FTileScale / 2)) * FScaleMultiple , (2032) * FScaleMultiple });
 }
@@ -48,16 +48,15 @@ void UWestFieldLevel::LevelStart(ULevel* _PrevLevel)
 {
 	Global::GColMapImage = Ground->GetColMapImage();
 
-		UFieldLevel* Field = dynamic_cast<UFieldLevel*>(_PrevLevel);
-		if (nullptr != Field && UEngineString::ToUpper("TitleLevel4") != Field->GetName())
+	UFieldLevel* Field = dynamic_cast<UFieldLevel*>(_PrevLevel);
+	if (nullptr != Field && UEngineString::ToUpper("TitleLevel4") != Field->GetName())
+	{
+		if (UEngineString::ToUpper("PlayerHome1FLevel") == Field->GetName())
 		{
-
-			if (UEngineString::ToUpper("PlayerHome1FLevel") == Field->GetName())
-			{
-				GetPlayer()->SetCharacterDir(EDirState::Down);
-				GetPlayer()->SetActorLocation({ (1136 + (FTileScale / 2)) * FScaleMultiple , (2032) * FScaleMultiple });
-			}
+			GetPlayer()->SetCharacterDir(EDirState::Down);
+			GetPlayer()->SetActorLocation({ (1136 + (FTileScale / 2)) * FScaleMultiple , (2032) * FScaleMultiple });
 		}
+	}
 	else
 	{
 		ChangeBGM("Pallet_Town.mp3");
