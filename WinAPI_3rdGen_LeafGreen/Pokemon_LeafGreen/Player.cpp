@@ -2,6 +2,7 @@
 #include <EnginePlatform\EngineInput.h>
 #include <EngineCore\EngineResourcesManager.h>
 #include <EngineCore\EngineDebug.h>
+#include "FieldLevel.h"
 #include "Global.h"
 #include "PlayerHelper.h"
 
@@ -247,15 +248,19 @@ void APlayer::UseBike()
 {
 	if (true == UEngineInput::IsDown(' '))
 	{
-		
-		if (EMoveType::Walk == MoveType || EMoveType::Run == MoveType)
+		UFieldLevel* Field = dynamic_cast<UFieldLevel*>(GetWorld());
+		if (true == Field->GetIsOutside())
 		{
-			PlayerHelper::PrevMoveType = MoveType;
-			MoveType = EMoveType::Bike;
-		}
-		else if (EMoveType::Bike == MoveType)
-		{
-			MoveType = PlayerHelper::PrevMoveType;
+			if (EMoveType::Walk == MoveType || EMoveType::Run == MoveType)
+			{
+				PlayerHelper::PrevMoveType = MoveType;
+				MoveType = EMoveType::Bike;
+			}
+			else if (EMoveType::Bike == MoveType)
+			{
+				MoveType = PlayerHelper::PrevMoveType;
+			}
+
 		}
 	}
 }
