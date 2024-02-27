@@ -96,10 +96,25 @@ void APlayer::BeginPlay()
 	MenuRenderer->SetImage("Menu4.png");
 	MenuRenderer->ActiveOff();
 
-	MenuTextRenderer = CreateImageRenderer(ERenderOrder::Text);
-	MenuTextRenderer->SetTransform({ { ITileScale * 5 * IScaleMultiple, ITileScale * 0 * IScaleMultiple }, { 0, 0 } });
-	Global::SetPokemonText(MenuTextRenderer, "포켓몬");
+	MenuPokemonTextRenderer = CreateImageRenderer(ERenderOrder::Text);
+	MenuPokemonTextRenderer->SetTransform({ { ((ITileScale * 4) + 12) * IScaleMultiple, ((ITileScale * -4) - 3) * IScaleMultiple }, { 0, 0 } });
+	Global::SetPokemonText(MenuPokemonTextRenderer, "포켓몬");
+	MenuPokemonTextRenderer->ActiveOff();
 
+	MenuIvenTextRenderer = CreateImageRenderer(ERenderOrder::Text);
+	MenuIvenTextRenderer->SetTransform({ { ((ITileScale * 4) + 12) * IScaleMultiple, ((ITileScale * -4) - 3) * IScaleMultiple }, { 0, 0 } });
+	Global::SetPokemonText(MenuIvenTextRenderer, "가방");
+	MenuIvenTextRenderer->ActiveOff();
+
+	MenuPlayerTextRenderer = CreateImageRenderer(ERenderOrder::Text);
+	MenuPlayerTextRenderer->SetTransform({ { ((ITileScale * 4) + 12) * IScaleMultiple, ((ITileScale * -4) - 3) * IScaleMultiple }, { 0, 0 } });
+	Global::SetPokemonText(MenuPlayerTextRenderer, "플레이어 이름");
+	MenuPlayerTextRenderer->ActiveOff();
+
+	MenuExitTextRenderer = CreateImageRenderer(ERenderOrder::Text);
+	MenuExitTextRenderer->SetTransform({ { ((ITileScale * 4) + 12) * IScaleMultiple, ((ITileScale * -4) - 3) * IScaleMultiple }, { 0, 0 } });
+	Global::SetPokemonText(MenuExitTextRenderer, "닫는다");
+	MenuExitTextRenderer->ActiveOff();
 
 	MenuExplainRenderer = CreateImageRenderer(ERenderOrder::Menu);
 	MenuExplainRenderer->SetTransform({ { 0, ((ITileScale * 3) + 12) * IScaleMultiple }, { 240.0f * FScaleMultiple, 40.0f * FScaleMultiple} });
@@ -269,11 +284,13 @@ void APlayer::UseMenu()
 		if (true == MenuRenderer->IsActive())
 		{
 			MenuRenderer->ActiveOff();
+			MenuTextRenderer->ActiveOff();
 			MenuExplainRenderer->ActiveOff();
 		}
 		else
 		{
 			MenuRenderer->ActiveOn();
+			MenuTextRenderer->ActiveOn();
 			MenuExplainRenderer->ActiveOn();
 		}
 	}

@@ -61,7 +61,7 @@ void Global::ChangeBGM(std::string_view _BGMName)
 void Global::SetPokemonText(UImageRenderer* _TextRenderer, std::string_view _Text, Color8Bit _Color)
 {
 	_TextRenderer->SetFont("PokemonGSK2");
-	_TextRenderer->SetTextSize(12.0f * FScaleMultiple);
+	_TextRenderer->SetTextSize(14.0f * FScaleMultiple);
 	_TextRenderer->SetText(_Text);
 	_TextRenderer->SetTextColor(_Color);
 }

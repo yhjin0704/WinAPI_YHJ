@@ -23,8 +23,13 @@ protected:
 
 private:
 	static APlayer* MainPlayer;
+
 	UImageRenderer* MenuRenderer;
-	UImageRenderer* MenuTextRenderer;
+	UImageRenderer* MenuPokemonTextRenderer;
+	UImageRenderer* MenuIvenTextRenderer;
+	UImageRenderer* MenuPlayerTextRenderer;
+	UImageRenderer* MenuExitTextRenderer;
+
 	UImageRenderer* MenuExplainRenderer;
 	UImageRenderer* MenuExplainTextRenderer;
 
