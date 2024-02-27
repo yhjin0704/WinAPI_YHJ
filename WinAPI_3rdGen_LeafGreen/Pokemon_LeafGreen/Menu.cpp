@@ -21,12 +21,12 @@ void AMenu::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	APlayer* Player = APlayer::GetMainPlayer();
+	/*APlayer* Player = APlayer::GetMainPlayer();
 
 	if (nullptr == Player)
 	{
 		MsgBoxAssert("플레이어가 존재하지 않습니다.");
 	}
 
-	SetActorLocation(Player->GetActorLocation());
+	SetActorLocation(Player->GetActorLocation());*/
 }
