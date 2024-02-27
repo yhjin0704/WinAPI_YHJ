@@ -24,6 +24,7 @@ protected:
 private:
 	static APlayer* MainPlayer;
 	UImageRenderer* MenuRenderer;
+	UImageRenderer* MenuExplainRenderer;
 
 	FVector PrevFieldPos = FVector::Zero;
 	UCollision* PlayerCollision = nullptr;
@@ -39,6 +40,7 @@ private:
 	void InputDelayCheck(float _DeltaTime);
 	void SetPlayerMovePos();
 
+	void UseMenu();
 	void UseRunningShoes();
 	void UseBike();
 };

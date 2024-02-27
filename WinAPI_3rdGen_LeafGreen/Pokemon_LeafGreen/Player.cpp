@@ -80,8 +80,14 @@ void APlayer::BeginPlay()
 	CharacterRenderer->CreateAnimation("Player_Boy_Bike_Down_Jump", "Player_Boy_Bike_Down_Jump.png", 0, 12, (FWalkTime / 13.0f * 2.0f), false);
 
 	MenuRenderer = CreateImageRenderer(ERenderOrder::Menu);
-	MenuRenderer->SetTransform({ { ((ITileScale* 5) + 4) * FScaleMultiple, ((ITileScale * -2) - 12) * FScaleMultiple }, { 70.0f * FScaleMultiple, 72.0f * FScaleMultiple} });
+	MenuRenderer->SetTransform({ { ((ITileScale* 5) + 4) * IScaleMultiple, ((ITileScale * -2) - 12) * IScaleMultiple }, { 70.0f * FScaleMultiple, 72.0f * FScaleMultiple} });
 	MenuRenderer->SetImage("Menu4.png");
+	MenuRenderer->ActiveOff();
+
+	MenuExplainRenderer = CreateImageRenderer(ERenderOrder::Menu);
+	MenuExplainRenderer->SetTransform({ { 0, ((ITileScale * 3) + 12) * IScaleMultiple }, { 240.0f * FScaleMultiple, 40.0f * FScaleMultiple} });
+	MenuExplainRenderer->SetImage("MenuExplain.png");
+	MenuExplainRenderer->ActiveOff();
 
 	PlayerCollision = CreateCollision(ECollisionOrder::Player);
 	PlayerCollision->SetScale({ IGameTileScale, IGameTileScale });
@@ -97,6 +103,7 @@ void APlayer::Tick(float _DeltaTime)
 
 	if (EMoveState::Idle == MoveState)
 	{
+		UseMenu();
 		UseRunningShoes();
 		UseBike();
 	}
@@ -232,6 +239,23 @@ void APlayer::SetPlayerMovePos()
 	if (false == DefaltColCheck)
 	{
 		SetMovePos();
+	}
+}
+
+void APlayer::UseMenu()
+{
+	if (true == UEngineInput::IsDown(VK_SHIFT))
+	{
+		if (true == MenuRenderer->IsActive())
+		{
+			MenuRenderer->ActiveOff();
+			MenuExplainRenderer->ActiveOff();
+		}
+		else
+		{
+			MenuRenderer->ActiveOn();
+			MenuExplainRenderer->ActiveOn();
+		}
 	}
 }
 
