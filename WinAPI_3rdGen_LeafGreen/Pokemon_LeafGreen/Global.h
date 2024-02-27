@@ -99,6 +99,7 @@ public:
 	Global& operator=(Global&& _Other) noexcept = delete;
 
 	static void ChangeBGM(std::string_view _BGMName);
+	static void SetPokemonText(UImageRenderer* _TextRenderer, std::string_view _Text, Color8Bit _Color = Color8Bit::BlackA);
 
 protected:
 

@@ -96,6 +96,11 @@ void APlayer::BeginPlay()
 	MenuRenderer->SetImage("Menu4.png");
 	MenuRenderer->ActiveOff();
 
+	MenuTextRenderer = CreateImageRenderer(ERenderOrder::Text);
+	MenuTextRenderer->SetTransform({ { ITileScale * 5 * IScaleMultiple, ITileScale * 0 * IScaleMultiple }, { 0, 0 } });
+	Global::SetPokemonText(MenuTextRenderer, "Æ÷ÄÏ¸ó");
+
+
 	MenuExplainRenderer = CreateImageRenderer(ERenderOrder::Menu);
 	MenuExplainRenderer->SetTransform({ { 0, ((ITileScale * 3) + 12) * IScaleMultiple }, { 240.0f * FScaleMultiple, 40.0f * FScaleMultiple} });
 	MenuExplainRenderer->SetImage("MenuExplain.png");

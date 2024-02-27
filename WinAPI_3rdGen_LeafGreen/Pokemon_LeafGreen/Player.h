@@ -24,7 +24,9 @@ protected:
 private:
 	static APlayer* MainPlayer;
 	UImageRenderer* MenuRenderer;
+	UImageRenderer* MenuTextRenderer;
 	UImageRenderer* MenuExplainRenderer;
+	UImageRenderer* MenuExplainTextRenderer;
 
 	FVector PrevFieldPos = FVector::Zero;
 	UCollision* PlayerCollision = nullptr;
