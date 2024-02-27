@@ -2,18 +2,18 @@
 #include "Ground.h"
 #include <EngineBase\EngineDirectory.h>
 
-class PlayerHome1FGround : public AGround
+class APlayerHome1FGround : public AGround
 {
 public:
 	// constrcuter destructer
-	PlayerHome1FGround();
-	~PlayerHome1FGround();
+	APlayerHome1FGround();
+	~APlayerHome1FGround();
 
 	// delete Function
-	PlayerHome1FGround(const PlayerHome1FGround& _Other) = delete;
-	PlayerHome1FGround(PlayerHome1FGround&& _Other) noexcept = delete;
-	PlayerHome1FGround& operator=(const PlayerHome1FGround& _Other) = delete;
-	PlayerHome1FGround& operator=(PlayerHome1FGround&& _Other) noexcept = delete;
+	APlayerHome1FGround(const APlayerHome1FGround& _Other) = delete;
+	APlayerHome1FGround(APlayerHome1FGround&& _Other) noexcept = delete;
+	APlayerHome1FGround& operator=(const APlayerHome1FGround& _Other) = delete;
+	APlayerHome1FGround& operator=(APlayerHome1FGround&& _Other) noexcept = delete;
 
 protected:
 	void BeginPlay() override;

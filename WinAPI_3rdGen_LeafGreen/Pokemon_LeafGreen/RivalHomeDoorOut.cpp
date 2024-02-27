@@ -1,28 +1,28 @@
-#include "PlayerHomeDoor.h"
+#include "RivalHomeDoorOut.h"
 #include <EngineCore\EngineCore.h>
 #include "Global.h"
 
-APlayerHomeDoor::APlayerHomeDoor()
+ARivalHomeDoorOut::ARivalHomeDoorOut()
 {
 }
 
-APlayerHomeDoor::~APlayerHomeDoor()
+ARivalHomeDoorOut::~ARivalHomeDoorOut()
 {
 }
 
-void APlayerHomeDoor::BeginPlay()
+void ARivalHomeDoorOut::BeginPlay()
 {
 	HomeDoorCollision = CreateCollision(ECollisionOrder::Door);
 	HomeDoorCollision->SetScale({ IGameTileScale, IGameTileScale });
 	HomeDoorCollision->SetColType(ECollisionType::Rect);
-	HomeDoorCollision->DebugRender(GetWorld()->GetCameraPos());
 }
 
-void APlayerHomeDoor::Tick(float _DeltaTime) 
+void ARivalHomeDoorOut::Tick(float _DeltaTime)
 {
 	std::vector<UCollision*> Result;
 	if (true == HomeDoorCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
-		GEngine->ChangeLevel("WestFieldLevel");
+		GEngine->ChangeLevel("RivalHomeLevel");
 	}
+
 }

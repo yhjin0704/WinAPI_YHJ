@@ -2,6 +2,7 @@
 #include "FieldLevel.h"
 #include "WestFieldGround.h"
 #include "PlayerHomeDoorOut.h"
+#include "RivalHomeDoorOut.h"
 
 class UWestFieldLevel : public UFieldLevel
 {
@@ -24,6 +25,7 @@ protected:
 
 private:
 	AWestFieldGround* Ground;
-	APlayerHomeDoorOut* Door;
+	APlayerHomeDoorOut* PlayerHomeDoor;
+	ARivalHomeDoorOut* RivalHomeDoor;
 
 };

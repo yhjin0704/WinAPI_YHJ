@@ -37,9 +37,6 @@ void UFieldLevel::BeginPlay()
 
 	Player = SpawnActor<APlayer>();
 	Player->SetCharacterName("Player_Boy");
-
-	Menu = SpawnActor<AMenu>();
-	//Menu->ActiveOff();
 }
 
 void UFieldLevel::Tick(float _DeltaTime)

@@ -170,7 +170,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Menu.cpp">
+    <ClCompile Include="RivalHomeDoorOut.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="RivalHomeGround.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="RivalHomeDoor.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -247,6 +255,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="RivalHomeLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="WestFieldGround.cpp" />
     <ClCompile Include="Player.cpp">
       <SubType>
@@ -263,7 +275,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Menu.h">
+    <ClInclude Include="RivalHomeDoorOut.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="RivalHomeGround.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="RivalHomeDoor.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -337,6 +357,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PlayerHome2FLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="RivalHomeLevel.h">
       <SubType>
       </SubType>
     </ClInclude>

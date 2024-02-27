@@ -20,7 +20,7 @@ void UPlayerHome2FLevel::BeginPlay()
 
 	IsOutside = false;
 
-	Ground = SpawnActor<PlayerHome2FGround>();
+	Ground = SpawnActor<APlayerHome2FGround>();
 	Stairs = SpawnActor<APlayerHome2FStairs>();
 
 	Stairs->SetActorLocation({ (128 + (FTileScale / 2)) * FScaleMultiple , (48 + (FTileScale / 2)) * FScaleMultiple });

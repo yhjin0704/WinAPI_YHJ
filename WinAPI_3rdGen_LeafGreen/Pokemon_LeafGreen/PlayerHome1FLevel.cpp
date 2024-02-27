@@ -22,7 +22,7 @@ void UPlayerHome1FLevel::BeginPlay()
 
 	IsOutside = false;
 
-	Ground = SpawnActor<PlayerHome1FGround>();
+	Ground = SpawnActor<APlayerHome1FGround>();
 	Door = SpawnActor<APlayerHomeDoor>();
 	Stairs = SpawnActor<APlayerHome1FStairs>();
 

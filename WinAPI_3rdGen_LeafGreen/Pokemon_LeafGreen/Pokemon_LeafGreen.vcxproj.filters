@@ -75,10 +75,19 @@
     <ClCompile Include="WestFieldLevel.cpp">
       <Filter>Field\WestFieldLevel</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Field\UI</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerHelper.cpp" />
+    <ClCompile Include="RivalHomeLevel.cpp">
+      <Filter>Field\WestFieldLevel\RivalHome</Filter>
+    </ClCompile>
+    <ClCompile Include="RivalHomeDoor.cpp">
+      <Filter>Field\WestFieldLevel\RivalHome\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="RivalHomeGround.cpp">
+      <Filter>Field\WestFieldLevel\RivalHome\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="RivalHomeDoorOut.cpp">
+      <Filter>Field\WestFieldLevel\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -155,10 +164,19 @@
     <ClInclude Include="WestFieldLevel.h">
       <Filter>Field\WestFieldLevel</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Field\UI</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerHelper.h" />
+    <ClInclude Include="RivalHomeLevel.h">
+      <Filter>Field\WestFieldLevel\RivalHome</Filter>
+    </ClInclude>
+    <ClInclude Include="RivalHomeDoor.h">
+      <Filter>Field\WestFieldLevel\RivalHome\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="RivalHomeGround.h">
+      <Filter>Field\WestFieldLevel\RivalHome\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="RivalHomeDoorOut.h">
+      <Filter>Field\WestFieldLevel\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Field">
@@ -208,6 +226,12 @@
     </Filter>
     <Filter Include="Field\UI">
       <UniqueIdentifier>{45285810-1d44-432d-829c-2f3b6fcd0217}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\WestFieldLevel\RivalHome">
+      <UniqueIdentifier>{f10dfd58-2a99-45b3-9e0b-533b0504e4e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\WestFieldLevel\RivalHome\Actor">
+      <UniqueIdentifier>{1e318e42-07aa-4ca6-b65a-d94529bf298e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

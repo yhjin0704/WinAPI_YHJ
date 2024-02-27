@@ -2,15 +2,15 @@
 #include <EngineCore\EngineResourcesManager.h>
 #include <EngineBase\EngineFile.h>
 
-PlayerHome1FGround::PlayerHome1FGround()
+APlayerHome1FGround::APlayerHome1FGround()
 {
 }
 
-PlayerHome1FGround::~PlayerHome1FGround()
+APlayerHome1FGround::~APlayerHome1FGround()
 {
 }
 
-void PlayerHome1FGround::BeginPlay()
+void APlayerHome1FGround::BeginPlay()
 {
 	AGround::BeginPlay();
 
@@ -19,7 +19,7 @@ void PlayerHome1FGround::BeginPlay()
 	SetCoverMapImage("Cover_Player_Home_1F.png");
 }
 
-void PlayerHome1FGround::Tick(float _DeltaTime)
+void APlayerHome1FGround::Tick(float _DeltaTime)
 {
 	AGround::Tick(_DeltaTime);
 }

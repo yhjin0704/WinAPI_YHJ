@@ -24,7 +24,7 @@ protected:
 	void LevelEnd(ULevel* _NextLevel) override;
 
 private:
-	PlayerHome1FGround* Ground;
+	APlayerHome1FGround* Ground;
 	APlayerHomeDoor* Door;
 	APlayerHome1FStairs* Stairs;
 };
