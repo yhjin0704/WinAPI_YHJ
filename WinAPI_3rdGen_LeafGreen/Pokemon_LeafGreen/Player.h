@@ -23,6 +23,7 @@ protected:
 
 private:
 	static APlayer* MainPlayer;
+	UImageRenderer* MenuRenderer;
 
 	FVector PrevFieldPos = FVector::Zero;
 	UCollision* PlayerCollision = nullptr;

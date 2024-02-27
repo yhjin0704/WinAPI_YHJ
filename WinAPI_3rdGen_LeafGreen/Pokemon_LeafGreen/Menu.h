@@ -20,6 +20,8 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	APlayer* Player = APlayer::GetMainPlayer();
+
 private:
 	UImageRenderer* MenuRenderer;
 };

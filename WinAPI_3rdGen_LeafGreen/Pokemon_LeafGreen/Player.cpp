@@ -79,7 +79,9 @@ void APlayer::BeginPlay()
 
 	CharacterRenderer->CreateAnimation("Player_Boy_Bike_Down_Jump", "Player_Boy_Bike_Down_Jump.png", 0, 12, (FWalkTime / 13.0f * 2.0f), false);
 
-	CharacterRenderer->SetImage("Player_Boy_Walk_Down.png", 1);
+	MenuRenderer = CreateImageRenderer(ERenderOrder::Menu);
+	MenuRenderer->SetTransform({ { ((ITileScale* 5) + 4) * FScaleMultiple, ((ITileScale * -2) - 12) * FScaleMultiple }, { 70.0f * FScaleMultiple, 72.0f * FScaleMultiple} });
+	MenuRenderer->SetImage("Menu4.png");
 
 	PlayerCollision = CreateCollision(ECollisionOrder::Player);
 	PlayerCollision->SetScale({ IGameTileScale, IGameTileScale });
