@@ -106,6 +106,15 @@
     <ClCompile Include="BackGround.cpp">
       <Filter>Actor</Filter>
     </ClCompile>
+    <ClCompile Include="MyIvenBackGround.cpp">
+      <Filter>UI\MyIven\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="MyPokemonBackGround.cpp">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="MyTrainerCardBackGround.cpp">
+      <Filter>UI\MyTrainerCard\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -212,6 +221,15 @@
     </ClInclude>
     <ClInclude Include="BackGround.h">
       <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MyIvenBackGround.h">
+      <Filter>UI\MyIven\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MyPokemonBackGround.h">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MyTrainerCardBackGround.h">
+      <Filter>UI\MyTrainerCard\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
