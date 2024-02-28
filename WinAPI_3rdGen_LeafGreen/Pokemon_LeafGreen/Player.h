@@ -1,13 +1,12 @@
 #pragma once
 #include "Character.h"
-#include "MenuCursor.h"
 #include "Global.h"
 
 class APlayer : public ACharacter
 {
-	friend AMenuCursor;
 public:
 	static APlayer* GetMainPlayer();
+	static void SetMainPlayer(APlayer* _MainPlayer);
 
 	// constrcuter destructer
 	APlayer();
@@ -26,6 +25,7 @@ protected:
 private:
 	static APlayer* MainPlayer;
 
+	UImageRenderer* CursorRender;
 	UImageRenderer* MenuRenderer;
 	UImageRenderer* MenuPlayerTextRenderer;
 

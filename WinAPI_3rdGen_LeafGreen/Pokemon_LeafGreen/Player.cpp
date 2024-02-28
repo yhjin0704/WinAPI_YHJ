@@ -13,6 +13,11 @@ APlayer* APlayer::GetMainPlayer()
 	return MainPlayer;
 }
 
+void APlayer::SetMainPlayer(APlayer* _MainPlayer)
+{
+	MainPlayer = _MainPlayer;
+}
+
 APlayer::APlayer()
 {
 }
@@ -25,7 +30,7 @@ void APlayer::BeginPlay()
 {
 	ACharacter::BeginPlay();
 
-	this->SetCharacterName("레드");
+	SetCharacterName("레드");
 
 	CreatePlayerAllRender();
 	CreateMenu();
@@ -133,6 +138,10 @@ void APlayer::CreatePlayerAllRender()
 
 void APlayer::CreateMenu()
 {
+	CursorRender = CreateImageRenderer(ERenderOrder::Text);
+	CursorRender->SetTransform({ { ((ITileScale * 4) - 4) * IScaleMultiple, ((ITileScale * -4) - 3) * IScaleMultiple }, { FGameTileScale, FGameTileScale} });
+	CursorRender->SetImage("MenuCursor.png");
+
 	MenuRenderer = CreateImageRenderer(ERenderOrder::Menu);
 	MenuRenderer->SetTransform({ { ((ITileScale * 5) + 4) * IScaleMultiple, ((ITileScale * -2) - 12) * IScaleMultiple }, { 70.0f * FScaleMultiple, 72.0f * FScaleMultiple} });
 	MenuRenderer->SetImage("Menu4.png");
@@ -281,6 +290,7 @@ void APlayer::UseMenu()
 		{
 			IsUseMenu = false;
 			MenuRenderer->ActiveOff();
+			CursorRender->ActiveOff();
 			MenuPlayerTextRenderer->ActiveOff();
 
 			MenuExplainRenderer->ActiveOff();
@@ -289,6 +299,7 @@ void APlayer::UseMenu()
 		{
 			IsUseMenu = true;
 			MenuRenderer->ActiveOn();
+			CursorRender->ActiveOn();
 			MenuPlayerTextRenderer->ActiveOn();
 
 			MenuExplainRenderer->ActiveOn();

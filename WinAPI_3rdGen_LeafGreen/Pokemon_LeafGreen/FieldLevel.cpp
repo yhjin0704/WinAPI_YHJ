@@ -39,7 +39,7 @@ void UFieldLevel::BeginPlay()
 	Player = SpawnActor<APlayer>();
 	Player->SetCharacterName("Player_Boy");
 
-	MenuCursor = SpawnActor<AMenuCursor>();
+	APlayer::SetMainPlayer(Player);
 }
 
 void UFieldLevel::Tick(float _DeltaTime)
