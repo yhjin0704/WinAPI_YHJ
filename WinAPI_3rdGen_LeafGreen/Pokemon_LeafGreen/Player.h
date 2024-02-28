@@ -39,6 +39,7 @@ private:
 	float CurDelayTime = 0.0f;
 
 	bool IsUseMenu = false;
+	int MenuCursorPos = 0;
 
 	bool IsTextDebugView = false;
 
@@ -50,6 +51,8 @@ private:
 	void SetCurDelayTime();
 	void InputDelayCheck(float _DeltaTime);
 	void SetPlayerMovePos();
+
+	void MenuCursorMove();
 
 	void UseMenu();
 	void UseRunningShoes();

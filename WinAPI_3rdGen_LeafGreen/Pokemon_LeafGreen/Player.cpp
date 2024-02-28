@@ -48,9 +48,14 @@ void APlayer::Tick(float _DeltaTime)
 		UseRunningShoes();
 		UseBike();
 	}
+	//메뉴 사용 중 체크
 	if (false == IsUseMenu)
 	{
 		KeyInputMove(_DeltaTime);
+	}
+	else
+	{
+		MenuCursorMove();
 	}
 
 	if (EMoveState::Idle == MoveState)
@@ -72,7 +77,7 @@ void APlayer::CreatePlayerAllRender()
 	CharacterRenderer->CreateAnimation("Player_Boy_Walk_UP_Idle", "Player_Boy_Walk_UP.png", 1, 1, 0.0f, false);
 	CharacterRenderer->CreateAnimation("Player_Boy_Walk_Left_Idle", "Player_Boy_Walk_Left.png", 1, 1, 0.0f, false);
 	CharacterRenderer->CreateAnimation("Player_Boy_Walk_Right_Idle", "Player_Boy_Walk_Right.png", 1, 1, 0.0f, false);
-	
+
 	//걷기 오른발 애니메이션 생성
 	CharacterRenderer->CreateAnimation("Player_Boy_Walk_Down_R", "Player_Boy_Walk_Down.png", 0, 1, (FWalkTime / 2), false);
 	CharacterRenderer->CreateAnimation("Player_Boy_Walk_UP_R", "Player_Boy_Walk_UP.png", 0, 1, (FWalkTime / 2), false);
@@ -141,6 +146,7 @@ void APlayer::CreateMenu()
 	CursorRender = CreateImageRenderer(ERenderOrder::Text);
 	CursorRender->SetTransform({ { ((ITileScale * 4) - 4) * IScaleMultiple, ((ITileScale * -4) - 3) * IScaleMultiple }, { FGameTileScale, FGameTileScale} });
 	CursorRender->SetImage("MenuCursor.png");
+	CursorRender->ActiveOff();
 
 	MenuRenderer = CreateImageRenderer(ERenderOrder::Menu);
 	MenuRenderer->SetTransform({ { ((ITileScale * 5) + 4) * IScaleMultiple, ((ITileScale * -2) - 12) * IScaleMultiple }, { 70.0f * FScaleMultiple, 72.0f * FScaleMultiple} });
@@ -282,6 +288,36 @@ void APlayer::SetPlayerMovePos()
 	}
 }
 
+void APlayer::MenuCursorMove()
+{
+	if (true == IsUseMenu)
+	{
+		if (true == UEngineInput::IsDown('W'))
+		{
+			--MenuCursorPos;
+			if (0 > MenuCursorPos)
+			{
+				MenuCursorPos = 3;
+			}
+		}
+		else if (true == UEngineInput::IsDown('S'))
+		{
+			++MenuCursorPos;
+			if (3 < MenuCursorPos)
+			{
+				MenuCursorPos = 0;
+			}
+		}
+
+		CursorRender->SetTransform({ { ((ITileScale * 4) - 4) * IScaleMultiple, ((ITileScale * (-4 + MenuCursorPos)) - 3) * IScaleMultiple }, {FGameTileScale, FGameTileScale}});
+	}
+	else
+	{
+		MsgBoxAssert("메뉴창이 켜지지 않았는데 MenuCursorMove()가 실행되었습니다.");
+		return;
+	}
+}
+
 void APlayer::UseMenu()
 {
 	if (true == UEngineInput::IsDown(VK_RETURN))
@@ -294,6 +330,7 @@ void APlayer::UseMenu()
 			MenuPlayerTextRenderer->ActiveOff();
 
 			MenuExplainRenderer->ActiveOff();
+			MenuCursorPos = 0;
 		}
 		else
 		{
