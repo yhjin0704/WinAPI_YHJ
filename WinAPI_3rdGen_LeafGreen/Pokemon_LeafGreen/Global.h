@@ -5,7 +5,7 @@
 enum class ERenderOrder
 {
 	ColMap,
-	Map,
+	BackGround,
 	Player,
 	CoverMap,
 	Menu,

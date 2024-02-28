@@ -1,8 +1,10 @@
 #pragma once
-#include <EngineCore\Actor.h>
+#include "BackGround.h"
+#include <EnginePlatform\EngineInput.h>
 #include <EngineBase\EngineDirectory.h>
+#include "Global.h"
 
-class AGround : public AActor
+class AGround : public ABackGround
 {
 public:
 	// constrcuter destructer

@@ -14,7 +14,7 @@ void APlayerHome1FGround::BeginPlay()
 {
 	AGround::BeginPlay();
 
-	SetMapImage("Player_Home_1F.png");
+	SetBackGroundImage("Player_Home_1F.png");
 	SetColMapImage("Col_Player_Home_1F.png");
 	SetCoverMapImage("Cover_Player_Home_1F.png");
 }

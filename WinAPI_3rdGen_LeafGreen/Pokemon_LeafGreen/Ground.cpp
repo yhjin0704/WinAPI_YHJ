@@ -1,6 +1,4 @@
 #include "Ground.h"
-#include <EnginePlatform\EngineInput.h>
-#include "Global.h"
 
 AGround::AGround()
 {
@@ -28,8 +26,7 @@ void AGround::SwitchDebug()
 
 void AGround::BeginPlay()
 {
-	AActor::BeginPlay();
-	MapRenderer = CreateImageRenderer(ERenderOrder::Map);
+	ABackGround::BeginPlay();
 	ColMapRenderer = CreateImageRenderer(ERenderOrder::ColMap);
 	CoverMapRenderer = CreateImageRenderer(ERenderOrder::CoverMap);
 	ColMapRenderer->SetActive(false);
@@ -37,20 +34,12 @@ void AGround::BeginPlay()
 
 void AGround::Tick(float _DeltaTime)
 {
-	AActor::Tick(_DeltaTime);
+	ABackGround::Tick(_DeltaTime);
 
 	if (UEngineInput::IsDown('0'))
 	{
 		SwitchDebug();
 	}
-}
-
-void AGround::SetMapImage(std::string_view _MapImageName)
-{
-	MapRenderer->SetImage(_MapImageName);
-	UWindowImage* MapImage = MapRenderer->GetImage();
-	FVector ImageScale = MapImage->GetScale();
-	MapRenderer->SetTransform({ (ImageScale.Half2D() * FScaleMultiple), (ImageScale * FScaleMultiple) });
 }
 
 void AGround::SetColMapImage(std::string_view _MapImageName)

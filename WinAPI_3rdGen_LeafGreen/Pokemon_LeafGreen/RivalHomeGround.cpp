@@ -12,7 +12,7 @@ void ARivalHomeGround::BeginPlay()
 {
 	AGround::BeginPlay();
 
-	SetMapImage("Rival_Home.png");
+	SetBackGroundImage("Rival_Home.png");
 	SetColMapImage("Col_Rival_Home.png");
 	SetCoverMapImage("Cover_Rival_Home.png");
 }
