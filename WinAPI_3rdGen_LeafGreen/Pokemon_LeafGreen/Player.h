@@ -1,9 +1,11 @@
 #pragma once
 #include "Character.h"
+#include "MenuCursor.h"
 #include "Global.h"
 
 class APlayer : public ACharacter
 {
+	friend AMenuCursor;
 public:
 	static APlayer* GetMainPlayer();
 
@@ -25,10 +27,7 @@ private:
 	static APlayer* MainPlayer;
 
 	UImageRenderer* MenuRenderer;
-	UImageRenderer* MenuPokemonTextRenderer;
-	UImageRenderer* MenuIvenTextRenderer;
 	UImageRenderer* MenuPlayerTextRenderer;
-	UImageRenderer* MenuExitTextRenderer;
 
 	UImageRenderer* MenuExplainRenderer;
 	UImageRenderer* MenuExplainTextRenderer;
@@ -39,7 +38,12 @@ private:
 	bool IsActionDelay = false;
 	float CurDelayTime = 0.0f;
 
+	bool IsUseMenu = false;
+
 	bool IsTextDebugView = false;
+
+	void CreatePlayerAllRender();
+	void CreateMenu();
 	
 	void KeyInputMove(float _DeltaTime);
 	void SetKeyInputAnimation(EDirState _InputDir);

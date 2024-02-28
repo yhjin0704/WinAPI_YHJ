@@ -15,6 +15,8 @@ UFieldLevel::~UFieldLevel()
 
 void UFieldLevel::BeginPlay()
 {
+	ULevel::BeginPlay();
+
 	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Walk_Down.png", 4, 1);
 	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Walk_Up.png", 4, 1);
 	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Walk_Left.png", 4, 1);
@@ -36,6 +38,8 @@ void UFieldLevel::BeginPlay()
 
 	Player = SpawnActor<APlayer>();
 	Player->SetCharacterName("Player_Boy");
+
+	MenuCursor = SpawnActor<AMenuCursor>();
 }
 
 void UFieldLevel::Tick(float _DeltaTime)

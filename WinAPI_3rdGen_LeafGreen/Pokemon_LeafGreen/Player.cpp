@@ -25,6 +25,40 @@ void APlayer::BeginPlay()
 {
 	ACharacter::BeginPlay();
 
+	this->SetCharacterName("레드");
+
+	CreatePlayerAllRender();
+	CreateMenu();
+}
+
+void APlayer::Tick(float _DeltaTime)
+{
+	AActor::Tick(_DeltaTime);
+
+	GetWorld()->SetCameraPos(GetActorLocation() - FVector(FHScreen_X, FHScreen_Y));
+
+	if (EMoveState::Idle == MoveState)
+	{
+		UseMenu();
+		UseRunningShoes();
+		UseBike();
+	}
+	if (false == IsUseMenu)
+	{
+		KeyInputMove(_DeltaTime);
+	}
+
+	if (EMoveState::Idle == MoveState)
+	{
+		PlayIdleAnimation();
+	}
+
+	FVector PlayerPosDebug = { (GetTransform().GetPosition().X - FHGameTileScale) / FScaleMultiple, GetTransform().GetPosition().Y / FScaleMultiple };
+	UEngineDebug::DebugTextPrint("플레이어 좌표 : " + PlayerPosDebug.ToString(), 15.0f);
+}
+
+void APlayer::CreatePlayerAllRender()
+{
 	CharacterRenderer = CreateImageRenderer(ERenderOrder::Player);
 	CharacterRenderer->SetTransform({ {0, 0}, {FGameTileScale * 2.0f, FGameTileScale * 2.0f} });
 
@@ -91,66 +125,28 @@ void APlayer::BeginPlay()
 	//자전거 점프 애니메이션 생성
 	CharacterRenderer->CreateAnimation("Player_Boy_Bike_Down_Jump", "Player_Boy_Bike_Down_Jump.png", 0, 12, (FWalkTime / 13.0f * 2.0f), false);
 
-	MenuRenderer = CreateImageRenderer(ERenderOrder::Menu);
-	MenuRenderer->SetTransform({ { ((ITileScale* 5) + 4) * IScaleMultiple, ((ITileScale * -2) - 12) * IScaleMultiple }, { 70.0f * FScaleMultiple, 72.0f * FScaleMultiple} });
-	MenuRenderer->SetImage("Menu4.png");
-	MenuRenderer->ActiveOff();
-
-	MenuPokemonTextRenderer = CreateImageRenderer(ERenderOrder::Text);
-	MenuPokemonTextRenderer->SetTransform({ { ((ITileScale * 4) + 12) * IScaleMultiple, ((ITileScale * -4) - 3) * IScaleMultiple }, { 0, 0 } });
-	Global::SetPokemonText(MenuPokemonTextRenderer, "포켓몬");
-	MenuPokemonTextRenderer->ActiveOff();
-
-	MenuIvenTextRenderer = CreateImageRenderer(ERenderOrder::Text);
-	MenuIvenTextRenderer->SetTransform({ { ((ITileScale * 4) + 12) * IScaleMultiple, ((ITileScale * -4) - 3) * IScaleMultiple }, { 0, 0 } });
-	Global::SetPokemonText(MenuIvenTextRenderer, "가방");
-	MenuIvenTextRenderer->ActiveOff();
-
-	MenuPlayerTextRenderer = CreateImageRenderer(ERenderOrder::Text);
-	MenuPlayerTextRenderer->SetTransform({ { ((ITileScale * 4) + 12) * IScaleMultiple, ((ITileScale * -4) - 3) * IScaleMultiple }, { 0, 0 } });
-	Global::SetPokemonText(MenuPlayerTextRenderer, "플레이어 이름");
-	MenuPlayerTextRenderer->ActiveOff();
-
-	MenuExitTextRenderer = CreateImageRenderer(ERenderOrder::Text);
-	MenuExitTextRenderer->SetTransform({ { ((ITileScale * 4) + 12) * IScaleMultiple, ((ITileScale * -4) - 3) * IScaleMultiple }, { 0, 0 } });
-	Global::SetPokemonText(MenuExitTextRenderer, "닫는다");
-	MenuExitTextRenderer->ActiveOff();
-
-	MenuExplainRenderer = CreateImageRenderer(ERenderOrder::Menu);
-	MenuExplainRenderer->SetTransform({ { 0, ((ITileScale * 3) + 12) * IScaleMultiple }, { 240.0f * FScaleMultiple, 40.0f * FScaleMultiple} });
-	MenuExplainRenderer->SetImage("MenuExplain.png");
-	MenuExplainRenderer->ActiveOff();
-
 	PlayerCollision = CreateCollision(ECollisionOrder::Player);
 	PlayerCollision->SetScale({ IGameTileScale, IGameTileScale });
 	PlayerCollision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + FHGameTileScale });
 	PlayerCollision->SetColType(ECollisionType::Rect);
 }
 
-void APlayer::Tick(float _DeltaTime)
+void APlayer::CreateMenu()
 {
-	AActor::Tick(_DeltaTime);
+	MenuRenderer = CreateImageRenderer(ERenderOrder::Menu);
+	MenuRenderer->SetTransform({ { ((ITileScale * 5) + 4) * IScaleMultiple, ((ITileScale * -2) - 12) * IScaleMultiple }, { 70.0f * FScaleMultiple, 72.0f * FScaleMultiple} });
+	MenuRenderer->SetImage("Menu4.png");
+	MenuRenderer->ActiveOff();
 
-	GetWorld()->SetCameraPos(GetActorLocation() - FVector(FHScreen_X, FHScreen_Y));
+	MenuPlayerTextRenderer = CreateImageRenderer(ERenderOrder::Text);
+	MenuPlayerTextRenderer->SetTransform({ { ((ITileScale * 4) + 10) * IScaleMultiple, ((ITileScale * -2) - 3) * IScaleMultiple }, { 0, 0 } });
+	Global::SetPokemonText(MenuPlayerTextRenderer, GetCharacterName());
+	MenuPlayerTextRenderer->ActiveOff();
 
-	if (EMoveState::Idle == MoveState)
-	{
-		UseMenu();
-		UseRunningShoes();
-		UseBike();
-	}
-	if (false == MenuRenderer->IsActive())
-	{
-		KeyInputMove(_DeltaTime);
-	}
-
-	if (EMoveState::Idle == MoveState)
-	{
-		PlayIdleAnimation();
-	}
-
-	FVector PlayerPosDebug = { (GetTransform().GetPosition().X - FHGameTileScale) / FScaleMultiple, GetTransform().GetPosition().Y / FScaleMultiple };
-	UEngineDebug::DebugTextPrint("플레이어 좌표 : " + PlayerPosDebug.ToString(), 15.0f);
+	MenuExplainRenderer = CreateImageRenderer(ERenderOrder::Menu);
+	MenuExplainRenderer->SetTransform({ { 0, ((ITileScale * 3) + 12) * IScaleMultiple }, { 240.0f * FScaleMultiple, 40.0f * FScaleMultiple} });
+	MenuExplainRenderer->SetImage("MenuExplain.png");
+	MenuExplainRenderer->ActiveOff();
 }
 
 void APlayer::KeyInputMove(float _DeltaTime)
@@ -281,14 +277,20 @@ void APlayer::UseMenu()
 {
 	if (true == UEngineInput::IsDown(VK_RETURN))
 	{
-		if (true == MenuRenderer->IsActive())
+		if (true == IsUseMenu)
 		{
+			IsUseMenu = false;
 			MenuRenderer->ActiveOff();
+			MenuPlayerTextRenderer->ActiveOff();
+
 			MenuExplainRenderer->ActiveOff();
 		}
 		else
 		{
+			IsUseMenu = true;
 			MenuRenderer->ActiveOn();
+			MenuPlayerTextRenderer->ActiveOn();
+
 			MenuExplainRenderer->ActiveOn();
 		}
 	}

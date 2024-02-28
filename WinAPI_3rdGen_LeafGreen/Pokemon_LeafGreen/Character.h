@@ -15,6 +15,11 @@ public:
 	ACharacter& operator=(const ACharacter& _Other) = delete;
 	ACharacter& operator=(ACharacter&& _Other) noexcept = delete;
 
+	std::string GetCharacterName()
+	{
+		return Name;
+	}
+
 	void SetCharacterName(std::string _Name)
 	{
 		Name = _Name;

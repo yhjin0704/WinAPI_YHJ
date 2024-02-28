@@ -170,6 +170,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MenuCursor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="APokemon.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="RivalHomeDoorOut.cpp">
       <SubType>
       </SubType>
@@ -275,6 +283,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MenuCursor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="APokemon.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="RivalHomeDoorOut.h">
       <SubType>
       </SubType>

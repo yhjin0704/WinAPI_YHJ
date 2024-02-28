@@ -2,6 +2,7 @@
 #include <EngineCore\Level.h>
 #include <EnginePlatform\EngineSound.h>
 #include "Player.h"
+#include "MenuCursor.h"
 
 class UFieldLevel : public ULevel
 {
@@ -31,6 +32,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	APlayer* Player;
+	AMenuCursor* MenuCursor;
 
 	bool IsOutside = true;
 

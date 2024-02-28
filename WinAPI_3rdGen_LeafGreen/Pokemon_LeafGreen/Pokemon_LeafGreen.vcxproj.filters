@@ -88,6 +88,12 @@
     <ClCompile Include="RivalHomeDoorOut.cpp">
       <Filter>Field\WestFieldLevel\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="APokemon.cpp">
+      <Filter>Battle\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuCursor.cpp">
+      <Filter>Field\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -176,6 +182,12 @@
     </ClInclude>
     <ClInclude Include="RivalHomeDoorOut.h">
       <Filter>Field\WestFieldLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="APokemon.h">
+      <Filter>Battle\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuCursor.h">
+      <Filter>Field\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
