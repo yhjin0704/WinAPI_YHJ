@@ -284,13 +284,11 @@ void APlayer::UseMenu()
 		if (true == MenuRenderer->IsActive())
 		{
 			MenuRenderer->ActiveOff();
-			MenuTextRenderer->ActiveOff();
 			MenuExplainRenderer->ActiveOff();
 		}
 		else
 		{
 			MenuRenderer->ActiveOn();
-			MenuTextRenderer->ActiveOn();
 			MenuExplainRenderer->ActiveOn();
 		}
 	}
