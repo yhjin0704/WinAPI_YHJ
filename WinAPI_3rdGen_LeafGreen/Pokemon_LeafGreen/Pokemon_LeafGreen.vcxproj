@@ -263,6 +263,22 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="MyIvenLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MyPokemonLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MyTrainerCardLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MenuUILevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="WestFieldGround.cpp" />
     <ClCompile Include="Player.cpp">
       <SubType>
@@ -369,6 +385,22 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="RivalHomeLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MyIvenLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MyPokemonLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MyTrainerCardLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MenuUILevel.h">
       <SubType>
       </SubType>
     </ClInclude>

@@ -91,6 +91,18 @@
     <ClCompile Include="APokemon.cpp">
       <Filter>Battle\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="MyIvenLevel.cpp">
+      <Filter>Field\UI\MyIven</Filter>
+    </ClCompile>
+    <ClCompile Include="MyPokemonLevel.cpp">
+      <Filter>Field\UI\MyPokemon</Filter>
+    </ClCompile>
+    <ClCompile Include="MyTrainerCardLevel.cpp">
+      <Filter>Field\UI\MyTrainerCard</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuUILevel.cpp">
+      <Filter>Field\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -183,6 +195,18 @@
     <ClInclude Include="APokemon.h">
       <Filter>Battle\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="MyIvenLevel.h">
+      <Filter>Field\UI\MyIven</Filter>
+    </ClInclude>
+    <ClInclude Include="MyPokemonLevel.h">
+      <Filter>Field\UI\MyPokemon</Filter>
+    </ClInclude>
+    <ClInclude Include="MyTrainerCardLevel.h">
+      <Filter>Field\UI\MyTrainerCard</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuUILevel.h">
+      <Filter>Field\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Field">
@@ -238,6 +262,27 @@
     </Filter>
     <Filter Include="Field\WestFieldLevel\RivalHome\Actor">
       <UniqueIdentifier>{1e318e42-07aa-4ca6-b65a-d94529bf298e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\UI\Actor">
+      <UniqueIdentifier>{b50314a4-2b4e-4fe8-98d5-7acf2cf59994}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\UI\MyIven">
+      <UniqueIdentifier>{418df48e-3876-4c4e-81cc-4815ffaa76fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\UI\MyPokemon">
+      <UniqueIdentifier>{fa535e64-3b16-45a6-8192-e1302c83989b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\UI\MyTrainerCard">
+      <UniqueIdentifier>{ea533161-d918-4f1b-bebc-13c8204789fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\UI\MyIven\Actor">
+      <UniqueIdentifier>{92832e0f-00d3-45b9-a074-c7c70ad6497d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\UI\MyPokemon\Actor">
+      <UniqueIdentifier>{5660ebd2-9ef6-44b3-a51e-25114992e521}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\UI\MyTrainerCard\Actor">
+      <UniqueIdentifier>{f8e60cab-1695-423e-a057-39199ec74bc6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

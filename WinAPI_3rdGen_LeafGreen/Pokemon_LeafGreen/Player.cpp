@@ -45,8 +45,11 @@ void APlayer::Tick(float _DeltaTime)
 	if (EMoveState::Idle == MoveState)
 	{
 		UseMenu();
-		UseRunningShoes();
-		UseBike();
+		if (false == IsUseMenu)
+		{
+			UseRunningShoes();
+			UseBike();
+		}
 	}
 	//메뉴 사용 중 체크
 	if (false == IsUseMenu)
@@ -328,6 +331,10 @@ void APlayer::MenuCursorMove()
 				break;
 			}
 		}
+		else if (true == UEngineInput::IsDown('L'))
+		{
+			CloseMenu();
+		}
 	}
 	else
 	{
@@ -387,7 +394,7 @@ void APlayer::UseRunningShoes()
 
 void APlayer::UseBike()
 {
-	if (true == UEngineInput::IsDown(' '))
+	if (true == UEngineInput::IsDown(VK_SHIFT))
 	{
 		UFieldLevel* Field = dynamic_cast<UFieldLevel*>(GetWorld());
 		if (true == Field->GetIsOutside())
