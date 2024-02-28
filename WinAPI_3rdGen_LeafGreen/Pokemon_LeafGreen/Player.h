@@ -55,6 +55,7 @@ private:
 	void MenuCursorMove();
 
 	void UseMenu();
+	void CloseMenu();
 	void UseRunningShoes();
 	void UseBike();
 };

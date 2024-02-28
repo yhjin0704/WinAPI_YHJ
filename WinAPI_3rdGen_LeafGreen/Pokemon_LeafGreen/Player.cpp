@@ -310,6 +310,24 @@ void APlayer::MenuCursorMove()
 		}
 
 		CursorRender->SetTransform({ { ((ITileScale * 4) - 4) * IScaleMultiple, ((ITileScale * (-4 + MenuCursorPos)) - 3) * IScaleMultiple }, {FGameTileScale, FGameTileScale}});
+
+		if (true == UEngineInput::IsDown('P'))
+		{
+			switch (MenuCursorPos)
+			{
+			case 0:
+				break;
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				CloseMenu();
+				break;
+			default:
+				break;
+			}
+		}
 	}
 	else
 	{
@@ -324,13 +342,7 @@ void APlayer::UseMenu()
 	{
 		if (true == IsUseMenu)
 		{
-			IsUseMenu = false;
-			MenuRenderer->ActiveOff();
-			CursorRender->ActiveOff();
-			MenuPlayerTextRenderer->ActiveOff();
-
-			MenuExplainRenderer->ActiveOff();
-			MenuCursorPos = 0;
+			CloseMenu();
 		}
 		else
 		{
@@ -342,6 +354,17 @@ void APlayer::UseMenu()
 			MenuExplainRenderer->ActiveOn();
 		}
 	}
+}
+
+void APlayer::CloseMenu()
+{
+	IsUseMenu = false;
+	MenuRenderer->ActiveOff();
+	CursorRender->ActiveOff();
+	MenuPlayerTextRenderer->ActiveOff();
+
+	MenuExplainRenderer->ActiveOff();
+	MenuCursorPos = 0;
 }
 
 void APlayer::UseRunningShoes()
