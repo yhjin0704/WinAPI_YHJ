@@ -1,5 +1,11 @@
 #pragma once
 #include "Character.h"
+#include <EnginePlatform\EngineInput.h>
+#include <EngineCore\EngineResourcesManager.h>
+#include <EngineCore\EngineDebug.h>
+#include <EngineCore\EngineCore.h>
+#include "FieldLevel.h"
+#include "PlayerHelper.h"
 #include "Global.h"
 
 class APlayer : public ACharacter

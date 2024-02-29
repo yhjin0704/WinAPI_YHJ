@@ -170,7 +170,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MyIvenBackGround.cpp">
+    <ClCompile Include="MyBagBackGround.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -279,7 +279,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="MyIvenLevel.cpp">
+    <ClCompile Include="MyBagLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -311,7 +311,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyIvenBackGround.h">
+    <ClInclude Include="MyBagBackGround.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -420,7 +420,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="MyIvenLevel.h">
+    <ClInclude Include="MyBagLevel.h">
       <SubType>
       </SubType>
     </ClInclude>

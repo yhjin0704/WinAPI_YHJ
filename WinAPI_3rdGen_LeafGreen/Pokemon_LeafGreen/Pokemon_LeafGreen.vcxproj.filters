@@ -91,8 +91,8 @@
     <ClCompile Include="APokemon.cpp">
       <Filter>Battle\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="MyIvenLevel.cpp">
-      <Filter>UI\MyIven</Filter>
+    <ClCompile Include="MyBagLevel.cpp">
+      <Filter>UI\MyBag</Filter>
     </ClCompile>
     <ClCompile Include="MyPokemonLevel.cpp">
       <Filter>UI\MyPokemon</Filter>
@@ -106,8 +106,8 @@
     <ClCompile Include="BackGround.cpp">
       <Filter>Actor</Filter>
     </ClCompile>
-    <ClCompile Include="MyIvenBackGround.cpp">
-      <Filter>UI\MyIven\Actor</Filter>
+    <ClCompile Include="MyBagBackGround.cpp">
+      <Filter>UI\MyBag\Actor</Filter>
     </ClCompile>
     <ClCompile Include="MyPokemonBackGround.cpp">
       <Filter>UI\MyPokemon\Actor</Filter>
@@ -207,8 +207,8 @@
     <ClInclude Include="APokemon.h">
       <Filter>Battle\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="MyIvenLevel.h">
-      <Filter>UI\MyIven</Filter>
+    <ClInclude Include="MyBagLevel.h">
+      <Filter>UI\MyBag</Filter>
     </ClInclude>
     <ClInclude Include="MyPokemonLevel.h">
       <Filter>UI\MyPokemon</Filter>
@@ -222,8 +222,8 @@
     <ClInclude Include="BackGround.h">
       <Filter>Actor</Filter>
     </ClInclude>
-    <ClInclude Include="MyIvenBackGround.h">
-      <Filter>UI\MyIven\Actor</Filter>
+    <ClInclude Include="MyBagBackGround.h">
+      <Filter>UI\MyBag\Actor</Filter>
     </ClInclude>
     <ClInclude Include="MyPokemonBackGround.h">
       <Filter>UI\MyPokemon\Actor</Filter>
@@ -287,12 +287,6 @@
     <Filter Include="UI">
       <UniqueIdentifier>{45285810-1d44-432d-829c-2f3b6fcd0217}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\MyIven">
-      <UniqueIdentifier>{418df48e-3876-4c4e-81cc-4815ffaa76fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UI\MyIven\Actor">
-      <UniqueIdentifier>{92832e0f-00d3-45b9-a074-c7c70ad6497d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UI\MyPokemon">
       <UniqueIdentifier>{fa535e64-3b16-45a6-8192-e1302c83989b}</UniqueIdentifier>
     </Filter>
@@ -307,6 +301,12 @@
     </Filter>
     <Filter Include="Actor">
       <UniqueIdentifier>{b50314a4-2b4e-4fe8-98d5-7acf2cf59994}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\MyBag">
+      <UniqueIdentifier>{418df48e-3876-4c4e-81cc-4815ffaa76fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\MyBag\Actor">
+      <UniqueIdentifier>{92832e0f-00d3-45b9-a074-c7c70ad6497d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

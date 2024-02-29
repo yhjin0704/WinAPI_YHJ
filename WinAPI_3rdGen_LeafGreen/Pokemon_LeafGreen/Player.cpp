@@ -1,10 +1,4 @@
 #include "Player.h"
-#include <EnginePlatform\EngineInput.h>
-#include <EngineCore\EngineResourcesManager.h>
-#include <EngineCore\EngineDebug.h>
-#include "FieldLevel.h"
-#include "Global.h"
-#include "PlayerHelper.h"
 
 APlayer* APlayer::MainPlayer = nullptr;
 
@@ -319,10 +313,13 @@ void APlayer::MenuCursorMove()
 			switch (MenuCursorPos)
 			{
 			case 0:
+				GEngine->ChangeLevel("MyPokemonLevel");
 				break;
 			case 1:
+				GEngine->ChangeLevel("MyBagLevel");
 				break;
 			case 2:
+				GEngine->ChangeLevel("MTrainerCardLevel");
 				break;
 			case 3:
 				CloseMenu();

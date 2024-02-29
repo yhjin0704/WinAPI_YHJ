@@ -10,7 +10,7 @@
 #include "PlayerHome2FLevel.h"
 #include "RivalHomeLevel.h"
 #include "MyPokemonLevel.h"
-#include "MyIvenLevel.h"
+#include "MyBagLevel.h"
 #include "MyTrainerCardLevel.h"
 #include <EnginePlatform\EngineSound.h>
 #include <EngineBase\EngineDirectory.h>
@@ -78,7 +78,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 	CreateLevel<URivalHomeLevel>("RivalHomeLevel");
 
 	CreateLevel<UMyPokemonLevel>("MyPokemonLevel");
-	CreateLevel<UMyIvenLevel>("MyIvenLevel");
+	CreateLevel<UMyBagLevel>("MyBagLevel");
 	CreateLevel<UMyTrainerCardLevel>("MyTrainerCardLevel");
 
 	ChangeLevel("TitleLevel1");
