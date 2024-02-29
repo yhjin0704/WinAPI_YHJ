@@ -23,4 +23,5 @@ void AMyPokemonSlot::BeginPlay()
 
 void AMyPokemonSlot::Tick(float _DeltaTime)
 {
+	AActor::Tick(_DeltaTime);
 }

@@ -178,6 +178,14 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="PokemonHelper.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TestPokemon.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="MyPokemonSlot.cpp">
       <SubType>
       </SubType>
@@ -352,6 +360,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="AMyPokemonMsgBox.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PokemonHelper.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TestPokemon.h">
       <SubType>
       </SubType>
     </ClInclude>

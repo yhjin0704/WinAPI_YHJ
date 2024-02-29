@@ -21,7 +21,8 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-private:
+	bool IshavePokemon = false;
+
 	UImageRenderer* PokemonSlotRenderer = nullptr;
 	UImageRenderer* PokemonImageRenderer = nullptr;
 	UImageRenderer* PokemonNameRenderer = nullptr;
@@ -29,5 +30,7 @@ private:
 	UImageRenderer* PokemonGenderRenderer = nullptr;
 	UImageRenderer* PokemonHPRenderer = nullptr;
 	UImageRenderer* PokemonHpTextRenderer = nullptr;
+
+private:
 };
 

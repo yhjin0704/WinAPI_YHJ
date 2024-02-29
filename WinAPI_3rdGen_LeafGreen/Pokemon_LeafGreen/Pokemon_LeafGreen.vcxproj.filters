@@ -142,6 +142,10 @@
     <ClCompile Include="AMyPokemonMsgBox.cpp">
       <Filter>UI\MyPokemon\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="TestPokemon.cpp">
+      <Filter>Battle\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="PokemonHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -285,6 +289,10 @@
     <ClInclude Include="AMyPokemonMsgBox.h">
       <Filter>UI\MyPokemon\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="TestPokemon.h">
+      <Filter>Battle\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="PokemonHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Field">
