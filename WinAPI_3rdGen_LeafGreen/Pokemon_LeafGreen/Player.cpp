@@ -1,4 +1,10 @@
 #include "Player.h"
+#include <EnginePlatform\EngineInput.h>
+#include <EngineCore\EngineResourcesManager.h>
+#include <EngineCore\EngineDebug.h>
+#include "FieldLevel.h"
+#include "Global.h"
+#include "PlayerHelper.h"
 
 APlayer* APlayer::MainPlayer = nullptr;
 
