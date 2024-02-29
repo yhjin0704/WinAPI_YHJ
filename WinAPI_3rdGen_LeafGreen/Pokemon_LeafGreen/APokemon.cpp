@@ -157,14 +157,24 @@ APokemon::APokemon()
 	IVSDef = static_cast<float>(UEngineRandom::MainRandom.RandomInt(0, 31));
 	IVSpd = static_cast<float>(UEngineRandom::MainRandom.RandomInt(0, 31));
 
-	MaxHp = static_cast<int>(((2 * BHp + IVHp + EVHp) * Level / 100 + Level + 10));
-	Atk = static_cast<int>(((2 * BAtk + IVAtk + EVAtk) * Level / 100 + 5) * NAtk);
-	Def = static_cast<int>(((2 * BDef + IVDef + EVDef) * Level / 100 + 5) * NDef);
-	SAtk =static_cast<int>(((2 * BSAtk + IVSAtk + EVSAtk) * Level / 100 + 5) * NSAtk);
-	SDef =static_cast<int>(((2 * BSDef + IVSDef + EVSDef) * Level / 100 + 5) * NSDef);
-	Spd = static_cast<int>(((2 * BSpd + IVSpd + EVSpd) * Level / 100 + 5) * NSpd);
+	MaxHp = std::lround(std::floor((2 * BHp + IVHp + EVHp) * Level / 100 + Level + 10));
+	Atk = std::lround(std::floor(std::floor((2 * BAtk + IVAtk + EVAtk) * Level / 100 + 5) * NAtk));
+	Def = std::lround(std::floor(std::floor((2 * BDef + IVDef + EVDef) * Level / 100 + 5) * NDef));
+	SAtk = std::lround(std::floor(std::floor((2 * BSAtk + IVSAtk + EVSAtk) * Level / 100 + 5) * NSAtk));
+	SDef = std::lround(std::floor(std::floor((2 * BSDef + IVSDef + EVSDef) * Level / 100 + 5) * NSDef));
+	Spd = std::lround(std::floor(std::floor((2 * BSpd + IVSpd + EVSpd) * Level / 100 + 5) * NSpd));
 }
 
 APokemon::~APokemon()
 {
+}
+
+void APokemon::BeginPlay()
+{
+	AActor::BeginPlay();
+}
+
+void APokemon::Tick(float _DeltaTime)
+{
+	AActor::Tick(_DeltaTime);
 }

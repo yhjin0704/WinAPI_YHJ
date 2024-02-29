@@ -67,6 +67,20 @@ void Pokemon3rdGen_Core::BeginPlay()
 		}
 	}
 
+	{
+		FieldPath.MoveParent();
+		FieldPath.Move("Pokemon");
+
+		std::list<UEngineFile> AllUIGraphicList = FieldPath.AllFile({ ".png", ".bmp" }, true);
+
+		for (UEngineFile& File : AllUIGraphicList)
+		{
+			UEngineResourcesManager::GetInst().LoadImg(File.GetFullPath());
+		}
+
+		UEngineResourcesManager::GetInst().CuttingImage("1st_Gen_Front_Back_1.png", 12, 17);
+	}
+
 	CreateLevel<UTitleLevel1>("TitleLevel1");
 	CreateLevel<UTitleLevel2>("TitleLevel2");
 	CreateLevel<UTitleLevel3>("TitleLevel3");

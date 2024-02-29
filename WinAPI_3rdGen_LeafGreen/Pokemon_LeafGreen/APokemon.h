@@ -17,6 +17,9 @@ public:
 	APokemon& operator=(APokemon&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
+
 	int DexNo = 0;
 	std::string Tribe = "";
 	float BHp = 1;
