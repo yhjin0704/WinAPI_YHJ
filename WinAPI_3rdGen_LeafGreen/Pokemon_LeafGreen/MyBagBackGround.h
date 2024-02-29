@@ -1,5 +1,6 @@
 #pragma once
 #include "BackGround.h"
+#include <EngineCore\EngineCore.h>
 
 class AMyBagBackGround : public ABackGround
 {

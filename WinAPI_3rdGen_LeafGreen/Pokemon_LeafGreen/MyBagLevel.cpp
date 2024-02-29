@@ -11,6 +11,8 @@ UMyBagLevel::~UMyBagLevel()
 void UMyBagLevel::BeginPlay()
 {
 	UMenuUILevel::BeginPlay();
+
+	BackGround = SpawnActor<AMyBagBackGround>();
 }
 
 void UMyBagLevel::Tick(float _DeltaTime)

@@ -1,5 +1,6 @@
 #pragma once
 #include "MenuUILevel.h"
+#include "MyBagBackGround.h"
 
 class UMyBagLevel : public UMenuUILevel
 {
@@ -21,6 +22,6 @@ protected:
 	void LevelEnd(ULevel* _NextLevel) override;
 
 private:
-
+	AMyBagBackGround* BackGround;
 };
 
