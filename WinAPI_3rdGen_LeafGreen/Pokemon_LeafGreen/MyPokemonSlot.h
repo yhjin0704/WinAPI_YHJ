@@ -1,5 +1,8 @@
 #pragma once
 #include <EngineCore/Actor.h>
+#include <EnginePlatform\EngineInput.h>
+#include <EngineBase\EngineDirectory.h>
+#include "Global.h"
 
 class AMyPokemonSlot : public AActor
 {

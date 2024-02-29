@@ -136,6 +136,12 @@
     <ClCompile Include="MyPokemonSlot.cpp">
       <Filter>UI\MyPokemon\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="AMyPokemonCancle.cpp">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="AMyPokemonMsgBox.cpp">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -271,6 +277,12 @@
       <Filter>UI\MyPokemon\Actor</Filter>
     </ClInclude>
     <ClInclude Include="MyPokemonSlot.h">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="AMyPokemonCancle.h">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="AMyPokemonMsgBox.h">
       <Filter>UI\MyPokemon\Actor</Filter>
     </ClInclude>
   </ItemGroup>

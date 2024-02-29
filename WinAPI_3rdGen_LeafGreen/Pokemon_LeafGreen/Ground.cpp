@@ -27,6 +27,7 @@ void AGround::SwitchDebug()
 void AGround::BeginPlay()
 {
 	ABackGround::BeginPlay();
+
 	ColMapRenderer = CreateImageRenderer(ERenderOrder::ColMap);
 	CoverMapRenderer = CreateImageRenderer(ERenderOrder::CoverMap);
 	ColMapRenderer->SetActive(false);

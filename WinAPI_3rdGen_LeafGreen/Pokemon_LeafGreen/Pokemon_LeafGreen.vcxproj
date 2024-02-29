@@ -170,6 +170,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AMyPokemonCancle.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="AMyPokemonMsgBox.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="MyPokemonSlot.cpp">
       <SubType>
       </SubType>
@@ -339,6 +347,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AMyPokemonCancle.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="AMyPokemonMsgBox.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="MyPokemonSlot.h">
       <SubType>
       </SubType>

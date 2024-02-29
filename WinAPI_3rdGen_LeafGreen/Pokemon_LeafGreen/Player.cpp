@@ -147,23 +147,23 @@ void APlayer::CreatePlayerAllRender()
 void APlayer::CreateMenu()
 {
 	CursorRender = CreateImageRenderer(ERenderOrder::Text);
-	CursorRender->SetTransform({ { ((ITileScale * 4) - 4) * IScaleMultiple, ((ITileScale * -4) - 3) * IScaleMultiple }, { FGameTileScale, FGameTileScale} });
 	CursorRender->SetImage("MenuCursor.png");
+	CursorRender->SetTransform({ { ((ITileScale * 4) - 4) * IScaleMultiple, ((ITileScale * -4) - 3) * IScaleMultiple }, { (CursorRender->GetImage()->GetScale()) * FScaleMultiple} });
 	CursorRender->ActiveOff();
 
 	MenuRenderer = CreateImageRenderer(ERenderOrder::Menu);
-	MenuRenderer->SetTransform({ { ((ITileScale * 5) + 4) * IScaleMultiple, ((ITileScale * -2) - 12) * IScaleMultiple }, { 70.0f * FScaleMultiple, 72.0f * FScaleMultiple} });
 	MenuRenderer->SetImage("Menu4.png");
+	MenuRenderer->SetTransform({ { ((ITileScale * 5) + 4) * IScaleMultiple, ((ITileScale * -2) - 12) * IScaleMultiple }, {(MenuRenderer->GetImage()->GetScale()) * FScaleMultiple} });
 	MenuRenderer->ActiveOff();
 
 	MenuPlayerTextRenderer = CreateImageRenderer(ERenderOrder::Text);
-	MenuPlayerTextRenderer->SetTransform({ { ((ITileScale * 4) + 10) * IScaleMultiple, ((ITileScale * -2) - 3) * IScaleMultiple }, { 0, 0 } });
 	Global::SetPokemonText(MenuPlayerTextRenderer, GetCharacterName());
+	MenuPlayerTextRenderer->SetTransform({ { ((ITileScale * 4) + 10) * IScaleMultiple, ((ITileScale * -2) - 3) * IScaleMultiple }, { 0, 0 } });
 	MenuPlayerTextRenderer->ActiveOff();
 
 	MenuExplainRenderer = CreateImageRenderer(ERenderOrder::Menu);
-	MenuExplainRenderer->SetTransform({ { 0, ((ITileScale * 3) + 12) * IScaleMultiple }, { 240.0f * FScaleMultiple, 40.0f * FScaleMultiple} });
 	MenuExplainRenderer->SetImage("MenuExplain.png");
+	MenuExplainRenderer->SetTransform({ { 0, ((ITileScale * 3) + 12) * IScaleMultiple }, {(MenuExplainRenderer->GetImage()->GetScale()) * FScaleMultiple} });
 	MenuExplainRenderer->ActiveOff();
 }
 
