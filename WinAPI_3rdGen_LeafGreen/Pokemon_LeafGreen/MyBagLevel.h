@@ -1,6 +1,8 @@
 #pragma once
 #include "MenuUILevel.h"
 #include "MyBagBackGround.h"
+#include <EngineBase/EngineString.h>
+#include <EngineCore\EngineCore.h>
 
 class UMyBagLevel : public UMenuUILevel
 {
@@ -15,6 +17,11 @@ public:
 	UMyBagLevel& operator=(const UMyBagLevel& _Other) = delete;
 	UMyBagLevel& operator=(UMyBagLevel&& _Other) noexcept = delete;
 
+	std::string GetPrevLevelName()
+	{
+		return PrevLevelName;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -23,5 +30,7 @@ protected:
 
 private:
 	AMyBagBackGround* BackGround;
+
+	std::string PrevLevelName = "";
 };
 

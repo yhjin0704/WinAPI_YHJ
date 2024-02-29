@@ -325,7 +325,7 @@ void APlayer::MenuCursorMove()
 				GEngine->ChangeLevel("MyBagLevel");
 				break;
 			case 2:
-				GEngine->ChangeLevel("MTrainerCardLevel");
+				GEngine->ChangeLevel("MyTrainerCardLevel");
 				break;
 			case 3:
 				CloseMenu();

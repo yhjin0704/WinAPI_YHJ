@@ -170,6 +170,34 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MyPokemonSlot.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MyPokemonSlot1st.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MyPokemonSlot2nd.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MyPokemonSlot3rd.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MyPokemonSlot4th.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MyPokemonSlot5th.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MyPokemonSlot6th.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="MyBagBackGround.cpp">
       <SubType>
       </SubType>
@@ -311,6 +339,34 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyPokemonSlot.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MyPokemonSlot1st.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MyPokemonSlot2nd.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MyPokemonSlot3rd.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MyPokemonSlot4th.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MyPokemonSlot5th.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MyPokemonSlot6th.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="MyBagBackGround.h">
       <SubType>
       </SubType>

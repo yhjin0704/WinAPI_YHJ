@@ -115,6 +115,27 @@
     <ClCompile Include="MyTrainerCardBackGround.cpp">
       <Filter>UI\MyTrainerCard\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="MyPokemonSlot1st.cpp">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="MyPokemonSlot2nd.cpp">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="MyPokemonSlot3rd.cpp">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="MyPokemonSlot4th.cpp">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="MyPokemonSlot5th.cpp">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="MyPokemonSlot6th.cpp">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="MyPokemonSlot.cpp">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -230,6 +251,27 @@
     </ClInclude>
     <ClInclude Include="MyTrainerCardBackGround.h">
       <Filter>UI\MyTrainerCard\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MyPokemonSlot1st.h">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MyPokemonSlot2nd.h">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MyPokemonSlot3rd.h">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MyPokemonSlot4th.h">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MyPokemonSlot5th.h">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MyPokemonSlot6th.h">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MyPokemonSlot.h">
+      <Filter>UI\MyPokemon\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
