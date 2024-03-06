@@ -1,5 +1,9 @@
 #pragma once
-class AOaksLabDoor
+#include <EngineCore\Actor.h>
+#include <EngineCore\EngineCore.h>
+#include "Global.h"
+
+class AOaksLabDoor : public AActor
 {
 public:
 	// constrcuter destructer
@@ -13,8 +17,11 @@ public:
 	AOaksLabDoor& operator=(AOaksLabDoor&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
 
 private:
+	UCollision* LabDoorCollision = nullptr;
 
 };
 

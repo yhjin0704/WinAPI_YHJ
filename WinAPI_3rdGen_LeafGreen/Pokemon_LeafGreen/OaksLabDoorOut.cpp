@@ -1,26 +1,26 @@
-#include "OaksLabDoor.h"
+#include "OaksLabDoorOut.h"
 
-AOaksLabDoor::AOaksLabDoor()
+AOaksLabDoorOut::AOaksLabDoorOut()
 {
 }
 
-AOaksLabDoor::~AOaksLabDoor()
+AOaksLabDoorOut::~AOaksLabDoorOut()
 {
 }
 
-void AOaksLabDoor::BeginPlay()
+void AOaksLabDoorOut::BeginPlay()
 {
 	LabDoorCollision = CreateCollision(ECollisionOrder::Door);
 	LabDoorCollision->SetScale({ IGameTileScale, IGameTileScale });
 	LabDoorCollision->SetColType(ECollisionType::Rect);
-	LabDoorCollision->DebugRender(GetWorld()->GetCameraPos());
 }
 
-void AOaksLabDoor::Tick(float _DeltaTime)
+void AOaksLabDoorOut::Tick(float _DeltaTime)
 {
 	std::vector<UCollision*> Result;
 	if (true == LabDoorCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
-		GEngine->ChangeLevel("WestFieldLevel");
+		GEngine->ChangeLevel("OaksLabLevel");
 	}
+
 }

@@ -152,6 +152,12 @@
     <ClCompile Include="OaksLabGround.cpp">
       <Filter>Field\WestFieldLevel\OaksLab\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="OaksLabDoorOut.cpp">
+      <Filter>Field\WestFieldLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="BulbasaurBall.cpp">
+      <Filter>Field\WestFieldLevel\OaksLab\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -303,6 +309,12 @@
       <Filter>Field\WestFieldLevel\OaksLab\Actor</Filter>
     </ClInclude>
     <ClInclude Include="OaksLabGround.h">
+      <Filter>Field\WestFieldLevel\OaksLab\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="OaksLabDoorOut.h">
+      <Filter>Field\WestFieldLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BulbasaurBall.h">
       <Filter>Field\WestFieldLevel\OaksLab\Actor</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,6 +6,7 @@ enum class ERenderOrder
 {
 	ColMap,
 	BackGround,
+	Object,
 	Player,
 	CoverMap,
 	Menu,
@@ -15,7 +16,8 @@ enum class ERenderOrder
 enum class ECollisionOrder
 {
 	Player,
-	Door
+	Door,
+	Item
 };
 
 enum class EDirState

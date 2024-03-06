@@ -22,9 +22,11 @@ void UWestFieldLevel::BeginPlay()
 	Ground = SpawnActor<AWestFieldGround>();
 	PlayerHomeDoor = SpawnActor<APlayerHomeDoorOut>();
 	RivalHomeDoor = SpawnActor<ARivalHomeDoorOut>();
+	OaksLabDoor = SpawnActor<AOaksLabDoorOut>();
 
 	PlayerHomeDoor->SetActorLocation({ (1136 + (FTileScale / 2)) * FScaleMultiple , (2000 + (FTileScale / 2)) * FScaleMultiple });
 	RivalHomeDoor->SetActorLocation({ (1280 + (FTileScale / 2)) * FScaleMultiple , (2000 + (FTileScale / 2)) * FScaleMultiple });
+	OaksLabDoor->SetActorLocation({ (1296 + (FTileScale / 2)) * FScaleMultiple , (2096 + (FTileScale / 2)) * FScaleMultiple });
 
 	Player->SetActorLocation({ (1136 + (FTileScale / 2)) * FScaleMultiple , (2032) * FScaleMultiple });
 }
@@ -64,6 +66,11 @@ void UWestFieldLevel::LevelStart(ULevel* _PrevLevel)
 		{
 			GetPlayer()->SetCharacterDir(EDirState::Down);
 			GetPlayer()->SetActorLocation({ (1280 + (FTileScale / 2)) * FScaleMultiple , (2032) * FScaleMultiple });
+		}
+		else if (UEngineString::ToUpper("OaksLabLevel") == Field->GetName())
+		{
+			GetPlayer()->SetCharacterDir(EDirState::Down);
+			GetPlayer()->SetActorLocation({ (1296 + (FTileScale / 2)) * FScaleMultiple , (2128) * FScaleMultiple });
 		}
 	}
 	else

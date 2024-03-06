@@ -1,6 +1,4 @@
 #include "RivalHomeDoorOut.h"
-#include <EngineCore\EngineCore.h>
-#include "Global.h"
 
 ARivalHomeDoorOut::ARivalHomeDoorOut()
 {

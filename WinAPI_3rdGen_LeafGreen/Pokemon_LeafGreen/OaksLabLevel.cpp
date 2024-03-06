@@ -16,8 +16,12 @@ void UOaksLabLevel::BeginPlay()
 
 	Ground = SpawnActor<AOaksLabGround>();
 	Door = SpawnActor<AOaksLabDoor>();
+	BBall = SpawnActor<ABulbasaurBall>();
 
-	Door->SetActorLocation({ (80 + (FTileScale / 2)) * FScaleMultiple , (160 + (FTileScale / 2)) * FScaleMultiple });
+	Door->SetActorLocation({ (112 + (FTileScale / 2)) * FScaleMultiple , (224 + (FTileScale / 2)) * FScaleMultiple });
+	BBall->SetActorLocation({ (144 + (FTileScale / 2)) * FScaleMultiple , (64 + (FTileScale / 2)) * FScaleMultiple });
+
+	Player->SetActorLocation({ (112 + (FTileScale / 2)) * FScaleMultiple , (192) * FScaleMultiple });
 }
 
 void UOaksLabLevel::Tick(float _DeltaTime)
@@ -39,7 +43,7 @@ void UOaksLabLevel::LevelStart(ULevel* _PrevLevel)
 		if (UEngineString::ToUpper("WestFieldLevel") == Field->GetName())
 		{
 			GetPlayer()->SetCharacterDir(EDirState::Up);
-			GetPlayer()->SetActorLocation({ (80 + (FTileScale / 2)) * FScaleMultiple , (128) * FScaleMultiple });
+			GetPlayer()->SetActorLocation({ (112 + (FTileScale / 2)) * FScaleMultiple , (192) * FScaleMultiple });
 		}
 
 		if (UEngineString::ToUpper("WestFieldLevel") != Field->GetName())

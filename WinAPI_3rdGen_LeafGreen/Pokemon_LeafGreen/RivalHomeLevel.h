@@ -2,6 +2,8 @@
 #include "FieldLevel.h"
 #include "RivalHomeGround.h"
 #include "RivalHomeDoor.h"
+#include "global.h"
+#include "PlayerHelper.h"
 
 class URivalHomeLevel : public UFieldLevel
 {

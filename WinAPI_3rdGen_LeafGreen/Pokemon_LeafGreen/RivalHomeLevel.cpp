@@ -1,6 +1,4 @@
 #include "RivalHomeLevel.h"
-#include "global.h"
-#include "PlayerHelper.h"
 
 URivalHomeLevel::URivalHomeLevel()
 {

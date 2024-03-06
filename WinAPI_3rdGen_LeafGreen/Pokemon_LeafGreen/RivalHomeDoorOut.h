@@ -1,5 +1,7 @@
 #pragma once
 #include <EngineCore\Actor.h>
+#include <EngineCore\EngineCore.h>
+#include "Global.h"
 
 class ARivalHomeDoorOut : public AActor
 {

@@ -20,9 +20,10 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	UImageRenderer* BackGroundRenderer = nullptr;
+
 	void SetBackGroundImage(std::string_view _BackGroundImage);
 
 private:
-	UImageRenderer* BackGroundRenderer = nullptr;
 };
 

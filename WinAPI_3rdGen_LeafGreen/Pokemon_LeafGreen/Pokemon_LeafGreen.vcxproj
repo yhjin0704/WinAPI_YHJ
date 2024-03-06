@@ -170,6 +170,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BulbasaurBall.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="OaksLabDoorOut.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="OaksLabDoor.cpp">
       <SubType>
       </SubType>
@@ -363,6 +371,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BulbasaurBall.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="OaksLabDoorOut.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="OaksLabDoor.h">
       <SubType>
       </SubType>

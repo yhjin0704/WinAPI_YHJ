@@ -10,15 +10,15 @@ AGround::~AGround()
 
 void AGround::SwitchDebug()
 {
-	if (true == MapRenderer->IsActive())
+	if (true == BackGroundRenderer->IsActive())
 	{
-		MapRenderer->SetActive(false);
+		BackGroundRenderer->SetActive(false);
 		ColMapRenderer->SetActive(true);
 		CoverMapRenderer->SetActive(false);
 	}
 	else
 	{
-		MapRenderer->SetActive(true);
+		BackGroundRenderer->SetActive(true);
 		ColMapRenderer->SetActive(false);
 		CoverMapRenderer->SetActive(true);
 	}

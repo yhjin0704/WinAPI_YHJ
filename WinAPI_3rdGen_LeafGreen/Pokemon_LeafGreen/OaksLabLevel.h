@@ -2,6 +2,9 @@
 #include "FieldLevel.h"
 #include "OaksLabGround.h"
 #include "OaksLabDoor.h"
+#include "BulbasaurBall.h"
+#include "global.h"
+#include "PlayerHelper.h"
 
 class UOaksLabLevel : public UFieldLevel
 {
@@ -25,5 +28,6 @@ protected:
 private:
 	AOaksLabGround* Ground;
 	AOaksLabDoor* Door;
+	ABulbasaurBall* BBall;
 };
 

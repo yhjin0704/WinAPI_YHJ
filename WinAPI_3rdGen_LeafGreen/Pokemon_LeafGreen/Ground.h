@@ -35,7 +35,6 @@ protected:
 
 	UWindowImage* ColMapImage = nullptr;
 
-	UImageRenderer* MapRenderer = nullptr;
 	UImageRenderer* ColMapRenderer = nullptr;
 	UImageRenderer* CoverMapRenderer = nullptr;
 
