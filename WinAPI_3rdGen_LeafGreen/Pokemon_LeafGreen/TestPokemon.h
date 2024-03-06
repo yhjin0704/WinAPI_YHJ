@@ -1,5 +1,5 @@
 #pragma once
-#include "APokemon.h"
+#include "Pokemon.h"
 
 class ATestPokemon : public APokemon
 {

@@ -170,19 +170,23 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AMyPokemonCancle.cpp">
+    <ClCompile Include="OaksLabDoor.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="AMyPokemonMsgBox.cpp">
+    <ClCompile Include="OaksLabGround.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MyPokemonCancle.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MyPokemonMsgBox.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="PokemonHelper.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="TestPokemon.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -230,7 +234,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="APokemon.cpp">
+    <ClCompile Include="Pokemon.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -339,6 +343,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="OaksLabLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="WestFieldGround.cpp" />
     <ClCompile Include="Player.cpp">
       <SubType>
@@ -355,19 +363,23 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AMyPokemonCancle.h">
+    <ClInclude Include="OaksLabDoor.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="AMyPokemonMsgBox.h">
+    <ClInclude Include="OaksLabGround.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MyPokemonCancle.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MyPokemonMsgBox.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="PokemonHelper.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="TestPokemon.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -415,7 +427,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="APokemon.h">
+    <ClInclude Include="Pokemon.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -521,6 +533,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="MenuUILevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="OaksLabLevel.h">
       <SubType>
       </SubType>
     </ClInclude>

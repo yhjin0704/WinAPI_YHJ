@@ -2,10 +2,13 @@
 #include <EngineCore/Actor.h>
 #include <EnginePlatform\EngineInput.h>
 #include <EngineBase\EngineDirectory.h>
+#include "Player.h"
+#include "Pokemon.h"
 #include "Global.h"
 
 class AMyPokemonSlot : public AActor
 {
+	friend APlayer;
 public:
 	// constrcuter destructer
 	AMyPokemonSlot();

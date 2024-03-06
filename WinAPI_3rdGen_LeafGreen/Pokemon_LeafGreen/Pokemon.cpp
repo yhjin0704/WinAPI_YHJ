@@ -1,4 +1,4 @@
-#include "APokemon.h"
+#include "Pokemon.h"
 
 APokemon::APokemon()
 {
@@ -158,6 +158,7 @@ APokemon::APokemon()
 	IVSpd = static_cast<float>(UEngineRandom::MainRandom.RandomInt(0, 31));
 
 	MaxHp = std::lround(std::floor((2 * BHp + IVHp + EVHp) * Level / 100 + Level + 10));
+	Hp = MaxHp;
 	Atk = std::lround(std::floor(std::floor((2 * BAtk + IVAtk + EVAtk) * Level / 100 + 5) * NAtk));
 	Def = std::lround(std::floor(std::floor((2 * BDef + IVDef + EVDef) * Level / 100 + 5) * NDef));
 	SAtk = std::lround(std::floor(std::floor((2 * BSAtk + IVSAtk + EVSAtk) * Level / 100 + 5) * NSAtk));
@@ -177,4 +178,39 @@ void APokemon::BeginPlay()
 void APokemon::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
+}
+
+void APokemon::SetLevel(int _Level)
+{
+	int PrevMaxHp = MaxHp;
+	Level = _Level;
+
+	MaxHp = std::lround(std::floor((2 * BHp + IVHp + EVHp) * Level / 100 + Level + 10));
+	if (Hp < MaxHp)
+	{
+		Hp += MaxHp - PrevMaxHp;
+	}
+	else
+	{
+		Hp = MaxHp;
+	}
+	Atk = std::lround(std::floor(std::floor((2 * BAtk + IVAtk + EVAtk) * Level / 100 + 5) * NAtk));
+	Def = std::lround(std::floor(std::floor((2 * BDef + IVDef + EVDef) * Level / 100 + 5) * NDef));
+	SAtk = std::lround(std::floor(std::floor((2 * BSAtk + IVSAtk + EVSAtk) * Level / 100 + 5) * NSAtk));
+	SDef = std::lround(std::floor(std::floor((2 * BSDef + IVSDef + EVSDef) * Level / 100 + 5) * NSDef));
+	Spd = std::lround(std::floor(std::floor((2 * BSpd + IVSpd + EVSpd) * Level / 100 + 5) * NSpd));
+}
+
+void APokemon::LevelUp()
+{
+	int PrevMaxHp = MaxHp;
+	++Level;
+
+	MaxHp = std::lround(std::floor((2 * BHp + IVHp + EVHp) * Level / 100 + Level + 10));
+	Hp += MaxHp - PrevMaxHp;
+	Atk = std::lround(std::floor(std::floor((2 * BAtk + IVAtk + EVAtk) * Level / 100 + 5) * NAtk));
+	Def = std::lround(std::floor(std::floor((2 * BDef + IVDef + EVDef) * Level / 100 + 5) * NDef));
+	SAtk = std::lround(std::floor(std::floor((2 * BSAtk + IVSAtk + EVSAtk) * Level / 100 + 5) * NSAtk));
+	SDef = std::lround(std::floor(std::floor((2 * BSDef + IVSDef + EVSDef) * Level / 100 + 5) * NSDef));
+	Spd = std::lround(std::floor(std::floor((2 * BSpd + IVSpd + EVSpd) * Level / 100 + 5) * NSpd));
 }

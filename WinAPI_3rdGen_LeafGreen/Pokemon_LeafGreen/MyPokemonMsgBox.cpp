@@ -1,4 +1,4 @@
-#include "AMyPokemonMsgBox.h"
+#include "MyPokemonMsgBox.h"
 
 AMyPokemonMsgBox::AMyPokemonMsgBox()
 {

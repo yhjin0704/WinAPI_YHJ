@@ -16,6 +16,9 @@ public:
 	APokemon& operator=(const APokemon& _Other) = delete;
 	APokemon& operator=(APokemon&& _Other) noexcept = delete;
 
+	void SetLevel(int _Level);
+	void LevelUp();
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

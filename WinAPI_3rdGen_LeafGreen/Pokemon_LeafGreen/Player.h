@@ -1,6 +1,8 @@
 #pragma once
 #include "Character.h"
+#include <list>
 #include <EngineCore\EngineCore.h>
+#include "Pokemon.h"
 #include "Global.h"
 
 class APlayer : public ACharacter
@@ -35,6 +37,8 @@ private:
 
 	FVector PrevFieldPos = FVector::Zero;
 	UCollision* PlayerCollision = nullptr;
+
+	std::list<APokemon> EntryPokemon = std::list<APokemon>();
 
 	bool IsActionDelay = false;
 	float CurDelayTime = 0.0f;
