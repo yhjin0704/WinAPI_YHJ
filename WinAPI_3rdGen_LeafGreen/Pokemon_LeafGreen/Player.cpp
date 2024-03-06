@@ -41,29 +41,31 @@ void APlayer::Tick(float _DeltaTime)
 	AActor::Tick(_DeltaTime);
 
 	GetWorld()->SetCameraPos(GetActorLocation() - FVector(FHScreen_X, FHScreen_Y));
-
-	if (EMoveState::Idle == MoveState)
+	if (false == PlayerHelper::PlayerPause)
 	{
-		UseMenu();
-		if (false == IsUseMenu)
+		if (EMoveState::Idle == MoveState)
 		{
-			UseRunningShoes();
-			UseBike();
+			UseMenu();
+			if (false == PlayerHelper::IsUseMenu)
+			{
+				UseRunningShoes();
+				UseBike();
+			}
 		}
-	}
-	//메뉴 사용 중 체크
-	if (false == IsUseMenu)
-	{
-		KeyInputMove(_DeltaTime);
-	}
-	else
-	{
-		MenuCursorMove();
-	}
+		//메뉴 사용 중 체크
+		if (false == PlayerHelper::IsUseMenu)
+		{
+			KeyInputMove(_DeltaTime);
+		}
+		else
+		{
+			MenuCursorMove();
+		}
 
-	if (EMoveState::Idle == MoveState)
-	{
-		PlayIdleAnimation();
+		if (EMoveState::Idle == MoveState)
+		{
+			PlayIdleAnimation();
+		}
 	}
 
 	FVector PlayerPosDebug = { (GetTransform().GetPosition().X - FHGameTileScale) / FScaleMultiple, GetTransform().GetPosition().Y / FScaleMultiple };
@@ -293,7 +295,7 @@ void APlayer::SetPlayerMovePos()
 
 void APlayer::MenuCursorMove()
 {
-	if (true == IsUseMenu)
+	if (true == PlayerHelper::IsUseMenu)
 	{
 		if (true == UEngineInput::IsDown('W'))
 		{
@@ -350,13 +352,13 @@ void APlayer::UseMenu()
 {
 	if (true == UEngineInput::IsDown(VK_RETURN))
 	{
-		if (true == IsUseMenu)
+		if (true == PlayerHelper::IsUseMenu)
 		{
 			CloseMenu();
 		}
 		else
 		{
-			IsUseMenu = true;
+			PlayerHelper::IsUseMenu = true;
 			MenuRenderer->ActiveOn();
 			CursorRender->ActiveOn();
 			MenuPlayerTextRenderer->ActiveOn();
@@ -368,7 +370,7 @@ void APlayer::UseMenu()
 
 void APlayer::CloseMenu()
 {
-	IsUseMenu = false;
+	PlayerHelper::IsUseMenu = false;
 	MenuRenderer->ActiveOff();
 	CursorRender->ActiveOff();
 	MenuPlayerTextRenderer->ActiveOff();
@@ -415,3 +417,4 @@ void APlayer::UseBike()
 		}
 	}
 }
+

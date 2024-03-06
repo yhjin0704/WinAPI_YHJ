@@ -34,6 +34,7 @@ void UFieldLevel::BeginPlay()
 
 	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Bike_Down_Jump.png", 7, 2);
 
+
 	Player = SpawnActor<APlayer>();
 	Player->SetCharacterName("Player_Boy");
 
