@@ -34,7 +34,7 @@ void ABulbasaurBall::Tick(float _DeltaTime)
 	std::vector<UCollision*> Result;
 	if (true == BallCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
-		if (false == PlayerHelper::PlayerPause)
+		if (false == PlayerHelper::PlayerPause && false == PlayerHelper::IsUseMenu)
 		{
 			if (true == UEngineInput::IsDown('P'))
 			{
@@ -43,7 +43,7 @@ void ABulbasaurBall::Tick(float _DeltaTime)
 				SelectImage->ActiveOn();
 			}
 		}
-		else
+		else if (true == PlayerHelper::PlayerPause && false == PlayerHelper::IsUseMenu)
 		{
 			if (true == UEngineInput::IsDown('P'))
 			{
@@ -52,6 +52,8 @@ void ABulbasaurBall::Tick(float _DeltaTime)
 				dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->AddEntry(1, 5);
 				PlayerHelper::PlayerPause = false;
 				SelectImage->ActiveOff();
+				//BallRender->ActiveOff();
+				//BallCollision->ActiveOff();
 			}
 			else if (true == UEngineInput::IsDown('L'))
 			{

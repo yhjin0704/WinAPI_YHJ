@@ -32,11 +32,11 @@ protected:
 private:
 	AMyPokemonBackGround* BackGround;
 	AMyPokemonSlot* Slot1st;
-	AMyPokemonSlot* Slot2nd;
-	AMyPokemonSlot* Slot3rd;
-	AMyPokemonSlot* Slot4th;
-	AMyPokemonSlot* Slot5th;
-	AMyPokemonSlot* Slot6th;
+	//AMyPokemonSlot* Slot2nd;
+	//AMyPokemonSlot* Slot3rd;
+	//AMyPokemonSlot* Slot4th;
+	//AMyPokemonSlot* Slot5th;
+	//AMyPokemonSlot* Slot6th;
 
 	std::string PrevLevelName = "";
 };

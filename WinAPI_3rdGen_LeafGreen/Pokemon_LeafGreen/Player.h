@@ -47,6 +47,7 @@ private:
 	void CreateMenu();
 	
 	void KeyInputMove(float _DeltaTime);
+	void SetColBoxDir(EDirState _InputDir);
 	void SetKeyInputAnimation(EDirState _InputDir);
 	void SetCurDelayTime();
 	void InputDelayCheck(float _DeltaTime);

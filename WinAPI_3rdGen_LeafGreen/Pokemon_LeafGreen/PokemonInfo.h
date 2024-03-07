@@ -33,7 +33,8 @@ public:
 
 	int FrontImage;
 	int BackImage;
-	UImageRenderer* DotAnimation;
+	int DotAnimationStart;
+	int DotAnimationEnd;
 
 	std::string Name = "";
 	int Level = 1;

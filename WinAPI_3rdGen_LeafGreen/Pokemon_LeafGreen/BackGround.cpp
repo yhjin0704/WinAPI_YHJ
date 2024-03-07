@@ -11,7 +11,7 @@ ABackGround::~ABackGround()
 void ABackGround::BeginPlay()
 {
 	AActor::BeginPlay();
-	BackGroundRenderer = CreateImageRenderer(ERenderOrder::BackGround);\
+	BackGroundRenderer = CreateImageRenderer(ERenderOrder::BackGround);
 }
 
 void ABackGround::Tick(float _DeltaTime)

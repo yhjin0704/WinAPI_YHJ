@@ -193,4 +193,6 @@ void PokemonInfo::CalImageNo(int _DexNo)
 		FrontImage = ((_DexNo - 102) - 1) * 4;
 		BackImage = (((_DexNo - 102) - 1) * 4) + 2;
 	}
+	DotAnimationStart = _DexNo - 2;
+	DotAnimationEnd = _DexNo - 1;
 }

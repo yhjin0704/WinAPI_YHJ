@@ -143,7 +143,7 @@ void APlayer::CreatePlayerAllRender()
 
 	PlayerCollision = CreateCollision(ECollisionOrder::Player);
 	PlayerCollision->SetScale({ IGameTileScale, IGameTileScale });
-	PlayerCollision->SetPosition({ GetActorLocation().X, GetActorLocation().Y + FHGameTileScale });
+	PlayerCollision->SetPosition({ GetActorLocation().X, (GetActorLocation().Y + FHGameTileScale) });
 	PlayerCollision->SetColType(ECollisionType::Rect);
 }
 
@@ -205,6 +205,28 @@ void APlayer::KeyInputMove(float _DeltaTime)
 	if (true == IsMove)
 	{
 		MovePos(_DeltaTime);
+	}
+}
+
+void APlayer::SetColBoxDir(EDirState _InputDir)
+{
+	FVector abc = GetActorLocation();
+	switch (_InputDir)
+	{
+	case EDirState::Down:
+		PlayerCollision->SetPosition({ GetActorLocation().X, (GetActorLocation().Y + FHGameTileScale) + (FGameTileScale / 4.0f) });
+		break;
+	case EDirState::Up:
+		PlayerCollision->SetPosition({ GetActorLocation().X, (GetActorLocation().Y) });
+		break;
+	case EDirState::Left:
+		PlayerCollision->SetPosition({ GetActorLocation().X - (FGameTileScale / 4.0f), (GetActorLocation().Y + FHGameTileScale) });
+		break;
+	case EDirState::Right:
+		PlayerCollision->SetPosition({ GetActorLocation().X + (FGameTileScale / 4.0f), (GetActorLocation().Y + FHGameTileScale) });
+		break;
+	default:
+		break;
 	}
 }
 

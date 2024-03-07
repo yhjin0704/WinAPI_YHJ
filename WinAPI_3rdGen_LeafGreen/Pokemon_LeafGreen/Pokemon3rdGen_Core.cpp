@@ -83,7 +83,6 @@ void Pokemon3rdGen_Core::BeginPlay()
 		Info.Ability = "심록";
 		Info.EvolveLevel = 16;
 		Info.CalImageNo(Info.DexNo);
-		//Info.DotAnimation->CreateAnimation("BulbasaurDot", "1st_Gen_Dot.png", Info.DexNo - 1, Info.DexNo - 2, 1.0f, true);
 
 		AllPokemonInfo[Info.DexNo] = Info;
 	}
@@ -101,7 +100,6 @@ void Pokemon3rdGen_Core::BeginPlay()
 		Info.Ability = "맹화";
 		Info.EvolveLevel = 16;
 		Info.CalImageNo(Info.DexNo);
-		//Info.DotAnimation->CreateAnimation("CharmanderDot", "1st_Gen_Dot.png", Info.DexNo - 1, Info.DexNo - 2, 1.0f, true);
 
 		AllPokemonInfo[Info.DexNo] = Info;
 	}
@@ -119,7 +117,6 @@ void Pokemon3rdGen_Core::BeginPlay()
 		Info.Ability = "급류";
 		Info.EvolveLevel = 16;
 		Info.CalImageNo(Info.DexNo);
-		//Info.DotAnimation->CreateAnimation("CharmanderDot", "1st_Gen_Dot.png", Info.DexNo - 1, Info.DexNo - 2, 1.0f, true);
 
 		AllPokemonInfo[Info.DexNo] = Info;
 	}

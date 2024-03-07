@@ -18,18 +18,19 @@ public:
 	AMyPokemonSlot& operator=(const AMyPokemonSlot& _Other) = delete;
 	AMyPokemonSlot& operator=(AMyPokemonSlot&& _Other) noexcept = delete;
 
+	void SetSlotRenderer(std::string_view _SlotImage, float _Slot_X, float _Slot_Y);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 	UImageRenderer* PokemonSlotRenderer = nullptr;
-	UImageRenderer* PokemonImageRenderer = nullptr;
+	/*UImageRenderer* PokemonImageRenderer = nullptr;
 	UImageRenderer* PokemonNameRenderer = nullptr;
 	UImageRenderer* PokemonLevelRenderer = nullptr;
 	UImageRenderer* PokemonGenderRenderer = nullptr;
 	UImageRenderer* PokemonHPRenderer = nullptr;
-	UImageRenderer* PokemonHpTextRenderer = nullptr;
-
+	UImageRenderer* PokemonHpTextRenderer = nullptr;*/
 private:
 };
 
