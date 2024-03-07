@@ -1,5 +1,7 @@
 #include "Pokemon3rdGen_Core.h"
 
+//std::map<int, PokemonInfo> Pokemon3rdGen_Core::AllPokemonInfo;
+
 Pokemon3rdGen_Core::Pokemon3rdGen_Core()
 	: UEngineCore()
 {
@@ -67,6 +69,61 @@ void Pokemon3rdGen_Core::BeginPlay()
 		UEngineResourcesManager::GetInst().CuttingImage("1st_Gen_Dot.png", 20, 16);
 	}
 
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 1;
+		Info.Tribe = "ÀÌ»óÇØ¾¾";
+		Info.BHp = 45.0f;
+		Info.BAtk = 49.0f;
+		Info.BDef = 49.0f;
+		Info.BSAtk = 65.0f;
+		Info.BSDef = 65.0f;
+		Info.BSpd = 45.0f;
+		Info.Ability = "½É·Ï";
+		Info.EvolveLevel = 16;
+		Info.CalImageNo(Info.DexNo);
+		//Info.DotAnimation->CreateAnimation("BulbasaurDot", "1st_Gen_Dot.png", Info.DexNo - 1, Info.DexNo - 2, 1.0f, true);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 4;
+		Info.Tribe = "ÆÄÀÌ¸®";
+		Info.BHp = 39.0f;
+		Info.BAtk = 52.0f;
+		Info.BDef = 43.0f;
+		Info.BSAtk = 60.0f;
+		Info.BSDef = 50.0f;
+		Info.BSpd = 65.0f;
+		Info.Ability = "¸ÍÈ­";
+		Info.EvolveLevel = 16;
+		Info.CalImageNo(Info.DexNo);
+		//Info.DotAnimation->CreateAnimation("CharmanderDot", "1st_Gen_Dot.png", Info.DexNo - 1, Info.DexNo - 2, 1.0f, true);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 7;
+		Info.Tribe = "²¿ºÎ±â";
+		Info.BHp = 44.0f;
+		Info.BAtk = 48.0f;
+		Info.BDef = 65.0f;
+		Info.BSAtk = 50.0f;
+		Info.BSDef = 64.0f;
+		Info.BSpd = 43.0f;
+		Info.Ability = "±Þ·ù";
+		Info.EvolveLevel = 16;
+		Info.CalImageNo(Info.DexNo);
+		//Info.DotAnimation->CreateAnimation("CharmanderDot", "1st_Gen_Dot.png", Info.DexNo - 1, Info.DexNo - 2, 1.0f, true);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
 	{
 		CreateLevel<UTitleLevel1>("TitleLevel1");
 		CreateLevel<UTitleLevel2>("TitleLevel2");
@@ -99,4 +156,13 @@ void Pokemon3rdGen_Core::Tick(float _DeltaTime)
 
 void Pokemon3rdGen_Core::End()
 {
+}
+
+void Pokemon3rdGen_Core::AddEntry(int _DexNo, int _Level)
+{
+	PokemonInfo info = AllPokemonInfo[_DexNo];
+	info.PokemonInfo::CalStatus(_Level);
+	Entry.push_back(info);
+	PokemonInfo Test = dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->GetEntry().front();
+	int a = 0;
 }

@@ -2,13 +2,11 @@
 #include <EngineCore/Actor.h>
 #include <EnginePlatform\EngineInput.h>
 #include <EngineBase\EngineDirectory.h>
-#include "Player.h"
-#include "Pokemon.h"
+#include "PokemonInfo.h"
 #include "Global.h"
 
 class AMyPokemonSlot : public AActor
 {
-	friend APlayer;
 public:
 	// constrcuter destructer
 	AMyPokemonSlot();
@@ -23,8 +21,6 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-
-	bool IshavePokemon = false;
 
 	UImageRenderer* PokemonSlotRenderer = nullptr;
 	UImageRenderer* PokemonImageRenderer = nullptr;

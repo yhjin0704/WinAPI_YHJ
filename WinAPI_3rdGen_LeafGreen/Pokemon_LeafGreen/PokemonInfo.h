@@ -3,25 +3,20 @@
 #include <EngineBase\EngineRandom.h>
 #include "PokemonHelper.h"
 
-class APokemon : public AActor
+class PokemonInfo 
 {
 public:
 	// constrcuter destructer
-	APokemon();
-	~APokemon();
+	PokemonInfo();
+	~PokemonInfo();
 
-	// delete Function
-	APokemon(const APokemon& _Other) = delete;
-	APokemon(APokemon&& _Other) noexcept = delete;
-	APokemon& operator=(const APokemon& _Other) = delete;
-	APokemon& operator=(APokemon&& _Other) noexcept = delete;
+	void SetName(std::string _Name)
+	{
+		Name = _Name;
+	}
 
-	void SetLevel(int _Level);
-	void LevelUp();
-
-protected:
-	void BeginPlay() override;
-	void Tick(float _DeltaTime) override;
+	void CalStatus(int _Level);
+	void CalImageNo(int _DexNo);
 
 	int DexNo = 0;
 	std::string Tribe = "";
@@ -32,8 +27,15 @@ protected:
 	float BSDef = 1;
 	float BSpd = 1;
 	std::string Ability = "";
+	int EvolveLevel = 101;
+	bool UseItemEvolve = false;
+	std::string EvolveItem = "";
 
-	std::string Name = Tribe;
+	int FrontImage;
+	int BackImage;
+	UImageRenderer* DotAnimation;
+
+	std::string Name = "";
 	int Level = 1;
 	int Exp = 0;
 	ENature Nature = ENature::Hardy;
@@ -67,7 +69,7 @@ protected:
 	float NSDef = 1.0f;
 	float NSpd = 1.0f;
 
-private:
 
+private:
 };
 

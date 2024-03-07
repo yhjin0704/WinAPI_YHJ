@@ -2,6 +2,7 @@
 #include <EnginePlatform\EngineInput.h>
 #include <EngineCore\EngineResourcesManager.h>
 #include <EngineCore\EngineDebug.h>
+#include "Pokemon3rdGen_Core.h"
 #include "FieldLevel.h"
 #include "Global.h"
 #include "PlayerHelper.h"
@@ -321,7 +322,10 @@ void APlayer::MenuCursorMove()
 			switch (MenuCursorPos)
 			{
 			case 0:
-				GEngine->ChangeLevel("MyPokemonLevel");
+				if (false == dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->GetEntry().empty())
+				{
+					GEngine->ChangeLevel("MyPokemonLevel");
+				}
 				break;
 			case 1:
 				GEngine->ChangeLevel("MyBagLevel");

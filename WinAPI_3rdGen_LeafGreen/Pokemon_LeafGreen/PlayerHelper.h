@@ -1,6 +1,6 @@
 #pragma once
 #include <list>
-#include "Pokemon.h"
+#include "PokemonInfo.h"
 #include "Global.h"
 
 class PlayerHelper
@@ -20,7 +20,7 @@ public:
 	static EMoveType PrevMoveType;
 	static bool IsUseMenu;
 	static bool PlayerPause;
-	static inline std::list<APokemon> EntryPokemon = std::list<APokemon>();
+	static inline std::list<PokemonInfo> EntryPokemon = std::list<PokemonInfo>();
 
 protected:
 

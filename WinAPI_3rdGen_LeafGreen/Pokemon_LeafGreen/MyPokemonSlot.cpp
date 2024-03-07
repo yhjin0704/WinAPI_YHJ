@@ -1,4 +1,5 @@
 #include "MyPokemonSlot.h"
+#include "Pokemon3rdGen_Core.h"
 
 AMyPokemonSlot::AMyPokemonSlot()
 {

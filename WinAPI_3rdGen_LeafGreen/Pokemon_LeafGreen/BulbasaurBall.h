@@ -1,10 +1,6 @@
 #pragma once
 #include <EngineCore\Actor.h>
 #include <EngineCore\EngineCore.h>
-#include "Player.h"
-#include "FieldLevel.h"
-#include "Global.h"
-#include "PlayerHelper.h"
 
 class ABulbasaurBall : public AActor
 {

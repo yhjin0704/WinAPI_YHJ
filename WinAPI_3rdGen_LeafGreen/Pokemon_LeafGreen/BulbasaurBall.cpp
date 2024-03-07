@@ -1,4 +1,9 @@
 #include "BulbasaurBall.h"
+#include "Pokemon3rdGen_Core.h"
+#include "Player.h"
+#include "FieldLevel.h"
+#include "Global.h"
+#include "PlayerHelper.h"
 
 ABulbasaurBall::ABulbasaurBall()
 {
@@ -18,8 +23,6 @@ void ABulbasaurBall::BeginPlay()
 	SelectImage->SetImage("Select_BBall.png");
 	SelectImage->ActiveOff();
 	
-	
-
 	BallCollision = CreateCollision(ECollisionOrder::Item);
 	BallCollision->SetScale({ IGameTileScale, IGameTileScale });
 	BallCollision->SetColType(ECollisionType::Rect);
@@ -36,8 +39,24 @@ void ABulbasaurBall::Tick(float _DeltaTime)
 			if (true == UEngineInput::IsDown('P'))
 			{
 				PlayerHelper::PlayerPause = true;
-				SelectImage->SetTransform({ { GetWorld()->GetCameraPos()}, {(SelectImage->GetImage()->GetScale()) * FScaleMultiple} });
+				SelectImage->SetTransform({ { GetWorld()->GetCameraPos().X - 32.0f * FScaleMultiple , GetWorld()->GetCameraPos().Y }, {(SelectImage->GetImage()->GetScale()) * FScaleMultiple} });
 				SelectImage->ActiveOn();
+			}
+		}
+		else
+		{
+			if (true == UEngineInput::IsDown('P'))
+			{
+				std::map<int, PokemonInfo> AllInfo = Pokemon3rdGen_Core::GetAllPokemonInfo();
+
+				dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->AddEntry(1, 5);
+				PlayerHelper::PlayerPause = false;
+				SelectImage->ActiveOff();
+			}
+			else if (true == UEngineInput::IsDown('L'))
+			{
+				PlayerHelper::PlayerPause = false;
+				SelectImage->ActiveOff();
 			}
 		}
 	}

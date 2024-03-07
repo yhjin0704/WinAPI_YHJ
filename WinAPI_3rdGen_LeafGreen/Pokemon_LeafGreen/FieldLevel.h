@@ -2,7 +2,7 @@
 #include <EngineCore\Level.h>
 #include <EnginePlatform\EngineSound.h>
 #include "Player.h"
-#include "Pokemon.h"
+#include "PokemonInfo.h"
 #include "global.h"
 
 class UFieldLevel : public ULevel
@@ -33,7 +33,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	APlayer* Player;
-	APokemon* TestPokemon;
+	PokemonInfo* TestPokemon;
 
 	bool IsOutside = true;
 
