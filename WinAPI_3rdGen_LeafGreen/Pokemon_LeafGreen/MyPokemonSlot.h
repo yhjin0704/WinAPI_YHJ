@@ -19,7 +19,7 @@ public:
 
 	void SetSlotRenderer(std::string_view _SlotImage, float _Slot_X, float _Slot_Y);
 	void SetDotRenderer(float _Ani_X, float _Ani_Y, PokemonInfo _Entry);
-	void SetDataRenderers(PokemonInfo _Entry);
+	void SetDataRenderers(PokemonInfo _Entry, float _Name_X, float _Name_Y);
 
 protected:
 	void BeginPlay() override;

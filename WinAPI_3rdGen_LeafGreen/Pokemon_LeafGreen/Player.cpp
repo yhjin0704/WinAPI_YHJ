@@ -160,6 +160,7 @@ void APlayer::CreateMenu()
 	MenuRenderer->ActiveOff();
 
 	MenuPlayerTextRenderer = CreateImageRenderer(ERenderOrder::Text);
+	MenuPlayerTextRenderer->SetSortType(EImageSortType::Left);
 	Global::SetPokemonText(MenuPlayerTextRenderer, GetCharacterName());
 	MenuPlayerTextRenderer->SetTransform({ { ((ITileScale * 4) + 10) * IScaleMultiple, ((ITileScale * -2) - 3) * IScaleMultiple }, { 0, 0 } });
 	MenuPlayerTextRenderer->ActiveOff();

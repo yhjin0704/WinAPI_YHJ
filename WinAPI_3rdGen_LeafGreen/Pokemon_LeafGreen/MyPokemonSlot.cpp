@@ -33,7 +33,7 @@ void AMyPokemonSlot::SetSlotRenderer(std::string_view _SlotImage, float _Slot_X,
 	PokemonSlotRenderer->SetImage(_SlotImage);
 	UWindowImage* SlotImage = PokemonSlotRenderer->GetImage();
 	FVector SlotImageScale = SlotImage->GetScale();
-	PokemonSlotRenderer->SetTransform({ { _Slot_X, _Slot_Y }, (SlotImageScale * FScaleMultiple) });
+	PokemonSlotRenderer->SetTransform({ { _Slot_X * FScaleMultiple, _Slot_Y * FScaleMultiple }, (SlotImageScale * FScaleMultiple) });
 }
 
 void AMyPokemonSlot::SetDotRenderer(float _Ani_X, float _Ani_Y, PokemonInfo _Entry)
@@ -42,15 +42,13 @@ void AMyPokemonSlot::SetDotRenderer(float _Ani_X, float _Ani_Y, PokemonInfo _Ent
 	{
 		PokemonImageRenderer->CreateAnimation(_Entry.Tribe + "_Dot", "1st_Gen_Dot.png", _Entry.DotAnimationStart, _Entry.DotAnimationEnd, 0.5f, true);
 	}
-	PokemonImageRenderer->SetTransform({ { _Ani_X, _Ani_Y }, {32.0f * FScaleMultiple, 32.0f * FScaleMultiple} });
+	PokemonImageRenderer->SetTransform({ { _Ani_X * FScaleMultiple, _Ani_Y * FScaleMultiple }, {32.0f * FScaleMultiple, 32.0f * FScaleMultiple} });
 	PokemonImageRenderer->ChangeAnimation(_Entry.Tribe + "_Dot", false, 0, 0.5f);
 }
 
-void AMyPokemonSlot::SetDataRenderers(PokemonInfo _Entry)
+void AMyPokemonSlot::SetDataRenderers(PokemonInfo _Entry, float _Name_X, float _Name_Y)
 {
+	//PokemonNameRenderer->SetTextSortOption(Gdiplus::StringAlignment::StringAlignmentCenter, Gdiplus::StringAlignment::StringAlignmentFar);
 	Global::SetPokemonText(PokemonNameRenderer, _Entry.Name, Color8Bit::WhiteA);
-	PokemonNameRenderer->SetSortType(EImageSortType::Left);
-	PokemonNameRenderer->SetTransform({ { 16.0f * FScaleMultiple, 41.0f * FScaleMultiple }, { 0, 0 } });
-
-
+	PokemonNameRenderer->SetTransform({ { _Name_X * FScaleMultiple, _Name_Y * FScaleMultiple }, { 0, 0 } });
 }
