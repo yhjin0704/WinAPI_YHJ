@@ -18,8 +18,13 @@ public:
 	void CalStatus(int _Level);
 	void CalImageNo(int _DexNo);
 
+	void SetLevel(int _Level);
+	void LevelUp();
+
 	int DexNo = 0;
 	std::string Tribe = "";
+	EType Type1 = EType::None;
+	EType Type2 = EType::None;
 	float BHp = 1;
 	float BAtk = 1;
 	float BDef = 1;
@@ -39,6 +44,8 @@ public:
 	std::string Name = "";
 	int Level = 1;
 	int Exp = 0;
+	//true -> male, false -> female
+	bool Gender = true;
 	ENature Nature = ENature::Hardy;
 	std::string KNature = "노력하는";
 

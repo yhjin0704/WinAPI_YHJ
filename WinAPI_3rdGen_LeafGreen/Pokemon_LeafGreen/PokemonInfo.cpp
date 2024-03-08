@@ -12,6 +12,16 @@ void PokemonInfo::CalStatus(int _Level)
 {
 	Name = Tribe;
 	Level = _Level;
+	int IGender = UEngineRandom::MainRandom.RandomInt(0, 1);
+	if ( 1 == IGender)
+	{
+		Gender = true;
+	}
+	else
+	{
+		Gender = false;
+	}
+
 	int INature = UEngineRandom::MainRandom.RandomInt(0, 24);
 
 	switch (INature)
@@ -193,6 +203,35 @@ void PokemonInfo::CalImageNo(int _DexNo)
 		FrontImage = ((_DexNo - 102) - 1) * 4;
 		BackImage = (((_DexNo - 102) - 1) * 4) + 2;
 	}
-	DotAnimationStart = _DexNo - 2;
-	DotAnimationEnd = _DexNo - 1;
+	DotAnimationStart = (_DexNo * 2) - 2;
+	DotAnimationEnd = (_DexNo * 2) - 1;
+}
+
+void PokemonInfo::SetLevel(int _Level)
+{
+	MaxHp = std::lround(std::floor((2 * BHp + IVHp + EVHp) * _Level / 100 + _Level + 10));
+	Hp = MaxHp;
+	Atk = std::lround(std::floor(std::floor((2 * BAtk + IVAtk + EVAtk) * _Level / 100 + 5) * NAtk));
+	Def = std::lround(std::floor(std::floor((2 * BDef + IVDef + EVDef) * _Level / 100 + 5) * NDef));
+	SAtk = std::lround(std::floor(std::floor((2 * BSAtk + IVSAtk + EVSAtk) * _Level / 100 + 5) * NSAtk));
+	SDef = std::lround(std::floor(std::floor((2 * BSDef + IVSDef + EVSDef) * _Level / 100 + 5) * NSDef));
+	Spd = std::lround(std::floor(std::floor((2 * BSpd + IVSpd + EVSpd) * _Level / 100 + 5) * NSpd));
+}
+
+void PokemonInfo::LevelUp()
+{
+	++Level;
+	int PrevMaxHp = MaxHp;
+
+	MaxHp = std::lround(std::floor((2 * BHp + IVHp + EVHp) * Level / 100 + Level + 10));
+	Hp += MaxHp - PrevMaxHp;
+	if (Hp > MaxHp)
+	{
+		Hp = MaxHp;
+	}
+	Atk = std::lround(std::floor(std::floor((2 * BAtk + IVAtk + EVAtk) * Level / 100 + 5) * NAtk));
+	Def = std::lround(std::floor(std::floor((2 * BDef + IVDef + EVDef) * Level / 100 + 5) * NDef));
+	SAtk = std::lround(std::floor(std::floor((2 * BSAtk + IVSAtk + EVSAtk) * Level / 100 + 5) * NSAtk));
+	SDef = std::lround(std::floor(std::floor((2 * BSDef + IVSDef + EVSDef) * Level / 100 + 5) * NSDef));
+	Spd = std::lround(std::floor(std::floor((2 * BSpd + IVSpd + EVSpd) * Level / 100 + 5) * NSpd));
 }

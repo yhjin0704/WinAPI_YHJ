@@ -69,11 +69,11 @@ void Pokemon3rdGen_Core::BeginPlay()
 		UEngineResourcesManager::GetInst().CuttingImage("1st_Gen_Dot.png", 20, 16);
 	}
 
-
 	{
 		PokemonInfo Info;
 		Info.DexNo = 1;
 		Info.Tribe = "ÀÌ»óÇØ¾¾";
+		Info.Type1 = EType::Ç®;
 		Info.BHp = 45.0f;
 		Info.BAtk = 49.0f;
 		Info.BDef = 49.0f;
@@ -91,6 +91,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 		PokemonInfo Info;
 		Info.DexNo = 4;
 		Info.Tribe = "ÆÄÀÌ¸®";
+		Info.Type1 = EType::ºÒ²É;
 		Info.BHp = 39.0f;
 		Info.BAtk = 52.0f;
 		Info.BDef = 43.0f;
@@ -108,6 +109,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 		PokemonInfo Info;
 		Info.DexNo = 7;
 		Info.Tribe = "²¿ºÎ±â";
+		Info.Type1 = EType::¹°;
 		Info.BHp = 44.0f;
 		Info.BAtk = 48.0f;
 		Info.BDef = 65.0f;
