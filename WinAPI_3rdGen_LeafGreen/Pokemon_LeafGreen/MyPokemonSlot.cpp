@@ -19,7 +19,7 @@ void AMyPokemonSlot::BeginPlay()
 	//PokemonLevelRenderer = CreateImageRenderer(ERenderOrder::Text);
 	//PokemonGenderRenderer = CreateImageRenderer(ERenderOrder::Text);
 	//PokemonHPRenderer = CreateImageRenderer(ERenderOrder::Text);
-	//PokemonHpTextRenderer = CreateImageRenderer(ERenderOrder::Text);
+	//PokemonMaxHpRenderer = CreateImageRenderer(ERenderOrder::Text);
 }
 
 void AMyPokemonSlot::Tick(float _DeltaTime)
@@ -35,9 +35,12 @@ void AMyPokemonSlot::SetSlotRenderer(std::string_view _SlotImage, float _Slot_X,
 	PokemonSlotRenderer->SetTransform({ { _Slot_X, _Slot_Y }, (SlotImageScale * FScaleMultiple) });
 }
 
-void AMyPokemonSlot::SetDotRenderer(std::string_view _AniName, float _Ani_X, float _Ani_Y, PokemonInfo _Entry)
+void AMyPokemonSlot::SetDotRenderer(float _Ani_X, float _Ani_Y, PokemonInfo _Entry)
 {
-	PokemonImageRenderer->CreateAnimation(_AniName, "1st_Gen_Dot.png", _Entry.DotAnimationStart, _Entry.DotAnimationEnd, 0.5f, true);
+	if (false)
+	{
+		PokemonImageRenderer->CreateAnimation(_Entry.Tribe + "_Dot", "1st_Gen_Dot.png", _Entry.DotAnimationStart, _Entry.DotAnimationEnd, 0.5f, true);
+	}
 	PokemonImageRenderer->SetTransform({ { _Ani_X, _Ani_Y }, {32.0f * FScaleMultiple, 32.0f * FScaleMultiple} });
-	PokemonImageRenderer->ChangeAnimation(_AniName, false, 0, 0.5f);
+	PokemonImageRenderer->ChangeAnimation(_Entry.Tribe + "_Dot", false, 0, 0.5f);
 }
