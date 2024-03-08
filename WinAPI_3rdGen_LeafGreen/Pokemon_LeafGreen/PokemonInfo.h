@@ -32,6 +32,7 @@ public:
 	float BSDef = 1;
 	float BSpd = 1;
 	std::string Ability = "";
+	int Genderper = 1000;
 	int EvolveLevel = 101;
 	bool UseItemEvolve = false;
 	std::string EvolveItem = "";

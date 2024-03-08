@@ -160,9 +160,8 @@ void APlayer::CreateMenu()
 	MenuRenderer->ActiveOff();
 
 	MenuPlayerTextRenderer = CreateImageRenderer(ERenderOrder::Text);
-	MenuPlayerTextRenderer->SetSortType(EImageSortType::Left);
-	Global::SetPokemonText(MenuPlayerTextRenderer, GetCharacterName());
-	MenuPlayerTextRenderer->SetTransform({ { ((ITileScale * 4) + 10) * IScaleMultiple, ((ITileScale * -2) - 3) * IScaleMultiple }, { 0, 0 } });
+	Global::SetPokemonText(MenuPlayerTextRenderer, Gdiplus::StringAlignment::StringAlignmentNear, GetCharacterName());
+	MenuPlayerTextRenderer->SetTransform({ { ((FTileScale * 4.0f) - 0.25f ) * FScaleMultiple, ((FTileScale * -2.0f) - 11.0f) * FScaleMultiple }, { 0, 0 } });
 	MenuPlayerTextRenderer->ActiveOff();
 
 	MenuExplainRenderer = CreateImageRenderer(ERenderOrder::Menu);

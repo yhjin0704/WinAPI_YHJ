@@ -58,10 +58,11 @@ void Global::ChangeBGM(std::string_view _BGMName)
 	BGMPlayer.Loop();
 }
 
-void Global::SetPokemonText(UImageRenderer* _TextRenderer, std::string_view _Text, Color8Bit _Color)
+void Global::SetPokemonText(UImageRenderer* _TextRenderer, Gdiplus::StringAlignment _SortOption, std::string_view _Text, Color8Bit _Color, float _Size)
 {
 	_TextRenderer->SetFont("PokemonGSK2");
-	_TextRenderer->SetTextSize(14.0f * FScaleMultiple);
+	_TextRenderer->SetTextSize(_Size * FScaleMultiple);
+	_TextRenderer->SetTextSortOption(_SortOption, Gdiplus::StringAlignment::StringAlignmentCenter);
 	_TextRenderer->SetText(_Text);
 	_TextRenderer->SetTextColor(_Color);
 }

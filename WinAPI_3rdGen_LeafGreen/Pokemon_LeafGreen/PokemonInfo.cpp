@@ -12,8 +12,8 @@ void PokemonInfo::CalStatus(int _Level)
 {
 	Name = Tribe;
 	Level = _Level;
-	int IGender = UEngineRandom::MainRandom.RandomInt(0, 1);
-	if ( 1 == IGender)
+	int IGender = UEngineRandom::MainRandom.RandomInt(1, 1000);
+	if (Genderper >= IGender)
 	{
 		Gender = true;
 	}
