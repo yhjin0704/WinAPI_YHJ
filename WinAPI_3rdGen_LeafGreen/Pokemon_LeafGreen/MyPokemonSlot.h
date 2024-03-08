@@ -3,7 +3,6 @@
 #include <EnginePlatform\EngineInput.h>
 #include <EngineBase\EngineDirectory.h>
 #include "PokemonInfo.h"
-#include "Global.h"
 
 class AMyPokemonSlot : public AActor
 {
@@ -20,13 +19,15 @@ public:
 
 	void SetSlotRenderer(std::string_view _SlotImage, float _Slot_X, float _Slot_Y);
 	void SetDotRenderer(float _Ani_X, float _Ani_Y, PokemonInfo _Entry);
+	void SetDataRenderers(PokemonInfo _Entry);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 	UImageRenderer* PokemonSlotRenderer = nullptr;
 	UImageRenderer* PokemonImageRenderer = nullptr;
-	//UImageRenderer* PokemonNameRenderer = nullptr;
+	UImageRenderer* PokemonNameRenderer = nullptr;
 	//UImageRenderer* PokemonLevelRenderer = nullptr;
 	//UImageRenderer* PokemonGenderRenderer = nullptr;
 	//UImageRenderer* PokemonHPRenderer = nullptr;

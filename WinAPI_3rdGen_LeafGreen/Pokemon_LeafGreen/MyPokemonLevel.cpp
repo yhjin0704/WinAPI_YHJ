@@ -42,6 +42,7 @@ void UMyPokemonLevel::LevelStart(ULevel* _PrevLevel)
 	UIEntryIter = UIEntry.begin();
 	Slot1st->SetSlotRenderer("MyPokemon_First.png", 44.0f * FScaleMultiple, 47.5f * FScaleMultiple);
 	Slot1st->SetDotRenderer(16.0f * FScaleMultiple, 41.0f * FScaleMultiple, *UIEntryIter);
+	Slot1st->SetDataRenderers(*UIEntryIter);
 }
 
 void UMyPokemonLevel::LevelEnd(ULevel* _NextLevel)

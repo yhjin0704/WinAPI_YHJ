@@ -1,5 +1,6 @@
 #include "MyPokemonSlot.h"
 #include "Pokemon3rdGen_Core.h"
+#include "Global.h"
 
 AMyPokemonSlot::AMyPokemonSlot()
 {
@@ -15,7 +16,7 @@ void AMyPokemonSlot::BeginPlay()
 
 	PokemonSlotRenderer = CreateImageRenderer(ERenderOrder::Menu);
 	PokemonImageRenderer = CreateImageRenderer(ERenderOrder::Text);
-	//PokemonNameRenderer	= CreateImageRenderer(ERenderOrder::Text);
+	PokemonNameRenderer	= CreateImageRenderer(ERenderOrder::Text);
 	//PokemonLevelRenderer = CreateImageRenderer(ERenderOrder::Text);
 	//PokemonGenderRenderer = CreateImageRenderer(ERenderOrder::Text);
 	//PokemonHPRenderer = CreateImageRenderer(ERenderOrder::Text);
@@ -37,10 +38,19 @@ void AMyPokemonSlot::SetSlotRenderer(std::string_view _SlotImage, float _Slot_X,
 
 void AMyPokemonSlot::SetDotRenderer(float _Ani_X, float _Ani_Y, PokemonInfo _Entry)
 {
-	if (false)
+	if (false == PokemonImageRenderer->IsAnimation(_Entry.Tribe + "_Dot"))
 	{
 		PokemonImageRenderer->CreateAnimation(_Entry.Tribe + "_Dot", "1st_Gen_Dot.png", _Entry.DotAnimationStart, _Entry.DotAnimationEnd, 0.5f, true);
 	}
 	PokemonImageRenderer->SetTransform({ { _Ani_X, _Ani_Y }, {32.0f * FScaleMultiple, 32.0f * FScaleMultiple} });
 	PokemonImageRenderer->ChangeAnimation(_Entry.Tribe + "_Dot", false, 0, 0.5f);
+}
+
+void AMyPokemonSlot::SetDataRenderers(PokemonInfo _Entry)
+{
+	Global::SetPokemonText(PokemonNameRenderer, _Entry.Name, Color8Bit::WhiteA);
+	PokemonNameRenderer->SetSortType(EImageSortType::Left);
+	PokemonNameRenderer->SetTransform({ { 16.0f * FScaleMultiple, 41.0f * FScaleMultiple }, { 0, 0 } });
+
+
 }
