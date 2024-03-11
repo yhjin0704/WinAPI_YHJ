@@ -70,6 +70,18 @@ void Pokemon3rdGen_Core::BeginPlay()
 	}
 
 	{
+		FieldPath.MoveParent();
+		FieldPath.Move("Battle");
+
+		std::list<UEngineFile> AllUIGraphicList = FieldPath.AllFile({ ".png", ".bmp" }, true);
+
+		for (UEngineFile& File : AllUIGraphicList)
+		{
+			UEngineResourcesManager::GetInst().LoadImg(File.GetFullPath());
+		}
+	}
+
+	{
 		PokemonInfo Info;
 		Info.DexNo = 1;
 		Info.Tribe = "ÀÌ»óÇØ¾¾";

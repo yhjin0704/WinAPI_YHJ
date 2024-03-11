@@ -41,7 +41,7 @@ private:
 	AMyPokemonSlot* Slot5th;
 	AMyPokemonSlot* Slot6th;
 
-	AMyPokemonCancle* Cancle;
+	//AMyPokemonCancle* Cancle;
 
 	std::string PrevLevelName = "";
 
