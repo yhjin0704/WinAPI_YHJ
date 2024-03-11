@@ -22,8 +22,7 @@ void UMyPokemonLevel::BeginPlay()
 	Slot5th = SpawnActor<AMyPokemonSlot>();
 	Slot6th = SpawnActor<AMyPokemonSlot>();
 
-	//Cancle = SpawnActor<AMyPokemonCancle>();
-	//Cancle->SetActorLocation({ 200.0f * FScaleMultiple, 150.0f * FScaleMultiple });
+	CancleButton = SpawnActor<AMyPokemonCancle>();
 }
 
 void UMyPokemonLevel::Tick(float _DeltaTime)
@@ -32,6 +31,7 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 
 	if (true == UEngineInput::IsDown('W'))
 	{
+		PrevSelectSlot = SelectSlot;
 		--SelectSlot;
 		if (0 > SelectSlot)
 		{
@@ -40,6 +40,7 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 	}
 	else if (true == UEngineInput::IsDown('S'))
 	{
+		PrevSelectSlot = SelectSlot;
 		++SelectSlot;
 		if (6 < SelectSlot)
 		{
@@ -56,6 +57,7 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 		CheakEmptySlot(Slot4th, 163.0f, 20.5f + (24.0f * 2));
 		CheakEmptySlot(Slot5th, 163.0f, 20.5f + (24.0f * 3));
 		CheakEmptySlot(Slot6th, 163.0f, 20.5f + (24.0f * 4));
+		CancleButton->SetCancleRenderer("MyPokemon_Cancel_Button.png");
 		break;
 	case 1:
 		if (false == Slot2nd->GetEmpty())
@@ -66,10 +68,18 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 			CheakEmptySlot(Slot4th, 163.0f, 20.5f + (24.0f * 2));
 			CheakEmptySlot(Slot5th, 163.0f, 20.5f + (24.0f * 3));
 			CheakEmptySlot(Slot6th, 163.0f, 20.5f + (24.0f * 4));
+			CancleButton->SetCancleRenderer("MyPokemon_Cancel_Button.png");
 		}
 		else
 		{
-			SelectSlot = 6;
+			if (0 == PrevSelectSlot)
+			{
+				SelectSlot = 6;
+			}
+			else
+			{
+				SelectSlot = 0;
+			}
 		}
 		break;
 	case 2:
@@ -81,10 +91,18 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 			CheakEmptySlot(Slot4th, 163.0f, 20.5f + (24.0f * 2));
 			CheakEmptySlot(Slot5th, 163.0f, 20.5f + (24.0f * 3));
 			CheakEmptySlot(Slot6th, 163.0f, 20.5f + (24.0f * 4));
+			CancleButton->SetCancleRenderer("MyPokemon_Cancel_Button.png");
 		}
 		else
 		{
-			SelectSlot = 6;
+			if (1 == PrevSelectSlot)
+			{
+				SelectSlot = 6;
+			}
+			else
+			{
+				SelectSlot = 1;
+			}
 		}
 		break;
 	case 3:
@@ -96,10 +114,18 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 			Slot4th->SetSlotRenderer("MyPokemon_Slot_Select.png", 163.0f, 20.5f + (24.0f * 2));
 			CheakEmptySlot(Slot5th, 163.0f, 20.5f + (24.0f * 3));
 			CheakEmptySlot(Slot6th, 163.0f, 20.5f + (24.0f * 4));
+			CancleButton->SetCancleRenderer("MyPokemon_Cancel_Button.png");
 		}
 		else
 		{
-			SelectSlot = 6;
+			if (2 == PrevSelectSlot)
+			{
+				SelectSlot = 6;
+			}
+			else
+			{
+				SelectSlot = 2;
+			}
 		}
 		break;
 	case 4:
@@ -111,10 +137,18 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 			CheakEmptySlot(Slot4th, 163.0f, 20.5f + (24.0f * 2));
 			Slot5th->SetSlotRenderer("MyPokemon_Slot_Select.png", 163.0f, 20.5f + (24.0f * 3));
 			CheakEmptySlot(Slot6th, 163.0f, 20.5f + (24.0f * 4));
+			CancleButton->SetCancleRenderer("MyPokemon_Cancel_Button.png");
 		}
 		else
 		{
-			SelectSlot = 6;
+			if (3 == PrevSelectSlot)
+			{
+				SelectSlot = 6;
+			}
+			else
+			{
+				SelectSlot = 3;
+			}
 		}
 		break;
 	case 5:
@@ -126,10 +160,18 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 			CheakEmptySlot(Slot4th, 163.0f, 20.5f + (24.0f * 2));
 			CheakEmptySlot(Slot5th, 163.0f, 20.5f + (24.0f * 3));
 			Slot6th->SetSlotRenderer("MyPokemon_Slot_Select.png", 163.0f, 20.5f + (24.0f * 4));
+			CancleButton->SetCancleRenderer("MyPokemon_Cancel_Button.png");
 		}
 		else
 		{
-			SelectSlot = 6;
+			if (4 == PrevSelectSlot)
+			{
+				SelectSlot = 6;
+			}
+			else
+			{
+				SelectSlot = 4;
+			}
 		}
 		break;
 	case 6:
@@ -139,6 +181,12 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 		CheakEmptySlot(Slot4th, 163.0f, 20.5f + (24.0f * 2));
 		CheakEmptySlot(Slot5th, 163.0f, 20.5f + (24.0f * 3));
 		CheakEmptySlot(Slot6th, 163.0f, 20.5f + (24.0f * 4));
+		CancleButton->SetCancleRenderer("MyPokemon_Cancel_Button_Select.png");
+
+		if (true == UEngineInput::IsDown('P'))
+		{
+			GEngine->ChangeLevel(PrevLevelName);
+		}
 		break;
 	default:
 		break;

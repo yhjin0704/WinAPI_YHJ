@@ -34,7 +34,6 @@ private:
 	UImageRenderer* MenuExplainTextRenderer;
 
 	FVector PrevFieldPos = FVector::Zero;
-	//UCollision* PlayerCollision = nullptr;
 	UCollision* PlayerUPCollision = nullptr;
 	UCollision* PlayerDownCollision = nullptr;
 	UCollision* PlayerLeftCollision = nullptr;
@@ -63,5 +62,7 @@ private:
 	void CloseMenu();
 	void UseRunningShoes();
 	void UseBike();
+
+	void EncountCheck();
 };
 

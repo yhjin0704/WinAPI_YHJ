@@ -83,6 +83,7 @@ std::string ACharacter::GetAnimationName(std::string _Name, EMoveType _Move, EDi
 
 void ACharacter::SetColCheckPos(EDirState _PrevDirInput)
 {
+	EncountCheckPos = GetActorLocation();
 	switch (_PrevDirInput)
 	{
 	case EDirState::Down:

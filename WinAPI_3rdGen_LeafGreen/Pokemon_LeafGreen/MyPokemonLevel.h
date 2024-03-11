@@ -32,6 +32,7 @@ protected:
 
 private:
 	int SelectSlot = 0;
+	int PrevSelectSlot = 0;
 
 	AMyPokemonBackGround* BackGround;
 	AMyPokemonSlot* Slot1st;
@@ -41,7 +42,7 @@ private:
 	AMyPokemonSlot* Slot5th;
 	AMyPokemonSlot* Slot6th;
 
-	//AMyPokemonCancle* Cancle;
+	AMyPokemonCancle* CancleButton;
 
 	std::string PrevLevelName = "";
 

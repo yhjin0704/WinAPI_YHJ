@@ -202,21 +202,25 @@ void APlayer::KeyInputMove(float _DeltaTime)
 				MoveState = EMoveState::Jump;
 			}
 			SetKeyInputAnimation(EDirState::Down);
+			EncountCheck();
 		}
 		else if (true == UEngineInput::IsPress('W'))
 		{
 			SetColCheckPos(PrevDirInput);
 			SetKeyInputAnimation(EDirState::Up);
+			EncountCheck();
 		}
 		else if (true == UEngineInput::IsPress('A'))
 		{
 			SetColCheckPos(PrevDirInput);
 			SetKeyInputAnimation(EDirState::Left);
+			EncountCheck();
 		}
 		else if (true == UEngineInput::IsPress('D'))
 		{
 			SetColCheckPos(PrevDirInput);
 			SetKeyInputAnimation(EDirState::Right);
+			EncountCheck();
 		}
 	}
 
@@ -225,6 +229,13 @@ void APlayer::KeyInputMove(float _DeltaTime)
 	if (true == IsMove)
 	{
 		MovePos(_DeltaTime);
+	}
+	else
+	{
+		if (true == PlayerHelper::IsEncount)
+		{
+			GEngine->ChangeLevel("BattleLevel");
+		}
 	}
 	SetColBoxDir(PrevDirInput);
 }
@@ -472,6 +483,23 @@ void APlayer::UseBike()
 				MoveType = PlayerHelper::PrevMoveType;
 			}
 
+		}
+	}
+}
+
+void APlayer::EncountCheck()
+{
+	int EncountRandom = UEngineRandom::MainRandom.RandomInt(1, 256);
+
+	PlayerHelper::EncountGround = Global::GColMapImage->GetColor((EncountCheckPos.iX() / IScaleMultiple), (EncountCheckPos.iY() / IScaleMultiple), Color8Bit::MagentaA);
+	
+	if (Color8Bit(1, 255, 0, 0) == PlayerHelper::EncountGround ||
+		Color8Bit(2, 255, 0, 0) == PlayerHelper::EncountGround ||
+		Color8Bit(22, 255, 0, 0) == PlayerHelper::EncountGround)
+	{
+		if (25 >= EncountRandom)
+		{
+			PlayerHelper::IsEncount = true;
 		}
 	}
 }

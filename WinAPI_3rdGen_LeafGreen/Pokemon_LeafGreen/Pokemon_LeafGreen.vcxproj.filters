@@ -147,6 +147,15 @@
     <ClCompile Include="MyPokemonCancle.cpp">
       <Filter>UI\MyPokemon\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="BattleBackGround.cpp">
+      <Filter>Battle\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleGround.cpp">
+      <Filter>Battle\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="BattlePokemonStatus.cpp">
+      <Filter>Battle\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -294,6 +303,15 @@
     </ClInclude>
     <ClInclude Include="MyPokemonCancle.h">
       <Filter>UI\MyPokemon\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleBackGround.h">
+      <Filter>Battle\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleGround.h">
+      <Filter>Battle\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BattlePokemonStatus.h">
+      <Filter>Battle\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

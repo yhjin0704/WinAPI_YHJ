@@ -1,4 +1,17 @@
 #include "Pokemon3rdGen_Core.h"
+#include "TitleLevel1.h"
+#include "TitleLevel2.h"
+#include "TitleLevel3.h"
+#include "TitleLevel4.h"
+#include "BattleLevel.h"
+#include "WestFieldLevel.h"
+#include "PlayerHome1FLevel.h"
+#include "PlayerHome2FLevel.h"
+#include "RivalHomeLevel.h"
+#include "OaksLabLevel.h"
+#include "MyPokemonLevel.h"
+#include "MyBagLevel.h"
+#include "MyTrainerCardLevel.h"
 
 //std::map<int, PokemonInfo> Pokemon3rdGen_Core::AllPokemonInfo;
 
@@ -143,6 +156,8 @@ void Pokemon3rdGen_Core::BeginPlay()
 		CreateLevel<UTitleLevel2>("TitleLevel2");
 		CreateLevel<UTitleLevel3>("TitleLevel3");
 		CreateLevel<UTitleLevel4>("TitleLevel4");
+
+		CreateLevel<UBattleLevel>("BattleLevel");
 
 		CreateLevel<UWestFieldLevel>("WestFieldLevel");
 		CreateLevel<UPlayerHome1FLevel>("PlayerHome1FLevel");

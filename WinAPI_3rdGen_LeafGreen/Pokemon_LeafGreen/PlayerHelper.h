@@ -1,4 +1,5 @@
 #pragma once
+#include <EngineBase/EngineMath.h>
 #include <list>
 #include "PokemonInfo.h"
 #include "Global.h"
@@ -21,6 +22,8 @@ public:
 	static bool IsUseMenu;
 	static bool PlayerPause;
 	static inline std::list<PokemonInfo> EntryPokemon = std::list<PokemonInfo>();
+	static Color8Bit EncountGround;
+	static bool IsEncount;
 
 protected:
 

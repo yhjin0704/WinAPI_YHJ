@@ -170,6 +170,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BattlePokemonStatus.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleGround.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleBackGround.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="CharmanderBall.cpp">
       <SubType>
       </SubType>
@@ -356,6 +368,18 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattlePokemonStatus.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleGround.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleBackGround.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="CharmanderBall.h">
       <SubType>
       </SubType>

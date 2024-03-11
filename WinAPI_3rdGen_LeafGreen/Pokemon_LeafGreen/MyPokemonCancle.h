@@ -14,6 +14,8 @@ public:
 	AMyPokemonCancle& operator=(const AMyPokemonCancle& _Other) = delete;
 	AMyPokemonCancle& operator=(AMyPokemonCancle&& _Other) noexcept = delete;
 
+	void SetCancleRenderer(std::string_view _Image);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

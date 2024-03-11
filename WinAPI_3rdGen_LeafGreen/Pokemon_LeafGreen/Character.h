@@ -49,6 +49,7 @@ protected:
 	std::string CharacterAnimation = "";
 
 	FVector IsColCheckPos = FVector::Zero;
+	FVector EncountCheckPos = FVector::Zero;
 	EMoveType MoveType = EMoveType::Walk;
 	EMoveState PrevFoot = EMoveState::Left;
 	EMoveState MoveState = EMoveState::Idle;

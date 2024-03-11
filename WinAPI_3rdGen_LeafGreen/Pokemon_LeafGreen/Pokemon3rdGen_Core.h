@@ -3,18 +3,6 @@
 #include <EngineBase\EngineDirectory.h>
 #include "Global.h"
 #include "Player.h"
-#include "TitleLevel1.h"
-#include "TitleLevel2.h"
-#include "TitleLevel3.h"
-#include "TitleLevel4.h"
-#include "WestFieldLevel.h"
-#include "PlayerHome1FLevel.h"
-#include "PlayerHome2FLevel.h"
-#include "RivalHomeLevel.h"
-#include "OaksLabLevel.h"
-#include "MyPokemonLevel.h"
-#include "MyBagLevel.h"
-#include "MyTrainerCardLevel.h"
 #include <EnginePlatform\EngineSound.h>
 #include <EngineBase\EngineDirectory.h>
 #include <EngineCore\EngineResourcesManager.h>
@@ -47,6 +35,11 @@ public:
 	static std::list<PokemonInfo> GetEntry()
 	{
 		return dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->Entry;
+	}
+
+	static void SetEntry(std::list<PokemonInfo> _Entry)
+	{
+		dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->Entry = _Entry;
 	}
 
 	void AddEntry(int _DexNo, int _Level);
