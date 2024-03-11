@@ -164,7 +164,10 @@ void Pokemon3rdGen_Core::AddEntry(int _DexNo, int _Level)
 {
 	PokemonInfo info = AllPokemonInfo[_DexNo];
 	info.PokemonInfo::CalStatus(_Level);
+	if (0 == info.MeetLevel)
+	{
+		info.MeetLevel = _Level;
+	}
 	Entry.push_back(info);
 	PokemonInfo Test = dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->GetEntry().front();
-	int a = 0;
 }

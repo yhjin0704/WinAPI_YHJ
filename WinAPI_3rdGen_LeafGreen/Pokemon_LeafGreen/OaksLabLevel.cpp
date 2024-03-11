@@ -17,9 +17,13 @@ void UOaksLabLevel::BeginPlay()
 	Ground = SpawnActor<AOaksLabGround>();
 	Door = SpawnActor<AOaksLabDoor>();
 	BBall = SpawnActor<ABulbasaurBall>();
+	CBall = SpawnActor<ACharmanderBall>();
+	SBall = SpawnActor<ASquirtleBall>();
 
 	Door->SetActorLocation({ (112 + (FTileScale / 2)) * FScaleMultiple , (224 + (FTileScale / 2)) * FScaleMultiple });
 	BBall->SetActorLocation({ (144 + (FTileScale / 2)) * FScaleMultiple , (64 + (FTileScale / 2)) * FScaleMultiple });
+	CBall->SetActorLocation({ (160 + (FTileScale / 2)) * FScaleMultiple , (64 + (FTileScale / 2)) * FScaleMultiple });
+	SBall->SetActorLocation({ (176 + (FTileScale / 2)) * FScaleMultiple , (64 + (FTileScale / 2)) * FScaleMultiple });
 
 	Player->SetActorLocation({ (112 + (FTileScale / 2)) * FScaleMultiple , (192) * FScaleMultiple });
 }

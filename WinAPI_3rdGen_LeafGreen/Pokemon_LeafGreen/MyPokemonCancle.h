@@ -1,5 +1,7 @@
 #pragma once
-class AMyPokemonCancle
+#include <EngineCore/Actor.h>
+
+class AMyPokemonCancle : public AActor
 {
 public:
 	// constrcuter destructer
@@ -13,8 +15,10 @@ public:
 	AMyPokemonCancle& operator=(AMyPokemonCancle&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
 
 private:
-
+	UImageRenderer* ButtonRenderer = nullptr;
 };
 

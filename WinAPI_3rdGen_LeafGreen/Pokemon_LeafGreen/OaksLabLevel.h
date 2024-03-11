@@ -3,6 +3,8 @@
 #include "OaksLabGround.h"
 #include "OaksLabDoor.h"
 #include "BulbasaurBall.h"
+#include "CharmanderBall.h"
+#include "SquirtleBall.h"
 #include "global.h"
 #include "PlayerHelper.h"
 
@@ -29,5 +31,7 @@ private:
 	AOaksLabGround* Ground;
 	AOaksLabDoor* Door;
 	ABulbasaurBall* BBall;
+	ACharmanderBall* CBall;
+	ASquirtleBall* SBall;
 };
 

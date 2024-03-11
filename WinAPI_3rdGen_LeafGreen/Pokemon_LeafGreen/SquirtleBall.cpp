@@ -1,35 +1,35 @@
-#include "BulbasaurBall.h"
+#include "SquirtleBall.h"
 #include "Pokemon3rdGen_Core.h"
 #include "Player.h"
 #include "FieldLevel.h"
 #include "Global.h"
 #include "PlayerHelper.h"
 
-ABulbasaurBall::ABulbasaurBall()
+ASquirtleBall::ASquirtleBall()
 {
 }
 
-ABulbasaurBall::~ABulbasaurBall()
+ASquirtleBall::~ASquirtleBall()
 {
 }
 
-void ABulbasaurBall::BeginPlay()
+void ASquirtleBall::BeginPlay()
 {
 	BallRender = CreateImageRenderer(ERenderOrder::Object);
 	BallRender->SetImage("Field_Item.png");
 	BallRender->SetTransform({ { 0, 0 }, {(BallRender->GetImage()->GetScale()) * FScaleMultiple} });
 
 	SelectImage = CreateImageRenderer(ERenderOrder::Menu);
-	SelectImage->SetImage("Select_BBall.png");
+	SelectImage->SetImage("Select_SBall.png");
 	SelectImage->ActiveOff();
-	
+
 	BallCollision = CreateCollision(ECollisionOrder::Item);
 	BallCollision->SetScale({ IGameTileScale, IGameTileScale });
 	BallCollision->SetColType(ECollisionType::Rect);
 	BallCollision->DebugRender(GetWorld()->GetCameraPos());
 }
 
-void ABulbasaurBall::Tick(float _DeltaTime)
+void ASquirtleBall::Tick(float _DeltaTime)
 {
 	std::vector<UCollision*> Result;
 	if (true == BallCollision->CollisionCheck(ECollisionOrder::Player, Result))
@@ -49,7 +49,7 @@ void ABulbasaurBall::Tick(float _DeltaTime)
 			{
 				std::map<int, PokemonInfo> AllInfo = Pokemon3rdGen_Core::GetAllPokemonInfo();
 
-				dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->AddEntry(1, 5);
+				dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->AddEntry(7, 5);
 				PlayerHelper::PlayerPause = false;
 				SelectImage->ActiveOff();
 				BallRender->ActiveOff();

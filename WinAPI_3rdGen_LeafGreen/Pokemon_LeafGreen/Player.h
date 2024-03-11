@@ -34,7 +34,11 @@ private:
 	UImageRenderer* MenuExplainTextRenderer;
 
 	FVector PrevFieldPos = FVector::Zero;
-	UCollision* PlayerCollision = nullptr;
+	//UCollision* PlayerCollision = nullptr;
+	UCollision* PlayerUPCollision = nullptr;
+	UCollision* PlayerDownCollision = nullptr;
+	UCollision* PlayerLeftCollision = nullptr;
+	UCollision* PlayerRightCollision = nullptr;
 
 	bool IsActionDelay = false;
 	float CurDelayTime = 0.0f;

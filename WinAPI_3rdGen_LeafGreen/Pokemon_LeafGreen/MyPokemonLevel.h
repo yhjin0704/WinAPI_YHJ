@@ -2,6 +2,7 @@
 #include "MenuUILevel.h"
 #include "MyPokemonBackGround.h"
 #include "MyPokemonSlot.h"
+#include "MyPokemonCancle.h"
 #include <EngineBase/EngineString.h>
 #include <EngineCore\EngineCore.h>
 
@@ -30,14 +31,20 @@ protected:
 	void LevelEnd(ULevel* _NextLevel) override;
 
 private:
+	int SelectSlot = 0;
+
 	AMyPokemonBackGround* BackGround;
 	AMyPokemonSlot* Slot1st;
-	//AMyPokemonSlot* Slot2nd;
-	//AMyPokemonSlot* Slot3rd;
-	//AMyPokemonSlot* Slot4th;
-	//AMyPokemonSlot* Slot5th;
-	//AMyPokemonSlot* Slot6th;
+	AMyPokemonSlot* Slot2nd;
+	AMyPokemonSlot* Slot3rd;
+	AMyPokemonSlot* Slot4th;
+	AMyPokemonSlot* Slot5th;
+	AMyPokemonSlot* Slot6th;
+
+	AMyPokemonCancle* Cancle;
 
 	std::string PrevLevelName = "";
+
+	void CheakEmptySlot(AMyPokemonSlot* _Slot, float _Slot_X, float _Slot_Y);
 };
 

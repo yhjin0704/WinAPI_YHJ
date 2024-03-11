@@ -112,9 +112,6 @@
     <ClCompile Include="MyTrainerCardBackGround.cpp">
       <Filter>UI\MyTrainerCard\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="MyPokemonCancle.cpp">
-      <Filter>UI\MyPokemon\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="MyPokemonMsgBox.cpp">
       <Filter>UI\MyPokemon\Actor</Filter>
     </ClCompile>
@@ -136,6 +133,18 @@
     </ClCompile>
     <ClCompile Include="PokemonInfo.cpp" />
     <ClCompile Include="MyPokemonSlot.cpp">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="PokemonStatusLevel.cpp">
+      <Filter>UI\MyPokemon</Filter>
+    </ClCompile>
+    <ClCompile Include="CharmanderBall.cpp">
+      <Filter>Field\WestFieldLevel\OaksLab\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="SquirtleBall.cpp">
+      <Filter>Field\WestFieldLevel\OaksLab\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="MyPokemonCancle.cpp">
       <Filter>UI\MyPokemon\Actor</Filter>
     </ClCompile>
   </ItemGroup>
@@ -251,9 +260,6 @@
     <ClInclude Include="MyTrainerCardBackGround.h">
       <Filter>UI\MyTrainerCard\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="MyPokemonCancle.h">
-      <Filter>UI\MyPokemon\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="MyPokemonMsgBox.h">
       <Filter>UI\MyPokemon\Actor</Filter>
     </ClInclude>
@@ -275,6 +281,18 @@
     </ClInclude>
     <ClInclude Include="PokemonInfo.h" />
     <ClInclude Include="MyPokemonSlot.h">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="PokemonStatusLevel.h">
+      <Filter>UI\MyPokemon</Filter>
+    </ClInclude>
+    <ClInclude Include="CharmanderBall.h">
+      <Filter>Field\WestFieldLevel\OaksLab\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="SquirtleBall.h">
+      <Filter>Field\WestFieldLevel\OaksLab\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MyPokemonCancle.h">
       <Filter>UI\MyPokemon\Actor</Filter>
     </ClInclude>
   </ItemGroup>

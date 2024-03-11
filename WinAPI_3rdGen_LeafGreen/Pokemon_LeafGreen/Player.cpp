@@ -141,10 +141,30 @@ void APlayer::CreatePlayerAllRender()
 	//자전거 점프 애니메이션 생성
 	CharacterRenderer->CreateAnimation("Player_Boy_Bike_Down_Jump", "Player_Boy_Bike_Down_Jump.png", 0, 12, (FWalkTime / 13.0f * 2.0f), false);
 
-	PlayerCollision = CreateCollision(ECollisionOrder::Player);
+	/*PlayerCollision = CreateCollision(ECollisionOrder::Player);
 	PlayerCollision->SetScale({ IGameTileScale, IGameTileScale });
 	PlayerCollision->SetPosition({ GetActorLocation().X, (GetActorLocation().Y + FHGameTileScale) });
-	PlayerCollision->SetColType(ECollisionType::Rect);
+	PlayerCollision->SetColType(ECollisionType::Rect);*/
+
+	PlayerDownCollision = CreateCollision(ECollisionOrder::Player);
+	PlayerDownCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
+	PlayerDownCollision->SetPosition({ GetActorLocation().X, (GetActorLocation().Y + FHGameTileScale + (FHGameTileScale / 2)) });
+	PlayerDownCollision->SetColType(ECollisionType::Rect);
+
+	PlayerUPCollision = CreateCollision(ECollisionOrder::Player);
+	PlayerUPCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
+	PlayerUPCollision->SetPosition({ GetActorLocation().X, (GetActorLocation().Y + FHGameTileScale - (FHGameTileScale / 2)) });
+	PlayerUPCollision->SetColType(ECollisionType::Rect);
+
+	PlayerLeftCollision = CreateCollision(ECollisionOrder::Player);
+	PlayerLeftCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
+	PlayerLeftCollision->SetPosition({ GetActorLocation().X - (FHGameTileScale / 2), (GetActorLocation().Y + FHGameTileScale) });
+	PlayerLeftCollision->SetColType(ECollisionType::Rect);
+
+	PlayerRightCollision = CreateCollision(ECollisionOrder::Player);
+	PlayerRightCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
+	PlayerRightCollision->SetPosition({ GetActorLocation().X + (FHGameTileScale / 2), (GetActorLocation().Y + FHGameTileScale) });
+	PlayerRightCollision->SetColType(ECollisionType::Rect);
 }
 
 void APlayer::CreateMenu()
@@ -206,24 +226,36 @@ void APlayer::KeyInputMove(float _DeltaTime)
 	{
 		MovePos(_DeltaTime);
 	}
+	SetColBoxDir(PrevDirInput);
 }
 
 void APlayer::SetColBoxDir(EDirState _InputDir)
 {
-	FVector abc = GetActorLocation();
 	switch (_InputDir)
 	{
 	case EDirState::Down:
-		PlayerCollision->SetPosition({ GetActorLocation().X, (GetActorLocation().Y + FHGameTileScale) + (FGameTileScale / 4.0f) });
+		PlayerDownCollision->ActiveOn();
+		PlayerUPCollision->ActiveOff();
+		PlayerLeftCollision->ActiveOff();
+		PlayerRightCollision->ActiveOff();
 		break;
 	case EDirState::Up:
-		PlayerCollision->SetPosition({ GetActorLocation().X, (GetActorLocation().Y) });
+		PlayerDownCollision->ActiveOff();
+		PlayerUPCollision->ActiveOn();
+		PlayerLeftCollision->ActiveOff();
+		PlayerRightCollision->ActiveOff();
 		break;
 	case EDirState::Left:
-		PlayerCollision->SetPosition({ GetActorLocation().X - (FGameTileScale / 4.0f), (GetActorLocation().Y + FHGameTileScale) });
+		PlayerDownCollision->ActiveOff();
+		PlayerUPCollision->ActiveOff();
+		PlayerLeftCollision->ActiveOn();
+		PlayerRightCollision->ActiveOff();
 		break;
 	case EDirState::Right:
-		PlayerCollision->SetPosition({ GetActorLocation().X + (FGameTileScale / 4.0f), (GetActorLocation().Y + FHGameTileScale) });
+		PlayerDownCollision->ActiveOff();
+		PlayerUPCollision->ActiveOff();
+		PlayerLeftCollision->ActiveOff();
+		PlayerRightCollision->ActiveOn();
 		break;
 	default:
 		break;

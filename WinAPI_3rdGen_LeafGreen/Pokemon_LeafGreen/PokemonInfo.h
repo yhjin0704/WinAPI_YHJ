@@ -19,6 +19,10 @@ public:
 	void CalImageNo(int _DexNo);
 
 	void SetLevel(int _Level);
+	void SetMeetLevel(int _Level)
+	{
+		MeetLevel = _Level;
+	}
 	void LevelUp();
 
 	int DexNo = 0;
@@ -44,6 +48,7 @@ public:
 
 	std::string Name = "";
 	int Level = 1;
+	int MeetLevel = 0;
 	int Exp = 0;
 	//true -> male, false -> female
 	bool Gender = true;

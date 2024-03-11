@@ -16,7 +16,7 @@ void AMyPokemonSlot::BeginPlay()
 
 	PokemonSlotRenderer = CreateImageRenderer(ERenderOrder::Menu);
 	PokemonImageRenderer = CreateImageRenderer(ERenderOrder::Text);
-	PokemonNameRenderer	= CreateImageRenderer(ERenderOrder::Text);
+	PokemonNameRenderer = CreateImageRenderer(ERenderOrder::Text);
 	PokemonLevelRenderer = CreateImageRenderer(ERenderOrder::Text);
 	PokemonGenderRenderer = CreateImageRenderer(ERenderOrder::Text);
 	PokemonHpBarRenderer = CreateImageRenderer(ERenderOrder::Text);
@@ -31,6 +31,8 @@ void AMyPokemonSlot::Tick(float _DeltaTime)
 
 void AMyPokemonSlot::SetSlotRenderer(std::string_view _SlotImage, float _Slot_X, float _Slot_Y)
 {
+	Empty = false;
+
 	PokemonSlotRenderer->SetImage(_SlotImage);
 	UWindowImage* SlotImage = PokemonSlotRenderer->GetImage();
 	FVector SlotImageScale = SlotImage->GetScale();
@@ -39,6 +41,7 @@ void AMyPokemonSlot::SetSlotRenderer(std::string_view _SlotImage, float _Slot_X,
 
 void AMyPokemonSlot::SetDotRenderer(float _Ani_X, float _Ani_Y, PokemonInfo _Entry)
 {
+	PokemonImageRenderer->ActiveOn();
 	if (false == PokemonImageRenderer->IsAnimation(_Entry.Tribe + "_Dot"))
 	{
 		PokemonImageRenderer->CreateAnimation(_Entry.Tribe + "_Dot", "1st_Gen_Dot.png", _Entry.DotAnimationStart, _Entry.DotAnimationEnd, 0.1f, true);
@@ -47,14 +50,21 @@ void AMyPokemonSlot::SetDotRenderer(float _Ani_X, float _Ani_Y, PokemonInfo _Ent
 	PokemonImageRenderer->ChangeAnimation(_Entry.Tribe + "_Dot", false, 0, 0.1f);
 }
 
-void AMyPokemonSlot::SetDataRenderers(PokemonInfo _Entry, 
-	float _Name_X, float _Name_Y, 
-	float _Level_X, float _Level_Y, 
+void AMyPokemonSlot::SetDataRenderers(PokemonInfo _Entry,
+	float _Name_X, float _Name_Y,
+	float _Level_X, float _Level_Y,
 	float _Gender_X, float _Gender_Y,
 	float _HpBar_X, float _HpBar_Y,
 	float _Hp_X, float _Hp_Y,
 	float _MaxHp_X, float _MaxHp_Y)
 {
+	PokemonNameRenderer->ActiveOn();
+	PokemonLevelRenderer->ActiveOn();
+	PokemonGenderRenderer->ActiveOn();
+	PokemonHpBarRenderer->ActiveOn();
+	PokemonHPRenderer->ActiveOn();
+	PokemonMaxHpRenderer->ActiveOn();
+
 	Global::SetPokemonText(PokemonNameRenderer, Gdiplus::StringAlignment::StringAlignmentNear, _Entry.Name, Color8Bit::WhiteA);
 	PokemonNameRenderer->SetTransform({ { _Name_X * FScaleMultiple, _Name_Y * FScaleMultiple }, { 0, 0 } });
 
@@ -84,4 +94,22 @@ void AMyPokemonSlot::SetDataRenderers(PokemonInfo _Entry,
 
 	Global::SetPokemonText(PokemonMaxHpRenderer, Gdiplus::StringAlignment::StringAlignmentNear, std::to_string(_Entry.MaxHp), Color8Bit::WhiteA, 12.0f);
 	PokemonMaxHpRenderer->SetTransform({ { _MaxHp_X * FScaleMultiple, _MaxHp_Y * FScaleMultiple }, { 0, 0 } });
+}
+
+void AMyPokemonSlot::IsEmpty(float _Slot_X, float _Slot_Y)
+{
+	Empty = true;
+
+	PokemonSlotRenderer->SetImage("MyPokemon_Slot_empty.png");
+	UWindowImage* SlotImage = PokemonSlotRenderer->GetImage();
+	FVector SlotImageScale = SlotImage->GetScale();
+	PokemonSlotRenderer->SetTransform({ { _Slot_X * FScaleMultiple, _Slot_Y * FScaleMultiple }, (SlotImageScale * FScaleMultiple) });
+
+	PokemonImageRenderer->ActiveOff();
+	PokemonNameRenderer->ActiveOff();
+	PokemonLevelRenderer->ActiveOff();
+	PokemonGenderRenderer->ActiveOff();
+	PokemonHpBarRenderer->ActiveOff();
+	PokemonHPRenderer->ActiveOff();
+	PokemonMaxHpRenderer->ActiveOff();
 }
