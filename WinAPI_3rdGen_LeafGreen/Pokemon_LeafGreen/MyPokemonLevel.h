@@ -34,6 +34,8 @@ private:
 	int SelectSlot = 0;
 	int PrevSelectSlot = 0;
 
+	std::list<PokemonInfo> UIEntry;
+
 	AMyPokemonBackGround* BackGround;
 	AMyPokemonSlot* Slot1st;
 	AMyPokemonSlot* Slot2nd;
@@ -45,6 +47,8 @@ private:
 	AMyPokemonCancle* CancleButton;
 
 	std::string PrevLevelName = "";
+
+	void SetAllEntryStatus();
 
 	void CheakEmptySlot(AMyPokemonSlot* _Slot, float _Slot_X, float _Slot_Y);
 };

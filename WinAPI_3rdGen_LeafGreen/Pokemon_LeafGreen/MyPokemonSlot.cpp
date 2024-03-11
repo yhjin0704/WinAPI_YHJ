@@ -84,11 +84,27 @@ void AMyPokemonSlot::SetDataRenderers(PokemonInfo _Entry,
 	PokemonGenderRenderer->SetTransform({ { _Gender_X * FScaleMultiple, _Gender_Y * FScaleMultiple }, (GenderImageScale * FScaleMultiple) });
 
 	int BarGage = std::lround(std::ceil((static_cast<float>(_Entry.Hp) / static_cast<float>(_Entry.MaxHp)) * 48));
+	if (0 > BarGage)
+	{
+		BarGage = 0;
+	}
+	if (48 < BarGage)
+	{
+		BarGage = 48;
+	}
 	PokemonHpBarRenderer->SetImage("Hp" + std::to_string(BarGage) + ".png");
 	UWindowImage* BarImage = PokemonHpBarRenderer->GetImage();
 	FVector BarImageScale = BarImage->GetScale();
 	PokemonHpBarRenderer->SetTransform({ { _HpBar_X * FScaleMultiple, _HpBar_Y * FScaleMultiple }, (BarImageScale * FScaleMultiple) });
-
+	
+	if (0 > _Entry.Hp)
+	{
+		_Entry.Hp = 0;
+	}
+	if(_Entry.MaxHp < _Entry.Hp)
+	{
+		_Entry.Hp = _Entry.MaxHp;
+	}
 	Global::SetPokemonText(PokemonHPRenderer, Gdiplus::StringAlignment::StringAlignmentFar, std::to_string(_Entry.Hp), Color8Bit::WhiteA, 12.0f);
 	PokemonHPRenderer->SetTransform({ { _Hp_X * FScaleMultiple, _Hp_Y * FScaleMultiple }, { 0, 0 } });
 

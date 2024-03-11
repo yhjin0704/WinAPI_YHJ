@@ -48,6 +48,8 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 		}
 	}
 
+	SetAllEntryStatus();
+
 	switch (SelectSlot)
 	{
 	case 0:
@@ -196,6 +198,11 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 	{
 		GEngine->ChangeLevel(PrevLevelName);
 	}
+
+	if (true == UEngineInput::IsDown('R'))
+	{
+		UIEntry.front().Hp -= 10;
+	}
 }
 
 void UMyPokemonLevel::LevelStart(ULevel* _PrevLevel)
@@ -210,7 +217,18 @@ void UMyPokemonLevel::LevelStart(ULevel* _PrevLevel)
 	Slot5th->IsEmpty(163.0f, 20.5f + (24.0f * 3));
 	Slot6th->IsEmpty(163.0f, 20.5f + (24.0f * 4));
 
-	std::list<PokemonInfo> UIEntry = dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->GetEntry();
+	UIEntry = dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->GetEntry();
+
+	SetAllEntryStatus();
+}
+
+void UMyPokemonLevel::LevelEnd(ULevel* _NextLevel)
+{
+	dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->SetEntry(UIEntry);
+}
+
+void UMyPokemonLevel::SetAllEntryStatus()
+{
 	std::list<PokemonInfo>::iterator UIEntryIter;
 
 	UIEntryIter = UIEntry.begin();
@@ -293,11 +311,6 @@ void UMyPokemonLevel::LevelStart(ULevel* _PrevLevel)
 			}
 		}
 	}
-}
-
-void UMyPokemonLevel::LevelEnd(ULevel* _NextLevel)
-{
-
 }
 
 void UMyPokemonLevel::CheakEmptySlot(AMyPokemonSlot* _Slot, float _Slot_X, float _Slot_Y)
