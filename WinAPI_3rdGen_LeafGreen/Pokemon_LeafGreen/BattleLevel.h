@@ -29,6 +29,8 @@ protected:
 	void LevelEnd(ULevel* _NextLevel) override;
 
 private:
+	std::list<PokemonInfo> Entry;
+
 	ABattleBackGround* BackGround;
 	ABattleGround* EnemyGround;
 	ABattleGround* PlayerGround;

@@ -1,5 +1,6 @@
 #include "BattleLevel.h"
 #include <EngineCore\EngineCore.h>
+#include "Pokemon3rdGen_Core.h"
 #include "PlayerHelper.h"
 
 UBattleLevel::UBattleLevel()
@@ -44,4 +45,5 @@ void UBattleLevel::LevelStart(ULevel* _PrevLevel)
 void UBattleLevel::LevelEnd(ULevel* _NextLevel)
 {
 	PlayerHelper::IsEncount = false;
+	dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->SetEntry(Entry);
 }
