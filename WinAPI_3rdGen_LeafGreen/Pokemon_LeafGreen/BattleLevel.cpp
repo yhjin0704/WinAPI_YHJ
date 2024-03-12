@@ -20,6 +20,7 @@ void UBattleLevel::BeginPlay()
 	PlayerGround = SpawnActor<ABattleGround>();
 	EnemyStatus = SpawnActor<ABattlePokemonStatus>();
 	PlayerStatus = SpawnActor<ABattlePokemonStatus>();
+	TextBox = SpawnActor<ABattleTextBox>();
 
 	EnemyGround->SetGroundRenderer("BattleEnemyGround_Grass.png");
 	PlayerGround->SetGroundRenderer("BattlePlayerGround_Grass.png");

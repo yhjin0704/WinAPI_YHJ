@@ -10,6 +10,7 @@ enum class ERenderOrder
 	Player,
 	CoverMap,
 	Menu,
+	OnMenu,
 	Text
 };
 

@@ -4,6 +4,7 @@
 #include "BattleBackGround.h"
 #include "BattleGround.h"
 #include "BattlePokemonStatus.h"
+#include "BattleTextBox.h"
 
 class UBattleLevel : public ULevel
 {
@@ -35,6 +36,7 @@ private:
 	ABattleGround* PlayerGround;
 	ABattlePokemonStatus* EnemyStatus;
 	ABattlePokemonStatus* PlayerStatus;
+	ABattleTextBox* TextBox;
 
 	std::list<PokemonInfo> BattleEntry;
 	PokemonInfo MyPokemon;

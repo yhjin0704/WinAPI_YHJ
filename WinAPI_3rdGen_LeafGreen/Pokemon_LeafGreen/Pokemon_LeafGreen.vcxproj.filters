@@ -156,6 +156,9 @@
     <ClCompile Include="BattlePokemonStatus.cpp">
       <Filter>Battle\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="BattleTextBox.cpp">
+      <Filter>Battle\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -311,6 +314,9 @@
       <Filter>Battle\Actor</Filter>
     </ClInclude>
     <ClInclude Include="BattlePokemonStatus.h">
+      <Filter>Battle\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleTextBox.h">
       <Filter>Battle\Actor</Filter>
     </ClInclude>
   </ItemGroup>

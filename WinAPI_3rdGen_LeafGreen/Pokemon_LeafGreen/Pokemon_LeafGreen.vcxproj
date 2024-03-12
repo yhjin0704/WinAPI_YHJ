@@ -170,6 +170,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BattleTextBox.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattlePokemonStatus.cpp">
       <SubType>
       </SubType>
@@ -368,6 +372,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleTextBox.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattlePokemonStatus.h">
       <SubType>
       </SubType>
