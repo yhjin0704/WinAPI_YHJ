@@ -11,7 +11,13 @@ PokemonInfo::~PokemonInfo()
 void PokemonInfo::CalStatus(int _Level)
 {
 	Name = Tribe;
+
 	Level = _Level;
+	if (100 < Level)
+	{
+		Level = 100;
+	}
+
 	int IGender = UEngineRandom::MainRandom.RandomInt(1, 1000);
 	if (Genderper >= IGender)
 	{
@@ -209,6 +215,10 @@ void PokemonInfo::CalImageNo(int _DexNo)
 
 void PokemonInfo::SetLevel(int _Level)
 {
+	if (100 < _Level)
+	{
+		_Level = 100;
+	}
 	MaxHp = std::lround(std::floor((2 * BHp + IVHp + EVHp) * _Level / 100 + _Level + 10));
 	Hp = MaxHp;
 	Atk = std::lround(std::floor(std::floor((2 * BAtk + IVAtk + EVAtk) * _Level / 100 + 5) * NAtk));
@@ -221,6 +231,10 @@ void PokemonInfo::SetLevel(int _Level)
 void PokemonInfo::LevelUp()
 {
 	++Level;
+	if (100 < Level)
+	{
+		Level = 100;
+	}
 	int PrevMaxHp = MaxHp;
 
 	MaxHp = std::lround(std::floor((2 * BHp + IVHp + EVHp) * Level / 100 + Level + 10));

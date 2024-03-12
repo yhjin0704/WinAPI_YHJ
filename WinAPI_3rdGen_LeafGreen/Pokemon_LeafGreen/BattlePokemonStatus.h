@@ -16,7 +16,7 @@ public:
 	ABattlePokemonStatus& operator=(ABattlePokemonStatus&& _Other) noexcept = delete;
 
 	void SetRenderer(std::string_view _Image);
-	void SetDataRenderers(PokemonInfo _Entry, float _Name_X, float _Name_Y, float _Level_X, float _Level_Y, float _Gender_X, float _Gender_Y, float _HpBar_X, float _HpBar_Y, float _Hp_X, float _Hp_Y, float _MaxHp_X, float _MaxHp_Y);
+	void SetDataRenderers(PokemonInfo _Entry, bool _IsEnemy, float _Name_X, float _Name_Y, float _Level_X, float _Level_Y, float _Gender_X, float _Gender_Y, float _HpBar_X, float _HpBar_Y, float _Hp_X, float _Hp_Y, float _MaxHp_X, float _MaxHp_Y);
 
 protected:
 	void BeginPlay() override;
@@ -31,5 +31,7 @@ private:
 	UImageRenderer* PokemonHpBarRenderer = nullptr;
 	UImageRenderer* PokemonHPRenderer = nullptr;
 	UImageRenderer* PokemonMaxHpRenderer = nullptr;
+
+	bool IsEnemy = false;
 };
 

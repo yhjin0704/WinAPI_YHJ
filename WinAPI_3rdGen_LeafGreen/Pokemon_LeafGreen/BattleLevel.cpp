@@ -31,20 +31,20 @@ void UBattleLevel::Tick(float _DeltaTime)
 {
 	ULevel::Tick(_DeltaTime);
 
-	EnemyStatus->SetDataRenderers(EnemyPokemon,
+	EnemyStatus->SetDataRenderers(EnemyPokemon, true,
 		19.0f, 18.0f,
-		1.0f, 1.0f, 
-		1.0f, 1.0f, 
-		1.0f, 1.0f,
-		1.0f, 1.0f, 
-		1.0f, 1.0f);
-	PlayerStatus->SetDataRenderers(MyPokemon,
-		120.0f, 70.0f,
-		200.0f, 140.0f,
-		200.0f, 140.0f,
-		200.0f, 140.0f,
-		200.0f, 140.0f,
-		200.0f, 140.0f);
+		101.0f, 32.0f, 
+		65.0f, 25.0f, 
+		77.0f, 34.5f,
+		0.0f, 0.0f, 
+		0.0f, 0.0f);
+	PlayerStatus->SetDataRenderers(MyPokemon, false,
+		142.0f, 77.0f,
+		224.0f, 91.0f,
+		188.0f, 84.0f,
+		200.0f, 93.5f,
+		205.0f, 108.2f,
+		207.0f, 94.7f);
 
 	if (true == UEngineInput::IsDown('L'))
 	{

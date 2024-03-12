@@ -35,7 +35,7 @@ void ABattlePokemonStatus::SetRenderer(std::string_view _Image)
 	StatusWindowRenderer->SetTransform({ (ImageScale.Half2D() * FScaleMultiple), {ImageScale * FScaleMultiple} });
 }
 
-void ABattlePokemonStatus::SetDataRenderers(PokemonInfo _Entry,
+void ABattlePokemonStatus::SetDataRenderers(PokemonInfo _Entry, bool _IsEnemy,
 	float _Name_X, float _Name_Y,
 	float _Level_X, float _Level_Y,
 	float _Gender_X, float _Gender_Y,
@@ -43,13 +43,21 @@ void ABattlePokemonStatus::SetDataRenderers(PokemonInfo _Entry,
 	float _Hp_X, float _Hp_Y,
 	float _MaxHp_X, float _MaxHp_Y)
 {
-	PokemonHPRenderer->ActiveOff();
-	PokemonMaxHpRenderer->ActiveOff();
+	if (true == _IsEnemy)
+	{
+		PokemonHPRenderer->ActiveOff();
+		PokemonMaxHpRenderer->ActiveOff();
+	}
+	else
+	{
+		PokemonHPRenderer->ActiveOn();
+		PokemonMaxHpRenderer->ActiveOn();
+	}
 
-	Global::SetPokemonText(PokemonNameRenderer, Gdiplus::StringAlignment::StringAlignmentNear, _Entry.Name, Color8Bit::BlackA);
+	Global::SetPokemonText(PokemonNameRenderer, Gdiplus::StringAlignment::StringAlignmentNear, _Entry.Name, Color8Bit::BlackA, 12.0f);
 	PokemonNameRenderer->SetTransform({ { _Name_X * FScaleMultiple, _Name_Y * FScaleMultiple }, { 0, 0 } });
 
-	Global::SetPokemonText(PokemonLevelRenderer, Gdiplus::StringAlignment::StringAlignmentNear, std::to_string(_Entry.Level), Color8Bit::BlackA, 12.0f);
+	Global::SetPokemonText(PokemonLevelRenderer, Gdiplus::StringAlignment::StringAlignmentFar, "Lv" + std::to_string(_Entry.Level), Color8Bit::BlackA, 12.0f);
 	PokemonLevelRenderer->SetTransform({ { _Level_X * FScaleMultiple, _Level_Y * FScaleMultiple }, { 0, 0 } });
 
 	if (true == _Entry.Gender)
