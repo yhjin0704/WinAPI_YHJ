@@ -89,7 +89,6 @@ public:
 	float NSDef = 1.0f;
 	float NSpd = 1.0f;
 
-
 private:
 };
 
