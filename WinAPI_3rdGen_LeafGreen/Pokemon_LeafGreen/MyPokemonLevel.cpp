@@ -47,6 +47,25 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 			SelectSlot = 0;
 		}
 	}
+	else if (true == UEngineInput::IsDown('A') || true == UEngineInput::IsDown('D'))
+	{
+		PrevSelectSlot = SelectSlot;
+		if (0 == SelectSlot)
+		{
+			if (0 == PrevSelectSlot)
+			{
+				SelectSlot = 1;
+			}
+			else
+			{
+				SelectSlot = PrevSelectSlot;
+			}
+		}
+		else
+		{
+			SelectSlot = 0;
+		}
+	}
 
 	SetAllEntryStatus();
 
@@ -201,7 +220,7 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 
 	if (true == UEngineInput::IsDown('R'))
 	{
-		UIEntry.front().Hp -= 10;
+		UIEntry.front().Hp = UIEntry.front().MaxHp;
 	}
 }
 

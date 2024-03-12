@@ -49,11 +49,18 @@ private:
 	std::string PrevLevelName = "";
 
 	EBattleSequence BattleSequence = EBattleSequence::Start;
+	EBattleSelect BattleSelectCursor = EBattleSelect::Fight;
+
+	int Dmg = 0;
 
 	bool FirstTurn = true;
-	float Delay = 0;
+	bool IsDelay = false;
+	float Delay = 1.5f;
+
+	int Sequence = 0;
 
 	PokemonInfo SpawnWildPokemon(int _DexNo, int _Level);
 	void TurnChange();
+	void CursorMovePos(float _X, float _Y, EBattleSelect _MoveLength, EBattleSelect _MoveWidth);
 };
 

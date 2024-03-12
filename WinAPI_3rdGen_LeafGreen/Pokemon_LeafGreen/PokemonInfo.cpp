@@ -264,6 +264,10 @@ void PokemonInfo::LevelUpCheck()
 	{
 		Exp -= MaxExp;
 		LevelUp();
+		if (true == EvolveCheck())
+		{
+			Evolve();
+		}
 		LevelUpCheck();
 	}
 }
@@ -272,6 +276,10 @@ void PokemonInfo::Evolve()
 {
 	PokemonInfo NextEvolve = Pokemon3rdGen_Core::GetAllPokemonInfo()[NextEvolveDexNo];
 
+	if (Name == Tribe)
+	{
+		Name = NextEvolve.Tribe;
+	}
 	DexNo = NextEvolve.DexNo;
 	Tribe = NextEvolve.Tribe;
 	Type1 = NextEvolve.Type1;
@@ -287,6 +295,20 @@ void PokemonInfo::Evolve()
 	EvolveLevel = NextEvolve.EvolveLevel;
 	NextEvolveDexNo = NextEvolve.NextEvolveDexNo;
 	CalImageNo(NextEvolve.DexNo);
+
+	int PrevMaxHp = MaxHp;
+
+	MaxHp = std::lround(std::floor((2 * BHp + IVHp + EVHp) * Level / 100 + Level + 10));
+	Hp += MaxHp - PrevMaxHp;
+	if (Hp > MaxHp)
+	{
+		Hp = MaxHp;
+	}
+	Atk = std::lround(std::floor(std::floor((2 * BAtk + IVAtk + EVAtk) * Level / 100 + 5) * NAtk));
+	Def = std::lround(std::floor(std::floor((2 * BDef + IVDef + EVDef) * Level / 100 + 5) * NDef));
+	SAtk = std::lround(std::floor(std::floor((2 * BSAtk + IVSAtk + EVSAtk) * Level / 100 + 5) * NSAtk));
+	SDef = std::lround(std::floor(std::floor((2 * BSDef + IVSDef + EVSDef) * Level / 100 + 5) * NSDef));
+	Spd = std::lround(std::floor(std::floor((2 * BSpd + IVSpd + EVSpd) * Level / 100 + 5) * NSpd));
 }
 
 bool PokemonInfo::EvolveCheck()

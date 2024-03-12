@@ -99,6 +99,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 		Info.DexNo = 1;
 		Info.Tribe = "이상해씨";
 		Info.Type1 = EType::풀;
+		Info.Type2 = EType::독;
 		Info.BHp = 45.0f;
 		Info.BAtk = 49.0f;
 		Info.BDef = 49.0f;
@@ -109,6 +110,48 @@ void Pokemon3rdGen_Core::BeginPlay()
 		Info.Genderper = 875;
 		Info.EvolveLevel = 16;
 		Info.NextEvolveDexNo = 2;
+		Info.CalImageNo(Info.DexNo);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 2;
+		Info.Tribe = "이상해풀";
+		Info.Type1 = EType::풀;
+		Info.Type2 = EType::독;
+		Info.BHp = 60.0f;
+		Info.BAtk = 62.0f;
+		Info.BDef = 63.0f;
+		Info.BSAtk = 80.0f;
+		Info.BSDef = 80.0f;
+		Info.BSpd = 60.0f;
+		Info.Ability = "심록";
+		Info.Genderper = 875;
+		Info.EvolveLevel = 32;
+		Info.NextEvolveDexNo = 3;
+		Info.CalImageNo(Info.DexNo);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 3;
+		Info.Tribe = "이상해꽃";
+		Info.Type1 = EType::풀;
+		Info.Type2 = EType::독;
+		Info.BHp = 80.0f;
+		Info.BAtk = 82.0f;
+		Info.BDef = 83.0f;
+		Info.BSAtk = 100.0f;
+		Info.BSDef = 100.0f;
+		Info.BSpd = 80.0f;
+		Info.Ability = "심록";
+		Info.Genderper = 875;
+		Info.EvolveLevel = 101;
+		Info.NextEvolveDexNo = 0;
 		Info.CalImageNo(Info.DexNo);
 
 		AllPokemonInfo[Info.DexNo] = Info;
