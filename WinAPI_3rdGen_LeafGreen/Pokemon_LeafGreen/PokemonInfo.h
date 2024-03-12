@@ -24,6 +24,10 @@ public:
 		MeetLevel = _Level;
 	}
 	void LevelUp();
+	void LevelUpCheck();
+
+	void Evolve();
+	bool EvolveCheck();
 
 	int DexNo = 0;
 	std::string Tribe = "";
@@ -38,6 +42,7 @@ public:
 	std::string Ability = "";
 	int Genderper = 1000;
 	int EvolveLevel = 101;
+	int NextEvolveDexNo = 0;
 	bool UseItemEvolve = false;
 	std::string EvolveItem = "";
 
@@ -50,6 +55,7 @@ public:
 	int Level = 1;
 	int MeetLevel = 0;
 	int Exp = 0;
+	int MaxExp = Level * Level * Level;
 	//true -> male, false -> female
 	bool Gender = true;
 	ENature Nature = ENature::Hardy;

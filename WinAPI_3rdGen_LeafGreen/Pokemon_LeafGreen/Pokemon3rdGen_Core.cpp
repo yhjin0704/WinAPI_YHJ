@@ -108,6 +108,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 		Info.Ability = "심록";
 		Info.Genderper = 875;
 		Info.EvolveLevel = 16;
+		Info.NextEvolveDexNo = 2;
 		Info.CalImageNo(Info.DexNo);
 
 		AllPokemonInfo[Info.DexNo] = Info;
@@ -127,6 +128,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 		Info.Ability = "맹화";
 		Info.Genderper = 875;
 		Info.EvolveLevel = 16;
+		Info.NextEvolveDexNo = 5;
 		Info.CalImageNo(Info.DexNo);
 
 		AllPokemonInfo[Info.DexNo] = Info;
@@ -146,6 +148,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 		Info.Ability = "급류";
 		Info.Genderper = 875;
 		Info.EvolveLevel = 16;
+		Info.NextEvolveDexNo = 8;
 		Info.CalImageNo(Info.DexNo);
 
 		AllPokemonInfo[Info.DexNo] = Info;

@@ -66,6 +66,9 @@ void UBattleLevel::LevelStart(ULevel* _PrevLevel)
 	{
 		EnemyPokemon = SpawnWildPokemon(4, UEngineRandom::MainRandom.RandomInt(2, 4));
 	}
+	TextBox->SetTextTop("앗, 야생의 경택이가 나타났다");
+	TextBox->SetTextBottom("큰일이넹...");
+	
 }
 
 void UBattleLevel::LevelEnd(ULevel* _NextLevel)

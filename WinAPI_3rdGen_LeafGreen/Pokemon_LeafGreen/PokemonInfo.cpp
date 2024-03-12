@@ -1,4 +1,5 @@
 #include "PokemonInfo.h"
+#include "Pokemon3rdGen_Core.h"
 
 PokemonInfo::PokemonInfo()
 {
@@ -17,6 +18,8 @@ void PokemonInfo::CalStatus(int _Level)
 	{
 		Level = 100;
 	}
+
+	MaxExp = Level * Level * Level;
 
 	int IGender = UEngineRandom::MainRandom.RandomInt(1, 1000);
 	if (Genderper >= IGender)
@@ -219,6 +222,8 @@ void PokemonInfo::SetLevel(int _Level)
 	{
 		_Level = 100;
 	}
+	MaxExp = _Level * _Level * _Level;
+
 	MaxHp = std::lround(std::floor((2 * BHp + IVHp + EVHp) * _Level / 100 + _Level + 10));
 	Hp = MaxHp;
 	Atk = std::lround(std::floor(std::floor((2 * BAtk + IVAtk + EVAtk) * _Level / 100 + 5) * NAtk));
@@ -230,22 +235,61 @@ void PokemonInfo::SetLevel(int _Level)
 
 void PokemonInfo::LevelUp()
 {
-	++Level;
-	if (100 < Level)
-	{
-		Level = 100;
-	}
-	int PrevMaxHp = MaxHp;
+		++Level;
+		if (100 < Level)
+		{
+			Level = 100;
+		}
 
-	MaxHp = std::lround(std::floor((2 * BHp + IVHp + EVHp) * Level / 100 + Level + 10));
-	Hp += MaxHp - PrevMaxHp;
-	if (Hp > MaxHp)
+		MaxExp = Level * Level * Level;
+
+		int PrevMaxHp = MaxHp;
+
+		MaxHp = std::lround(std::floor((2 * BHp + IVHp + EVHp) * Level / 100 + Level + 10));
+		Hp += MaxHp - PrevMaxHp;
+		if (Hp > MaxHp)
+		{
+			Hp = MaxHp;
+		}
+		Atk = std::lround(std::floor(std::floor((2 * BAtk + IVAtk + EVAtk) * Level / 100 + 5) * NAtk));
+		Def = std::lround(std::floor(std::floor((2 * BDef + IVDef + EVDef) * Level / 100 + 5) * NDef));
+		SAtk = std::lround(std::floor(std::floor((2 * BSAtk + IVSAtk + EVSAtk) * Level / 100 + 5) * NSAtk));
+		SDef = std::lround(std::floor(std::floor((2 * BSDef + IVSDef + EVSDef) * Level / 100 + 5) * NSDef));
+		Spd = std::lround(std::floor(std::floor((2 * BSpd + IVSpd + EVSpd) * Level / 100 + 5) * NSpd));
+}
+
+void PokemonInfo::LevelUpCheck()
+{
+	if (Exp > MaxExp)
 	{
-		Hp = MaxHp;
+		Exp -= MaxExp;
+		LevelUp();
+		LevelUpCheck();
 	}
-	Atk = std::lround(std::floor(std::floor((2 * BAtk + IVAtk + EVAtk) * Level / 100 + 5) * NAtk));
-	Def = std::lround(std::floor(std::floor((2 * BDef + IVDef + EVDef) * Level / 100 + 5) * NDef));
-	SAtk = std::lround(std::floor(std::floor((2 * BSAtk + IVSAtk + EVSAtk) * Level / 100 + 5) * NSAtk));
-	SDef = std::lround(std::floor(std::floor((2 * BSDef + IVSDef + EVSDef) * Level / 100 + 5) * NSDef));
-	Spd = std::lround(std::floor(std::floor((2 * BSpd + IVSpd + EVSpd) * Level / 100 + 5) * NSpd));
+}
+
+void PokemonInfo::Evolve()
+{
+	PokemonInfo NextEvolve = Pokemon3rdGen_Core::GetAllPokemonInfo()[NextEvolveDexNo];
+
+	DexNo = NextEvolve.DexNo;
+	Tribe = NextEvolve.Tribe;
+	Type1 = NextEvolve.Type1;
+	Type2 = NextEvolve.Type2;
+	BHp = NextEvolve.BHp;
+	BAtk = NextEvolve.BAtk;
+	BDef = NextEvolve.BDef;
+	BSAtk = NextEvolve.BSAtk;
+	BSDef = NextEvolve.BSDef;
+	BSpd = NextEvolve.BSpd;
+	Ability = NextEvolve.Ability;
+	Genderper = NextEvolve.Genderper;
+	EvolveLevel = NextEvolve.EvolveLevel;
+	NextEvolveDexNo = NextEvolve.NextEvolveDexNo;
+	CalImageNo(NextEvolve.DexNo);
+}
+
+bool PokemonInfo::EvolveCheck()
+{
+	return Level >= EvolveLevel;
 }
