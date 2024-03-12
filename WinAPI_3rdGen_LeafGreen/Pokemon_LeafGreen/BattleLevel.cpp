@@ -21,8 +21,8 @@ void UBattleLevel::BeginPlay()
 	EnemyStatus = SpawnActor<ABattlePokemonStatus>();
 	PlayerStatus = SpawnActor<ABattlePokemonStatus>();
 
-	EnemyGround->SetRenderer("BattleEnemyGround_Grass.png");
-	PlayerGround->SetRenderer("BattlePlayerGround_Grass.png");
+	EnemyGround->SetGroundRenderer("BattleEnemyGround_Grass.png");
+	PlayerGround->SetGroundRenderer("BattlePlayerGround_Grass.png");
 	EnemyStatus->SetRenderer("BattleEnemyPokemonStatus.png");
 	PlayerStatus->SetRenderer("BattlePlayerPokemonStatus.png");
 }
@@ -45,6 +45,9 @@ void UBattleLevel::Tick(float _DeltaTime)
 		200.0f, 93.5f,
 		205.0f, 108.2f,
 		207.0f, 94.7f);
+
+	EnemyGround->SetPokemonRenderer(EnemyPokemon, true);
+	PlayerGround->SetPokemonRenderer(MyPokemon, false);
 
 	if (true == UEngineInput::IsDown('L'))
 	{

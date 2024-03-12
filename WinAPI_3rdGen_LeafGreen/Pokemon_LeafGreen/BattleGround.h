@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore\Actor.h>
+#include "PokemonInfo.h"
 
 class ABattleGround : public AActor
 {
@@ -14,12 +15,16 @@ public:
 	ABattleGround& operator=(const ABattleGround& _Other) = delete;
 	ABattleGround& operator=(ABattleGround&& _Other) noexcept = delete;
 
-	void SetRenderer(std::string_view _Image);
+	void SetGroundRenderer(std::string_view _Image);
+	void SetPokemonRenderer(PokemonInfo _Entry, bool _IsEnemy);
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 private:
-	UImageRenderer* Renderer = nullptr;
+	UImageRenderer* GroundRenderer = nullptr;
+	UImageRenderer* PokemonRenderer = nullptr;
+
+	bool IsEnemy = false;
 };

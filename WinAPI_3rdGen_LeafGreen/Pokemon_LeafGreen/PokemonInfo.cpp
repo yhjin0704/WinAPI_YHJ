@@ -197,17 +197,17 @@ void PokemonInfo::CalImageNo(int _DexNo)
 	if (51 >= _DexNo)
 	{
 		FrontImage = (_DexNo - 1) * 4;
-		BackImage = ((_DexNo - 1) * 4) + 2;
+		BackImage = FrontImage + 2;
 	}
 	else if (102 >= _DexNo)
 	{
 		FrontImage = ((_DexNo - 51) - 1) * 4;
-		BackImage = (((_DexNo - 51) - 1) * 4) + 2;
+		BackImage = FrontImage + 2;
 	}
 	else
 	{
 		FrontImage = ((_DexNo - 102) - 1) * 4;
-		BackImage = (((_DexNo - 102) - 1) * 4) + 2;
+		BackImage = FrontImage + 2;
 	}
 	DotAnimationStart = (_DexNo * 2) - 2;
 	DotAnimationEnd = (_DexNo * 2) - 1;
