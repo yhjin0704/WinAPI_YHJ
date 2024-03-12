@@ -170,6 +170,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BattleSelectBox.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleHelper.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleTextBox.cpp">
       <SubType>
       </SubType>
@@ -372,6 +380,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleSelectBox.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleHelper.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleTextBox.h">
       <SubType>
       </SubType>

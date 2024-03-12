@@ -141,11 +141,6 @@ void APlayer::CreatePlayerAllRender()
 	//자전거 점프 애니메이션 생성
 	CharacterRenderer->CreateAnimation("Player_Boy_Bike_Down_Jump", "Player_Boy_Bike_Down_Jump.png", 0, 12, (FWalkTime / 13.0f * 2.0f), false);
 
-	/*PlayerCollision = CreateCollision(ECollisionOrder::Player);
-	PlayerCollision->SetScale({ IGameTileScale, IGameTileScale });
-	PlayerCollision->SetPosition({ GetActorLocation().X, (GetActorLocation().Y + FHGameTileScale) });
-	PlayerCollision->SetColType(ECollisionType::Rect);*/
-
 	PlayerDownCollision = CreateCollision(ECollisionOrder::Player);
 	PlayerDownCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
 	PlayerDownCollision->SetPosition({ GetActorLocation().X, (GetActorLocation().Y + FHGameTileScale + (FHGameTileScale / 2)) });

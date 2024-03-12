@@ -5,6 +5,8 @@
 #include "BattleGround.h"
 #include "BattlePokemonStatus.h"
 #include "BattleTextBox.h"
+#include "BattleSelectBox.h"
+#include "BattleHelper.h"
 
 class UBattleLevel : public ULevel
 {
@@ -37,6 +39,7 @@ private:
 	ABattlePokemonStatus* EnemyStatus;
 	ABattlePokemonStatus* PlayerStatus;
 	ABattleTextBox* TextBox;
+	ABattleSelectBox* SelectBox;
 
 	std::list<PokemonInfo> BattleEntry;
 	PokemonInfo MyPokemon;
@@ -45,6 +48,12 @@ private:
 
 	std::string PrevLevelName = "";
 
+	EBattleSequence BattleSequence = EBattleSequence::Start;
+
+	bool FirstTurn = true;
+	float Delay = 0;
+
 	PokemonInfo SpawnWildPokemon(int _DexNo, int _Level);
+	void TurnChange();
 };
 
