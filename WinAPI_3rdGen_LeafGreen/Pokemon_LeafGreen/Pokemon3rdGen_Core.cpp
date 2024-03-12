@@ -34,6 +34,16 @@ void Pokemon3rdGen_Core::BeginPlay()
 	{
 		FieldPath.MoveParent();
 		FieldPath.Move("Resources");
+
+		std::list<UEngineFile> NewSoundsList = FieldPath.AllFile({ ".wav", ".mp3" }, true);
+
+		for (UEngineFile& File : NewSoundsList)
+		{
+			UEngineSound::Load(File.GetFullPath());
+		}
+	}
+
+	{
 		FieldPath.Move("Field");
 
 		std::list<UEngineFile> AllFieldGraphicList = FieldPath.AllFile({ ".png", ".bmp" }, true);
@@ -41,15 +51,6 @@ void Pokemon3rdGen_Core::BeginPlay()
 		for (UEngineFile& File : AllFieldGraphicList)
 		{
 			UEngineResourcesManager::GetInst().LoadImg(File.GetFullPath());
-		}
-	}
-
-	{
-		std::list<UEngineFile> NewSoundsList = FieldPath.AllFile({ ".wav", ".mp3" }, true);
-
-		for (UEngineFile& File : NewSoundsList)
-		{
-			UEngineSound::Load(File.GetFullPath());
 		}
 	}
 

@@ -71,6 +71,7 @@ void UWestFieldLevel::LevelStart(ULevel* _PrevLevel)
 		{
 			GetPlayer()->SetCharacterDir(EDirState::Down);
 			GetPlayer()->SetActorLocation({ (1296 + (FTileScale / 2)) * FScaleMultiple , (2128) * FScaleMultiple });
+			Global::ChangeBGM("Pallet_Town.mp3");
 		}
 	}
 	else

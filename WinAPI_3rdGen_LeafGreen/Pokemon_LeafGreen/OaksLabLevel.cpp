@@ -48,16 +48,12 @@ void UOaksLabLevel::LevelStart(ULevel* _PrevLevel)
 		{
 			GetPlayer()->SetCharacterDir(EDirState::Up);
 			GetPlayer()->SetActorLocation({ (112 + (FTileScale / 2)) * FScaleMultiple , (192) * FScaleMultiple });
-		}
-
-		if (UEngineString::ToUpper("WestFieldLevel") != Field->GetName())
-		{
-			Global::ChangeBGM("Pallet_Town.mp3");
+			Global::ChangeBGM("Oaks_Lab.mp3");
 		}
 	}
 	else
 	{
-		Global::ChangeBGM("Pallet_Town.mp3");
+		Global::ChangeBGM("Oaks_Lab.mp3");
 	}
 }
 
