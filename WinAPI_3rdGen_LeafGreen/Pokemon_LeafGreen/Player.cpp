@@ -497,9 +497,10 @@ void APlayer::EncountCheck()
 		Color8Bit(2, 255, 0, 0) == PlayerHelper::EncountGround ||
 		Color8Bit(22, 255, 0, 0) == PlayerHelper::EncountGround)
 	{
-		if (25 >= EncountRandom)
+		if (25 >= EncountRandom && false == dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->GetEntry().empty())
 		{
 			PlayerHelper::IsEncount = true;
+			PlayerHelper::IsWild = true;
 		}
 	}
 }

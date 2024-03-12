@@ -23,6 +23,7 @@ public:
 	static bool PlayerPause;
 	static inline std::list<PokemonInfo> EntryPokemon = std::list<PokemonInfo>();
 	static Color8Bit EncountGround;
+	static bool IsWild;
 	static bool IsEncount;
 
 protected:

@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore\Level.h>
+#include "PokemonInfo.h"
 #include "BattleBackGround.h"
 #include "BattleGround.h"
 #include "BattlePokemonStatus.h"
@@ -29,14 +30,19 @@ protected:
 	void LevelEnd(ULevel* _NextLevel) override;
 
 private:
-	std::list<PokemonInfo> Entry;
-
 	ABattleBackGround* BackGround;
 	ABattleGround* EnemyGround;
 	ABattleGround* PlayerGround;
 	ABattlePokemonStatus* EnemyStatus;
 	ABattlePokemonStatus* PlayerStatus;
 
+	std::list<PokemonInfo> BattleEntry;
+	PokemonInfo MyPokemon;
+
+	PokemonInfo EnemyPokemon;
+
 	std::string PrevLevelName = "";
+
+	PokemonInfo SpawnWildPokemon(int _DexNo, int _Level);
 };
 

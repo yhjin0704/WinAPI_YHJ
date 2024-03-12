@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore\Actor.h>
+#include "PokemonInfo.h"
 
 class ABattlePokemonStatus : public AActor
 {
@@ -15,6 +16,7 @@ public:
 	ABattlePokemonStatus& operator=(ABattlePokemonStatus&& _Other) noexcept = delete;
 
 	void SetRenderer(std::string_view _Image);
+	void SetDataRenderers(PokemonInfo _Entry, float _Name_X, float _Name_Y, float _Level_X, float _Level_Y, float _Gender_X, float _Gender_Y, float _HpBar_X, float _HpBar_Y, float _Hp_X, float _Hp_Y, float _MaxHp_X, float _MaxHp_Y);
 
 protected:
 	void BeginPlay() override;
@@ -22,6 +24,7 @@ protected:
 
 private:
 	UImageRenderer* StatusWindowRenderer = nullptr;
+
 	UImageRenderer* PokemonNameRenderer = nullptr;
 	UImageRenderer* PokemonLevelRenderer = nullptr;
 	UImageRenderer* PokemonGenderRenderer = nullptr;
