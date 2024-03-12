@@ -316,6 +316,8 @@ void UBattleLevel::Tick(float _DeltaTime)
 
 	if (true == UEngineInput::IsDown('L'))
 	{
+		IsDelay = false;
+		Delay = 1.5f;
 		GEngine->ChangeLevel(PrevLevelName);
 	}
 }
