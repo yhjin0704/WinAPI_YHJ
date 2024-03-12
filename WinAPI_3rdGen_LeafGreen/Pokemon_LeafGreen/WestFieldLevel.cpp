@@ -75,7 +75,20 @@ void UWestFieldLevel::LevelStart(ULevel* _PrevLevel)
 	}
 	else
 	{
-		Global::ChangeBGM("Pallet_Town.mp3");
+		if (GetPlayer()->GetActorLocation().iY() == (1888 * IScaleMultiple))
+		{
+			if ("Route_1.mp3" != Global::PrevBGM)
+			{
+				Global::ChangeBGM("Route_1.mp3");
+			}
+		}
+		if (GetPlayer()->GetActorLocation().iY() == (1904 * IScaleMultiple))
+		{
+			if ("Pallet_Town.mp3" != Global::PrevBGM)
+			{
+				Global::ChangeBGM("Pallet_Town.mp3");
+			}
+		}
 	}
 }
 
