@@ -3,6 +3,7 @@
 #include "Pokemon3rdGen_Core.h"
 #include "PlayerHelper.h"
 #include "Player.h"
+#include "Global.h"
 
 UBattleLevel::UBattleLevel()
 {
@@ -84,17 +85,7 @@ void UBattleLevel::Tick(float _DeltaTime)
 				GEngine->ChangeLevel("MyPokemonLevel");
 				break;
 			case EBattleSelect::Run:
-				TextBox->TextOff();
-				TextBox->SetTextTop("¼º°øÀûÀ¸·Î µµ¸ÁÃÆ´Ù!");
-
-				IsDelay = true;
-				Delay -= _DeltaTime;
-				if (0 >= Delay)
-				{
-					IsDelay = false;
-					Delay = 1.5f;
-					BattleSequence = EBattleSequence::End;
-				}
+				BattleSequence = EBattleSequence::Run;
 				break;
 			case EBattleSelect::Move1:
 				break;
@@ -306,6 +297,19 @@ void UBattleLevel::Tick(float _DeltaTime)
 			break;
 		}
 		break;
+	case EBattleSequence::Run:
+		TextBox->TextOff();
+		TextBox->SetTextTop("¼º°øÀûÀ¸·Î µµ¸ÁÃÆ´Ù!");
+
+		IsDelay = true;
+		Delay -= _DeltaTime;
+		if (0 >= Delay)
+		{
+			IsDelay = false;
+			Delay = 1.5f;
+			BattleSequence = EBattleSequence::End;
+		}
+		break;
 	case EBattleSequence::End:
 		MyPokemon.LevelUpCheck();
 		GEngine->ChangeLevel(PrevLevelName);
@@ -347,6 +351,7 @@ void UBattleLevel::LevelStart(ULevel* _PrevLevel)
 
 	if (true == PlayerHelper::IsWild)
 	{
+		Global::ChangeBGM("Wild_Battle.mp3");
 		if (Color8Bit(1, 255, 0, 0) == PlayerHelper::EncountGround)
 		{
 			EnemyPokemon = SpawnWildPokemon(4, UEngineRandom::MainRandom.RandomInt(2, 4));

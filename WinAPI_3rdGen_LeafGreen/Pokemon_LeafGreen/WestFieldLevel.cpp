@@ -73,17 +73,34 @@ void UWestFieldLevel::LevelStart(ULevel* _PrevLevel)
 			GetPlayer()->SetActorLocation({ (1296 + (FTileScale / 2)) * FScaleMultiple , (2128) * FScaleMultiple });
 			Global::ChangeBGM("Pallet_Town.mp3");
 		}
+		else if (UEngineString::ToUpper("BattleLevel") == Field->GetName())
+		{
+			if (GetPlayer()->GetActorLocation().iY() <= (1888 * IScaleMultiple))
+			{
+				if ("Route_1.mp3" != Global::PrevBGM)
+				{
+					Global::ChangeBGM("Route_1.mp3");
+				}
+			}
+			if (GetPlayer()->GetActorLocation().iY() >= (1904 * IScaleMultiple))
+			{
+				if ("Pallet_Town.mp3" != Global::PrevBGM)
+				{
+					Global::ChangeBGM("Pallet_Town.mp3");
+				}
+			}
+		}
 	}
 	else
 	{
-		if (GetPlayer()->GetActorLocation().iY() == (1888 * IScaleMultiple))
+		if (GetPlayer()->GetActorLocation().iY() <= (1888 * IScaleMultiple))
 		{
 			if ("Route_1.mp3" != Global::PrevBGM)
 			{
 				Global::ChangeBGM("Route_1.mp3");
 			}
 		}
-		if (GetPlayer()->GetActorLocation().iY() == (1904 * IScaleMultiple))
+		if (GetPlayer()->GetActorLocation().iY() >= (1904 * IScaleMultiple))
 		{
 			if ("Pallet_Town.mp3" != Global::PrevBGM)
 			{

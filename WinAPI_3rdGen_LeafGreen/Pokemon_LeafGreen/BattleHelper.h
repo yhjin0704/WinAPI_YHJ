@@ -8,6 +8,7 @@ enum class EBattleSequence
 	Change,
 	MyTurn,
 	EnemyTurn,
+	Run,
 	End
 };
 
