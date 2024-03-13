@@ -170,6 +170,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EvolveBackGround.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSelectBox.cpp">
       <SubType>
       </SubType>
@@ -364,6 +368,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="EvolveLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="WestFieldGround.cpp" />
     <ClCompile Include="Player.cpp">
       <SubType>
@@ -380,6 +388,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EvolveBackGround.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleSelectBox.h">
       <SubType>
       </SubType>
@@ -571,6 +583,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PokemonStatusLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="EvolveLevel.h">
       <SubType>
       </SubType>
     </ClInclude>

@@ -163,6 +163,12 @@
     <ClCompile Include="BattleSelectBox.cpp">
       <Filter>Battle\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="EvolveLevel.cpp">
+      <Filter>Battle\Evolve</Filter>
+    </ClCompile>
+    <ClCompile Include="EvolveBackGround.cpp">
+      <Filter>Battle\Evolve\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -327,6 +333,12 @@
     <ClInclude Include="BattleSelectBox.h">
       <Filter>Battle\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="EvolveLevel.h">
+      <Filter>Battle\Evolve</Filter>
+    </ClInclude>
+    <ClInclude Include="EvolveBackGround.h">
+      <Filter>Battle\Evolve\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Field">
@@ -409,6 +421,12 @@
     </Filter>
     <Filter Include="Field\WestFieldLevel\OaksLab\Actor">
       <UniqueIdentifier>{908b8550-3bf8-4484-b628-94704695383b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\Evolve">
+      <UniqueIdentifier>{d55216e4-528c-45ee-865e-fba2f56e12c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\Evolve\Actor">
+      <UniqueIdentifier>{c5df2c57-03df-4906-ad47-33c21e6a63aa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
