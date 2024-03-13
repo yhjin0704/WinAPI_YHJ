@@ -4,6 +4,7 @@
 #include "TitleLevel3.h"
 #include "TitleLevel4.h"
 #include "BattleLevel.h"
+#include "EvolveLevel.h"
 #include "WestFieldLevel.h"
 #include "PlayerHome1FLevel.h"
 #include "PlayerHome2FLevel.h"
@@ -109,7 +110,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 		Info.BSAtk = 65.0f;
 		Info.BSDef = 65.0f;
 		Info.BSpd = 45.0f;
-		Info.Ability = "심록";
+		Info.Ability1 = "심록";
 		Info.Genderper = 875;
 		Info.EvolveLevel = 16;
 		Info.NextEvolveDexNo = 2;
@@ -130,7 +131,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 		Info.BSAtk = 80.0f;
 		Info.BSDef = 80.0f;
 		Info.BSpd = 60.0f;
-		Info.Ability = "심록";
+		Info.Ability1 = "심록";
 		Info.Genderper = 875;
 		Info.EvolveLevel = 32;
 		Info.NextEvolveDexNo = 3;
@@ -151,7 +152,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 		Info.BSAtk = 100.0f;
 		Info.BSDef = 100.0f;
 		Info.BSpd = 80.0f;
-		Info.Ability = "심록";
+		Info.Ability1 = "심록";
 		Info.Genderper = 875;
 		Info.EvolveLevel = 101;
 		Info.NextEvolveDexNo = 0;
@@ -171,10 +172,51 @@ void Pokemon3rdGen_Core::BeginPlay()
 		Info.BSAtk = 60.0f;
 		Info.BSDef = 50.0f;
 		Info.BSpd = 65.0f;
-		Info.Ability = "맹화";
+		Info.Ability1 = "맹화";
 		Info.Genderper = 875;
 		Info.EvolveLevel = 16;
 		Info.NextEvolveDexNo = 5;
+		Info.CalImageNo(Info.DexNo);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 5;
+		Info.Tribe = "리자드";
+		Info.Type1 = EType::불꽃;
+		Info.BHp = 58.0f;
+		Info.BAtk = 64.0f;
+		Info.BDef = 58.0f;
+		Info.BSAtk = 80.0f;
+		Info.BSDef = 65.0f;
+		Info.BSpd = 80.0f;
+		Info.Ability1 = "맹화";
+		Info.Genderper = 875;
+		Info.EvolveLevel = 36;
+		Info.NextEvolveDexNo = 6;
+		Info.CalImageNo(Info.DexNo);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 6;
+		Info.Tribe = "리자몽";
+		Info.Type1 = EType::불꽃;
+		Info.Type2 = EType::비행;
+		Info.BHp = 78.0f;
+		Info.BAtk = 84.0f;
+		Info.BDef = 78.0f;
+		Info.BSAtk = 109.0f;
+		Info.BSDef = 85.0f;
+		Info.BSpd = 100.0f;
+		Info.Ability1 = "맹화";
+		Info.Genderper = 875;
+		Info.EvolveLevel = 101;
+		Info.NextEvolveDexNo = 0;
 		Info.CalImageNo(Info.DexNo);
 
 		AllPokemonInfo[Info.DexNo] = Info;
@@ -191,10 +233,155 @@ void Pokemon3rdGen_Core::BeginPlay()
 		Info.BSAtk = 50.0f;
 		Info.BSDef = 64.0f;
 		Info.BSpd = 43.0f;
-		Info.Ability = "급류";
+		Info.Ability1 = "급류";
 		Info.Genderper = 875;
 		Info.EvolveLevel = 16;
 		Info.NextEvolveDexNo = 8;
+		Info.CalImageNo(Info.DexNo);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 8;
+		Info.Tribe = "어니부기";
+		Info.Type1 = EType::물;
+		Info.BHp = 59.0f;
+		Info.BAtk = 63.0f;
+		Info.BDef = 80.0f;
+		Info.BSAtk = 65.0f;
+		Info.BSDef = 80.0f;
+		Info.BSpd = 58.0f;
+		Info.Ability1 = "급류";
+		Info.Genderper = 875;
+		Info.EvolveLevel = 36;
+		Info.NextEvolveDexNo = 9;
+		Info.CalImageNo(Info.DexNo);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 9;
+		Info.Tribe = "거북왕";
+		Info.Type1 = EType::물;
+		Info.BHp = 79.0f;
+		Info.BAtk = 83.0f;
+		Info.BDef = 100.0f;
+		Info.BSAtk = 85.0f;
+		Info.BSDef = 105.0f;
+		Info.BSpd = 78.0f;
+		Info.Ability1 = "급류";
+		Info.Genderper = 875;
+		Info.EvolveLevel = 101;
+		Info.NextEvolveDexNo = 0;
+		Info.CalImageNo(Info.DexNo);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 16;
+		Info.Tribe = "구구";
+		Info.Type1 = EType::노말;
+		Info.Type2 = EType::비행;
+		Info.BHp = 40.0f;
+		Info.BAtk = 45.0f;
+		Info.BDef = 40.0f;
+		Info.BSAtk = 35.0f;
+		Info.BSDef = 35.0f;
+		Info.BSpd = 56.0f;
+		Info.Ability1 = "날카로운 눈";
+		Info.Genderper = 500;
+		Info.EvolveLevel = 18;
+		Info.NextEvolveDexNo = 17;
+		Info.CalImageNo(Info.DexNo);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 17;
+		Info.Tribe = "피죤";
+		Info.Type1 = EType::노말;
+		Info.Type2 = EType::비행;
+		Info.BHp = 63.0f;
+		Info.BAtk = 60.0f;
+		Info.BDef = 55.0f;
+		Info.BSAtk = 50.0f;
+		Info.BSDef = 50.0f;
+		Info.BSpd = 71.0f;
+		Info.Ability1 = "날카로운 눈";
+		Info.Genderper = 500;
+		Info.EvolveLevel = 36;
+		Info.NextEvolveDexNo = 18;
+		Info.CalImageNo(Info.DexNo);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 18;
+		Info.Tribe = "피죤투";
+		Info.Type1 = EType::노말;
+		Info.Type2 = EType::비행;
+		Info.BHp = 83.0f;
+		Info.BAtk = 80.0f;
+		Info.BDef = 75.0f;
+		Info.BSAtk = 70.0f;
+		Info.BSDef = 70.0f;
+		Info.BSpd = 91.0f;
+		Info.Ability1 = "날카로운 눈";
+		Info.Genderper = 500;
+		Info.EvolveLevel = 101;
+		Info.NextEvolveDexNo = 0;
+		Info.CalImageNo(Info.DexNo);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 19;
+		Info.Tribe = "꼬렛";
+		Info.Type1 = EType::노말;
+		Info.BHp = 30.0f;
+		Info.BAtk = 56.0f;
+		Info.BDef = 35.0f;
+		Info.BSAtk = 25.0f;
+		Info.BSDef = 35.0f;
+		Info.BSpd = 72.0f;
+		Info.Ability1 = "도주";
+		Info.Ability2 = "근성";
+		Info.Genderper = 500;
+		Info.EvolveLevel = 20;
+		Info.NextEvolveDexNo = 20;
+		Info.CalImageNo(Info.DexNo);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 19;
+		Info.Tribe = "레트라";
+		Info.Type1 = EType::노말;
+		Info.BHp = 55.0f;
+		Info.BAtk = 81.0f;
+		Info.BDef = 60.0f;
+		Info.BSAtk = 50.0f;
+		Info.BSDef = 70.0f;
+		Info.BSpd = 97.0f;
+		Info.Ability1 = "도주";
+		Info.Ability2 = "근성";
+		Info.Genderper = 500;
+		Info.EvolveLevel = 101;
+		Info.NextEvolveDexNo = 0;
 		Info.CalImageNo(Info.DexNo);
 
 		AllPokemonInfo[Info.DexNo] = Info;
@@ -207,6 +394,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 		CreateLevel<UTitleLevel4>("TitleLevel4");
 
 		CreateLevel<UBattleLevel>("BattleLevel");
+		CreateLevel<UEvolveLevel>("EvolveLevel");
 
 		CreateLevel<UWestFieldLevel>("WestFieldLevel");
 		CreateLevel<UPlayerHome1FLevel>("PlayerHome1FLevel");

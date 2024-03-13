@@ -1,5 +1,7 @@
 #pragma once
 #include <EngineCore\Level.h>
+#include "EvolveBackGround.h"
+#include "PokemonInfo.h"
 
 class UEvolveLevel : public ULevel
 {
@@ -21,6 +23,12 @@ protected:
 	void LevelEnd(ULevel* _NextLevel) override;
 
 private:
+	AEvolveBackGround* BackGround;
 
+	std::string PrevLevelName = "";
+
+	std::list<PokemonInfo> Entry;
+	PokemonInfo MyPokemon;
+	PokemonInfo EvolvePokemon;
 };
 

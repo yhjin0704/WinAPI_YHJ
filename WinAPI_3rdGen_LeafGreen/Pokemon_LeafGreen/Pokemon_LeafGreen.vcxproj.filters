@@ -169,6 +169,9 @@
     <ClCompile Include="EvolveBackGround.cpp">
       <Filter>Battle\Evolve\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="EvolvePokemon.cpp">
+      <Filter>Battle\Evolve\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -337,6 +340,9 @@
       <Filter>Battle\Evolve</Filter>
     </ClInclude>
     <ClInclude Include="EvolveBackGround.h">
+      <Filter>Battle\Evolve\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="EvolvePokemon.h">
       <Filter>Battle\Evolve\Actor</Filter>
     </ClInclude>
   </ItemGroup>

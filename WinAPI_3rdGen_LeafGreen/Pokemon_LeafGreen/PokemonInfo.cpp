@@ -178,6 +178,23 @@ void PokemonInfo::CalStatus(int _Level)
 	default:
 		break;
 	}
+	
+	if ("" != Ability2)
+	{
+		int IAbility = UEngineRandom::MainRandom.RandomInt(0, 1);
+		if (0 == IAbility)
+		{
+			Ability = Ability1;
+		}
+		else
+		{
+			Ability = Ability2;
+		}
+	}
+	else
+	{
+		Ability = Ability1;
+	}
 
 	IVHp = static_cast<float>(UEngineRandom::MainRandom.RandomInt(0, 31));
 	IVAtk = static_cast<float>(UEngineRandom::MainRandom.RandomInt(0, 31));

@@ -39,7 +39,8 @@ public:
 	float BSAtk = 1;
 	float BSDef = 1;
 	float BSpd = 1;
-	std::string Ability = "";
+	std::string Ability1 = "";
+	std::string Ability2 = "";
 	int Genderper = 1000;
 	int EvolveLevel = 101;
 	int NextEvolveDexNo = 0;
@@ -60,6 +61,7 @@ public:
 	bool Gender = true;
 	ENature Nature = ENature::Hardy;
 	std::string KNature = "노력하는";
+	std::string Ability = "";
 
 	float IVHp = 0;
 	float IVAtk = 0;
