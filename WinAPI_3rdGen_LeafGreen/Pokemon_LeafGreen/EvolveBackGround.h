@@ -1,5 +1,7 @@
 #pragma once
-class AEvolveBackGround
+#include "BackGround.h"
+
+class AEvolveBackGround : public ABackGround
 {
 public:
 	// constrcuter destructer
@@ -13,6 +15,8 @@ public:
 	AEvolveBackGround& operator=(AEvolveBackGround&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
 
 private:
 

@@ -31,7 +31,7 @@ void APlayer::BeginPlay()
 {
 	ACharacter::BeginPlay();
 
-	SetCharacterName("레드");
+	SetCharacterName("한지우");
 
 	CreatePlayerAllRender();
 	CreateMenu();

@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore\EngineCore.h>
+#include <wingdi.h>
 #include <EngineBase\EngineDirectory.h>
 #include "Global.h"
 #include "Player.h"

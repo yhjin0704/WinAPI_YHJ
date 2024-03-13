@@ -31,6 +31,8 @@ void Pokemon3rdGen_Core::BeginPlay()
 	MainWindow.SetClearColor(Color8Bit::BlackA);
 	SetFrame(60);
 
+	AddFontResourceExA("PokemonGSK2.ttf", FR_PRIVATE, 0);
+
 	{
 		FieldPath.MoveParent();
 		FieldPath.Move("Resources");
