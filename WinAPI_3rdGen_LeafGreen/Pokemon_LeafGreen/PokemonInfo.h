@@ -52,6 +52,7 @@ public:
 	int DotAnimationStart;
 	int DotAnimationEnd;
 
+	bool PlayerPokemon = false;
 	std::string Name = "";
 	int Level = 1;
 	int MeetLevel = 0;

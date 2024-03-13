@@ -383,10 +383,16 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 			TextBox->SetTextTop(_Defder.Name + "(은)는");
 			TextBox->SetTextBottom("쓰러졌다");
 
-			if (true == PlayerHelper::IsWild)
+			if (true == _Atker.PlayerPokemon)
 			{
-				_Atker.Exp += BattleHelper::CalExp(_Defder.Level, 1.0f);
-				_Atker.Exp += 200;
+				IsDelay = true;
+				Delay -= _DeltaTime;
+				if (0 >= Delay)
+				{
+					IsDelay = false;
+					Delay = 1.5f;
+					++Sequence;
+				}
 			}
 
 			IsDelay = true;
@@ -412,6 +418,27 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 		}
 		break;
 	case 4:
+		if (true == PlayerHelper::IsWild)
+		{
+			GetExp = BattleHelper::CalExp(_Defder.Level, 1.0f);
+			GetExp += 2000;
+			_Atker.Exp += GetExp;
+		}
+		++Sequence;
+		break;
+	case 5:
+		TextBox->TextOff();
+		TextBox->SetTextTop(_Atker.Name + "(은)는");
+		TextBox->SetTextBottom(std::to_string(GetExp) + "의 경험치를 얻었다");
+
+		IsDelay = true;
+		Delay -= _DeltaTime;
+		if (0 >= Delay)
+		{
+			IsDelay = false;
+			Delay = 1.5f;
+			BattleSequence = EBattleSequence::End;
+		}
 		break;
 	default:
 		break;

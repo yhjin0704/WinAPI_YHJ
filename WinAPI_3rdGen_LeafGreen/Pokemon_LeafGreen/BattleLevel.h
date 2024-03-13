@@ -55,6 +55,8 @@ private:
 	int CriCheck = 0;
 	int Dmg = 0;
 
+	int GetExp = 0;
+
 	bool FirstTurn = true;
 	bool IsDelay = false;
 	float Delay = 1.5f;

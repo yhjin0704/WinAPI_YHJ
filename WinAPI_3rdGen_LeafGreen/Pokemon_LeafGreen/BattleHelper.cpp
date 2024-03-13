@@ -61,5 +61,6 @@ int BattleHelper::CalDamage(EPSMove _Category, int _CriCheck, int _ALevel, int _
 
 int BattleHelper::CalExp(int _EnemyLevel, float _EnemyCategory)
 {
-	return std::lround(static_cast<float>(_EnemyLevel) / 7.0f * _EnemyCategory);
+	int Level2 = _EnemyLevel * _EnemyLevel;
+	return std::ceil(static_cast<float>(Level2) * 2.5f * _EnemyCategory);
 }
