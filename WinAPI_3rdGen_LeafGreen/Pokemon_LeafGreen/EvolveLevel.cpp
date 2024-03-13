@@ -35,6 +35,6 @@ void UEvolveLevel::LevelEnd(ULevel* _NextLevel)
 {
 	PlayerHelper::IsEncount = false;
 	PlayerHelper::IsWild = false;
-	BattleEntry.front() = MyPokemon;
-	dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->SetEntry(BattleEntry);
+	Entry.front() = MyPokemon;
+	dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->SetEntry(Entry);
 }
