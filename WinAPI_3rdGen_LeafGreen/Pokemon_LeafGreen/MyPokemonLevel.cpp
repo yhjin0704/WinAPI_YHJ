@@ -254,12 +254,12 @@ void UMyPokemonLevel::SetAllEntryStatus()
 	Slot1st->SetSlotRenderer("MyPokemon_First.png", 44.0f, 46.5f);
 	Slot1st->SetDotRenderer(16.0f, 41.0f, *UIEntryIter);
 	Slot1st->SetDataRenderers(*UIEntryIter,
-		30.0f, 34.0f,
-		46.0f, 44.6f,
+		30.0f, 42.0f,
+		46.0f, 51.6f,
 		76.0f, 52.0f,
 		56.0f, 60.5f,
-		63.0f, 74.0f,
-		66.0f, 60.5f);
+		63.0f, 67.5f,
+		66.0f, 67.5f);
 
 	UIEntryIter++;
 	if (UIEntryIter != UIEntry.end())
@@ -267,12 +267,12 @@ void UMyPokemonLevel::SetAllEntryStatus()
 		Slot2nd->SetSlotRenderer("MyPokemon_Slot.png", 163.0f, 20.5f);
 		Slot2nd->SetDotRenderer(101.0f, 23.0f, *UIEntryIter);
 		Slot2nd->SetDataRenderers(*UIEntryIter,
-			115.0f, 10.0f,
-			134.0f, 20.6f,
+			115.0f, 18.0f,
+			134.0f, 27.6f,
 			164.0f, 28.0f,
 			208.0f, 19.5f,
-			215.0f, 33.0f,
-			218.0f, 19.5f);
+			215.0f, 26.5f,
+			218.0f, 26.5f);
 
 		UIEntryIter++;
 		if (UIEntryIter != UIEntry.end())
@@ -280,12 +280,12 @@ void UMyPokemonLevel::SetAllEntryStatus()
 			Slot3rd->SetSlotRenderer("MyPokemon_Slot.png", 163.0f, 20.5f + (24.0f * 1));
 			Slot3rd->SetDotRenderer(101.0f, 23.0f + (24.0f * 1), *UIEntryIter);
 			Slot3rd->SetDataRenderers(*UIEntryIter,
-				115.0f, 10.0f + (24.0f * 1),
-				134.0f, 20.6f + (24.0f * 1),
+				115.0f, 18.0f + (24.0f * 1),
+				134.0f, 27.6f + (24.0f * 1),
 				164.0f, 28.0f + (24.0f * 1),
 				208.0f, 19.5f + (24.0f * 1),
-				215.0f, 33.0f + (24.0f * 1),
-				218.0f, 19.5f + (24.0f * 1));
+				215.0f, 26.5f + (24.0f * 1),
+				218.0f, 26.5f + (24.0f * 1));
 
 			UIEntryIter++;
 			if (UIEntryIter != UIEntry.end())
@@ -293,12 +293,12 @@ void UMyPokemonLevel::SetAllEntryStatus()
 				Slot4th->SetSlotRenderer("MyPokemon_Slot.png", 163.0f, 20.5f + (24.0f * 2));
 				Slot4th->SetDotRenderer(101.0f, 23.0f + (24.0f * 2), *UIEntryIter);
 				Slot4th->SetDataRenderers(*UIEntryIter,
-					115.0f, 10.0f + (24.0f * 2),
-					134.0f, 20.6f + (24.0f * 2),
+					115.0f, 18.0f + (24.0f * 2),
+					134.0f, 27.6f + (24.0f * 2),
 					164.0f, 28.0f + (24.0f * 2),
 					208.0f, 19.5f + (24.0f * 2),
-					215.0f, 33.0f + (24.0f * 2),
-					218.0f, 19.5f + (24.0f * 2));
+					215.0f, 26.5f + (24.0f * 2),
+					218.0f, 26.5f + (24.0f * 2));
 
 				UIEntryIter++;
 				if (UIEntryIter != UIEntry.end())
@@ -306,12 +306,12 @@ void UMyPokemonLevel::SetAllEntryStatus()
 					Slot5th->SetSlotRenderer("MyPokemon_Slot.png", 163.0f, 20.5f + (24.0f * 3));
 					Slot5th->SetDotRenderer(101.0f, 23.0f + (24.0f * 3), *UIEntryIter);
 					Slot5th->SetDataRenderers(*UIEntryIter,
-						115.0f, 10.0f + (24.0f * 3),
-						134.0f, 20.6f + (24.0f * 3),
+						115.0f, 18.0f + (24.0f * 3),
+						134.0f, 27.6f + (24.0f * 3),
 						164.0f, 28.0f + (24.0f * 3),
 						208.0f, 19.5f + (24.0f * 3),
-						215.0f, 33.0f + (24.0f * 3),
-						218.0f, 19.5f + (24.0f * 3));
+						215.0f, 26.5f + (24.0f * 3),
+						218.0f, 26.5f + (24.0f * 3));
 
 					UIEntryIter++;
 					if (UIEntryIter != UIEntry.end())
@@ -319,12 +319,12 @@ void UMyPokemonLevel::SetAllEntryStatus()
 						Slot6th->SetSlotRenderer("MyPokemon_Slot.png", 163.0f, 20.5f + (24.0f * 4));
 						Slot6th->SetDotRenderer(101.0f, 23.0f + (24.0f * 4), *UIEntryIter);
 						Slot6th->SetDataRenderers(*UIEntryIter,
-							115.0f, 10.0f + (24.0f * 4),
-							134.0f, 20.6f + (24.0f * 4),
+							115.0f, 18.0f + (24.0f * 4),
+							134.0f, 27.6f + (24.0f * 4),
 							164.0f, 28.0f + (24.0f * 4),
 							208.0f, 19.5f + (24.0f * 4),
-							215.0f, 33.0f + (24.0f * 4),
-							218.0f, 19.5f + (24.0f * 4));
+							215.0f, 26.5f + (24.0f * 4),
+							218.0f, 26.5f + (24.0f * 4));
 					}
 				}
 			}

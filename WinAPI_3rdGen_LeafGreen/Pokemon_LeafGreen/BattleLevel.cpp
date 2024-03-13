@@ -36,19 +36,19 @@ void UBattleLevel::Tick(float _DeltaTime)
 	ULevel::Tick(_DeltaTime);
 
 	EnemyStatus->SetDataRenderers(EnemyPokemon, true,
-		19.0f, 18.0f,
-		101.0f, 32.0f,
+		19.0f, 25.0f,
+		101.0f, 25.0f,
 		65.0f, 25.0f,
 		77.0f, 34.5f,
 		0.0f, 0.0f,
 		0.0f, 0.0f);
 	PlayerStatus->SetDataRenderers(MyPokemon, false,
-		142.0f, 77.0f,
-		224.0f, 91.0f,
+		142.0f, 84.0f,
+		224.0f, 84.0f,
 		188.0f, 84.0f,
 		200.0f, 93.5f,
-		205.0f, 108.2f,
-		207.0f, 94.7f);
+		205.0f, 101.5f,
+		207.0f, 101.5f);
 
 	EnemyGround->SetPokemonRenderer(EnemyPokemon, true);
 	PlayerGround->SetPokemonRenderer(MyPokemon, false);
@@ -74,9 +74,7 @@ void UBattleLevel::Tick(float _DeltaTime)
 			switch (BattleSelectCursor)
 			{
 			case EBattleSelect::Fight:
-				Dmg = BattleHelper::CalDamage(EPSMove::물리, MyPokemon.Level, MyPokemon.Atk, MyPokemon.SAtk, MyPokemon.Type1, MyPokemon.Type2, EnemyPokemon.Def, EnemyPokemon.SDef, EnemyPokemon.Type1, EnemyPokemon.Type2, 35, 95, EType::노말);
-				EnemyPokemon.Hp -= Dmg;
-				++Sequence;
+				IsPlayerSelect = true;
 				break;
 			case EBattleSelect::Bag:
 				GEngine->ChangeLevel("MyBagLevel");
@@ -129,6 +127,7 @@ void UBattleLevel::Tick(float _DeltaTime)
 		}
 		break;
 	case EBattleSequence::Change:
+		IsPlayerSelect = false;
 		TextBox->TextOff();
 		TextBox->SetTextTop("가랏 " + MyPokemon.Name + "!");
 
@@ -160,11 +159,8 @@ void UBattleLevel::Tick(float _DeltaTime)
 		}
 		break;
 	case EBattleSequence::MyTurn:
-		switch (Sequence)
+		if (false == IsPlayerSelect)
 		{
-		case 0:
-			TurnChange();
-
 			TextBox->TextOff();
 			TextBox->SetTextTop(MyPokemon.Name + "(은)는");
 			TextBox->SetTextBottom("무엇을 할까?");
@@ -190,114 +186,18 @@ void UBattleLevel::Tick(float _DeltaTime)
 			default:
 				break;
 			}
-			break;
-		case 1:
-			TextBox->TextOff();
-			TextBox->SetTextTop(MyPokemon.Name + "의");
-			TextBox->SetTextBottom("몸통박치기!");
-
-			SelectBox->SetSelectBoxActive(false);
-			SelectBox->SetSelectBoxTextActive(false);
-			SelectBox->SetCursorActive(false);
-
-			IsDelay = true;
-			Delay -= _DeltaTime;
-			if (0 >= Delay)
-			{
-				IsDelay = false;
-				Delay = 1.5f;
-				++Sequence;
-			}
-			break;
-		case 2:
-			if (0 >= EnemyPokemon.Hp)
-			{
-				TextBox->TextOff();
-				TextBox->SetTextTop(EnemyPokemon.Name + "(은)는");
-				TextBox->SetTextBottom("쓰러졌다");
-
-				if (true == PlayerHelper::IsWild)
-				{
-					MyPokemon.Exp += BattleHelper::CalExp(EnemyPokemon.Level, 1.0f);
-					MyPokemon.Exp += 200;
-				}
-
-				IsDelay = true;
-				Delay -= _DeltaTime;
-				if (0 >= Delay)
-				{
-					IsDelay = false;
-					Delay = 1.5f;
-					BattleSequence = EBattleSequence::End;
-				}
-			}
-			else
-			{
-				Sequence = 0;
-				BattleSequence = EBattleSequence::EnemyTurn;
-			}
-			break;
-		default:
-			break;
+		}
+		else
+		{
+			FightBattle(_DeltaTime, MyPokemon, EnemyPokemon);
 		}
 		break;
 	case EBattleSequence::EnemyTurn:
-		TurnChange();
-
-		TextBox->TextOff();
-
-		SelectBox->SetSelectBoxActive(false);
-		SelectBox->SetSelectBoxTextActive(false);
-		SelectBox->SetCursorActive(false);
-
-		switch (Sequence)
-		{
-		case 0:
-			Dmg = BattleHelper::CalDamage(EPSMove::물리, EnemyPokemon.Level, EnemyPokemon.Atk, EnemyPokemon.SAtk, EnemyPokemon.Type1, EnemyPokemon.Type2, MyPokemon.Def, MyPokemon.SDef, MyPokemon.Type1, MyPokemon.Type2, 35, 95, EType::노말);
-			MyPokemon.Hp -= Dmg;
-			++Sequence;
-			break;
-		case 1:
-			TextBox->TextOff();
-			TextBox->SetTextTop(EnemyPokemon.Name + "의");
-			TextBox->SetTextBottom("몸통박치기!");
-
-			IsDelay = true;
-			Delay -= _DeltaTime;
-			if (0 >= Delay)
-			{
-				IsDelay = false;
-				Delay = 1.5f;
-				++Sequence;
-			}
-			break;
-		case 2:
-			if (0 >= MyPokemon.Hp)
-			{
-				TextBox->TextOff();
-				TextBox->SetTextTop(MyPokemon.Name + "(은)는");
-				TextBox->SetTextBottom("쓰러졌다");
-
-				IsDelay = true;
-				Delay -= _DeltaTime;
-				if (0 >= Delay)
-				{
-					IsDelay = false;
-					Delay = 1.5f;
-					BattleSequence = EBattleSequence::End;
-				}
-			}
-			else
-			{
-				Sequence = 0;
-				BattleSequence = EBattleSequence::MyTurn;
-			}
-			break;
-		default:
-			break;
-		}
+		IsPlayerSelect = false;
+		FightBattle(_DeltaTime, EnemyPokemon, MyPokemon);
 		break;
 	case EBattleSequence::Run:
+		IsPlayerSelect = false;
 		TextBox->TextOff();
 		TextBox->SetTextTop("성공적으로 도망쳤다!");
 
@@ -311,6 +211,7 @@ void UBattleLevel::Tick(float _DeltaTime)
 		}
 		break;
 	case EBattleSequence::End:
+		IsPlayerSelect = false;
 		MyPokemon.LevelUpCheck();
 		GEngine->ChangeLevel(PrevLevelName);
 		break;
@@ -345,7 +246,7 @@ void UBattleLevel::LevelStart(ULevel* _PrevLevel)
 	SelectBox->SetCursorActive(false);
 
 	Sequence = 0;
-
+	IsPlayerSelect = false;
 
 	FirstTurn = false;
 
@@ -402,5 +303,101 @@ void UBattleLevel::CursorMovePos(float _X, float _Y, EBattleSelect _MoveLength, 
 	else if (true == UEngineInput::IsDown('A') || true == UEngineInput::IsDown('D'))
 	{
 		BattleSelectCursor = _MoveWidth;
+	}
+}
+
+void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInfo& _Defder)
+{
+	switch (Sequence)
+	{
+	case 0:
+		TurnChange();
+
+		TextBox->TextOff();
+
+		SelectBox->SetSelectBoxActive(false);
+		SelectBox->SetSelectBoxTextActive(false);
+		SelectBox->SetCursorActive(false);
+
+		CriCheck = UEngineRandom::MainRandom.RandomInt(1, 16);
+		Dmg = BattleHelper::CalDamage(EPSMove::물리, CriCheck, _Atker.Level, _Atker.Atk, _Atker.SAtk, _Atker.Type1, _Atker.Type2, _Defder.Def, _Defder.SDef, _Defder.Type1, _Defder.Type2, 35, 95, EType::노말);
+		_Defder.Hp -= Dmg;
+		++Sequence;
+		break;
+	case 1:
+		TextBox->TextOff();
+		TextBox->SetTextTop(_Atker.Name + "의");
+		TextBox->SetTextBottom("몸통박치기!");
+
+		SelectBox->SetSelectBoxActive(false);
+		SelectBox->SetSelectBoxTextActive(false);
+		SelectBox->SetCursorActive(false);
+
+		IsDelay = true;
+		Delay -= _DeltaTime;
+		if (0 >= Delay)
+		{
+			IsDelay = false;
+			Delay = 1.5f;
+			++Sequence;
+		}
+		break;
+	case 2:
+		if (1 == CriCheck)
+		{
+			TextBox->TextOff();
+			TextBox->SetTextTop("급소에 맞았다!");
+
+			IsDelay = true;
+			Delay -= _DeltaTime;
+			if (0 >= Delay)
+			{
+				IsDelay = false;
+				Delay = 1.5f;
+				++Sequence;
+			}
+		}
+		else
+		{
+			++Sequence;
+		}
+		break;
+	case 3:
+		if (0 >= _Defder.Hp)
+		{
+			TextBox->TextOff();
+			TextBox->SetTextTop(_Defder.Name + "(은)는");
+			TextBox->SetTextBottom("쓰러졌다");
+
+			if (true == PlayerHelper::IsWild)
+			{
+				_Atker.Exp += BattleHelper::CalExp(_Defder.Level, 1.0f);
+				_Atker.Exp += 200;
+			}
+
+			IsDelay = true;
+			Delay -= _DeltaTime;
+			if (0 >= Delay)
+			{
+				IsDelay = false;
+				Delay = 1.5f;
+				BattleSequence = EBattleSequence::End;
+			}
+		}
+		else
+		{
+			Sequence = 0;
+			if (EBattleSequence::EnemyTurn == BattleSequence)
+			{
+				BattleSequence = EBattleSequence::MyTurn;
+			}
+			else if (EBattleSequence::MyTurn == BattleSequence)
+			{
+				BattleSequence = EBattleSequence::EnemyTurn;
+			}
+		}
+		break;
+	default:
+		break;
 	}
 }

@@ -51,6 +51,8 @@ private:
 	EBattleSequence BattleSequence = EBattleSequence::Start;
 	EBattleSelect BattleSelectCursor = EBattleSelect::Fight;
 
+	//1~16중 1이면 급소
+	int CriCheck = 0;
 	int Dmg = 0;
 
 	bool FirstTurn = true;
@@ -58,9 +60,11 @@ private:
 	float Delay = 1.5f;
 
 	int Sequence = 0;
+	bool IsPlayerSelect = false;
 
 	PokemonInfo SpawnWildPokemon(int _DexNo, int _Level);
 	void TurnChange();
 	void CursorMovePos(float _X, float _Y, EBattleSelect _MoveLength, EBattleSelect _MoveWidth);
+	void FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInfo& _Defder);
 };
 

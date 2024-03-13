@@ -31,7 +31,7 @@ void APlayer::BeginPlay()
 {
 	ACharacter::BeginPlay();
 
-	SetCharacterName("한지우");
+	SetCharacterName("레드");
 
 	CreatePlayerAllRender();
 	CreateMenu();
@@ -176,7 +176,7 @@ void APlayer::CreateMenu()
 
 	MenuPlayerTextRenderer = CreateImageRenderer(ERenderOrder::Text);
 	Global::SetPokemonText(MenuPlayerTextRenderer, Gdiplus::StringAlignment::StringAlignmentNear, GetCharacterName());
-	MenuPlayerTextRenderer->SetTransform({ { ((FTileScale * 4.0f) - 0.25f ) * FScaleMultiple, ((FTileScale * -2.0f) - 11.0f) * FScaleMultiple }, { 0, 0 } });
+	MenuPlayerTextRenderer->SetTransform({ { ((FTileScale * 4.0f) - 0.25f ) * FScaleMultiple, ((FTileScale * -2.0f) - 3.0f) * FScaleMultiple }, { 0, 0 } });
 	MenuPlayerTextRenderer->ActiveOff();
 
 	MenuExplainRenderer = CreateImageRenderer(ERenderOrder::Menu);

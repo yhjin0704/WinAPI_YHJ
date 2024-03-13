@@ -25,8 +25,8 @@ void ABattleTextBox::BeginPlay()
 	FVector ImageScale = Image->GetScale();
 	BoxRenderer->SetTransform({ {120.0f * FScaleMultiple, 136.0f * FScaleMultiple }, { ImageScale * FScaleMultiple }});
 
-	TextRendererTop->SetTransform({ { 10.0f * FScaleMultiple, 120.0f * FScaleMultiple }, {0, 0} });
-	TextRendererBottom->SetTransform({ { 10.0f * FScaleMultiple, 136.0f * FScaleMultiple }, {0, 0} });
+	TextRendererTop->SetTransform({ { 10.0f * FScaleMultiple, 128.0f * FScaleMultiple }, {0, 0} });
+	TextRendererBottom->SetTransform({ { 10.0f * FScaleMultiple, 144.0f * FScaleMultiple }, {0, 0} });
 }
 
 void ABattleTextBox::Tick(float _DeltaTime)

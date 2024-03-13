@@ -10,7 +10,7 @@ BattleHelper::~BattleHelper()
 {
 }
 
-int BattleHelper::CalDamage(EPSMove _Category, int _ALevel, int _AAtk, int _ASAtk, EType _AType1, EType _AType2, int _DDef, int _DSDef, EType _DType1, EType _DType2, int _MPower, int _MAcc, EType _MType)
+int BattleHelper::CalDamage(EPSMove _Category, int _CriCheck, int _ALevel, int _AAtk, int _ASAtk, EType _AType1, EType _AType2, int _DDef, int _DSDef, EType _DType1, EType _DType2, int _MPower, int _MAcc, EType _MType)
 {
 	float ALevel = static_cast<float>(_ALevel);
 	float AAtk = static_cast<float>(_AAtk);
@@ -21,9 +21,8 @@ int BattleHelper::CalDamage(EPSMove _Category, int _ALevel, int _AAtk, int _ASAt
 
 	int FinalDmg = 1;
 
-	int Cri = UEngineRandom::MainRandom.RandomInt(1, 16);
 	float CriDmg = 1.0f;
-	if (1 == Cri)
+	if (1 == _CriCheck)
 	{
 		CriDmg = 2.0f;
 	}

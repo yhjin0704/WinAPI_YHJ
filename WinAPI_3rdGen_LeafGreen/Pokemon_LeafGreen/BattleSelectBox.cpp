@@ -50,16 +50,16 @@ void ABattleSelectBox::BeginPlay()
 	BoxRenderer->SetTransform({ {240.0f * FScaleMultiple, 136.0f * FScaleMultiple }, { ImageScale * FScaleMultiple } });
 
 	Global::SetPokemonText(TextRendererFight, Gdiplus::StringAlignment::StringAlignmentNear, "싸운다", Color8Bit::BlackA, 12.0f);
-	TextRendererFight->SetTransform({ {134.0f * FScaleMultiple, 123.0f * FScaleMultiple }, { 0, 0 } });
+	TextRendererFight->SetTransform({ {134.0f * FScaleMultiple, 129.0f * FScaleMultiple }, { 0, 0 } });
 
 	Global::SetPokemonText(TextRendererBag, Gdiplus::StringAlignment::StringAlignmentNear, "가방", Color8Bit::BlackA, 12.0f);
-	TextRendererBag->SetTransform({ {190.0f * FScaleMultiple, 123.0f * FScaleMultiple }, { 0, 0 } });
+	TextRendererBag->SetTransform({ {190.0f * FScaleMultiple, 129.0f * FScaleMultiple }, { 0, 0 } });
 
 	Global::SetPokemonText(TextRendererPokemon, Gdiplus::StringAlignment::StringAlignmentNear, "포켓몬", Color8Bit::BlackA, 12.0f);
-	TextRendererPokemon->SetTransform({ {134.0f * FScaleMultiple, 139.0f * FScaleMultiple }, { 0, 0 } });
+	TextRendererPokemon->SetTransform({ {134.0f * FScaleMultiple, 145.0f * FScaleMultiple }, { 0, 0 } });
 
 	Global::SetPokemonText(TextRendererRun, Gdiplus::StringAlignment::StringAlignmentNear, "도망친다", Color8Bit::BlackA, 12.0f);
-	TextRendererRun->SetTransform({ {190.0f * FScaleMultiple, 139.0f * FScaleMultiple }, { 0, 0 } });
+	TextRendererRun->SetTransform({ {190.0f * FScaleMultiple, 145.0f * FScaleMultiple }, { 0, 0 } });
 }
 
 void ABattleSelectBox::Tick(float _DeltaTime)
