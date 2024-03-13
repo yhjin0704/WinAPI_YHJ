@@ -258,8 +258,8 @@ void UMyPokemonLevel::SetAllEntryStatus()
 		46.0f, 51.6f,
 		76.0f, 52.0f,
 		56.0f, 60.5f,
-		63.0f, 67.5f,
-		66.0f, 67.5f);
+		63.0f, 68.5f,
+		64.0f, 68.5f);
 
 	UIEntryIter++;
 	if (UIEntryIter != UIEntry.end())
@@ -272,7 +272,7 @@ void UMyPokemonLevel::SetAllEntryStatus()
 			164.0f, 28.0f,
 			208.0f, 19.5f,
 			215.0f, 26.5f,
-			218.0f, 26.5f);
+			216.0f, 26.5f);
 
 		UIEntryIter++;
 		if (UIEntryIter != UIEntry.end())
@@ -285,7 +285,7 @@ void UMyPokemonLevel::SetAllEntryStatus()
 				164.0f, 28.0f + (24.0f * 1),
 				208.0f, 19.5f + (24.0f * 1),
 				215.0f, 26.5f + (24.0f * 1),
-				218.0f, 26.5f + (24.0f * 1));
+				216.0f, 26.5f + (24.0f * 1));
 
 			UIEntryIter++;
 			if (UIEntryIter != UIEntry.end())
@@ -298,7 +298,7 @@ void UMyPokemonLevel::SetAllEntryStatus()
 					164.0f, 28.0f + (24.0f * 2),
 					208.0f, 19.5f + (24.0f * 2),
 					215.0f, 26.5f + (24.0f * 2),
-					218.0f, 26.5f + (24.0f * 2));
+					216.0f, 26.5f + (24.0f * 2));
 
 				UIEntryIter++;
 				if (UIEntryIter != UIEntry.end())
@@ -311,7 +311,7 @@ void UMyPokemonLevel::SetAllEntryStatus()
 						164.0f, 28.0f + (24.0f * 3),
 						208.0f, 19.5f + (24.0f * 3),
 						215.0f, 26.5f + (24.0f * 3),
-						218.0f, 26.5f + (24.0f * 3));
+						216.0f, 26.5f + (24.0f * 3));
 
 					UIEntryIter++;
 					if (UIEntryIter != UIEntry.end())
@@ -324,7 +324,7 @@ void UMyPokemonLevel::SetAllEntryStatus()
 							164.0f, 28.0f + (24.0f * 4),
 							208.0f, 19.5f + (24.0f * 4),
 							215.0f, 26.5f + (24.0f * 4),
-							218.0f, 26.5f + (24.0f * 4));
+							216.0f, 26.5f + (24.0f * 4));
 					}
 				}
 			}

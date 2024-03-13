@@ -368,7 +368,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 
 	{
 		PokemonInfo Info;
-		Info.DexNo = 19;
+		Info.DexNo = 20;
 		Info.Tribe = "레트라";
 		Info.Type1 = EType::노말;
 		Info.BHp = 55.0f;

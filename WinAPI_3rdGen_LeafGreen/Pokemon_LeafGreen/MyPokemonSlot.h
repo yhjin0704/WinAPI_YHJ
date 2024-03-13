@@ -41,6 +41,7 @@ protected:
 	UImageRenderer* PokemonHpBarRenderer = nullptr;
 	UImageRenderer* PokemonHPRenderer = nullptr;
 	UImageRenderer* PokemonMaxHpRenderer = nullptr;
+
 private:
 };
 

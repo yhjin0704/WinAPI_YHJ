@@ -94,9 +94,9 @@ void ABattlePokemonStatus::SetDataRenderers(PokemonInfo _Entry, bool _IsEnemy,
 	{
 		_Entry.Hp = _Entry.MaxHp;
 	}
-	Global::SetPokemonText(PokemonHPRenderer, Gdiplus::StringAlignment::StringAlignmentFar, std::to_string(_Entry.Hp), Color8Bit::BlackA, 12.0f);
+	Global::SetPokemonText(PokemonHPRenderer, Gdiplus::StringAlignment::StringAlignmentFar, std::to_string(_Entry.Hp), Color8Bit::BlackA, 10.0f);
 	PokemonHPRenderer->SetTransform({ { _Hp_X * FScaleMultiple, _Hp_Y * FScaleMultiple }, { 0, 0 } });
 
-	Global::SetPokemonText(PokemonMaxHpRenderer, Gdiplus::StringAlignment::StringAlignmentNear, std::to_string(_Entry.MaxHp), Color8Bit::BlackA, 12.0f);
+	Global::SetPokemonText(PokemonMaxHpRenderer, Gdiplus::StringAlignment::StringAlignmentNear, std::to_string(_Entry.MaxHp), Color8Bit::BlackA, 10.0f);
 	PokemonMaxHpRenderer->SetTransform({ { _MaxHp_X * FScaleMultiple, _MaxHp_Y * FScaleMultiple }, { 0, 0 } });
 }

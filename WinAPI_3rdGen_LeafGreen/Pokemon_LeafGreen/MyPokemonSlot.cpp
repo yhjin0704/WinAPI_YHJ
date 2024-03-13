@@ -105,10 +105,10 @@ void AMyPokemonSlot::SetDataRenderers(PokemonInfo _Entry,
 	{
 		_Entry.Hp = _Entry.MaxHp;
 	}
-	Global::SetPokemonText(PokemonHPRenderer, Gdiplus::StringAlignment::StringAlignmentFar, std::to_string(_Entry.Hp), Color8Bit::WhiteA, 12.0f);
+	Global::SetPokemonText(PokemonHPRenderer, Gdiplus::StringAlignment::StringAlignmentFar, std::to_string(_Entry.Hp), Color8Bit::WhiteA, 10.0f);
 	PokemonHPRenderer->SetTransform({ { _Hp_X * FScaleMultiple, _Hp_Y * FScaleMultiple }, { 0, 0 } });
 
-	Global::SetPokemonText(PokemonMaxHpRenderer, Gdiplus::StringAlignment::StringAlignmentNear, std::to_string(_Entry.MaxHp), Color8Bit::WhiteA, 12.0f);
+	Global::SetPokemonText(PokemonMaxHpRenderer, Gdiplus::StringAlignment::StringAlignmentNear, std::to_string(_Entry.MaxHp), Color8Bit::WhiteA, 10.0f);
 	PokemonMaxHpRenderer->SetTransform({ { _MaxHp_X * FScaleMultiple, _MaxHp_Y * FScaleMultiple }, { 0, 0 } });
 }
 

@@ -48,7 +48,7 @@ void UBattleLevel::Tick(float _DeltaTime)
 		188.0f, 84.0f,
 		200.0f, 93.5f,
 		205.0f, 101.5f,
-		207.0f, 101.5f);
+		206.0f, 101.5f);
 
 	EnemyGround->SetPokemonRenderer(EnemyPokemon, true);
 	PlayerGround->SetPokemonRenderer(MyPokemon, false);
@@ -255,7 +255,15 @@ void UBattleLevel::LevelStart(ULevel* _PrevLevel)
 		Global::ChangeBGM("Wild_Battle.mp3");
 		if (Color8Bit(1, 255, 0, 0) == PlayerHelper::EncountGround)
 		{
-			EnemyPokemon = SpawnWildPokemon(4, UEngineRandom::MainRandom.RandomInt(2, 4));
+			int EncountRate = UEngineRandom::MainRandom.RandomInt(1, 2);
+			if (1 == EncountRate)
+			{
+				EnemyPokemon = SpawnWildPokemon(16, UEngineRandom::MainRandom.RandomInt(2, 5));
+			}
+			else
+			{
+				EnemyPokemon = SpawnWildPokemon(19, UEngineRandom::MainRandom.RandomInt(2, 4));
+			}
 		}
 		TextBox->SetTextTop("앗! 야생의 " + EnemyPokemon.Name + "(이)가 나타났다");
 		Delay = 1.5f;
