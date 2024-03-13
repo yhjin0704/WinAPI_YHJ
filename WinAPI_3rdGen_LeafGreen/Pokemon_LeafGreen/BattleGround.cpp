@@ -35,9 +35,7 @@ void ABattleGround::SetPokemonRenderer(PokemonInfo _Entry, bool _IsEnemy)
 	if (false == _IsEnemy)
 	{
 		PokemonRenderer->SetImage("1st_Gen_Front_Back_1.png", _Entry.BackImage);
-		{
-			PokemonRenderer->SetTransform({ {65.0f * FScaleMultiple, 80.0f * FScaleMultiple }, {64.0f * FScaleMultiple, 64.0f * FScaleMultiple} });
-		}
+		PokemonRenderer->SetTransform({ {65.0f * FScaleMultiple, 80.0f * FScaleMultiple }, {64.0f * FScaleMultiple, 64.0f * FScaleMultiple} });
 	}
 	else
 	{

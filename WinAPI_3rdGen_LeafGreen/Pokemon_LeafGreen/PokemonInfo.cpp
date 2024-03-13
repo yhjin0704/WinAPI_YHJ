@@ -178,7 +178,7 @@ void PokemonInfo::CalStatus(int _Level)
 	default:
 		break;
 	}
-	
+
 	if ("" != Ability2)
 	{
 		int IAbility = UEngineRandom::MainRandom.RandomInt(0, 1);
@@ -252,27 +252,28 @@ void PokemonInfo::SetLevel(int _Level)
 
 void PokemonInfo::LevelUp()
 {
-		++Level;
-		if (100 < Level)
-		{
-			Level = 100;
-		}
+	++Level;
+	NowLevelUp = true;
+	if (100 < Level)
+	{
+		Level = 100;
+	}
 
-		MaxExp = Level * Level * Level;
+	MaxExp = Level * Level * Level;
 
-		int PrevMaxHp = MaxHp;
+	int PrevMaxHp = MaxHp;
 
-		MaxHp = std::lround(std::floor((2 * BHp + IVHp + EVHp) * Level / 100 + Level + 10));
-		Hp += MaxHp - PrevMaxHp;
-		if (Hp > MaxHp)
-		{
-			Hp = MaxHp;
-		}
-		Atk = std::lround(std::floor(std::floor((2 * BAtk + IVAtk + EVAtk) * Level / 100 + 5) * NAtk));
-		Def = std::lround(std::floor(std::floor((2 * BDef + IVDef + EVDef) * Level / 100 + 5) * NDef));
-		SAtk = std::lround(std::floor(std::floor((2 * BSAtk + IVSAtk + EVSAtk) * Level / 100 + 5) * NSAtk));
-		SDef = std::lround(std::floor(std::floor((2 * BSDef + IVSDef + EVSDef) * Level / 100 + 5) * NSDef));
-		Spd = std::lround(std::floor(std::floor((2 * BSpd + IVSpd + EVSpd) * Level / 100 + 5) * NSpd));
+	MaxHp = std::lround(std::floor((2 * BHp + IVHp + EVHp) * Level / 100 + Level + 10));
+	Hp += MaxHp - PrevMaxHp;
+	if (Hp > MaxHp)
+	{
+		Hp = MaxHp;
+	}
+	Atk = std::lround(std::floor(std::floor((2 * BAtk + IVAtk + EVAtk) * Level / 100 + 5) * NAtk));
+	Def = std::lround(std::floor(std::floor((2 * BDef + IVDef + EVDef) * Level / 100 + 5) * NDef));
+	SAtk = std::lround(std::floor(std::floor((2 * BSAtk + IVSAtk + EVSAtk) * Level / 100 + 5) * NSAtk));
+	SDef = std::lround(std::floor(std::floor((2 * BSDef + IVSDef + EVSDef) * Level / 100 + 5) * NSDef));
+	Spd = std::lround(std::floor(std::floor((2 * BSpd + IVSpd + EVSpd) * Level / 100 + 5) * NSpd));
 }
 
 void PokemonInfo::LevelUpCheck()
@@ -283,7 +284,7 @@ void PokemonInfo::LevelUpCheck()
 		LevelUp();
 		if (true == EvolveCheck())
 		{
-			Evolve();
+			CanEvolve = true;
 		}
 		LevelUpCheck();
 	}

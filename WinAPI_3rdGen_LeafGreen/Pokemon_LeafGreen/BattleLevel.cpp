@@ -213,27 +213,33 @@ void UBattleLevel::Tick(float _DeltaTime)
 	case EBattleSequence::End:
 		IsPlayerSelect = false;
 		MyPokemon.LevelUpCheck();
-		GEngine->ChangeLevel(PrevLevelName);
+		if (true == MyPokemon.CanEvolve)
+		{
+			GEngine->ChangeLevel("EvolveLevel");
+		}
+		else
+		{
+			GEngine->ChangeLevel(PrevLevelName);
+		}
 		break;
 	default:
 		break;
-	}
-
-	if (true == UEngineInput::IsDown('L'))
-	{
-		IsDelay = false;
-		Delay = 1.5f;
-		GEngine->ChangeLevel(PrevLevelName);
 	}
 }
 
 void UBattleLevel::LevelStart(ULevel* _PrevLevel)
 {
-	if (UEngineString::ToUpper("MyPokemonLevel") != _PrevLevel->GetName() && UEngineString::ToUpper("MyBagLevel") != _PrevLevel->GetName())
+	if (UEngineString::ToUpper("MyPokemonLevel") != _PrevLevel->GetName() 
+		&& UEngineString::ToUpper("MyBagLevel") != _PrevLevel->GetName() 
+		&& UEngineString::ToUpper("EvolveLevel") != _PrevLevel->GetName())
 	{
 		PrevLevelName = _PrevLevel->GetName();
 		BattleSequence = EBattleSequence::Start;
 		BattleSelectCursor = EBattleSelect::Fight;
+	}
+	else if (UEngineString::ToUpper("EvolveLevel") == _PrevLevel->GetName())
+	{
+		BattleSequence = EBattleSequence::End;
 	}
 
 	BattleEntry = dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->GetEntry();
@@ -404,6 +410,8 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 				BattleSequence = EBattleSequence::EnemyTurn;
 			}
 		}
+		break;
+	case 4:
 		break;
 	default:
 		break;

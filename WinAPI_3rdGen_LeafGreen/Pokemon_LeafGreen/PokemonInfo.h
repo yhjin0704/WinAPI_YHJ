@@ -57,6 +57,8 @@ public:
 	int MeetLevel = 0;
 	int Exp = 0;
 	int MaxExp = Level * Level * Level;
+	bool NowLevelUp = false;
+	bool CanEvolve = false;
 	//true -> male, false -> female
 	bool Gender = true;
 	ENature Nature = ENature::Hardy;

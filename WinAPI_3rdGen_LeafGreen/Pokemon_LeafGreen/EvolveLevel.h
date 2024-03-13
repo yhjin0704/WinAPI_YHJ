@@ -1,6 +1,7 @@
 #pragma once
 #include <EngineCore\Level.h>
 #include "EvolveBackGround.h"
+#include "EvolvePokemon.h"
 #include "PokemonInfo.h"
 
 class UEvolveLevel : public ULevel
@@ -24,11 +25,18 @@ protected:
 
 private:
 	AEvolveBackGround* BackGround;
+	AEvolvePokemon* EvolvePokemonRenderer;
 
 	std::string PrevLevelName = "";
 
 	std::list<PokemonInfo> Entry;
+	std::list<PokemonInfo>::iterator EntryIter;
+
 	PokemonInfo MyPokemon;
 	PokemonInfo EvolvePokemon;
+
+	int Order = 0;
+	int Count = 0;
+	float Delay = 0.0f;
 };
 
