@@ -56,6 +56,7 @@ private:
 	// 초기정보
 	// 게임내에서 나올수 있는데.
 	std::map<int, PokemonInfo> AllPokemonInfo;
+	//std::map<std::string, > AllMoveInfo;
 
 	// 내가 들고 있는 포켓몬
 	std::list<PokemonInfo> Entry;

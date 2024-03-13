@@ -172,6 +172,9 @@
     <ClCompile Include="EvolvePokemon.cpp">
       <Filter>Battle\Evolve\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="MyPokemonSelectBox.cpp">
+      <Filter>UI\MyPokemon\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -344,6 +347,9 @@
     </ClInclude>
     <ClInclude Include="EvolvePokemon.h">
       <Filter>Battle\Evolve\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MyPokemonSelectBox.h">
+      <Filter>UI\MyPokemon\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,12 @@
 #include <EngineBase/EngineString.h>
 #include <EngineCore\EngineCore.h>
 
+enum class EMyPokemonState
+{
+	Base,
+	Change
+};
+
 class UMyPokemonLevel : public UMenuUILevel
 {
 public:
@@ -31,8 +37,12 @@ protected:
 	void LevelEnd(ULevel* _NextLevel) override;
 
 private:
+	EMyPokemonState State = EMyPokemonState::Base;
+
 	int SelectSlot = 0;
 	int PrevSelectSlot = 0;
+
+	bool IsUseMenu = false;
 
 	std::list<PokemonInfo> UIEntry;
 
@@ -48,8 +58,11 @@ private:
 
 	std::string PrevLevelName = "";
 
+	void BaseState();
+
 	void SetAllEntryStatus();
 
 	void CheakEmptySlot(AMyPokemonSlot* _Slot, float _Slot_X, float _Slot_Y);
+	void ChangeEntry(PokemonInfo& _Select1, PokemonInfo& _Select2);
 };
 

@@ -29,43 +29,86 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 {
 	UMenuUILevel::Tick(_DeltaTime);
 
-	if (true == UEngineInput::IsDown('W'))
+	switch (State)
 	{
-		PrevSelectSlot = SelectSlot;
-		--SelectSlot;
-		if (0 > SelectSlot)
-		{
-			SelectSlot = 6;
-		}
+	case EMyPokemonState::Base:
+		BaseState();
+		break;
+	case EMyPokemonState::Change:
+		break;
+	default:
+		break;
 	}
-	else if (true == UEngineInput::IsDown('S'))
+}
+
+void UMyPokemonLevel::LevelStart(ULevel* _PrevLevel)
+{
+	PrevLevelName = _PrevLevel->GetName();
+
+	SelectSlot = 0;
+
+	Slot2nd->IsEmpty(163.0f, 20.5f);
+	Slot3rd->IsEmpty(163.0f, 20.5f + (24.0f * 1));
+	Slot4th->IsEmpty(163.0f, 20.5f + (24.0f * 2));
+	Slot5th->IsEmpty(163.0f, 20.5f + (24.0f * 3));
+	Slot6th->IsEmpty(163.0f, 20.5f + (24.0f * 4));
+
+	UIEntry = dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->GetEntry();
+
+	SetAllEntryStatus();
+}
+
+void UMyPokemonLevel::LevelEnd(ULevel* _NextLevel)
+{
+	dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->SetEntry(UIEntry);
+}
+
+void UMyPokemonLevel::BaseState()
+{
+	if (false == IsUseMenu)
 	{
-		PrevSelectSlot = SelectSlot;
-		++SelectSlot;
-		if (6 < SelectSlot)
+		if (true == UEngineInput::IsDown('W'))
 		{
-			SelectSlot = 0;
-		}
-	}
-	else if (true == UEngineInput::IsDown('A') || true == UEngineInput::IsDown('D'))
-	{
-		PrevSelectSlot = SelectSlot;
-		if (0 == SelectSlot)
-		{
-			if (0 == PrevSelectSlot)
+			PrevSelectSlot = SelectSlot;
+			--SelectSlot;
+			if (0 > SelectSlot)
 			{
-				SelectSlot = 1;
+				SelectSlot = 6;
+			}
+		}
+		else if (true == UEngineInput::IsDown('S'))
+		{
+			PrevSelectSlot = SelectSlot;
+			++SelectSlot;
+			if (6 < SelectSlot)
+			{
+				SelectSlot = 0;
+			}
+		}
+		else if (true == UEngineInput::IsDown('A') || true == UEngineInput::IsDown('D'))
+		{
+			PrevSelectSlot = SelectSlot;
+			if (0 == SelectSlot)
+			{
+				if (0 == PrevSelectSlot)
+				{
+					SelectSlot = 1;
+				}
+				else
+				{
+					SelectSlot = PrevSelectSlot;
+				}
 			}
 			else
 			{
-				SelectSlot = PrevSelectSlot;
+				SelectSlot = 0;
 			}
 		}
-		else
-		{
-			SelectSlot = 0;
-		}
 	}
+	else
+	{
+	}
+	
 
 	SetAllEntryStatus();
 
@@ -224,28 +267,6 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 	}
 }
 
-void UMyPokemonLevel::LevelStart(ULevel* _PrevLevel)
-{
-	PrevLevelName = _PrevLevel->GetName();
-
-	SelectSlot = 0;
-
-	Slot2nd->IsEmpty(163.0f, 20.5f);
-	Slot3rd->IsEmpty(163.0f, 20.5f + (24.0f * 1));
-	Slot4th->IsEmpty(163.0f, 20.5f + (24.0f * 2));
-	Slot5th->IsEmpty(163.0f, 20.5f + (24.0f * 3));
-	Slot6th->IsEmpty(163.0f, 20.5f + (24.0f * 4));
-
-	UIEntry = dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->GetEntry();
-
-	SetAllEntryStatus();
-}
-
-void UMyPokemonLevel::LevelEnd(ULevel* _NextLevel)
-{
-	dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->SetEntry(UIEntry);
-}
-
 void UMyPokemonLevel::SetAllEntryStatus()
 {
 	std::list<PokemonInfo>::iterator UIEntryIter;
@@ -342,4 +363,12 @@ void UMyPokemonLevel::CheakEmptySlot(AMyPokemonSlot* _Slot, float _Slot_X, float
 	{
 		_Slot->SetSlotRenderer("MyPokemon_Slot.png", _Slot_X, _Slot_Y);
 	}
+}
+
+void UMyPokemonLevel::ChangeEntry(PokemonInfo& _Select1, PokemonInfo& _Select2)
+{
+	PokemonInfo ChangeSave;
+	ChangeSave = _Select1;
+	_Select1 = _Select2;
+	_Select2 = ChangeSave;
 }

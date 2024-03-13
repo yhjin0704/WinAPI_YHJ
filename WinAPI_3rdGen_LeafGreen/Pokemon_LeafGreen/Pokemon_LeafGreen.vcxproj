@@ -170,6 +170,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MyPokemonSelectBox.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="EvolvePokemon.cpp">
       <SubType>
       </SubType>
@@ -392,6 +396,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyPokemonSelectBox.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="EvolvePokemon.h">
       <SubType>
       </SubType>
