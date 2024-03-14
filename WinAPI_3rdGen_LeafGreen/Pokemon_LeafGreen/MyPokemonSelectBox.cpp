@@ -13,7 +13,7 @@ void AMyPokemonSelectBox::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	CursorRender = CreateImageRenderer(ERenderOrder::Text);
+	CursorRender = CreateImageRenderer(ERenderOrder::OnText);
 	BoxRenderer = CreateImageRenderer(ERenderOrder::OnMenu);
 
 	CursorRender->SetImage("MenuCursor.png");

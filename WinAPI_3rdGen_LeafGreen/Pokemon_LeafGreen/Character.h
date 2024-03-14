@@ -48,14 +48,21 @@ protected:
 	std::string Name = "";
 	std::string CharacterAnimation = "";
 
+	UCollision* DownCollision = nullptr;
+	UCollision* UpCollision = nullptr;
+	UCollision* LeftCollision = nullptr;
+	UCollision* RightCollision = nullptr;
+
 	FVector IsColCheckPos = FVector::Zero;
 	FVector EncountCheckPos = FVector::Zero;
+
 	EMoveType MoveType = EMoveType::Walk;
 	EMoveState PrevFoot = EMoveState::Left;
 	EMoveState MoveState = EMoveState::Idle;
 	EDirState PrevDirInput = EDirState::Down;
 
 	bool IsMove = false;
+	bool MoveEnd = false;
 	float MoveTime = 0.0f;
 
 	FVector StartPos = FVector::Zero;

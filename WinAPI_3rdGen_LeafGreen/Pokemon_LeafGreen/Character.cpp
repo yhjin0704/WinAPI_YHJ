@@ -15,7 +15,7 @@ void ACharacter::BeginPlay()
 
 void ACharacter::Tick(float _DeltaTime)
 {
-
+	AActor::Tick(_DeltaTime);
 }
 
 std::string ACharacter::GetAnimationName(std::string _Name, EMoveType _Move, EDirState _Dir, EMoveState _MoveState)
@@ -227,6 +227,7 @@ void ACharacter::MovePos(float _DeltaTime)
 	{
 		MoveTime = 0.0f;
 		IsMove = false;
+		MoveEnd = true;
 		MoveState = EMoveState::Idle;
 	}
 }

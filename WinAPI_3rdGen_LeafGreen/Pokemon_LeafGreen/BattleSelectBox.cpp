@@ -13,21 +13,21 @@ void ABattleSelectBox::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	CursorRender = CreateImageRenderer(ERenderOrder::Text);
+	CursorRender = CreateImageRenderer(ERenderOrder::OnText);
 
 	BoxRenderer = CreateImageRenderer(ERenderOrder::OnMenu);
-	TextRendererFight = CreateImageRenderer(ERenderOrder::Text);
-	TextRendererBag = CreateImageRenderer(ERenderOrder::Text);
-	TextRendererPokemon = CreateImageRenderer(ERenderOrder::Text);
-	TextRendererRun = CreateImageRenderer(ERenderOrder::Text);
+	TextRendererFight = CreateImageRenderer(ERenderOrder::OnText);
+	TextRendererBag = CreateImageRenderer(ERenderOrder::OnText);
+	TextRendererPokemon = CreateImageRenderer(ERenderOrder::OnText);
+	TextRendererRun = CreateImageRenderer(ERenderOrder::OnText);
 
-	MoveTextRenderer1 = CreateImageRenderer(ERenderOrder::Text);
-	MoveTextRenderer2 = CreateImageRenderer(ERenderOrder::Text);
-	MoveTextRenderer3 = CreateImageRenderer(ERenderOrder::Text);
-	MoveTextRenderer4 = CreateImageRenderer(ERenderOrder::Text);
+	MoveTextRenderer1 = CreateImageRenderer(ERenderOrder::OnText);
+	MoveTextRenderer2 = CreateImageRenderer(ERenderOrder::OnText);
+	MoveTextRenderer3 = CreateImageRenderer(ERenderOrder::OnText);
+	MoveTextRenderer4 = CreateImageRenderer(ERenderOrder::OnText);
 
-	PPTextRenderer = CreateImageRenderer(ERenderOrder::Text);
-	TypeTextRenderer = CreateImageRenderer(ERenderOrder::Text);
+	PPTextRenderer = CreateImageRenderer(ERenderOrder::OnText);
+	TypeTextRenderer = CreateImageRenderer(ERenderOrder::OnText);
 
 	TextRendererBag->ActiveOff();
 	TextRendererPokemon->ActiveOff();

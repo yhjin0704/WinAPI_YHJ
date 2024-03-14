@@ -159,19 +159,63 @@ void UBattleLevel::Tick(float _DeltaTime)
 		break;
 	case EBattleSequence::UseItem:
 		IsPlayerSelect = false;
+
 		TextBox->TextOff();
 		TextBox->SetTextTop(PlayerHelper::PlayerName + "(은)는");
 		TextBox->SetTextBottom("마스터볼을 사용했다");
+
 		BattleSelectCursor = EBattleSelect::Fight;
 
 		IsDelay = true;
 		Delay -= _DeltaTime;
 		if (0 >= Delay)
 		{
-			switch (BattleHelper::UseBall)
+			if (6 > BattleEntry.size())
 			{
-			case EUseBall::MonsterBall:
-				//후턴
+				switch (BattleHelper::UseBall)
+				{
+				case EUseBall::MonsterBall:
+					//후턴
+					if (false == FirstTurn)
+					{
+						IsDelay = false;
+						Delay = 1.5f;
+						BattleSequence = EBattleSequence::EnemyTurn;
+					}
+					else
+					{
+						if (MyPokemon.Spd >= EnemyPokemon.Spd)
+						{
+							IsDelay = false;
+							Delay = 1.5f;
+							BattleSequence = EBattleSequence::MyTurn;
+						}
+						else
+						{
+							IsDelay = false;
+							Delay = 1.5f;
+							BattleSequence = EBattleSequence::EnemyTurn;
+						}
+					}
+					break;
+				case EUseBall::GreatBall:
+					break;
+				case EUseBall::UltraBall:
+					break;
+				case EUseBall::MasterBall:
+					BattleHelper::UseBall = EUseBall::None;
+
+					IsDelay = false;
+					Delay = 1.5f;
+					BattleSequence = EBattleSequence::Catch;
+					break;
+				default:
+					break;
+				}
+			}
+			else
+			{
+				BattleHelper::UseBall = EUseBall::None;
 				if (false == FirstTurn)
 				{
 					IsDelay = false;
@@ -193,29 +237,13 @@ void UBattleLevel::Tick(float _DeltaTime)
 						BattleSequence = EBattleSequence::EnemyTurn;
 					}
 				}
-				break;
-			case EUseBall::GreatBall:
-				break;
-			case EUseBall::UltraBall:
-				break;
-			case EUseBall::MasterBall:
-				BattleHelper::UseBall = EUseBall::None;
-
-				IsDelay = false;
-				Delay = 1.5f;
-
-				EnemyPokemon.PlayerPokemon = true;
-				BattleEntry.push_back(EnemyPokemon);
-				EnemyGround->SetPokemonActiveOnOff(false);
-				BattleSequence = EBattleSequence::Catch;
-				break;
-			default:
-				break;
 			}
 		}
 		break;
 	case EBattleSequence::Catch:
 		IsPlayerSelect = false;
+
+		EnemyGround->SetPokemonActiveOnOff(false);
 
 		TextBox->TextOff();
 		TextBox->SetTextTop(PlayerHelper::PlayerName + "(은)는");
@@ -226,6 +254,9 @@ void UBattleLevel::Tick(float _DeltaTime)
 		Delay -= _DeltaTime;
 		if (0 >= Delay)
 		{
+			EnemyPokemon.PlayerPokemon = true;
+			BattleEntry.push_back(EnemyPokemon);
+
 			IsDelay = false;
 			Delay = 1.5f;
 			GEngine->ChangeLevel(PrevLevelName);
@@ -300,6 +331,10 @@ void UBattleLevel::Tick(float _DeltaTime)
 		TextBox->TextOff();
 		TextBox->SetTextTop("성공적으로 도망쳤다!");
 
+		SelectBox->SetSelectBoxActive(false);
+		SelectBox->SetSelectBoxTextActive(false);
+		SelectBox->SetCursorActive(false);
+
 		IsDelay = true;
 		Delay -= _DeltaTime;
 		if (0 >= Delay)
@@ -328,8 +363,8 @@ void UBattleLevel::Tick(float _DeltaTime)
 
 void UBattleLevel::LevelStart(ULevel* _PrevLevel)
 {
-	if (UEngineString::ToUpper("MyPokemonLevel") != _PrevLevel->GetName() 
-		&& UEngineString::ToUpper("MyBagLevel") != _PrevLevel->GetName() 
+	if (UEngineString::ToUpper("MyPokemonLevel") != _PrevLevel->GetName()
+		&& UEngineString::ToUpper("MyBagLevel") != _PrevLevel->GetName()
 		&& UEngineString::ToUpper("EvolveLevel") != _PrevLevel->GetName())
 	{
 		PrevLevelName = _PrevLevel->GetName();
@@ -385,7 +420,7 @@ void UBattleLevel::LevelStart(ULevel* _PrevLevel)
 void UBattleLevel::LevelEnd(ULevel* _NextLevel)
 {
 	PlayerHelper::IsEncount = false;
-	if (UEngineString::ToUpper("MyPokemonLevel") == _NextLevel->GetName() 
+	if (UEngineString::ToUpper("MyPokemonLevel") == _NextLevel->GetName()
 		|| UEngineString::ToUpper("MyBagLevel") == _NextLevel->GetName())
 	{
 		PlayerHelper::IsWild = true;

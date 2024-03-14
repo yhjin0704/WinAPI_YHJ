@@ -40,7 +40,7 @@ void APlayer::BeginPlay()
 
 void APlayer::Tick(float _DeltaTime)
 {
-	AActor::Tick(_DeltaTime);
+	ACharacter::Tick(_DeltaTime);
 
 	GetWorld()->SetCameraPos(GetActorLocation() - FVector(FHScreen_X, FHScreen_Y));
 	if (false == PlayerHelper::PlayerPause)
@@ -142,25 +142,25 @@ void APlayer::CreatePlayerAllRender()
 	//자전거 점프 애니메이션 생성
 	CharacterRenderer->CreateAnimation("Player_Boy_Bike_Down_Jump", "Player_Boy_Bike_Down_Jump.png", 0, 12, (FWalkTime / 13.0f * 2.0f), false);
 
-	PlayerDownCollision = CreateCollision(ECollisionOrder::Player);
-	PlayerDownCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
-	PlayerDownCollision->SetPosition({ GetActorLocation().X, (GetActorLocation().Y + FHGameTileScale + (FHGameTileScale / 2)) });
-	PlayerDownCollision->SetColType(ECollisionType::Rect);
+	DownCollision = CreateCollision(ECollisionOrder::Player);
+	DownCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
+	DownCollision->SetPosition({ GetActorLocation().X, (GetActorLocation().Y + FHGameTileScale + (FHGameTileScale / 2)) });
+	DownCollision->SetColType(ECollisionType::Rect);
 
-	PlayerUPCollision = CreateCollision(ECollisionOrder::Player);
-	PlayerUPCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
-	PlayerUPCollision->SetPosition({ GetActorLocation().X, (GetActorLocation().Y + FHGameTileScale - (FHGameTileScale / 2)) });
-	PlayerUPCollision->SetColType(ECollisionType::Rect);
+	UpCollision = CreateCollision(ECollisionOrder::Player);
+	UpCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
+	UpCollision->SetPosition({ GetActorLocation().X, (GetActorLocation().Y + FHGameTileScale - (FHGameTileScale / 2)) });
+	UpCollision->SetColType(ECollisionType::Rect);
 
-	PlayerLeftCollision = CreateCollision(ECollisionOrder::Player);
-	PlayerLeftCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
-	PlayerLeftCollision->SetPosition({ GetActorLocation().X - (FHGameTileScale / 2), (GetActorLocation().Y + FHGameTileScale) });
-	PlayerLeftCollision->SetColType(ECollisionType::Rect);
+	LeftCollision = CreateCollision(ECollisionOrder::Player);
+	LeftCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
+	LeftCollision->SetPosition({ GetActorLocation().X - (FHGameTileScale / 2), (GetActorLocation().Y + FHGameTileScale) });
+	LeftCollision->SetColType(ECollisionType::Rect);
 
-	PlayerRightCollision = CreateCollision(ECollisionOrder::Player);
-	PlayerRightCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
-	PlayerRightCollision->SetPosition({ GetActorLocation().X + (FHGameTileScale / 2), (GetActorLocation().Y + FHGameTileScale) });
-	PlayerRightCollision->SetColType(ECollisionType::Rect);
+	RightCollision = CreateCollision(ECollisionOrder::Player);
+	RightCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
+	RightCollision->SetPosition({ GetActorLocation().X + (FHGameTileScale / 2), (GetActorLocation().Y + FHGameTileScale) });
+	RightCollision->SetColType(ECollisionType::Rect);
 }
 
 void APlayer::CreateMenu()
@@ -198,25 +198,21 @@ void APlayer::KeyInputMove(float _DeltaTime)
 				MoveState = EMoveState::Jump;
 			}
 			SetKeyInputAnimation(EDirState::Down);
-			EncountCheck();
 		}
 		else if (true == UEngineInput::IsPress('W'))
 		{
 			SetColCheckPos(PrevDirInput);
 			SetKeyInputAnimation(EDirState::Up);
-			EncountCheck();
 		}
 		else if (true == UEngineInput::IsPress('A'))
 		{
 			SetColCheckPos(PrevDirInput);
 			SetKeyInputAnimation(EDirState::Left);
-			EncountCheck();
 		}
 		else if (true == UEngineInput::IsPress('D'))
 		{
 			SetColCheckPos(PrevDirInput);
 			SetKeyInputAnimation(EDirState::Right);
-			EncountCheck();
 		}
 	}
 
@@ -225,6 +221,12 @@ void APlayer::KeyInputMove(float _DeltaTime)
 	if (true == IsMove)
 	{
 		MovePos(_DeltaTime);
+
+		if (true == MoveEnd)
+		{
+			EncountCheck();
+			MoveEnd = false;
+		}
 	}
 	else
 	{
@@ -241,28 +243,28 @@ void APlayer::SetColBoxDir(EDirState _InputDir)
 	switch (_InputDir)
 	{
 	case EDirState::Down:
-		PlayerDownCollision->ActiveOn();
-		PlayerUPCollision->ActiveOff();
-		PlayerLeftCollision->ActiveOff();
-		PlayerRightCollision->ActiveOff();
+		DownCollision->ActiveOn();
+		UpCollision->ActiveOff();
+		LeftCollision->ActiveOff();
+		RightCollision->ActiveOff();
 		break;
 	case EDirState::Up:
-		PlayerDownCollision->ActiveOff();
-		PlayerUPCollision->ActiveOn();
-		PlayerLeftCollision->ActiveOff();
-		PlayerRightCollision->ActiveOff();
+		DownCollision->ActiveOff();
+		UpCollision->ActiveOn();
+		LeftCollision->ActiveOff();
+		RightCollision->ActiveOff();
 		break;
 	case EDirState::Left:
-		PlayerDownCollision->ActiveOff();
-		PlayerUPCollision->ActiveOff();
-		PlayerLeftCollision->ActiveOn();
-		PlayerRightCollision->ActiveOff();
+		DownCollision->ActiveOff();
+		UpCollision->ActiveOff();
+		LeftCollision->ActiveOn();
+		RightCollision->ActiveOff();
 		break;
 	case EDirState::Right:
-		PlayerDownCollision->ActiveOff();
-		PlayerUPCollision->ActiveOff();
-		PlayerLeftCollision->ActiveOff();
-		PlayerRightCollision->ActiveOn();
+		DownCollision->ActiveOff();
+		UpCollision->ActiveOff();
+		LeftCollision->ActiveOff();
+		RightCollision->ActiveOn();
 		break;
 	default:
 		break;

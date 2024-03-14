@@ -175,6 +175,9 @@
     <ClCompile Include="MyPokemonSelectBox.cpp">
       <Filter>UI\MyPokemon\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="Npc.cpp">
+      <Filter>Field\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -350,6 +353,9 @@
     </ClInclude>
     <ClInclude Include="MyPokemonSelectBox.h">
       <Filter>UI\MyPokemon\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Npc.h">
+      <Filter>Field\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

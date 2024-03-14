@@ -7,11 +7,14 @@ enum class ERenderOrder
 	ColMap,
 	BackGround,
 	Object,
+	NpcPosIsUp,
 	Player,
+	NpcPosIsDown,
 	CoverMap,
 	Menu,
+	Text,
 	OnMenu,
-	Text
+	OnText,
 };
 
 enum class ECollisionOrder

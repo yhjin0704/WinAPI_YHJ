@@ -426,12 +426,15 @@ void Pokemon3rdGen_Core::End()
 
 void Pokemon3rdGen_Core::AddEntry(int _DexNo, int _Level)
 {
-	PokemonInfo info = AllPokemonInfo[_DexNo];
-	info.PokemonInfo::CalStatus(_Level);
-	info.PlayerPokemon = true;
-	if (0 == info.MeetLevel)
+	if (6 > Entry.size())
 	{
-		info.MeetLevel = _Level;
+		PokemonInfo info = AllPokemonInfo[_DexNo];
+		info.PokemonInfo::CalStatus(_Level);
+		info.PlayerPokemon = true;
+		if (0 == info.MeetLevel)
+		{
+			info.MeetLevel = _Level;
+		}
+		Entry.push_back(info);
 	}
-	Entry.push_back(info);
 }
