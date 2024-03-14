@@ -239,7 +239,7 @@ void UBattleLevel::LevelStart(ULevel* _PrevLevel)
 	}
 	else if (UEngineString::ToUpper("EvolveLevel") == _PrevLevel->GetName())
 	{
-		BattleSequence = EBattleSequence::End;
+		GEngine->ChangeLevel(PrevLevelName);
 	}
 
 	BattleEntry = dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->GetEntry();
@@ -253,33 +253,45 @@ void UBattleLevel::LevelStart(ULevel* _PrevLevel)
 
 	Sequence = 0;
 	IsPlayerSelect = false;
-
+	GetExp;
 	FirstTurn = false;
 
 	if (true == PlayerHelper::IsWild)
 	{
-		Global::ChangeBGM("Wild_Battle.mp3");
-		if (Color8Bit(1, 255, 0, 0) == PlayerHelper::EncountGround)
+		if (UEngineString::ToUpper("MyPokemonLevel") != _PrevLevel->GetName()
+			&& UEngineString::ToUpper("MyBagLevel") != _PrevLevel->GetName())
 		{
-			int EncountRate = UEngineRandom::MainRandom.RandomInt(1, 2);
-			if (1 == EncountRate)
+			Global::ChangeBGM("Wild_Battle.mp3");
+			if (Color8Bit(1, 255, 0, 0) == PlayerHelper::EncountGround)
 			{
-				EnemyPokemon = SpawnWildPokemon(16, UEngineRandom::MainRandom.RandomInt(2, 5));
+				int EncountRate = UEngineRandom::MainRandom.RandomInt(1, 2);
+				if (1 == EncountRate)
+				{
+					EnemyPokemon = SpawnWildPokemon(16, UEngineRandom::MainRandom.RandomInt(2, 5));
+				}
+				else
+				{
+					EnemyPokemon = SpawnWildPokemon(19, UEngineRandom::MainRandom.RandomInt(2, 4));
+				}
 			}
-			else
-			{
-				EnemyPokemon = SpawnWildPokemon(19, UEngineRandom::MainRandom.RandomInt(2, 4));
-			}
+			TextBox->SetTextTop("¾Ñ! ¾ß»ýÀÇ " + EnemyPokemon.Name + "(ÀÌ)°¡ ³ªÅ¸³µ´Ù");
+			Delay = 1.5f;
 		}
-		TextBox->SetTextTop("¾Ñ! ¾ß»ýÀÇ " + EnemyPokemon.Name + "(ÀÌ)°¡ ³ªÅ¸³µ´Ù");
-		Delay = 1.5f;
 	}
 }
 
 void UBattleLevel::LevelEnd(ULevel* _NextLevel)
 {
 	PlayerHelper::IsEncount = false;
-	PlayerHelper::IsWild = false;
+	if (UEngineString::ToUpper("MyPokemonLevel") == _NextLevel->GetName() 
+		|| UEngineString::ToUpper("MyBagLevel") == _NextLevel->GetName())
+	{
+		PlayerHelper::IsWild = true;
+	}
+	else
+	{
+		PlayerHelper::IsWild = false;
+	}
 	BattleEntry.front() = MyPokemon;
 	dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->SetEntry(BattleEntry);
 }
@@ -421,7 +433,7 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 		if (true == PlayerHelper::IsWild)
 		{
 			GetExp = BattleHelper::CalExp(_Defder.Level, 1.0f);
-			GetExp += 2000;
+			GetExp += 20000;
 			_Atker.Exp += GetExp;
 		}
 		++Sequence;

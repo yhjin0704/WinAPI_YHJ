@@ -10,7 +10,7 @@
 enum class EMyPokemonState
 {
 	Base,
-	Change
+	Switch
 };
 
 enum class ESelectBoxCursor
@@ -50,6 +50,12 @@ private:
 	int SelectSlot = 0;
 	int PrevSelectSlot = 0;
 
+	int SwitchSelect = 0;
+	//6은 선택되지않음 0~5까지 엔트리
+	int SwitchSelect1 = 6;
+	//6은 선택되지않음 0~5까지 엔트리
+	int SwitchSelect2 = 6;
+
 	bool IsUseMenu = false;
 
 	std::list<PokemonInfo> UIEntry;
@@ -70,10 +76,11 @@ private:
 	std::string PrevLevelName = "";
 
 	void BaseState();
+	void SwitchState();
 
 	void SetAllEntryStatus();
 
 	void CheakEmptySlot(AMyPokemonSlot* _Slot, float _Slot_X, float _Slot_Y);
-	void ChangeEntry(PokemonInfo& _Select1, PokemonInfo& _Select2);
+	void ChangeEntry(int _Select1, int _Select2);
 };
 

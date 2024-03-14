@@ -25,6 +25,12 @@ void UEvolveLevel::Tick(float _DeltaTime)
 {
 	ULevel::Tick(_DeltaTime);
 
+	if (true == UEngineInput::IsDown('L'))
+	{
+		EvolvePokemon.CanEvolve = false;
+		GEngine->ChangeLevel(PrevLevelName);
+	}
+
 	Delay -= _DeltaTime;
 
 	switch (Order)
