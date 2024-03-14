@@ -12,6 +12,7 @@ ABattleSelectBox::~ABattleSelectBox()
 void ABattleSelectBox::BeginPlay()
 {
 	AActor::BeginPlay();
+
 	CursorRender = CreateImageRenderer(ERenderOrder::Text);
 
 	BoxRenderer = CreateImageRenderer(ERenderOrder::OnMenu);
@@ -41,7 +42,7 @@ void ABattleSelectBox::BeginPlay()
 	TypeTextRenderer->ActiveOff();
 
 	CursorRender->SetImage("MenuCursor.png");
-	CursorRender->SetTransform({ { ((ITileScale * 4) - 4) * IScaleMultiple, ((ITileScale * -4) - 3) * IScaleMultiple }, { (CursorRender->GetImage()->GetScale()) * FScaleMultiple} });
+	CursorRender->SetTransform({ { 0, 0 }, { (CursorRender->GetImage()->GetScale()) * FScaleMultiple} });
 
 	BoxRenderer->SetImage("BattleSelectBox.png");
 	BoxRenderer->SetSortType(EImageSortType::Right);

@@ -3,6 +3,7 @@
 #include "MyPokemonBackGround.h"
 #include "MyPokemonSlot.h"
 #include "MyPokemonCancle.h"
+#include "MyPokemonSelectBox.h"
 #include <EngineBase/EngineString.h>
 #include <EngineCore\EngineCore.h>
 
@@ -10,6 +11,13 @@ enum class EMyPokemonState
 {
 	Base,
 	Change
+};
+
+enum class ESelectBoxCursor
+{
+	Summary,
+	Switch,
+	Cancle
 };
 
 class UMyPokemonLevel : public UMenuUILevel
@@ -55,6 +63,9 @@ private:
 	AMyPokemonSlot* Slot6th;
 
 	AMyPokemonCancle* CancleButton;
+
+	AMyPokemonSelectBox* SelectBox;
+	ESelectBoxCursor CursorSelect = ESelectBoxCursor::Summary;
 
 	std::string PrevLevelName = "";
 

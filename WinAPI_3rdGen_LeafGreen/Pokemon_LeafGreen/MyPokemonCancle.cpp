@@ -13,7 +13,7 @@ void AMyPokemonCancle::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	ButtonRenderer = CreateImageRenderer(ERenderOrder::Text);
+	ButtonRenderer = CreateImageRenderer(ERenderOrder::Menu);
 	ButtonRenderer->SetImage("MyPokemon_Cancel_Button.png");
 	UWindowImage* ButtonImage = ButtonRenderer->GetImage();
 	FVector ButtonImageScale = ButtonImage->GetScale();

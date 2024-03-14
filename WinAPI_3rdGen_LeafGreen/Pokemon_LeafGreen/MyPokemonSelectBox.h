@@ -14,11 +14,22 @@ public:
 	AMyPokemonSelectBox& operator=(const AMyPokemonSelectBox& _Other) = delete;
 	AMyPokemonSelectBox& operator=(AMyPokemonSelectBox&& _Other) noexcept = delete;
 
+	void SetSelectBoxActive(bool _OnOff);
+
+	void SetCursorRocation(float _X, float _Y);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 private:
+	UImageRenderer* CursorRender = nullptr;
+
 	UImageRenderer* BoxRenderer = nullptr;
+
+	UImageRenderer*	SummaryTextRenderer = nullptr;
+	UImageRenderer*	SwitchTextRenderer = nullptr;
+    UImageRenderer*	CancelTextRenderer = nullptr;
+
 };
 

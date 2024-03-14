@@ -23,6 +23,8 @@ void UMyPokemonLevel::BeginPlay()
 	Slot6th = SpawnActor<AMyPokemonSlot>();
 
 	CancleButton = SpawnActor<AMyPokemonCancle>();
+
+	SelectBox = SpawnActor<AMyPokemonSelectBox>();
 }
 
 void UMyPokemonLevel::Tick(float _DeltaTime)
@@ -99,16 +101,95 @@ void UMyPokemonLevel::BaseState()
 					SelectSlot = PrevSelectSlot;
 				}
 			}
-			else
+			else if (true == UEngineInput::IsDown('S'))
 			{
 				SelectSlot = 0;
 			}
 		}
+		else if (true == UEngineInput::IsDown('P'))
+		{
+			IsUseMenu = true;
+			CursorSelect = ESelectBoxCursor::Summary;
+			SelectBox->SetSelectBoxActive(true);
+		}
+		else if (true == UEngineInput::IsDown('L'))
+		{
+			GEngine->ChangeLevel(PrevLevelName);
+		}
 	}
 	else
 	{
+		switch (CursorSelect)
+		{
+		case ESelectBoxCursor::Summary:
+			SelectBox->SetCursorRocation(156.0f, 114.0f);
+			break;
+		case ESelectBoxCursor::Switch:
+			SelectBox->SetCursorRocation(156.0f, 130.0f);
+			break;
+		case ESelectBoxCursor::Cancle:
+			SelectBox->SetCursorRocation(156.0f, 146.0f);
+			break;
+		default:
+			break;
+		}
+
+		if (true == UEngineInput::IsDown('W'))
+		{
+			switch (CursorSelect)
+			{
+			case ESelectBoxCursor::Summary:
+				CursorSelect = ESelectBoxCursor::Cancle;
+				break;
+			case ESelectBoxCursor::Switch:
+				CursorSelect = ESelectBoxCursor::Summary;
+				break;
+			case ESelectBoxCursor::Cancle:
+				CursorSelect = ESelectBoxCursor::Switch;
+				break;
+			default:
+				break;
+			}
+		}
+		else if (true == UEngineInput::IsDown('S'))
+		{
+			switch (CursorSelect)
+			{
+			case ESelectBoxCursor::Summary:
+				CursorSelect = ESelectBoxCursor::Switch;
+				break;
+			case ESelectBoxCursor::Switch:
+				CursorSelect = ESelectBoxCursor::Cancle;
+				break;
+			case ESelectBoxCursor::Cancle:
+				CursorSelect = ESelectBoxCursor::Summary;
+				break;
+			default:
+				break;
+			}
+		}
+		else if (true == UEngineInput::IsDown('P'))
+		{
+			switch (CursorSelect)
+			{
+			case ESelectBoxCursor::Summary:
+				break;
+			case ESelectBoxCursor::Switch:
+				break;
+			case ESelectBoxCursor::Cancle:
+				IsUseMenu = false;
+				SelectBox->SetSelectBoxActive(false);
+				break;
+			default:
+				break;
+			}
+		}
+		else if (true == UEngineInput::IsDown('L'))
+		{
+			IsUseMenu = false;
+			SelectBox->SetSelectBoxActive(false);
+		}
 	}
-	
 
 	SetAllEntryStatus();
 
@@ -254,11 +335,6 @@ void UMyPokemonLevel::BaseState()
 		break;
 	default:
 		break;
-	}
-
-	if (true == UEngineInput::IsDown('L'))
-	{
-		GEngine->ChangeLevel(PrevLevelName);
 	}
 
 	if (true == UEngineInput::IsDown('R'))
