@@ -2,6 +2,8 @@
 #include <cmath>
 #include <EngineBase\EngineRandom.h>
 
+bool BattleHelper::IsSwitch = false;
+
 BattleHelper::BattleHelper()
 {
 }

@@ -48,6 +48,8 @@ public:
 	//_EnemyCategory 야생 = 1 트레이너 = 1.5
 	static int CalExp(int _EnemyLevel, float _EnemyCategory);
 
+	static bool IsSwitch;
+
 protected:
 
 private:

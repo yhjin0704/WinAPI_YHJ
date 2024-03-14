@@ -10,7 +10,8 @@
 enum class EMyPokemonState
 {
 	Base,
-	Switch
+	Switch,
+	BattleSwitch
 };
 
 enum class ESelectBoxCursor
@@ -77,10 +78,12 @@ private:
 
 	void BaseState();
 	void SwitchState();
+	void BattleSwitch();
 
 	void SetAllEntryStatus();
 
 	void CheakEmptySlot(AMyPokemonSlot* _Slot, float _Slot_X, float _Slot_Y);
+
 	void ChangeEntry(int _Select1, int _Select2);
 };
 

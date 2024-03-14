@@ -131,11 +131,14 @@ void UBattleLevel::Tick(float _DeltaTime)
 		TextBox->TextOff();
 		TextBox->SetTextTop("가랏 " + MyPokemon.Name + "!");
 
+		BattleSelectCursor = EBattleSelect::Fight;
+
 		IsDelay = true;
 		Delay -= _DeltaTime;
 		if (0 >= Delay)
 		{
-			if (true == FirstTurn)
+			//후턴인 경우는 교체밖에 없다
+			if (false == FirstTurn)
 			{
 				IsDelay = false;
 				Delay = 1.5f;
@@ -185,6 +188,20 @@ void UBattleLevel::Tick(float _DeltaTime)
 				break;
 			default:
 				break;
+			}
+
+			if (true == BattleHelper::IsSwitch)
+			{
+				TurnChange();
+
+				TextBox->TextOff();
+
+				SelectBox->SetSelectBoxActive(false);
+				SelectBox->SetSelectBoxTextActive(false);
+				SelectBox->SetCursorActive(false);
+
+				BattleHelper::IsSwitch = false;
+				BattleSequence = EBattleSequence::Change;
 			}
 		}
 		else
@@ -236,6 +253,8 @@ void UBattleLevel::LevelStart(ULevel* _PrevLevel)
 		PrevLevelName = _PrevLevel->GetName();
 		BattleSequence = EBattleSequence::Start;
 		BattleSelectCursor = EBattleSelect::Fight;
+
+		FirstTurn = true;
 	}
 	else if (UEngineString::ToUpper("EvolveLevel") == _PrevLevel->GetName())
 	{
@@ -254,7 +273,6 @@ void UBattleLevel::LevelStart(ULevel* _PrevLevel)
 	Sequence = 0;
 	IsPlayerSelect = false;
 	GetExp;
-	FirstTurn = false;
 
 	if (true == PlayerHelper::IsWild)
 	{

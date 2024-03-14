@@ -87,6 +87,7 @@ void UEvolveLevel::LevelStart(ULevel* _PrevLevel)
 		EvolvePokemon = *EntryIter;
 		if (true == EvolvePokemon.NowLevelUp)
 		{
+			Order = 0;
 			Delay = 1.0f;
 			Count = 0;
 			break;

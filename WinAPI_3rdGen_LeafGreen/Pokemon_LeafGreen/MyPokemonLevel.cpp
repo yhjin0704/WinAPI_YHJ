@@ -1,6 +1,7 @@
 #include "MyPokemonLevel.h"
 #include "Pokemon3rdGen_Core.h"
 #include <EngineCore/Actor.h>
+#include "BattleHelper.h"
 
 UMyPokemonLevel::UMyPokemonLevel()
 {
@@ -39,6 +40,9 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 	case EMyPokemonState::Switch:
 		SwitchState();
 		break;
+	case EMyPokemonState::BattleSwitch:
+		BattleSwitch();
+		break;
 	default:
 		break;
 	}
@@ -47,6 +51,15 @@ void UMyPokemonLevel::Tick(float _DeltaTime)
 void UMyPokemonLevel::LevelStart(ULevel* _PrevLevel)
 {
 	PrevLevelName = _PrevLevel->GetName();
+
+	if (UEngineString::ToUpper("BattleLevel") == _PrevLevel->GetName())
+	{
+		State = EMyPokemonState::BattleSwitch;
+	}
+	else
+	{
+		State = EMyPokemonState::Base;
+	}
 
 	SelectSlot = 0;
 
@@ -109,7 +122,7 @@ void UMyPokemonLevel::BaseState()
 				SelectSlot = 0;
 			}
 		}
-		else if (true == UEngineInput::IsDown('P'))
+		else if (true == UEngineInput::IsDown('P') && 6 != SelectSlot)
 		{
 			IsUseMenu = true;
 			CursorSelect = ESelectBoxCursor::Summary;
@@ -747,6 +760,382 @@ void UMyPokemonLevel::SwitchState()
 		SwitchSelect2 = 6;
 		SwitchSelect = 0;
 		State = EMyPokemonState::Base;
+		break;
+	default:
+		break;
+	}
+
+	if (true == UEngineInput::IsDown('R'))
+	{
+		UIEntry.front().Hp = UIEntry.front().MaxHp;
+	}
+}
+
+void UMyPokemonLevel::BattleSwitch()
+{
+	if (false == IsUseMenu)
+	{
+		if (true == UEngineInput::IsDown('W'))
+		{
+			PrevSelectSlot = SelectSlot;
+			--SelectSlot;
+			if (0 > SelectSlot)
+			{
+				SelectSlot = 5;
+			}
+		}
+		else if (true == UEngineInput::IsDown('S'))
+		{
+			PrevSelectSlot = SelectSlot;
+			++SelectSlot;
+			if (5 < SelectSlot)
+			{
+				SelectSlot = 0;
+			}
+		}
+		else if (true == UEngineInput::IsDown('A') || true == UEngineInput::IsDown('D'))
+		{
+			if (0 == SelectSlot)
+			{
+				if (0 == PrevSelectSlot)
+				{
+					SelectSlot = 1;
+					PrevSelectSlot = SelectSlot;
+				}
+				else
+				{
+					SelectSlot = PrevSelectSlot;
+					PrevSelectSlot = SelectSlot;
+				}
+			}
+			else
+			{
+				PrevSelectSlot = SelectSlot;
+				SelectSlot = 0;
+			}
+		}
+		else if (true == UEngineInput::IsDown('P'))
+		{
+			IsUseMenu = true;
+			CursorSelect = ESelectBoxCursor::Summary;
+			SelectBox->SetSelectBoxActive(true);
+		}
+		else if (true == UEngineInput::IsDown('L'))
+		{
+			GEngine->ChangeLevel(PrevLevelName);
+		}
+	}
+	else
+	{
+		switch (CursorSelect)
+		{
+		case ESelectBoxCursor::Summary:
+			SelectBox->SetCursorRocation(156.0f, 114.0f);
+			break;
+		case ESelectBoxCursor::Switch:
+			SelectBox->SetCursorRocation(156.0f, 130.0f);
+			break;
+		case ESelectBoxCursor::Cancle:
+			SelectBox->SetCursorRocation(156.0f, 146.0f);
+			break;
+		default:
+			break;
+		}
+
+		if (true == UEngineInput::IsDown('W'))
+		{
+			switch (CursorSelect)
+			{
+			case ESelectBoxCursor::Summary:
+				CursorSelect = ESelectBoxCursor::Cancle;
+				break;
+			case ESelectBoxCursor::Switch:
+				CursorSelect = ESelectBoxCursor::Summary;
+				break;
+			case ESelectBoxCursor::Cancle:
+				CursorSelect = ESelectBoxCursor::Switch;
+				break;
+			default:
+				break;
+			}
+		}
+		else if (true == UEngineInput::IsDown('S'))
+		{
+			switch (CursorSelect)
+			{
+			case ESelectBoxCursor::Summary:
+				CursorSelect = ESelectBoxCursor::Switch;
+				break;
+			case ESelectBoxCursor::Switch:
+				CursorSelect = ESelectBoxCursor::Cancle;
+				break;
+			case ESelectBoxCursor::Cancle:
+				CursorSelect = ESelectBoxCursor::Summary;
+				break;
+			default:
+				break;
+			}
+		}
+		else if (true == UEngineInput::IsDown('P'))
+		{
+			switch (CursorSelect)
+			{
+			case ESelectBoxCursor::Summary:
+				break;
+			case ESelectBoxCursor::Switch:
+				SwitchSelect = 2;
+				SwitchSelect2 = SelectSlot;
+				IsUseMenu = false;
+				SelectBox->SetSelectBoxActive(false);
+				break;
+			case ESelectBoxCursor::Cancle:
+				IsUseMenu = false;
+				SelectBox->SetSelectBoxActive(false);
+				break;
+			default:
+				break;
+			}
+		}
+		else if (true == UEngineInput::IsDown('L'))
+		{
+			IsUseMenu = false;
+			SelectBox->SetSelectBoxActive(false);
+		}
+	}
+
+	SetAllEntryStatus();
+
+	switch (SelectSlot)
+	{
+	case 0:
+		Slot1st->SetSlotRenderer("MyPokemon_First_Select.png", 44.0f, 46.5f);
+		CheakEmptySlot(Slot2nd, 163.0f, 20.5f);
+		CheakEmptySlot(Slot3rd, 163.0f, 20.5f + (24.0f * 1));
+		CheakEmptySlot(Slot4th, 163.0f, 20.5f + (24.0f * 2));
+		CheakEmptySlot(Slot5th, 163.0f, 20.5f + (24.0f * 3));
+		CheakEmptySlot(Slot6th, 163.0f, 20.5f + (24.0f * 4));
+		CancleButton->SetCancleRenderer("MyPokemon_Cancel_Button.png");
+		break;
+	case 1:
+		if (false == Slot2nd->GetEmpty())
+		{
+			Slot1st->SetSlotRenderer("MyPokemon_First.png", 44.0f, 46.5f);
+			Slot2nd->SetSlotRenderer("MyPokemon_Slot_Select.png", 163.0f, 20.5f);
+			CheakEmptySlot(Slot3rd, 163.0f, 20.5f + (24.0f * 1));
+			CheakEmptySlot(Slot4th, 163.0f, 20.5f + (24.0f * 2));
+			CheakEmptySlot(Slot5th, 163.0f, 20.5f + (24.0f * 3));
+			CheakEmptySlot(Slot6th, 163.0f, 20.5f + (24.0f * 4));
+			CancleButton->SetCancleRenderer("MyPokemon_Cancel_Button.png");
+		}
+		else
+		{
+			SelectSlot = 0;
+		}
+		break;
+	case 2:
+		if (false == Slot3rd->GetEmpty())
+		{
+			Slot1st->SetSlotRenderer("MyPokemon_First.png", 44.0f, 46.5f);
+			CheakEmptySlot(Slot2nd, 163.0f, 20.5f);
+			Slot3rd->SetSlotRenderer("MyPokemon_Slot_Select.png", 163.0f, 20.5f + (24.0f * 1));
+			CheakEmptySlot(Slot4th, 163.0f, 20.5f + (24.0f * 2));
+			CheakEmptySlot(Slot5th, 163.0f, 20.5f + (24.0f * 3));
+			CheakEmptySlot(Slot6th, 163.0f, 20.5f + (24.0f * 4));
+			CancleButton->SetCancleRenderer("MyPokemon_Cancel_Button.png");
+		}
+		else
+		{
+			if (1 == PrevSelectSlot)
+			{
+				SelectSlot = 0;
+			}
+			else
+			{
+				SelectSlot = 1;
+			}
+		}
+		break;
+	case 3:
+		if (false == Slot4th->GetEmpty())
+		{
+			Slot1st->SetSlotRenderer("MyPokemon_First.png", 44.0f, 46.5f);
+			CheakEmptySlot(Slot2nd, 163.0f, 20.5f);
+			CheakEmptySlot(Slot4th, 163.0f, 20.5f + (24.0f * 1));
+			Slot4th->SetSlotRenderer("MyPokemon_Slot_Select.png", 163.0f, 20.5f + (24.0f * 2));
+			CheakEmptySlot(Slot5th, 163.0f, 20.5f + (24.0f * 3));
+			CheakEmptySlot(Slot6th, 163.0f, 20.5f + (24.0f * 4));
+			CancleButton->SetCancleRenderer("MyPokemon_Cancel_Button.png");
+		}
+		else
+		{
+			if (2 == PrevSelectSlot)
+			{
+				SelectSlot = 0;
+			}
+			else
+			{
+				SelectSlot = 2;
+			}
+		}
+		break;
+	case 4:
+		if (false == Slot5th->GetEmpty())
+		{
+			Slot1st->SetSlotRenderer("MyPokemon_First.png", 44.0f, 46.5f);
+			CheakEmptySlot(Slot2nd, 163.0f, 20.5f);
+			CheakEmptySlot(Slot3rd, 163.0f, 20.5f + (24.0f * 1));
+			CheakEmptySlot(Slot4th, 163.0f, 20.5f + (24.0f * 2));
+			Slot5th->SetSlotRenderer("MyPokemon_Slot_Select.png", 163.0f, 20.5f + (24.0f * 3));
+			CheakEmptySlot(Slot6th, 163.0f, 20.5f + (24.0f * 4));
+			CancleButton->SetCancleRenderer("MyPokemon_Cancel_Button.png");
+		}
+		else
+		{
+			if (3 == PrevSelectSlot)
+			{
+				SelectSlot = 0;
+			}
+			else
+			{
+				SelectSlot = 3;
+			}
+		}
+		break;
+	case 5:
+		if (false == Slot6th->GetEmpty())
+		{
+			Slot1st->SetSlotRenderer("MyPokemon_First.png", 44.0f, 46.5f);
+			CheakEmptySlot(Slot2nd, 163.0f, 20.5f);
+			CheakEmptySlot(Slot3rd, 163.0f, 20.5f + (24.0f * 1));
+			CheakEmptySlot(Slot4th, 163.0f, 20.5f + (24.0f * 2));
+			CheakEmptySlot(Slot5th, 163.0f, 20.5f + (24.0f * 3));
+			Slot6th->SetSlotRenderer("MyPokemon_Slot_Select.png", 163.0f, 20.5f + (24.0f * 4));
+			CancleButton->SetCancleRenderer("MyPokemon_Cancel_Button.png");
+		}
+		else
+		{
+			if (4 == PrevSelectSlot)
+			{
+				SelectSlot = 0;
+			}
+			else
+			{
+				SelectSlot = 4;
+			}
+		}
+		break;
+	default:
+		break;
+	}
+
+	switch (SwitchSelect)
+	{
+	case 0:
+		SwitchSelect1 = 0;
+		++SwitchSelect;
+		break;
+	case 1:
+		switch (SelectSlot)
+		{
+		case 0:
+			Slot1st->SetSlotRenderer("MyPokemon_First_Select.png", 44.0f, 46.5f);
+			break;
+		case 1:
+			if (false == Slot2nd->GetEmpty())
+			{
+				Slot2nd->SetSlotRenderer("MyPokemon_Slot_Select.png", 163.0f, 20.5f);
+			}
+			else
+			{
+				if (0 == PrevSelectSlot)
+				{
+					SelectSlot = 5;
+				}
+				else
+				{
+					SelectSlot = 0;
+				}
+			}
+			break;
+		case 2:
+			if (false == Slot3rd->GetEmpty())
+			{
+				Slot3rd->SetSlotRenderer("MyPokemon_Slot_Select.png", 163.0f, 20.5f + (24.0f * 1));
+			}
+			else
+			{
+				if (1 == PrevSelectSlot)
+				{
+					SelectSlot = 5;
+				}
+				else
+				{
+					SelectSlot = 1;
+				}
+			}
+			break;
+		case 3:
+			if (false == Slot4th->GetEmpty())
+			{
+				Slot4th->SetSlotRenderer("MyPokemon_Slot_Select.png", 163.0f, 20.5f + (24.0f * 2));
+			}
+			else
+			{
+				if (2 == PrevSelectSlot)
+				{
+					SelectSlot = 5;
+				}
+				else
+				{
+					SelectSlot = 2;
+				}
+			}
+			break;
+		case 4:
+			if (false == Slot5th->GetEmpty())
+			{
+				Slot5th->SetSlotRenderer("MyPokemon_Slot_Select.png", 163.0f, 20.5f + (24.0f * 3));
+			}
+			else
+			{
+				if (3 == PrevSelectSlot)
+				{
+					SelectSlot = 5;
+				}
+				else
+				{
+					SelectSlot = 3;
+				}
+			}
+			break;
+		case 5:
+			if (false == Slot6th->GetEmpty())
+			{
+				Slot6th->SetSlotRenderer("MyPokemon_Slot_Select.png", 163.0f, 20.5f + (24.0f * 4));
+			}
+			else
+			{
+				if (4 == PrevSelectSlot)
+				{
+					SelectSlot = 5;
+				}
+				else
+				{
+					SelectSlot = 4;
+				}
+			}
+			break;
+		default:
+			break;
+		}
+		break;
+	case 2:
+		ChangeEntry(SwitchSelect1, SwitchSelect2);
+		SwitchSelect1 = 6;
+		SwitchSelect2 = 6;
+		SwitchSelect = 0;
+		BattleHelper::IsSwitch = true;
+		GEngine->ChangeLevel(PrevLevelName);
 		break;
 	default:
 		break;
