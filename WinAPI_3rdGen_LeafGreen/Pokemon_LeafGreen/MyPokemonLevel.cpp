@@ -193,11 +193,13 @@ void UMyPokemonLevel::BaseState()
 			case ESelectBoxCursor::Switch:
 				IsUseMenu = false;
 				SelectBox->SetSelectBoxActive(false);
+				CursorSelect = ESelectBoxCursor::Summary;
 				State = EMyPokemonState::Switch;
 				break;
 			case ESelectBoxCursor::Cancle:
 				IsUseMenu = false;
 				SelectBox->SetSelectBoxActive(false);
+				CursorSelect = ESelectBoxCursor::Summary;
 				break;
 			default:
 				break;
@@ -207,6 +209,7 @@ void UMyPokemonLevel::BaseState()
 		{
 			IsUseMenu = false;
 			SelectBox->SetSelectBoxActive(false);
+			CursorSelect = ESelectBoxCursor::Summary;
 		}
 	}
 
@@ -887,10 +890,12 @@ void UMyPokemonLevel::BattleSwitch()
 				SwitchSelect2 = SelectSlot;
 				IsUseMenu = false;
 				SelectBox->SetSelectBoxActive(false);
+				CursorSelect = ESelectBoxCursor::Summary;
 				break;
 			case ESelectBoxCursor::Cancle:
 				IsUseMenu = false;
 				SelectBox->SetSelectBoxActive(false);
+				CursorSelect = ESelectBoxCursor::Summary;
 				break;
 			default:
 				break;
@@ -900,6 +905,7 @@ void UMyPokemonLevel::BattleSwitch()
 		{
 			IsUseMenu = false;
 			SelectBox->SetSelectBoxActive(false);
+			CursorSelect = ESelectBoxCursor::Summary;
 		}
 	}
 

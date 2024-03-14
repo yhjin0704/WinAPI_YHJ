@@ -20,6 +20,7 @@ void ABattlePokemonStatus::BeginPlay()
 	PokemonHpBarRenderer = CreateImageRenderer(ERenderOrder::Text);
 	PokemonHPRenderer = CreateImageRenderer(ERenderOrder::Text);
 	PokemonMaxHpRenderer = CreateImageRenderer(ERenderOrder::Text);
+	PokemonExpBarRenderer = CreateImageRenderer(ERenderOrder::Text);
 }
 
 void ABattlePokemonStatus::Tick(float _DeltaTime)
@@ -39,19 +40,19 @@ void ABattlePokemonStatus::SetDataRenderers(PokemonInfo _Entry, bool _IsEnemy,
 	float _Name_X, float _Name_Y,
 	float _Level_X, float _Level_Y,
 	float _Gender_X, float _Gender_Y,
-	float _HpBar_X, float _HpBar_Y,
-	float _Hp_X, float _Hp_Y,
-	float _MaxHp_X, float _MaxHp_Y)
+	float _HpBar_X, float _HpBar_Y)
 {
 	if (true == _IsEnemy)
 	{
 		PokemonHPRenderer->ActiveOff();
 		PokemonMaxHpRenderer->ActiveOff();
+		PokemonExpBarRenderer->ActiveOff();
 	}
 	else
 	{
 		PokemonHPRenderer->ActiveOn();
 		PokemonMaxHpRenderer->ActiveOn();
+		PokemonExpBarRenderer->ActiveOn();
 	}
 
 	Global::SetPokemonText(PokemonNameRenderer, Gdiplus::StringAlignment::StringAlignmentNear, _Entry.Name, Color8Bit::BlackA, 12.0f);
@@ -95,8 +96,21 @@ void ABattlePokemonStatus::SetDataRenderers(PokemonInfo _Entry, bool _IsEnemy,
 		_Entry.Hp = _Entry.MaxHp;
 	}
 	Global::SetPokemonText(PokemonHPRenderer, Gdiplus::StringAlignment::StringAlignmentFar, std::to_string(_Entry.Hp), Color8Bit::BlackA, 10.0f);
-	PokemonHPRenderer->SetTransform({ { _Hp_X * FScaleMultiple, _Hp_Y * FScaleMultiple }, { 0, 0 } });
+	PokemonHPRenderer->SetTransform({ { 205.0f * FScaleMultiple, 101.5f * FScaleMultiple }, { 0, 0 } });
 
 	Global::SetPokemonText(PokemonMaxHpRenderer, Gdiplus::StringAlignment::StringAlignmentNear, std::to_string(_Entry.MaxHp), Color8Bit::BlackA, 10.0f);
-	PokemonMaxHpRenderer->SetTransform({ { _MaxHp_X * FScaleMultiple, _MaxHp_Y * FScaleMultiple }, { 0, 0 } });
+	PokemonMaxHpRenderer->SetTransform({ { 206.0f * FScaleMultiple, 101.5f * FScaleMultiple }, { 0, 0 } });
+
+	float ExpBarGage = std::ceil((static_cast<float>(_Entry.Exp) / static_cast<float>(_Entry.MaxExp)) * 64);
+	if (0.0f >= ExpBarGage)
+	{
+		ExpBarGage = 0.0f;
+	}
+	if (64.0f <= ExpBarGage)
+	{
+		ExpBarGage = 64.0f;
+	}
+	PokemonExpBarRenderer->SetImage("ExpBar.png");
+	PokemonExpBarRenderer->SetSortType(EImageSortType::Left);
+	PokemonExpBarRenderer->SetTransform({ { 160.0f * FScaleMultiple, 109.0f * FScaleMultiple }, { ExpBarGage * FScaleMultiple, 2.0f * FScaleMultiple } } );
 }

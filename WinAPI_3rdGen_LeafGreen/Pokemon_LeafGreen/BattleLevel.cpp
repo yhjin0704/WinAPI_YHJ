@@ -39,16 +39,12 @@ void UBattleLevel::Tick(float _DeltaTime)
 		19.0f, 25.0f,
 		101.0f, 25.0f,
 		65.0f, 25.0f,
-		77.0f, 34.5f,
-		0.0f, 0.0f,
-		0.0f, 0.0f);
+		77.0f, 34.5f);
 	PlayerStatus->SetDataRenderers(MyPokemon, false,
 		142.0f, 84.0f,
 		224.0f, 84.0f,
 		188.0f, 84.0f,
-		200.0f, 93.5f,
-		205.0f, 101.5f,
-		206.0f, 101.5f);
+		200.0f, 93.5f);
 
 	EnemyGround->SetPokemonRenderer(EnemyPokemon, true);
 	PlayerGround->SetPokemonRenderer(MyPokemon, false);
