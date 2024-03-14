@@ -4,6 +4,8 @@
 
 bool BattleHelper::IsSwitch = false;
 
+EUseBall BattleHelper::UseBall = EUseBall::None;
+
 BattleHelper::BattleHelper()
 {
 }

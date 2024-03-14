@@ -17,6 +17,7 @@ public:
 
 	void SetGroundRenderer(std::string_view _Image);
 	void SetPokemonRenderer(PokemonInfo _Entry, bool _IsEnemy);
+	void SetPokemonActiveOnOff(bool _OnOff);
 
 protected:
 	void BeginPlay() override;

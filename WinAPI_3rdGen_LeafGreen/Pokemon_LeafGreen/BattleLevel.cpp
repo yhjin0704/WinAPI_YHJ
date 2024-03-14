@@ -157,6 +157,80 @@ void UBattleLevel::Tick(float _DeltaTime)
 			}
 		}
 		break;
+	case EBattleSequence::UseItem:
+		IsPlayerSelect = false;
+		TextBox->TextOff();
+		TextBox->SetTextTop(PlayerHelper::PlayerName + "(은)는");
+		TextBox->SetTextBottom("마스터볼을 사용했다");
+		BattleSelectCursor = EBattleSelect::Fight;
+
+		IsDelay = true;
+		Delay -= _DeltaTime;
+		if (0 >= Delay)
+		{
+			switch (BattleHelper::UseBall)
+			{
+			case EUseBall::MonsterBall:
+				//후턴
+				if (false == FirstTurn)
+				{
+					IsDelay = false;
+					Delay = 1.5f;
+					BattleSequence = EBattleSequence::EnemyTurn;
+				}
+				else
+				{
+					if (MyPokemon.Spd >= EnemyPokemon.Spd)
+					{
+						IsDelay = false;
+						Delay = 1.5f;
+						BattleSequence = EBattleSequence::MyTurn;
+					}
+					else
+					{
+						IsDelay = false;
+						Delay = 1.5f;
+						BattleSequence = EBattleSequence::EnemyTurn;
+					}
+				}
+				break;
+			case EUseBall::GreatBall:
+				break;
+			case EUseBall::UltraBall:
+				break;
+			case EUseBall::MasterBall:
+				BattleHelper::UseBall = EUseBall::None;
+
+				IsDelay = false;
+				Delay = 1.5f;
+
+				EnemyPokemon.PlayerPokemon = true;
+				BattleEntry.push_back(EnemyPokemon);
+				EnemyGround->SetPokemonActiveOnOff(false);
+				BattleSequence = EBattleSequence::Catch;
+				break;
+			default:
+				break;
+			}
+		}
+		break;
+	case EBattleSequence::Catch:
+		IsPlayerSelect = false;
+
+		TextBox->TextOff();
+		TextBox->SetTextTop(PlayerHelper::PlayerName + "(은)는");
+		TextBox->SetTextBottom(EnemyPokemon.Name + "(을)를 잡았다");
+		BattleSelectCursor = EBattleSelect::Fight;
+
+		IsDelay = true;
+		Delay -= _DeltaTime;
+		if (0 >= Delay)
+		{
+			IsDelay = false;
+			Delay = 1.5f;
+			GEngine->ChangeLevel(PrevLevelName);
+		}
+		break;
 	case EBattleSequence::MyTurn:
 		if (false == IsPlayerSelect)
 		{
@@ -198,6 +272,18 @@ void UBattleLevel::Tick(float _DeltaTime)
 
 				BattleHelper::IsSwitch = false;
 				BattleSequence = EBattleSequence::Change;
+			}
+			if (EUseBall::None != BattleHelper::UseBall)
+			{
+				TurnChange();
+
+				TextBox->TextOff();
+
+				SelectBox->SetSelectBoxActive(false);
+				SelectBox->SetSelectBoxTextActive(false);
+				SelectBox->SetCursorActive(false);
+
+				BattleSequence = EBattleSequence::UseItem;
 			}
 		}
 		else
@@ -265,6 +351,8 @@ void UBattleLevel::LevelStart(ULevel* _PrevLevel)
 	SelectBox->SetSelectBoxActive(false);
 	SelectBox->SetSelectBoxTextActive(false);
 	SelectBox->SetCursorActive(false);
+
+	EnemyGround->SetPokemonActiveOnOff(true);
 
 	Sequence = 0;
 	IsPlayerSelect = false;

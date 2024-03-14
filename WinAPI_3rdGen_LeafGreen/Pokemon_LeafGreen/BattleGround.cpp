@@ -43,3 +43,15 @@ void ABattleGround::SetPokemonRenderer(PokemonInfo _Entry, bool _IsEnemy)
 		PokemonRenderer->SetTransform({ {175.0f * FScaleMultiple, 45.0f * FScaleMultiple}, {64.0f * FScaleMultiple, 64.0f * FScaleMultiple} });
 	}
 }
+
+void ABattleGround::SetPokemonActiveOnOff(bool _OnOff)
+{
+	if (true == _OnOff)
+	{
+		PokemonRenderer->ActiveOn();
+	}
+	else
+	{
+		PokemonRenderer->ActiveOff();
+	}
+}

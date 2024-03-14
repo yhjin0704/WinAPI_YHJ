@@ -32,6 +32,7 @@ void APlayer::BeginPlay()
 	ACharacter::BeginPlay();
 
 	SetCharacterName("ทนตๅ");
+	PlayerHelper::PlayerName = GetCharacterName();
 
 	CreatePlayerAllRender();
 	CreateMenu();

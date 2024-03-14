@@ -30,7 +30,7 @@ public:
 
 protected:
 	void BeginPlay() override;
-	void Tick(float _DeltaTime) override;
+	void Tick(float _DeltaTime) override; 
 
 	APlayer* Player;
 	PokemonInfo* TestPokemon;

@@ -17,6 +17,7 @@ public:
 	PlayerHelper& operator=(const PlayerHelper& _Other) = delete;
 	PlayerHelper& operator=(PlayerHelper&& _Other) noexcept = delete;
 
+	static std::string PlayerName;
 	static EMoveType PlayerMoveType;
 	static EMoveType PrevMoveType;
 	static bool IsUseMenu;

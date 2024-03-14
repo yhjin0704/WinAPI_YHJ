@@ -1,4 +1,5 @@
 #include "MyBagLevel.h"
+#include "BattleHelper.h"
 
 UMyBagLevel::UMyBagLevel()
 {
@@ -18,6 +19,12 @@ void UMyBagLevel::BeginPlay()
 void UMyBagLevel::Tick(float _DeltaTime)
 {
 	UMenuUILevel::Tick(_DeltaTime);
+
+	if (true == UEngineInput::IsDown('P') && UEngineString::ToUpper("BattleLevel") == PrevLevelName)
+	{
+		BattleHelper::UseBall = EUseBall::MasterBall;
+		GEngine->ChangeLevel(PrevLevelName);
+	}
 
 	if (true == UEngineInput::IsDown('L'))
 	{

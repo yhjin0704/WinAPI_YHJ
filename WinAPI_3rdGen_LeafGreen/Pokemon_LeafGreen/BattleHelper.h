@@ -6,6 +6,8 @@ enum class EBattleSequence
 	Start,
 	SetPokemon,
 	Change,
+	UseItem,
+	Catch,
 	MyTurn,
 	EnemyTurn,
 	Run,
@@ -31,6 +33,15 @@ enum class EPSMove
 	º¯È­
 };
 
+enum class EUseBall
+{
+	None,
+	MonsterBall,
+	GreatBall,
+	UltraBall,
+	MasterBall
+};
+
 class BattleHelper
 {
 public:
@@ -49,6 +60,8 @@ public:
 	static int CalExp(int _EnemyLevel, float _EnemyCategory);
 
 	static bool IsSwitch;
+
+	static EUseBall UseBall;
 
 protected:
 
