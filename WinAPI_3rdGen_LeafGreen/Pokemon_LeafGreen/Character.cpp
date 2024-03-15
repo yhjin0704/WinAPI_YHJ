@@ -327,17 +327,22 @@ void ACharacter::PlayIdleAnimation()
 	CharacterRenderer->ChangeAnimation(CharacterAnimation);
 }
 
-void ACharacter::SetTextTop(std::string_view _Text)
+void ACharacter::SetTextLocation(FVector _PlayerPos)
 {
-	TextRendererTop->ActiveOn();
-	Global::SetPokemonText(TextRendererTop, Gdiplus::StringAlignment::StringAlignmentNear, _Text, Color8Bit::WhiteA);
-
+	TextRendererTop->SetTransform({ { _PlayerPos.X - (240.0f * FScaleMultiple), _PlayerPos.Y - (16.0f * FScaleMultiple) }, {0, 0} });
+	TextRendererBottom->SetTransform({ { _PlayerPos.X - (240.0f * FScaleMultiple), _PlayerPos.Y - (0.0f * FScaleMultiple) }, {0, 0} });
 }
 
-void ACharacter::SetTextBottom(std::string_view _Text)
+void ACharacter::SetTextTop(std::string_view _Text, Color8Bit _TextColor)
+{
+	TextRendererTop->ActiveOn();
+	Global::SetPokemonText(TextRendererTop, Gdiplus::StringAlignment::StringAlignmentNear, _Text, _TextColor);
+}
+
+void ACharacter::SetTextBottom(std::string_view _Text, Color8Bit _TextColor)
 {
 	TextRendererBottom->ActiveOn();
-	Global::SetPokemonText(TextRendererBottom, Gdiplus::StringAlignment::StringAlignmentNear, _Text, Color8Bit::WhiteA);
+	Global::SetPokemonText(TextRendererBottom, Gdiplus::StringAlignment::StringAlignmentNear, _Text, _TextColor);
 
 }
 

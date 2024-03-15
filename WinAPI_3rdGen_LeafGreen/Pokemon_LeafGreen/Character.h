@@ -40,8 +40,9 @@ public:
 		MoveType = _MoveType;
 	}
 
-	void SetTextTop(std::string_view _Text);
-	void SetTextBottom(std::string_view _Text);
+	void SetTextLocation(FVector _PlayerPos);
+	void SetTextTop(std::string_view _Text, Color8Bit _TextColor = Color8Bit::BlackA);
+	void SetTextBottom(std::string_view _Text, Color8Bit _TextColor = Color8Bit::BlackA);
 	void TextOff();
 
 protected:

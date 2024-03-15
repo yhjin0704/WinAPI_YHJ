@@ -57,7 +57,9 @@ void AMom::DefaultEvent()
 					*EntryIter = HealPokemon;
 				}
 				Pokemon3rdGen_Core::SetEntry(Entry);
-
+				SetTextTop("엄마:" + PlayerHelper::PlayerName + "...!", Color8Bit::RedA);
+				SetTextBottom("잠깐 쉬었다가면", Color8Bit::RedA);
+				DialogCount = 0;
 				MsgBox->ActiveOn();
 			}
 		}
@@ -65,8 +67,47 @@ void AMom::DefaultEvent()
 		{
 			if (true == UEngineInput::IsDown('P') || true == UEngineInput::IsDown('L'))
 			{
-				PlayerHelper::PlayerPause = false;
-				MsgBox->ActiveOff();
+				switch (DialogCount)
+				{
+				case 0:
+					SetTextTop("잠깐 쉬었다가면", Color8Bit::RedA);
+					SetTextBottom("어떠니...?", Color8Bit::RedA);
+					++DialogCount;
+					break;
+				case 1:
+					SetTextTop("어떠니...?", Color8Bit::RedA);
+					SetTextBottom("... ... ...", Color8Bit::RedA);
+					++DialogCount;
+					break;
+				case 2:
+					SetTextTop("엄마:어머나!", Color8Bit::RedA);
+					SetTextBottom("너도 포켓몬도", Color8Bit::RedA);
+					++DialogCount;
+					break;
+				case 3:
+					SetTextTop("너도 포켓몬도", Color8Bit::RedA);
+					SetTextBottom("기운이 넘치는구나!", Color8Bit::RedA);
+					++DialogCount;
+					break;
+				case 4:
+					SetTextTop("기운이 넘치는구나!", Color8Bit::RedA);
+					SetTextBottom("그럼 조심하렴!", Color8Bit::RedA);
+					++DialogCount;
+					break;
+				case 5:
+					SetTextTop("그럼 조심하렴!", Color8Bit::RedA);
+					SetTextBottom("잘 다녀와!", Color8Bit::RedA);
+					++DialogCount;
+					break;
+				case 6:
+					PlayerHelper::PlayerPause = false;
+					TextOff();
+					MsgBox->ActiveOff();
+					DialogCount = 0;
+					break;
+				default:
+					break;
+				}
 			}
 		}
 	}

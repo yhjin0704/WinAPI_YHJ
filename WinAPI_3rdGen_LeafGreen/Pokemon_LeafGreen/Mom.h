@@ -19,6 +19,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
+	int DialogCount = 0;
 	void DefaultEvent();
 };
 

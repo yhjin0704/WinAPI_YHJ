@@ -117,6 +117,7 @@ void ANpc::SetColPlayerDir()
 void ANpc::SetMsgBoxLocation(FVector _PlayerPos)
 {
 	MsgBox->SetTransform({ {_PlayerPos.X - (136.f * FScaleMultiple), _PlayerPos.Y - (8.0f * FScaleMultiple)}, {MsgBox->GetImage()->GetScale() * FScaleMultiple} });
+	SetTextLocation(_PlayerPos);
 }
 
 void ANpc::PushBackEntry(int _DexNo, int _Level, std::string _Ability, float _Hp, float _Atk, float _Def, float _SAtk, float _SDef, float _Spd)
