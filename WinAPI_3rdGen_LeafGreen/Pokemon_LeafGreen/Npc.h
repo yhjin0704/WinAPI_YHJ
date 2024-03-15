@@ -24,6 +24,8 @@ public:
 	void SetDirImage(EDirState _Dir, std::string _ImageName);
 	void SetColPlayerDir();
 
+	void SetMsgBoxLocation(FVector _PlayerPos);
+
 	void PushBackEntry(int _DexNo, int _Level, std::string _Ability, float _Hp, float _Atk, float _Def, float _SAtk, float _SDef, float _Spd);
 	PokemonInfo SetIV(PokemonInfo _Pokemon, float _Hp, float _Atk, float _Def, float _SAtk, float _SDef, float _Spd);
 

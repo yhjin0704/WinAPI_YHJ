@@ -38,6 +38,7 @@ void UPlayerHome1FLevel::Tick(float _DeltaTime)
 	UFieldLevel::Tick(_DeltaTime);
 
 	Mom->SetActiveUpDownRenderer(Player->GetActorLocation());
+	Mom->SetMsgBoxLocation(Player->GetActorLocation());
 }
 
 void UPlayerHome1FLevel::LevelStart(ULevel* _PrevLevel)

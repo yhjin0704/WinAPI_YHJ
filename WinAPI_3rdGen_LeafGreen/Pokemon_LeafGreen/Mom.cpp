@@ -57,6 +57,8 @@ void AMom::DefaultEvent()
 					*EntryIter = HealPokemon;
 				}
 				Pokemon3rdGen_Core::SetEntry(Entry);
+
+				MsgBox->ActiveOn();
 			}
 		}
 		else if (true == PlayerHelper::PlayerPause && false == PlayerHelper::IsUseMenu)
@@ -64,6 +66,7 @@ void AMom::DefaultEvent()
 			if (true == UEngineInput::IsDown('P') || true == UEngineInput::IsDown('L'))
 			{
 				PlayerHelper::PlayerPause = false;
+				MsgBox->ActiveOff();
 			}
 		}
 	}

@@ -40,6 +40,10 @@ public:
 		MoveType = _MoveType;
 	}
 
+	void SetTextTop(std::string_view _Text);
+	void SetTextBottom(std::string_view _Text);
+	void TextOff();
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

@@ -42,12 +42,11 @@ void ANpc::BeginPlay()
 	BattlecheckRightCollision = CreateCollision(ECollisionOrder::BattleCheck);
 
 	MsgBox = CreateImageRenderer(ERenderOrder::Menu);
-	TextRendererTop = CreateImageRenderer(ERenderOrder::Text);
-	TextRendererBottom = CreateImageRenderer(ERenderOrder::Text);
+
+	MsgBox->SetImage("Dialogue.png");
+	MsgBox->SetTransform({ {0,0}, {MsgBox->GetImage()->GetScale() * FScaleMultiple}});
 
 	MsgBox->ActiveOff();
-	TextRendererTop->ActiveOff();
-	TextRendererBottom->ActiveOff();
 }
 
 void ANpc::Tick(float _DeltaTime)
@@ -113,7 +112,11 @@ void ANpc::SetColPlayerDir()
 	{
 		SetCharacterDir(EDirState::Right);
 	}
+}
 
+void ANpc::SetMsgBoxLocation(FVector _PlayerPos)
+{
+	MsgBox->SetTransform({ {_PlayerPos.X - (136.f * FScaleMultiple), _PlayerPos.Y - (8.0f * FScaleMultiple)}, {MsgBox->GetImage()->GetScale() * FScaleMultiple} });
 }
 
 void ANpc::PushBackEntry(int _DexNo, int _Level, std::string _Ability, float _Hp, float _Atk, float _Def, float _SAtk, float _SDef, float _Spd)

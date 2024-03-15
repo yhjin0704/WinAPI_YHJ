@@ -11,6 +11,12 @@ ACharacter::~ACharacter()
 void ACharacter::BeginPlay()
 {
 	AActor::BeginPlay();
+
+	TextRendererTop = CreateImageRenderer(ERenderOrder::Text);
+	TextRendererBottom = CreateImageRenderer(ERenderOrder::Text);
+
+	TextRendererTop->ActiveOff();
+	TextRendererBottom->ActiveOff();
 }
 
 void ACharacter::Tick(float _DeltaTime)
@@ -319,4 +325,24 @@ void ACharacter::PlayIdleAnimation()
 {
 	CharacterAnimation = GetAnimationName(Name, MoveType, PrevDirInput);
 	CharacterRenderer->ChangeAnimation(CharacterAnimation);
+}
+
+void ACharacter::SetTextTop(std::string_view _Text)
+{
+	TextRendererTop->ActiveOn();
+	Global::SetPokemonText(TextRendererTop, Gdiplus::StringAlignment::StringAlignmentNear, _Text, Color8Bit::WhiteA);
+
+}
+
+void ACharacter::SetTextBottom(std::string_view _Text)
+{
+	TextRendererBottom->ActiveOn();
+	Global::SetPokemonText(TextRendererBottom, Gdiplus::StringAlignment::StringAlignmentNear, _Text, Color8Bit::WhiteA);
+
+}
+
+void ACharacter::TextOff()
+{
+	TextRendererTop->ActiveOff();
+	TextRendererBottom->ActiveOff();
 }
