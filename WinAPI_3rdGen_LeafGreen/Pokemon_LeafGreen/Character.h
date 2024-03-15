@@ -55,6 +55,9 @@ protected:
 	UCollision* LeftCollision = nullptr;
 	UCollision* RightCollision = nullptr;
 
+	UImageRenderer* TextRendererTop = nullptr;
+	UImageRenderer* TextRendererBottom = nullptr;
+
 	FVector IsColCheckPos = FVector::Zero;
 	FVector EncountCheckPos = FVector::Zero;
 

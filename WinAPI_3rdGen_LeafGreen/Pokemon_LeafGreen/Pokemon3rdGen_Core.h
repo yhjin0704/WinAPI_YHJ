@@ -29,9 +29,9 @@ public:
 		return dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->AllPokemonInfo;
 	}
 
-	static std::map<std::string, PokemonInfo> GetAllMoveInfo()
+	static std::map<std::string, MoveInfo> GetAllMovesInfo()
 	{
-		return dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->AllMoveInfo;
+		return dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->AllMovesInfo;
 	}
 	
 	static std::list<PokemonInfo> GetEntry()
@@ -57,8 +57,7 @@ private:
 	// 초기정보
 	// 게임내에서 나올수 있는데.
 	std::map<int, PokemonInfo> AllPokemonInfo;
-	std::map<std::string, PokemonInfo> AllMoveInfo;
-	//std::map<std::string, > AllMoveInfo;
+	std::map<std::string, MoveInfo> AllMovesInfo;
 
 	// 내가 들고 있는 포켓몬
 	std::list<PokemonInfo> Entry;

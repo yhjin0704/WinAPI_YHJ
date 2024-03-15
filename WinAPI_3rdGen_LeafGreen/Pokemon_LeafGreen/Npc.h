@@ -21,6 +21,8 @@ public:
 	}
 
 	void SetActiveUpDownRenderer(FVector _PlayerPos);
+	void SetDirImage(EDirState _Dir, std::string _ImageName);
+	void SetColPlayerDir();
 
 	void PushBackEntry(int _DexNo, int _Level, std::string _Ability, float _Hp, float _Atk, float _Def, float _SAtk, float _SDef, float _Spd);
 	PokemonInfo SetIV(PokemonInfo _Pokemon, float _Hp, float _Atk, float _Def, float _SAtk, float _SDef, float _Spd);
@@ -33,6 +35,8 @@ protected:
 	std::list<PokemonInfo> Entry;
 
 	UImageRenderer* CharacterIfDownRenderer;
+
+	UImageRenderer* MsgBox = nullptr;
 
 	UCollision* BattlecheckDownCollision = nullptr;
 	UCollision* BattlecheckUpCollision = nullptr;

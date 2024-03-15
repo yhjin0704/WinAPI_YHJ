@@ -40,11 +40,80 @@ void ANpc::BeginPlay()
 	BattlecheckUpCollision = CreateCollision(ECollisionOrder::BattleCheck);
 	BattlecheckLeftCollision = CreateCollision(ECollisionOrder::BattleCheck);
 	BattlecheckRightCollision = CreateCollision(ECollisionOrder::BattleCheck);
+
+	MsgBox = CreateImageRenderer(ERenderOrder::Menu);
+	TextRendererTop = CreateImageRenderer(ERenderOrder::Text);
+	TextRendererBottom = CreateImageRenderer(ERenderOrder::Text);
+
+	MsgBox->ActiveOff();
+	TextRendererTop->ActiveOff();
+	TextRendererBottom->ActiveOff();
 }
 
 void ANpc::Tick(float _DeltaTime)
 {
 	ACharacter::Tick(_DeltaTime);
+}
+
+void ANpc::SetActiveUpDownRenderer(FVector _PlayerPos)
+{
+	if (_PlayerPos.Y > GetActorLocation().Y)
+	{
+		CharacterRenderer->ActiveOn();
+		CharacterIfDownRenderer->ActiveOff();
+	}
+	else
+	{
+		CharacterRenderer->ActiveOff();
+		CharacterIfDownRenderer->ActiveOn();
+	}
+}
+
+void ANpc::SetDirImage(EDirState _Dir, std::string _ImageName)
+{
+	switch (_Dir)
+	{
+	case EDirState::Down:
+		CharacterRenderer->SetImage(_ImageName, 0);
+		CharacterIfDownRenderer->SetImage(_ImageName, 0);
+		break;
+	case EDirState::Up:
+		CharacterRenderer->SetImage(_ImageName, 1);
+		CharacterIfDownRenderer->SetImage(_ImageName, 1);
+		break;
+	case EDirState::Left:
+		CharacterRenderer->SetImage(_ImageName, 2);
+		CharacterIfDownRenderer->SetImage(_ImageName, 2);
+		break;
+	case EDirState::Right:
+		CharacterRenderer->SetImage(_ImageName, 3);
+		CharacterIfDownRenderer->SetImage(_ImageName, 3);
+		break;
+	default:
+		break;
+	}
+}
+
+void ANpc::SetColPlayerDir()
+{
+	std::vector<UCollision*> Result;
+	if (true == DownCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		SetCharacterDir(EDirState::Down);
+	}
+	else if (true == UpCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		SetCharacterDir(EDirState::Up);
+	}
+	else if (true == LeftCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		SetCharacterDir(EDirState::Left);
+	}
+	else if (true == RightCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		SetCharacterDir(EDirState::Right);
+	}
+
 }
 
 void ANpc::PushBackEntry(int _DexNo, int _Level, std::string _Ability, float _Hp, float _Atk, float _Def, float _SAtk, float _SDef, float _Spd)
@@ -72,18 +141,4 @@ PokemonInfo ANpc::SetIV(PokemonInfo _Pokemon, float _Hp, float _Atk, float _Def,
 	_Pokemon.IVSDef = _SDef;
 	_Pokemon.IVSpd = _Spd;
 	return _Pokemon;
-}
-
-void ANpc::SetActiveUpDownRenderer(FVector _PlayerPos)
-{
-	if (_PlayerPos.Y > GetActorLocation().Y)
-	{
-		CharacterRenderer->ActiveOn();
-		CharacterIfDownRenderer->ActiveOff();
-	}
-	else
-	{
-		CharacterRenderer->ActiveOff();
-		CharacterIfDownRenderer->ActiveOn();
-	}
 }

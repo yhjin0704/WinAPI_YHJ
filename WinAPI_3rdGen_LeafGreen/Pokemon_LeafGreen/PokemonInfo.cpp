@@ -312,6 +312,8 @@ void PokemonInfo::Evolve()
 	Genderper = NextEvolve.Genderper;
 	EvolveLevel = NextEvolve.EvolveLevel;
 	NextEvolveDexNo = NextEvolve.NextEvolveDexNo;
+	UseItemEvolve = NextEvolve.UseItemEvolve;
+	EvolveItem = NextEvolve.EvolveItem;
 	CalImageNo(NextEvolve.DexNo);
 
 	int PrevMaxHp = MaxHp;
@@ -331,5 +333,5 @@ void PokemonInfo::Evolve()
 
 bool PokemonInfo::EvolveCheck()
 {
-	return Level >= EvolveLevel;
+	return Level > EvolveLevel;
 }
