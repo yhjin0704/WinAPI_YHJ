@@ -110,7 +110,7 @@ void ABattleSelectBox::SetCursorActive(bool _OnOff)
 	}
 }
 
-void ABattleSelectBox::SetCursorRocation(float _X, float _Y)
+void ABattleSelectBox::SetCursorLocation(float _X, float _Y)
 {
 	CursorRender->SetTransform({ { _X * FScaleMultiple, _Y * FScaleMultiple }, { (CursorRender->GetImage()->GetScale()) * FScaleMultiple} });
 }

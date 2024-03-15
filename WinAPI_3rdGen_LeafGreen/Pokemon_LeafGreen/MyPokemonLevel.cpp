@@ -138,13 +138,13 @@ void UMyPokemonLevel::BaseState()
 		switch (CursorSelect)
 		{
 		case ESelectBoxCursor::Summary:
-			SelectBox->SetCursorRocation(156.0f, 114.0f);
+			SelectBox->SetCursorLocation(156.0f, 114.0f);
 			break;
 		case ESelectBoxCursor::Switch:
-			SelectBox->SetCursorRocation(156.0f, 130.0f);
+			SelectBox->SetCursorLocation(156.0f, 130.0f);
 			break;
 		case ESelectBoxCursor::Cancle:
-			SelectBox->SetCursorRocation(156.0f, 146.0f);
+			SelectBox->SetCursorLocation(156.0f, 146.0f);
 			break;
 		default:
 			break;
@@ -833,13 +833,13 @@ void UMyPokemonLevel::BattleSwitch()
 		switch (CursorSelect)
 		{
 		case ESelectBoxCursor::Summary:
-			SelectBox->SetCursorRocation(156.0f, 114.0f);
+			SelectBox->SetCursorLocation(156.0f, 114.0f);
 			break;
 		case ESelectBoxCursor::Switch:
-			SelectBox->SetCursorRocation(156.0f, 130.0f);
+			SelectBox->SetCursorLocation(156.0f, 130.0f);
 			break;
 		case ESelectBoxCursor::Cancle:
-			SelectBox->SetCursorRocation(156.0f, 146.0f);
+			SelectBox->SetCursorLocation(156.0f, 146.0f);
 			break;
 		default:
 			break;

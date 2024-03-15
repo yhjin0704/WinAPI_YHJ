@@ -88,15 +88,43 @@ void ACharacter::SetColCheckPos(EDirState _PrevDirInput)
 	{
 	case EDirState::Down:
 		IsColCheckPos = GetActorLocation() + (FVector::Down * FColCheckDown);
+
+		DownCollision->ActiveOn();
+		UpCollision->ActiveOff();
+		LeftCollision->ActiveOff();
+		RightCollision->ActiveOff();
+
+		IsColCheckCollision = DownCollision;
 		break;
 	case EDirState::Up:
 		IsColCheckPos = GetActorLocation() + (FVector::Up * FColCheckUp);
+
+		DownCollision->ActiveOff();
+		UpCollision->ActiveOn();
+		LeftCollision->ActiveOff();
+		RightCollision->ActiveOff();
+
+		IsColCheckCollision = UpCollision;
 		break;
 	case EDirState::Left:
 		IsColCheckPos = GetActorLocation() + (FVector::Left * FColCheckLeft);
+
+		DownCollision->ActiveOff();
+		UpCollision->ActiveOff();
+		LeftCollision->ActiveOn();
+		RightCollision->ActiveOff();
+
+		IsColCheckCollision = LeftCollision;
 		break;
 	case EDirState::Right:
 		IsColCheckPos = GetActorLocation() + (FVector::Right * FColCheckRight);
+
+		DownCollision->ActiveOff();
+		UpCollision->ActiveOff();
+		LeftCollision->ActiveOff();
+		RightCollision->ActiveOn();
+
+		IsColCheckCollision = RightCollision;
 		break;
 	default:
 		break;

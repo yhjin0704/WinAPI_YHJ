@@ -458,7 +458,7 @@ void UBattleLevel::TurnChange()
 
 void UBattleLevel::CursorMovePos(float _X, float _Y, EBattleSelect _MoveLength, EBattleSelect _MoveWidth)
 {
-	SelectBox->SetCursorRocation(_X, _Y);
+	SelectBox->SetCursorLocation(_X, _Y);
 	if (true == UEngineInput::IsDown('W') || true == UEngineInput::IsDown('S'))
 	{
 		BattleSelectCursor = _MoveLength;
@@ -482,8 +482,15 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 		SelectBox->SetSelectBoxTextActive(false);
 		SelectBox->SetCursorActive(false);
 
+		
+		if (95 > UEngineRandom::MainRandom.RandomInt(1, 100))
+		{
+			AccCheck = true;
+		}
+
 		CriCheck = UEngineRandom::MainRandom.RandomInt(1, 16);
-		Dmg = BattleHelper::CalDamage(EPSMove::물리, CriCheck, _Atker.Level, _Atker.Atk, _Atker.SAtk, _Atker.Type1, _Atker.Type2, _Defder.Def, _Defder.SDef, _Defder.Type1, _Defder.Type2, 35, 95, EType::노말);
+		Dmg = BattleHelper::CalDamage(EPSMove::물리, AccCheck, CriCheck, _Atker.Level, _Atker.Atk, _Atker.SAtk, _Atker.Type1, _Atker.Type2, _Defder.Def, _Defder.SDef, _Defder.Type1, _Defder.Type2, 35, EType::노말);
+
 		_Defder.Hp -= Dmg;
 		++Sequence;
 		break;
@@ -506,7 +513,34 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 		}
 		break;
 	case 2:
-		if (1 == CriCheck)
+		if (false == AccCheck)
+		{
+
+			TextBox->TextOff();
+			TextBox->SetTextTop("그러나 " + _Atker.Name + "의");
+			TextBox->SetTextBottom("공격은 빗나갔다!");
+
+			SelectBox->SetSelectBoxActive(false);
+			SelectBox->SetSelectBoxTextActive(false);
+			SelectBox->SetCursorActive(false);
+
+			IsDelay = true;
+			Delay -= _DeltaTime;
+			if (0 >= Delay)
+			{
+				IsDelay = false;
+				Delay = 1.5f;
+				++Sequence;
+			}
+		}
+		else
+		{
+			AccCheck = false;
+			++Sequence;
+		}
+		break;
+	case 3:
+		if (1 == CriCheck && Dmg != 0)
 		{
 			TextBox->TextOff();
 			TextBox->SetTextTop("급소에 맞았다!");
@@ -525,7 +559,7 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 			++Sequence;
 		}
 		break;
-	case 3:
+	case 4:
 		if (0 >= _Defder.Hp)
 		{
 			TextBox->TextOff();
@@ -566,7 +600,7 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 			}
 		}
 		break;
-	case 4:
+	case 5:
 		if (true == PlayerHelper::IsWild)
 		{
 			GetExp = BattleHelper::CalExp(_Defder.Level, 1.0f);
@@ -575,10 +609,10 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 		}
 		++Sequence;
 		break;
-	case 5:
+	case 6:
 		TextBox->TextOff();
 		TextBox->SetTextTop(_Atker.Name + "(은)는");
-		TextBox->SetTextBottom(std::to_string(GetExp) + "의 경험치를 얻었다");
+		TextBox->SetTextBottom(std::to_string(GetExp) + "경험치를 받았다!");
 
 		IsDelay = true;
 		Delay -= _DeltaTime;

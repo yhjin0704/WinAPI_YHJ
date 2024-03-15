@@ -52,6 +52,7 @@ private:
 	EBattleSelect BattleSelectCursor = EBattleSelect::Fight;
 
 	//1~16중 1이면 급소
+	bool AccCheck = false;
 	int CriCheck = 0;
 	int Dmg = 0;
 

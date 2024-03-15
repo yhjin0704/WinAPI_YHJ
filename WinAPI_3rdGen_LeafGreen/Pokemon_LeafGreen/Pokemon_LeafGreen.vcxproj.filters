@@ -178,6 +178,10 @@
     <ClCompile Include="Npc.cpp">
       <Filter>Field\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="MoveInfo.cpp" />
+    <ClCompile Include="Mom.cpp">
+      <Filter>Field\WestFieldLevel\PlayerHome\1F\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon3rdGen_Core.h" />
@@ -356,6 +360,10 @@
     </ClInclude>
     <ClInclude Include="Npc.h">
       <Filter>Field\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveInfo.h" />
+    <ClInclude Include="Mom.h">
+      <Filter>Field\WestFieldLevel\PlayerHome\1F\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

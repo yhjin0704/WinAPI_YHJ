@@ -20,14 +20,15 @@ public:
 		IsTrainer = _OnOff;
 	}
 
-	void PushBackEntry(int _DexNo, int _Level, float _Hp, float _Atk, float _Def, float _SAtk, float _SDef, float _Spd);
+	void SetActiveUpDownRenderer(FVector _PlayerPos);
+
+	void PushBackEntry(int _DexNo, int _Level, std::string _Ability, float _Hp, float _Atk, float _Def, float _SAtk, float _SDef, float _Spd);
 	PokemonInfo SetIV(PokemonInfo _Pokemon, float _Hp, float _Atk, float _Def, float _SAtk, float _SDef, float _Spd);
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-private:
 	bool IsTrainer = false;
 	std::list<PokemonInfo> Entry;
 
@@ -37,5 +38,7 @@ private:
 	UCollision* BattlecheckUpCollision = nullptr;
 	UCollision* BattlecheckLeftCollision = nullptr;
 	UCollision* BattlecheckRightCollision = nullptr;
+
+private:
 };
 

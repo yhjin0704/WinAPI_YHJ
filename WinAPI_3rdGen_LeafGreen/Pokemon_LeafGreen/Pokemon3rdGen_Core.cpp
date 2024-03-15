@@ -388,6 +388,96 @@ void Pokemon3rdGen_Core::BeginPlay()
 	}
 
 	{
+		PokemonInfo Info;
+		Info.DexNo = 74;
+		Info.Tribe = "²¿¸¶µ¹";
+		Info.Type1 = EType::¹ÙÀ§;
+		Info.Type1 = EType::¶¥;
+		Info.BHp = 40.0f;
+		Info.BAtk = 80.0f;
+		Info.BDef = 100.0f;
+		Info.BSAtk = 30.0f;
+		Info.BSDef = 30.0f;
+		Info.BSpd = 20.0f;
+		Info.Ability1 = "µ¹¸Ó¸®";
+		Info.Ability2 = "¿Ë°ñÂü";
+		Info.Genderper = 500;
+		Info.EvolveLevel = 25;
+		Info.NextEvolveDexNo = 75;
+		Info.CalImageNo(Info.DexNo);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 75;
+		Info.Tribe = "µ¥±¸¸®";
+		Info.Type1 = EType::¹ÙÀ§;
+		Info.Type1 = EType::¶¥;
+		Info.BHp = 55.0f;
+		Info.BAtk = 95.0f;
+		Info.BDef = 115.0f;
+		Info.BSAtk = 45.0f;
+		Info.BSDef = 45.0f;
+		Info.BSpd = 35.0f;
+		Info.Ability1 = "µ¹¸Ó¸®";
+		Info.Ability2 = "¿Ë°ñÂü";
+		Info.Genderper = 500;
+		Info.EvolveLevel = 101;
+		Info.NextEvolveDexNo = 76;
+		Info.UseItemEvolve = true;
+		Info.CalImageNo(Info.DexNo);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 76;
+		Info.Tribe = "µü±¸¸®";
+		Info.Type1 = EType::¹ÙÀ§;
+		Info.Type1 = EType::¶¥;
+		Info.BHp = 80.0f;
+		Info.BAtk = 110.0f;
+		Info.BDef = 130.0f;
+		Info.BSAtk = 55.0f;
+		Info.BSDef = 65.0f;
+		Info.BSpd = 45.0f;
+		Info.Ability1 = "µ¹¸Ó¸®";
+		Info.Ability2 = "¿Ë°ñÂü";
+		Info.Genderper = 500;
+		Info.EvolveLevel = 101;
+		Info.NextEvolveDexNo = 0;
+		Info.CalImageNo(Info.DexNo);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
+		PokemonInfo Info;
+		Info.DexNo = 95;
+		Info.Tribe = "·Õ½ºÅæ";
+		Info.Type1 = EType::¹ÙÀ§;
+		Info.Type1 = EType::¶¥;
+		Info.BHp = 35.0f;
+		Info.BAtk = 45.0f;
+		Info.BDef = 160.0f;
+		Info.BSAtk = 30.0f;
+		Info.BSDef = 45.0f;
+		Info.BSpd = 70.0f;
+		Info.Ability1 = "µ¹¸Ó¸®";
+		Info.Ability2 = "¿Ë°ñÂü";
+		Info.Genderper = 500;
+		Info.EvolveLevel = 101;
+		Info.NextEvolveDexNo = 208;
+		Info.UseItemEvolve = true;
+		Info.CalImageNo(Info.DexNo);
+
+		AllPokemonInfo[Info.DexNo] = Info;
+	}
+
+	{
 		CreateLevel<UTitleLevel1>("TitleLevel1");
 		CreateLevel<UTitleLevel2>("TitleLevel2");
 		CreateLevel<UTitleLevel3>("TitleLevel3");

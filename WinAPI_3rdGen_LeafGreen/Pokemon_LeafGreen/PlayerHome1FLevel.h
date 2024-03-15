@@ -3,6 +3,7 @@
 #include "PlayerHome1FGround.h"
 #include "PlayerHomeDoor.h"
 #include "PlayerHome1FStairs.h"
+#include "Mom.h"
 
 class UPlayerHome1FLevel : public UFieldLevel
 {
@@ -27,5 +28,7 @@ private:
 	APlayerHome1FGround* Ground;
 	APlayerHomeDoor* Door;
 	APlayerHome1FStairs* Stairs;
+
+	AMom* Mom;
 };
 

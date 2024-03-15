@@ -235,40 +235,6 @@ void APlayer::KeyInputMove(float _DeltaTime)
 			GEngine->ChangeLevel("BattleLevel");
 		}
 	}
-	SetColBoxDir(PrevDirInput);
-}
-
-void APlayer::SetColBoxDir(EDirState _InputDir)
-{
-	switch (_InputDir)
-	{
-	case EDirState::Down:
-		DownCollision->ActiveOn();
-		UpCollision->ActiveOff();
-		LeftCollision->ActiveOff();
-		RightCollision->ActiveOff();
-		break;
-	case EDirState::Up:
-		DownCollision->ActiveOff();
-		UpCollision->ActiveOn();
-		LeftCollision->ActiveOff();
-		RightCollision->ActiveOff();
-		break;
-	case EDirState::Left:
-		DownCollision->ActiveOff();
-		UpCollision->ActiveOff();
-		LeftCollision->ActiveOn();
-		RightCollision->ActiveOff();
-		break;
-	case EDirState::Right:
-		DownCollision->ActiveOff();
-		UpCollision->ActiveOff();
-		LeftCollision->ActiveOff();
-		RightCollision->ActiveOn();
-		break;
-	default:
-		break;
-	}
 }
 
 //키 입력시 애니메이션 재생

@@ -34,6 +34,12 @@ void UFieldLevel::BeginPlay()
 
 	UEngineResourcesManager::GetInst().CuttingImage("Player_Boy_Bike_Down_Jump.png", 7, 2);
 
+	UEngineResourcesManager::GetInst().CuttingImage("Brock_Idle.png", 4, 1);
+
+	UEngineResourcesManager::GetInst().CuttingImage("Nurse_Idle.png", 4, 1);
+	UEngineResourcesManager::GetInst().CuttingImage("Nurse_Nod.png", 2, 1);
+
+	UEngineResourcesManager::GetInst().CuttingImage("Mom_Idle.png", 4, 1);
 
 	Player = SpawnActor<APlayer>();
 	Player->SetCharacterName("Player_Boy");

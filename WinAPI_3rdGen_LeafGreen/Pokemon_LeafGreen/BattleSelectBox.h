@@ -18,7 +18,7 @@ public:
 	void SetSelectBoxTextActive(bool _OnOff);
 	void SetCursorActive(bool _OnOff);
 
-	void SetCursorRocation(float _X, float _Y);
+	void SetCursorLocation(float _X, float _Y);
 
 protected:
 	void BeginPlay() override;

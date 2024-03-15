@@ -46,7 +46,7 @@ void AMyPokemonSelectBox::SetSelectBoxActive(bool _OnOff)
 	}
 }
 
-void AMyPokemonSelectBox::SetCursorRocation(float _X, float _Y)
+void AMyPokemonSelectBox::SetCursorLocation(float _X, float _Y)
 {
 	CursorRender->SetTransform({ { _X * FScaleMultiple, _Y * FScaleMultiple }, { (CursorRender->GetImage()->GetScale()) * FScaleMultiple} });
 }

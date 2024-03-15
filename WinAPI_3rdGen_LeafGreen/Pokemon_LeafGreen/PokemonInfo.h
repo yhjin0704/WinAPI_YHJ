@@ -64,7 +64,7 @@ public:
 	bool Gender = true;
 	ENature Nature = ENature::Hardy;
 	std::string KNature = "노력하는";
-	std::string Ability = "";
+	std::string Ability = Ability1;
 
 	float IVHp = 0;
 	float IVAtk = 0;

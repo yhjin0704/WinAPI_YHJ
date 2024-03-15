@@ -9,6 +9,7 @@
 #include <EngineCore\EngineResourcesManager.h>
 #include <EngineBase\EngineFile.h>
 #include "PokemonInfo.h"
+#include "MoveInfo.h"
 
 class Pokemon3rdGen_Core : public UEngineCore
 {
@@ -28,10 +29,10 @@ public:
 		return dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->AllPokemonInfo;
 	}
 
-	/*static PokemonInfo GetCalStatusPoketMon(int _DexNo)
+	static std::map<std::string, PokemonInfo> GetAllMoveInfo()
 	{
-		return AllPokemonInfo[_DexNo]
-	}*/
+		return dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->AllMoveInfo;
+	}
 	
 	static std::list<PokemonInfo> GetEntry()
 	{
@@ -56,6 +57,7 @@ private:
 	// 초기정보
 	// 게임내에서 나올수 있는데.
 	std::map<int, PokemonInfo> AllPokemonInfo;
+	std::map<std::string, PokemonInfo> AllMoveInfo;
 	//std::map<std::string, > AllMoveInfo;
 
 	// 내가 들고 있는 포켓몬

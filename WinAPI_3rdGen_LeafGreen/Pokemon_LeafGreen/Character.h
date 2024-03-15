@@ -48,6 +48,8 @@ protected:
 	std::string Name = "";
 	std::string CharacterAnimation = "";
 
+	UCollision* IsColCheckCollision = nullptr;
+
 	UCollision* DownCollision = nullptr;
 	UCollision* UpCollision = nullptr;
 	UCollision* LeftCollision = nullptr;

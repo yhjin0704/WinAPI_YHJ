@@ -26,12 +26,18 @@ void UPlayerHome1FLevel::BeginPlay()
 	Door = SpawnActor<APlayerHomeDoor>();
 	Stairs = SpawnActor<APlayerHome1FStairs>();
 
+	Mom = SpawnActor<AMom>();
+
 	Door->SetActorLocation({ (64 + (FTileScale / 2)) * FScaleMultiple , (160 + (FTileScale / 2)) * FScaleMultiple });
 	Stairs->SetActorLocation({ (192 + (FTileScale / 2)) * FScaleMultiple , (32 + (FTileScale / 2)) * FScaleMultiple });
+	Mom->SetActorLocation({ (192 + (FTileScale / 2)) * FScaleMultiple , (32 + (FTileScale / 2)) * FScaleMultiple });
 }
 
 void UPlayerHome1FLevel::Tick(float _DeltaTime)
 {
+	UFieldLevel::Tick(_DeltaTime);
+
+	Mom->SetActiveUpDownRenderer(Player->GetActorLocation());
 }
 
 void UPlayerHome1FLevel::LevelStart(ULevel* _PrevLevel)

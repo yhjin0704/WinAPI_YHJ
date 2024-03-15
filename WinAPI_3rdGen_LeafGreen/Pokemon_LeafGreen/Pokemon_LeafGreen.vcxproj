@@ -170,6 +170,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Mom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MoveInfo.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Npc.cpp">
       <SubType>
       </SubType>
@@ -400,6 +408,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Mom.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MoveInfo.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Npc.h">
       <SubType>
       </SubType>
