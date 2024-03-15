@@ -235,6 +235,7 @@ void APlayer::KeyInputMove(float _DeltaTime)
 			GEngine->ChangeLevel("BattleLevel");
 		}
 	}
+	SetColCheckPos(PrevDirInput);
 }
 
 //키 입력시 애니메이션 재생

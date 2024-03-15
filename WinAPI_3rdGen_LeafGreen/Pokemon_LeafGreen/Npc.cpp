@@ -17,9 +17,24 @@ void ANpc::BeginPlay()
 	CharacterIfDownRenderer = CreateImageRenderer(ERenderOrder::NpcPosIsDown);
 
 	DownCollision = CreateCollision(ECollisionOrder::Npc);
+	DownCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
+	DownCollision->SetPosition({ GetActorLocation().X, (GetActorLocation().Y + FHGameTileScale + (FHGameTileScale / 2)) });
+	DownCollision->SetColType(ECollisionType::Rect);
+
 	UpCollision = CreateCollision(ECollisionOrder::Npc);
+	UpCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
+	UpCollision->SetPosition({ GetActorLocation().X, (GetActorLocation().Y + FHGameTileScale - (FHGameTileScale / 2)) });
+	UpCollision->SetColType(ECollisionType::Rect);
+
 	LeftCollision = CreateCollision(ECollisionOrder::Npc);
+	LeftCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
+	LeftCollision->SetPosition({ GetActorLocation().X - (FHGameTileScale / 2), (GetActorLocation().Y + FHGameTileScale) });
+	LeftCollision->SetColType(ECollisionType::Rect);
+
 	RightCollision = CreateCollision(ECollisionOrder::Npc);
+	RightCollision->SetScale({ IGameTileScale / 2 , IGameTileScale / 2 });
+	RightCollision->SetPosition({ GetActorLocation().X + (FHGameTileScale / 2), (GetActorLocation().Y + FHGameTileScale) });
+	RightCollision->SetColType(ECollisionType::Rect);
 
 	BattlecheckDownCollision = CreateCollision(ECollisionOrder::BattleCheck);
 	BattlecheckUpCollision = CreateCollision(ECollisionOrder::BattleCheck);

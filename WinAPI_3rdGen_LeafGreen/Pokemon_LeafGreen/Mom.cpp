@@ -18,10 +18,12 @@ void AMom::BeginPlay()
 	CharacterRenderer->SetTransform({ { 0, 0 }, { 16.0f * FScaleMultiple, 32.0f * FScaleMultiple } });
 	CharacterIfDownRenderer->SetTransform({ { 0, 0 },{ 16.0f * FScaleMultiple, 32.0f * FScaleMultiple } });
 
-	DownCollision ;
+	DownCollision->ActiveOn();
 	UpCollision  ;
 	LeftCollision ;
 	RightCollision;
+
+	PrevDirInput = EDirState::Left;
 }
 
 void AMom::Tick(float _DeltaTime)

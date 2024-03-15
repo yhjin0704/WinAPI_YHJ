@@ -30,7 +30,7 @@ void UPlayerHome1FLevel::BeginPlay()
 
 	Door->SetActorLocation({ (64 + (FTileScale / 2)) * FScaleMultiple , (160 + (FTileScale / 2)) * FScaleMultiple });
 	Stairs->SetActorLocation({ (192 + (FTileScale / 2)) * FScaleMultiple , (32 + (FTileScale / 2)) * FScaleMultiple });
-	Mom->SetActorLocation({ (192 + (FTileScale / 2)) * FScaleMultiple , (32 + (FTileScale / 2)) * FScaleMultiple });
+	Mom->SetActorLocation({ (128 + (FTileScale / 2)) * FScaleMultiple , (64) * FScaleMultiple });
 }
 
 void UPlayerHome1FLevel::Tick(float _DeltaTime)

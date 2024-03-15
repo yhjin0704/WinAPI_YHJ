@@ -133,6 +133,7 @@ void ACharacter::SetColCheckPos(EDirState _PrevDirInput)
 
 bool ACharacter::ColCheck(EDirState _PrevDirInput)//FScaleMultiple
 {
+	std::vector<UCollision*> Result;
 	SetColCheckPos(_PrevDirInput);
 	Color8Bit ColColor = Global::GColMapImage->GetColor((IsColCheckPos.iX() / IScaleMultiple), (IsColCheckPos.iY() / IScaleMultiple), Color8Bit::MagentaA);
 	if (Color8Bit::MagentaA == ColColor)
@@ -154,11 +155,15 @@ bool ACharacter::ColCheck(EDirState _PrevDirInput)//FScaleMultiple
 			return true;
 		}
 	}
+	else if (true == IsColCheckCollision->CollisionCheck(ECollisionOrder::Npc, Result)
+		|| true == IsColCheckCollision->CollisionCheck(ECollisionOrder::Item, Result))
+	{
+		return true;
+	}
 	else
 	{
 		return false;
 	}
-
 }
 
 void ACharacter::SetMovePos()
