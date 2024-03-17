@@ -54,7 +54,10 @@ void UOaksLabLevel::LevelStart(ULevel* _PrevLevel)
 	}
 	else
 	{
-		Global::ChangeBGM("Oaks_Lab.mp3");
+		if ("Oaks_Lab.mp3" != Global::PrevBGM)
+		{
+			Global::ChangeBGM("Oaks_Lab.mp3");
+		}
 	}
 }
 

@@ -50,7 +50,10 @@ void URivalHomeLevel::LevelStart(ULevel* _PrevLevel)
 	}
 	else
 	{
-		Global::ChangeBGM("Pallet_Town.mp3");
+		if ("Pallet_Town.mp3" != Global::PrevBGM)
+		{
+			Global::ChangeBGM("Pallet_Town.mp3");
+		}
 	}
 }
 
