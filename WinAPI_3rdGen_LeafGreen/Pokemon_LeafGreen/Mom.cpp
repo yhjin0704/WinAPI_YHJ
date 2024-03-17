@@ -100,6 +100,7 @@ void AMom::DefaultEvent()
 					++DialogCount;
 					break;
 				case 6:
+					PrevDirInput = EDirState::Left;
 					PlayerHelper::PlayerPause = false;
 					TextOff();
 					MsgBox->ActiveOff();

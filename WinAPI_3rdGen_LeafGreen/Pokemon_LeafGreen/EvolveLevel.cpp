@@ -65,7 +65,6 @@ void UEvolveLevel::Tick(float _DeltaTime)
 		break;
 	case 3:
 		EvolvePokemonRenderer->SetPokemonRenderer(EvolvePokemon);
-
 		*EntryIter = EvolvePokemon;
 		if (true == UEngineInput::IsDown('P') || true == UEngineInput::IsDown('L'))
 		{
@@ -80,6 +79,8 @@ void UEvolveLevel::Tick(float _DeltaTime)
 void UEvolveLevel::LevelStart(ULevel* _PrevLevel)
 {
 	PrevLevelName = _PrevLevel->GetName();
+
+	Global::ChangeBGM("Evolve.mp3");
 
 	Entry = dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->GetEntry();
 	for (EntryIter = Entry.begin(); EntryIter != Entry.end(); EntryIter++)

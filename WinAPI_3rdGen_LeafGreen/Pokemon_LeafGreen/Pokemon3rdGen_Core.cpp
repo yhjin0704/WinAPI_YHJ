@@ -497,7 +497,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 		CreateLevel<UMyTrainerCardLevel>("MyTrainerCardLevel");
 	}
 
-	ChangeLevel("OaksLabLevel");
+	ChangeLevel("TitleLevel1");
 }
 
 void Pokemon3rdGen_Core::Tick(float _DeltaTime)

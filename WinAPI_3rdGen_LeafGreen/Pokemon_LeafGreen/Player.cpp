@@ -196,6 +196,7 @@ void APlayer::KeyInputMove(float _DeltaTime)
 			if (Color8Bit(0, 255, 255, 0) == Global::GColMapImage->GetColor((IsColCheckPos.iX() / IScaleMultiple), (IsColCheckPos.iY() / IScaleMultiple), Color8Bit::MagentaA))
 			{
 				MoveState = EMoveState::Jump;
+				UEngineSound::SoundPlay("Jump.wav");
 			}
 			SetKeyInputAnimation(EDirState::Down);
 		}
@@ -441,6 +442,8 @@ void APlayer::UseBike()
 			if (EMoveType::Walk == MoveType || EMoveType::Run == MoveType)
 			{
 				PlayerHelper::PrevMoveType = MoveType;
+				UEngineSound::SoundPlay("Bike_Bell.wav"); 
+				Global::ChangeBGM("Bike.mp3");
 				MoveType = EMoveType::Bike;
 			}
 			else if (EMoveType::Bike == MoveType)

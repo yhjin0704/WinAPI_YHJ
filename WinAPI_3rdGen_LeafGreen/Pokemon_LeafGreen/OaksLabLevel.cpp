@@ -38,6 +38,7 @@ void UOaksLabLevel::LevelStart(ULevel* _PrevLevel)
 	GetPlayer()->SetMoveType(PlayerHelper::PlayerMoveType);
 	if (EMoveType::Bike == GetPlayer()->GetMoveType())
 	{
+		Global::ChangeBGM("Oaks_Lab.mp3");
 		GetPlayer()->SetMoveType(PlayerHelper::PrevMoveType);
 	}
 

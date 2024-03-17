@@ -31,3 +31,16 @@ void UTitleLevel1::BeginPlay()
 
 	this->SpawnActor<ATitleActor1>();
 }
+
+void UTitleLevel1::Tick(float _DeltaTime)
+{
+	ULevel::Tick(_DeltaTime);
+}
+
+void UTitleLevel1::LevelStart(ULevel* _PrevLevel)
+{
+}
+
+void UTitleLevel1::LevelEnd(ULevel* _NextLevel)
+{
+}

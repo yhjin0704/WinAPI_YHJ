@@ -603,6 +603,7 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 	case 5:
 		if (true == PlayerHelper::IsWild)
 		{
+			Global::ChangeBGM("Victory_Wild.mp3");
 			GetExp = BattleHelper::CalExp(_Defder.Level, 1.0f);
 			GetExp += 20000;
 			_Atker.Exp += GetExp;

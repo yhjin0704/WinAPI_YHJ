@@ -30,6 +30,7 @@ void URivalHomeLevel::LevelStart(ULevel* _PrevLevel)
 	GetPlayer()->SetMoveType(PlayerHelper::PlayerMoveType);
 	if (EMoveType::Bike == GetPlayer()->GetMoveType())
 	{
+		Global::ChangeBGM("Pallet_Town.mp3");
 		GetPlayer()->SetMoveType(PlayerHelper::PrevMoveType);
 	}
 
