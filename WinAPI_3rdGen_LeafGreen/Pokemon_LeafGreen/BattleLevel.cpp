@@ -600,7 +600,7 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 		}
 		break;
 	case 5:
-		if (true == _Atker.PlayerPokemon)
+		if (true == _Atker.PlayerPokemon) // 플레이어가 이겼을 경우
 		{
 			if (true == PlayerHelper::IsWild) // 야생 포켓몬
 			{
@@ -618,7 +618,7 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 			}
 			++Sequence;
 		}
-		else
+		else // 플레이어가 졌을 경우
 		{
 			TextBox->TextOff();
 			TextBox->SetTextTop(PlayerHelper::PlayerName + "(은)는");

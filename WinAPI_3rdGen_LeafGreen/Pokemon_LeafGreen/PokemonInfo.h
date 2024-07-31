@@ -30,7 +30,7 @@ public:
 	void Evolve();
 	bool EvolveCheck();
 
-	void AddPossessMoves();
+	bool AddPossessMoves(MoveInfo _LearnMove);
 
 	int DexNo = 0;
 	std::string Tribe = "";
@@ -97,8 +97,12 @@ public:
 	float NSDef = 1.0f;
 	float NSpd = 1.0f;
 
-	std::list<MoveInfo> PossessMoves;
-	std::map<int, MoveInfo> LevelUpMoves;
+	std::list<MoveInfo> LPossessMoves;
+	std::list<MoveInfo>::iterator LPossessMovesIter;
+
+	std::map<int, MoveInfo> MLevelUpMoves;
+
+	std::list<MoveInfo> LLearnReadyMoves;
 
 private:
 };

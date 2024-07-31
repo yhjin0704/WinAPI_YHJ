@@ -282,6 +282,12 @@ void PokemonInfo::LevelUpCheck()
 	{
 		Exp -= MaxExp;
 		LevelUp();
+		if (MLevelUpMoves.end() != MLevelUpMoves.find(Level))
+		{
+			AddPossessMoves(MLevelUpMoves[Level]);
+			if (AddPossessMoves(MLevelUpMoves[Level]))
+			LLearnReadyMoves.push_back(MLevelUpMoves[Level]);
+		}
 		if (true == EvolveCheck())
 		{
 			CanEvolve = true;
@@ -334,4 +340,27 @@ void PokemonInfo::Evolve()
 bool PokemonInfo::EvolveCheck()
 {
 	return Level > EvolveLevel;
+}
+
+bool PokemonInfo::AddPossessMoves(MoveInfo _LearnMove)
+{
+	if (4 > LPossessMoves.size())
+	{
+		for (LPossessMovesIter = LPossessMoves.begin(); LPossessMovesIter != LPossessMoves.end(); LPossessMovesIter++)
+		{
+			MoveInfo LPossessMovesCheck = *LPossessMovesIter;
+			// 이미 배우고 있는지 확인
+			if (_LearnMove.Name == LPossessMovesCheck.Name) 
+			{
+				return true;
+			}
+		}
+		
+		LPossessMoves.push_back(_LearnMove);
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
