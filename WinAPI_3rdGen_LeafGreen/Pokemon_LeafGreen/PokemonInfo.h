@@ -2,6 +2,7 @@
 #include <EngineCore/Actor.h>
 #include <EngineBase\EngineRandom.h>
 #include "PokemonHelper.h"
+#include "MoveInfo.h"
 
 class PokemonInfo 
 {
@@ -28,6 +29,8 @@ public:
 
 	void Evolve();
 	bool EvolveCheck();
+
+	void AddPossessMoves();
 
 	int DexNo = 0;
 	std::string Tribe = "";
@@ -93,6 +96,9 @@ public:
 	float NSAtk = 1.0f;
 	float NSDef = 1.0f;
 	float NSpd = 1.0f;
+
+	std::list<MoveInfo> PossessMoves;
+	std::map<int, MoveInfo> LevelUpMoves;
 
 private:
 };

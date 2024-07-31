@@ -492,7 +492,7 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 		SelectBox->SetCursorActive(false);
 
 		
-		if (95 > UEngineRandom::MainRandom.RandomInt(1, 100))
+		if (95 > UEngineRandom::MainRandom.RandomInt(0, 100))
 		{
 			AccCheck = true;
 		}
@@ -500,7 +500,6 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 		CriCheck = UEngineRandom::MainRandom.RandomInt(1, 16);
 		Dmg = BattleHelper::CalDamage(EPSMove::물리, AccCheck, CriCheck, _Atker.Level, _Atker.Atk, _Atker.SAtk, _Atker.Type1, _Atker.Type2, _Defder.Def, _Defder.SDef, _Defder.Type1, _Defder.Type2, 35, EType::노말);
 
-		_Defder.Hp -= Dmg;
 		++Sequence;
 		break;
 	case 1:
@@ -567,6 +566,9 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 		{
 			++Sequence;
 		}
+
+		_Defder.Hp -= Dmg;
+
 		break;
 	case 4:
 		if (0 >= _Defder.Hp)
@@ -575,25 +577,13 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 			TextBox->SetTextTop(_Defder.Name + "(은)는");
 			TextBox->SetTextBottom("쓰러졌다");
 
-			if (true == _Atker.PlayerPokemon)
-			{
-				IsDelay = true;
-				Delay -= _DeltaTime;
-				if (0 >= Delay)
-				{
-					IsDelay = false;
-					Delay = 1.5f;
-					++Sequence;
-				}
-			}
-
 			IsDelay = true;
 			Delay -= _DeltaTime;
 			if (0 >= Delay)
 			{
 				IsDelay = false;
 				Delay = 1.5f;
-				BattleSequence = EBattleSequence::End;
+				++Sequence;
 			}
 		}
 		else
@@ -610,14 +600,39 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 		}
 		break;
 	case 5:
-		if (true == PlayerHelper::IsWild)
+		if (true == _Atker.PlayerPokemon)
 		{
-			Global::ChangeBGM("Victory_Wild.mp3");
-			GetExp = BattleHelper::CalExp(_Defder.Level, 1.0f);
-			GetExp += 20000;
-			_Atker.Exp += GetExp;
+			if (true == PlayerHelper::IsWild) // 야생 포켓몬
+			{
+				Global::ChangeBGM("Victory_Wild.mp3");
+				GetExp = BattleHelper::CalExp(_Defder.Level, EEnemyCategory::Wild);
+				GetExp += 20000;
+				_Atker.Exp += GetExp;
+			}
+			else // 트레이너
+			{
+				Global::ChangeBGM("Victory_Wild.mp3");
+				GetExp = BattleHelper::CalExp(_Defder.Level, EEnemyCategory::Trainer);
+				GetExp += 20000;
+				_Atker.Exp += GetExp;
+			}
+			++Sequence;
 		}
-		++Sequence;
+		else
+		{
+			TextBox->TextOff();
+			TextBox->SetTextTop(PlayerHelper::PlayerName + "(은)는");
+			TextBox->SetTextBottom("눈 앞이 깜깜해졌다");
+
+			IsDelay = true;
+			Delay -= _DeltaTime;
+			if (0 >= Delay)
+			{
+				IsDelay = false;
+				Delay = 1.5f;
+				BattleSequence = EBattleSequence::End;
+			}
+		}
 		break;
 	case 6:
 		TextBox->TextOff();

@@ -98,7 +98,9 @@ void Pokemon3rdGen_Core::BeginPlay()
 		}
 	}
 
+	// Æ÷ÄÏ¸ó Info
 	{
+		// ÀÌ»óÇØ¾¾
 		{
 			PokemonInfo Info;
 			Info.DexNo = 1;
@@ -120,6 +122,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// ÀÌ»óÇØÇ®
 		{
 			PokemonInfo Info;
 			Info.DexNo = 2;
@@ -141,6 +144,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// ÀÌ»óÇØ²É
 		{
 			PokemonInfo Info;
 			Info.DexNo = 3;
@@ -162,6 +166,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// ÆÄÀÌ¸®
 		{
 			PokemonInfo Info;
 			Info.DexNo = 4;
@@ -182,6 +187,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// ¸®ÀÚµå
 		{
 			PokemonInfo Info;
 			Info.DexNo = 5;
@@ -202,6 +208,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// ¸®ÀÚ¸ù
 		{
 			PokemonInfo Info;
 			Info.DexNo = 6;
@@ -223,6 +230,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// ²¿ºÎ±â
 		{
 			PokemonInfo Info;
 			Info.DexNo = 7;
@@ -243,6 +251,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// ¾î´ÏºÎ±â
 		{
 			PokemonInfo Info;
 			Info.DexNo = 8;
@@ -263,6 +272,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// °ÅºÏ¿Õ
 		{
 			PokemonInfo Info;
 			Info.DexNo = 9;
@@ -283,6 +293,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// ±¸±¸
 		{
 			PokemonInfo Info;
 			Info.DexNo = 16;
@@ -304,6 +315,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// ÇÇÁÔ
 		{
 			PokemonInfo Info;
 			Info.DexNo = 17;
@@ -325,6 +337,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// ÇÇÁÔÅõ
 		{
 			PokemonInfo Info;
 			Info.DexNo = 18;
@@ -346,6 +359,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// ²¿·¿
 		{
 			PokemonInfo Info;
 			Info.DexNo = 19;
@@ -367,6 +381,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// ·¹Æ®¶ó
 		{
 			PokemonInfo Info;
 			Info.DexNo = 20;
@@ -388,6 +403,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// ²¿¸¶µ¹
 		{
 			PokemonInfo Info;
 			Info.DexNo = 74;
@@ -410,6 +426,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// µ¥±¸¸®
 		{
 			PokemonInfo Info;
 			Info.DexNo = 75;
@@ -433,6 +450,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// µü±¸¸®
 		{
 			PokemonInfo Info;
 			Info.DexNo = 76;
@@ -455,6 +473,7 @@ void Pokemon3rdGen_Core::BeginPlay()
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
+		// ·Õ½ºÅæ
 		{
 			PokemonInfo Info;
 			Info.DexNo = 95;
@@ -476,6 +495,23 @@ void Pokemon3rdGen_Core::BeginPlay()
 			Info.CalImageNo(Info.DexNo);
 
 			AllPokemonInfo[Info.DexNo] = Info;
+		}
+	}
+
+	// ±â¼ú Info
+	{
+		// ¸öÅë¹ÚÄ¡±â
+		{
+			MoveInfo Info;
+			Info.Name = "¸öÅë¹ÚÄ¡±â";
+			Info.Type = EType::³ë¸»;
+			Info.Caterory = EPSMove::¹°¸®;
+			Info.Power = 35;
+			Info.Acc = 95;
+			Info.MaxPP = 35;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
 		}
 	}
 

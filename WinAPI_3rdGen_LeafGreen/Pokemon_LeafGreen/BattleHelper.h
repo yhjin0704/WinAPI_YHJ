@@ -42,6 +42,12 @@ enum class EUseBall
 	MasterBall
 };
 
+enum class EEnemyCategory
+{
+	Wild,
+	Trainer,
+};
+
 class BattleHelper
 {
 public:
@@ -57,7 +63,7 @@ public:
 
 	static int CalDamage(EPSMove _Category, bool _AccCheck, int _CriCheck, int _ALevel, int _AAtk, int _ASAtk, EType _AType1, EType _AType2, int _DDef, int _DSDef, EType _DType1, EType _DType2, int _MPower, EType _MType);
 	//_EnemyCategory 야생 = 1 트레이너 = 1.5
-	static int CalExp(int _EnemyLevel, float _EnemyCategory);
+	static int CalExp(int _EnemyLevel, EEnemyCategory _EnemyCategory);
 
 	static bool IsSwitch;
 

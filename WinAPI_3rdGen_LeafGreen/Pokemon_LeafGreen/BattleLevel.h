@@ -33,13 +33,13 @@ protected:
 	void LevelEnd(ULevel* _NextLevel) override;
 
 private:
-	ABattleBackGround* BackGround;
-	ABattleGround* EnemyGround;
-	ABattleGround* PlayerGround;
-	ABattlePokemonStatus* EnemyStatus;
-	ABattlePokemonStatus* PlayerStatus;
-	ABattleTextBox* TextBox;
-	ABattleSelectBox* SelectBox;
+	ABattleBackGround* BackGround = nullptr;
+	ABattleGround* EnemyGround = nullptr;
+	ABattleGround* PlayerGround = nullptr;
+	ABattlePokemonStatus* EnemyStatus = nullptr;
+	ABattlePokemonStatus* PlayerStatus = nullptr;
+	ABattleTextBox* TextBox = nullptr;
+	ABattleSelectBox* SelectBox = nullptr;
 
 	std::list<PokemonInfo> BattleEntry;
 	PokemonInfo MyPokemon;

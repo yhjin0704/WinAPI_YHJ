@@ -70,8 +70,16 @@ int BattleHelper::CalDamage(EPSMove _Category, bool _AccCheck, int _CriCheck, in
 	return FinalDmg;
 }
 
-int BattleHelper::CalExp(int _EnemyLevel, float _EnemyCategory)
+int BattleHelper::CalExp(int _EnemyLevel, EEnemyCategory _EnemyCategory)
 {
 	int Level2 = _EnemyLevel * _EnemyLevel;
-	return std::ceil(static_cast<float>(Level2) * 2.5f * _EnemyCategory);
+	switch (_EnemyCategory)
+	{
+	case EEnemyCategory::Wild:
+		return std::ceil(static_cast<float>(Level2) * 2.5f * 1.0f);
+	case EEnemyCategory::Trainer:
+		return std::ceil(static_cast<float>(Level2) * 2.5f * 1.5f);
+	default:
+		break;
+	}
 }
