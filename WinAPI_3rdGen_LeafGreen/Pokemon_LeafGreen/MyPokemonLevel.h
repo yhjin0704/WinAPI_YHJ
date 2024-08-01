@@ -38,6 +38,11 @@ public:
 	{
 		return PrevLevelName;
 	}
+	
+	int GetSelectSlot()
+	{
+		return SelectSlot;
+	}
 
 protected:
 	void BeginPlay() override;

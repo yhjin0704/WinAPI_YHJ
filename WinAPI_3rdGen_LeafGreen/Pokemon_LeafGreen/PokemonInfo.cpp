@@ -286,7 +286,9 @@ void PokemonInfo::LevelUpCheck()
 		{
 			AddPossessMoves(MLevelUpMoves[Level]);
 			if (AddPossessMoves(MLevelUpMoves[Level]))
-			LLearnReadyMoves.push_back(MLevelUpMoves[Level]);
+			{
+				LLearnReadyMoves.push_back(MLevelUpMoves[Level]);
+			}
 		}
 		if (true == EvolveCheck())
 		{

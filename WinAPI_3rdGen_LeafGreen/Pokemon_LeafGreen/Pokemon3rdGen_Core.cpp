@@ -500,6 +500,21 @@ void Pokemon3rdGen_Core::BeginPlay()
 
 	// ±â¼ú Info
 	{
+		//³ë¸»
+		// ºÐ³ë
+		{
+			MoveInfo Info;
+			Info.Name = "ºÐ³ë";
+			Info.Type = EType::³ë¸»;
+			Info.Caterory = EPSMove::¹°¸®;
+			Info.Power = 20;
+			Info.Acc = 100;
+			Info.MaxPP = 20;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
 		// ¸öÅë¹ÚÄ¡±â
 		{
 			MoveInfo Info;
@@ -509,6 +524,78 @@ void Pokemon3rdGen_Core::BeginPlay()
 			Info.Power = 35;
 			Info.Acc = 95;
 			Info.MaxPP = 35;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		// ÇÒÄû±â
+		{
+			MoveInfo Info;
+			Info.Name = "ÇÒÄû±â";
+			Info.Type = EType::³ë¸»;
+			Info.Caterory = EPSMove::¹°¸®;
+			Info.Power = 40;
+			Info.Acc = 100;
+			Info.MaxPP = 35;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		// ºÒ²É
+		// ºÒ²É¼¼·Ê
+		{
+			MoveInfo Info;
+			Info.Name = "ºÒ²É¼¼·Ê";
+			Info.Type = EType::ºÒ²É;
+			Info.Caterory = EPSMove::Æ¯¼ö;
+			Info.Power = 40;
+			Info.Acc = 100;
+			Info.MaxPP = 25;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		// Ç®
+		// µ¢±¼Ã¤Âï
+		{
+			MoveInfo Info;
+			Info.Name = "µ¢±¼Ã¤Âï";
+			Info.Type = EType::Ç®;
+			Info.Caterory = EPSMove::¹°¸®;
+			Info.Power = 35;
+			Info.Acc = 100;
+			Info.MaxPP = 10;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		// ÀÙ³¯°¡¸£±â
+		{
+			MoveInfo Info;
+			Info.Name = "ÀÙ³¯°¡¸£±â";
+			Info.Type = EType::Ç®;
+			Info.Caterory = EPSMove::¹°¸®;
+			Info.Power = 55;
+			Info.Acc = 95;
+			Info.MaxPP = 25;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		// ¼Ö¶óºö
+		{
+			MoveInfo Info;
+			Info.Name = "¼Ö¶óºö";
+			Info.Type = EType::Ç®;
+			Info.Caterory = EPSMove::Æ¯¼ö;
+			Info.Power = 120;
+			Info.Acc = 100;
+			Info.MaxPP = 10;
 			Info.PP = Info.MaxPP;
 
 			AllMovesInfo[Info.Name] = Info;

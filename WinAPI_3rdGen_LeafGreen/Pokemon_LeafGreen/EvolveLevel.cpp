@@ -91,7 +91,7 @@ void UEvolveLevel::LevelStart(ULevel* _PrevLevel)
 			Order = 0;
 			Delay = 1.0f;
 			Count = 0;
-			break;
+			return;
 		}
 	}
 }

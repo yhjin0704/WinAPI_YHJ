@@ -1,5 +1,7 @@
 #pragma once
-class UPokemonStatusLevel
+#include "MenuUILevel.h"
+
+class UPokemonStatusLevel : public UMenuUILevel
 {
 public:
 	// constrcuter destructer
@@ -13,6 +15,10 @@ public:
 	UPokemonStatusLevel& operator=(UPokemonStatusLevel&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
+	void LevelStart(ULevel* _PrevLevel) override;
+	void LevelEnd(ULevel* _NextLevel) override;
 
 private:
 

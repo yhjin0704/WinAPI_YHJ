@@ -189,6 +189,7 @@ void UMyPokemonLevel::BaseState()
 			switch (CursorSelect)
 			{
 			case ESelectBoxCursor::Summary:
+				GEngine->ChangeLevel(PrevLevelName);
 				break;
 			case ESelectBoxCursor::Switch:
 				IsUseMenu = false;
