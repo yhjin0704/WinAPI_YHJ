@@ -38,8 +38,9 @@ int BattleHelper::CalDamage(EPSMove _Category, bool _AccCheck, int _CriCheck, in
 			ATypeDmg = 1.5f;
 		}
 
-		float DTypeDmg1 = 1.0f;
-		float DTypeDmg2 = 1.0f;
+		float DTypeDmg1 = CalTypeRelationshipDmg(_MType, _DType1);
+
+		float DTypeDmg2 = CalTypeRelationshipDmg(_MType, _DType2);
 
 		if (EPSMove::물리 == _Category)
 		{
@@ -70,9 +71,829 @@ int BattleHelper::CalDamage(EPSMove _Category, bool _AccCheck, int _CriCheck, in
 	return FinalDmg;
 }
 
+float BattleHelper::CalTypeRelationshipDmg(EType _MType, EType _DType)
+{
+	switch (_MType)
+	{
+	case EType::노말:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 1.f;
+		case EType::불꽃:
+			return 1.f;
+		case EType::물:
+			return 1.f;
+		case EType::풀:
+			return 1.f;
+		case EType::전기:
+			return 1.f;
+		case EType::얼음:
+			return 1.f;
+		case EType::격투:
+			return 1.f;
+		case EType::독:
+			return 1.f;
+		case EType::땅:
+			return 1.f;
+		case EType::비행:
+			return 1.f;
+		case EType::에스퍼:
+			return 1.f;
+		case EType::벌레:
+			return 1.f;
+		case EType::바위:
+			return 0.5f;
+		case EType::고스트:
+			return 0.f;
+		case EType::드래곤:
+			return 1.f;
+		case EType::악:
+			return 1.f;
+		case EType::강철:
+			return 0.5f;
+		case EType::페어리:
+			return 1.f;
+		default:
+			break;
+		}
+		break;
+	case EType::불꽃:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 1.f;
+		case EType::불꽃:
+			return 0.5f;
+		case EType::물:
+			return 0.5f;
+		case EType::풀:
+			return 2.f;
+		case EType::전기:
+			return 1.f;
+		case EType::얼음:
+			return 2.f;
+		case EType::격투:
+			return 1.f;
+		case EType::독:
+			return 1.f;
+		case EType::땅:
+			return 1.f;
+		case EType::비행:
+			return 1.f;
+		case EType::에스퍼:
+			return 1.f;
+		case EType::벌레:
+			return 2.f;
+		case EType::바위:
+			return 0.5f;
+		case EType::고스트:
+			return 1.f;
+		case EType::드래곤:
+			return 0.5f;
+		case EType::악:
+			return 1.f;
+		case EType::강철:
+			return 2.f;
+		case EType::페어리:
+			return 1.f;
+		default:
+			break;
+		}
+		break;
+	case EType::물:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 1.f;
+		case EType::불꽃:
+			return 2.f;
+		case EType::물:
+			return 0.5f;
+		case EType::풀:
+			return 0.5f;
+		case EType::전기:
+			return 1.f;
+		case EType::얼음:
+			return 1.f;
+		case EType::격투:
+			return 1.f;
+		case EType::독:
+			return 1.f;
+		case EType::땅:
+			return 2.f;
+		case EType::비행:
+			return 1.f;
+		case EType::에스퍼:
+			return 1.f;
+		case EType::벌레:
+			return 1.f;
+		case EType::바위:
+			return 2.f;
+		case EType::고스트:
+			return 1.f;
+		case EType::드래곤:
+			return 0.5f;
+		case EType::악:
+			return 1.f;
+		case EType::강철:
+			return 1.f;
+		case EType::페어리:
+			return 1.f;
+		default:
+			break;
+		}
+		break;
+	case EType::풀:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 1.f;
+		case EType::불꽃:
+			return 0.5f;
+		case EType::물:
+			return 2.f;
+		case EType::풀:
+			return 0.5f;
+		case EType::전기:
+			return 1.f;
+		case EType::얼음:
+			return 1.f;
+		case EType::격투:
+			return 1.f;
+		case EType::독:
+			return 0.5f;
+		case EType::땅:
+			return 2.f;
+		case EType::비행:
+			return 0.5f;
+		case EType::에스퍼:
+			return 1.f;
+		case EType::벌레:
+			return 0.5f;
+		case EType::바위:
+			return 2.f;
+		case EType::고스트:
+			return 1.f;
+		case EType::드래곤:
+			return 0.5f;
+		case EType::악:
+			return 1.f;
+		case EType::강철:
+			return 0.5f;
+		case EType::페어리:
+			return 1.f;
+		default:
+			break;
+		}
+		break;
+	case EType::전기:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 1.f;
+		case EType::불꽃:
+			return 1.f;
+		case EType::물:
+			return 2.f;
+		case EType::풀:
+			return 0.5f;
+		case EType::전기:
+			return 0.5f;
+		case EType::얼음:
+			return 1.f;
+		case EType::격투:
+			return 1.f;
+		case EType::독:
+			return 1.f;
+		case EType::땅:
+			return 0.f;
+		case EType::비행:
+			return 2.f;
+		case EType::에스퍼:
+			return 1.f;
+		case EType::벌레:
+			return 1.f;
+		case EType::바위:
+			return 1.f;
+		case EType::고스트:
+			return 1.f;
+		case EType::드래곤:
+			return 0.5f;
+		case EType::악:
+			return 1.f;
+		case EType::강철:
+			return 1.f;
+		case EType::페어리:
+			return 1.f;
+		default:
+			break;
+		}
+		break;
+	case EType::얼음:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 1.f;
+		case EType::불꽃:
+			return 0.5f;
+		case EType::물:
+			return 0.5f;
+		case EType::풀:
+			return 2.f;
+		case EType::전기:
+			return 1.f;
+		case EType::얼음:
+			return 0.5f;
+		case EType::격투:
+			return 1.f;
+		case EType::독:
+			return 1.f;
+		case EType::땅:
+			return 2.f;
+		case EType::비행:
+			return 2.f;
+		case EType::에스퍼:
+			return 1.f;
+		case EType::벌레:
+			return 1.f;
+		case EType::바위:
+			return 1.f;
+		case EType::고스트:
+			return 1.f;
+		case EType::드래곤:
+			return 2.f;
+		case EType::악:
+			return 1.f;
+		case EType::강철:
+			return 0.5f;
+		case EType::페어리:
+			return 1.f;
+		default:
+			break;
+		}
+		break;
+	case EType::격투:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 2.f;
+		case EType::불꽃:
+			return 1.f;
+		case EType::물:
+			return 1.f;
+		case EType::풀:
+			return 1.f;
+		case EType::전기:
+			return 1.f;
+		case EType::얼음:
+			return 2.f;
+		case EType::격투:
+			return 1.f;
+		case EType::독:
+			return 0.5f;
+		case EType::땅:
+			return 1.f;
+		case EType::비행:
+			return 0.5f;
+		case EType::에스퍼:
+			return 0.5f;
+		case EType::벌레:
+			return 0.5f;
+		case EType::바위:
+			return 2.f;
+		case EType::고스트:
+			return 0.f;
+		case EType::드래곤:
+			return 1.f;
+		case EType::악:
+			return 2.f;
+		case EType::강철:
+			return 2.f;
+		case EType::페어리:
+			return 0.5f;
+		default:
+			break;
+		}
+		break;
+	case EType::독:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 1.f;
+		case EType::불꽃:
+			return 1.f;
+		case EType::물:
+			return 1.f;
+		case EType::풀:
+			return 2.f;
+		case EType::전기:
+			return 1.f;
+		case EType::얼음:
+			return 1.f;
+		case EType::격투:
+			return 1.f;
+		case EType::독:
+			return 0.5f;
+		case EType::땅:
+			return 0.5f;
+		case EType::비행:
+			return 1.f;
+		case EType::에스퍼:
+			return 1.f;
+		case EType::벌레:
+			return 1.f;
+		case EType::바위:
+			return 0.5f;
+		case EType::고스트:
+			return 0.5f;
+		case EType::드래곤:
+			return 1.f;
+		case EType::악:
+			return 1.f;
+		case EType::강철:
+			return 0.f;
+		case EType::페어리:
+			return 2.f;
+		default:
+			break;
+		}
+		break;
+	case EType::땅:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 1.f;
+		case EType::불꽃:
+			return 2.f;
+		case EType::물:
+			return 1.f;
+		case EType::풀:
+			return 0.5f;
+		case EType::전기:
+			return 2.f;
+		case EType::얼음:
+			return 1.f;
+		case EType::격투:
+			return 1.f;
+		case EType::독:
+			return 2.f;
+		case EType::땅:
+			return 1.f;
+		case EType::비행:
+			return 0.f;
+		case EType::에스퍼:
+			return 1.f;
+		case EType::벌레:
+			return 0.5f;
+		case EType::바위:
+			return 2.f;
+		case EType::고스트:
+			return 1.f;
+		case EType::드래곤:
+			return 1.f;
+		case EType::악:
+			return 1.f;
+		case EType::강철:
+			return 2.f;
+		case EType::페어리:
+			return 1.f;
+		default:
+			break;
+		}
+		break;
+	case EType::비행:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 1.f;
+		case EType::불꽃:
+			return 1.f;
+		case EType::물:
+			return 1.f;
+		case EType::풀:
+			return 2.f;
+		case EType::전기:
+			return 0.5f;
+		case EType::얼음:
+			return 1.f;
+		case EType::격투:
+			return 2.f;
+		case EType::독:
+			return 1.f;
+		case EType::땅:
+			return 1.f;
+		case EType::비행:
+			return 1.f;
+		case EType::에스퍼:
+			return 1.f;
+		case EType::벌레:
+			return 2.f;
+		case EType::바위:
+			return 0.5f;
+		case EType::고스트:
+			return 1.f;
+		case EType::드래곤:
+			return 1.f;
+		case EType::악:
+			return 1.f;
+		case EType::강철:
+			return 0.5f;
+		case EType::페어리:
+			return 1.f;
+		default:
+			break;
+		}
+		break;
+	case EType::에스퍼:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 1.f;
+		case EType::불꽃:
+			return 1.f;
+		case EType::물:
+			return 1.f;
+		case EType::풀:
+			return 1.f;
+		case EType::전기:
+			return 1.f;
+		case EType::얼음:
+			return 1.f;
+		case EType::격투:
+			return 2.f;
+		case EType::독:
+			return 2.f;
+		case EType::땅:
+			return 1.f;
+		case EType::비행:
+			return 1.f;
+		case EType::에스퍼:
+			return 0.5f;
+		case EType::벌레:
+			return 1.f;
+		case EType::바위:
+			return 1.f;
+		case EType::고스트:
+			return 1.f;
+		case EType::드래곤:
+			return 1.f;
+		case EType::악:
+			return 0.f;
+		case EType::강철:
+			return 0.5f;
+		case EType::페어리:
+			return 1.f;
+		default:
+			break;
+		}
+		break;
+	case EType::벌레:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 1.f;
+		case EType::불꽃:
+			return 0.5f;
+		case EType::물:
+			return 1.f;
+		case EType::풀:
+			return 2.f;
+		case EType::전기:
+			return 1.f;
+		case EType::얼음:
+			return 1.f;
+		case EType::격투:
+			return 0.5f;
+		case EType::독:
+			return 0.5f;
+		case EType::땅:
+			return 1.f;
+		case EType::비행:
+			return 0.5f;
+		case EType::에스퍼:
+			return 2.f;
+		case EType::벌레:
+			return 1.f;
+		case EType::바위:
+			return 1.f;
+		case EType::고스트:
+			return 0.5f;
+		case EType::드래곤:
+			return 1.f;
+		case EType::악:
+			return 2.f;
+		case EType::강철:
+			return 0.5f;
+		case EType::페어리:
+			return 0.5f;
+		default:
+			break;
+		}
+		break;
+	case EType::바위:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 1.f;
+		case EType::불꽃:
+			return 2.f;
+		case EType::물:
+			return 1.f;
+		case EType::풀:
+			return 1.f;
+		case EType::전기:
+			return 1.f;
+		case EType::얼음:
+			return 2.f;
+		case EType::격투:
+			return 0.5f;
+		case EType::독:
+			return 1.f;
+		case EType::땅:
+			return 0.5f;
+		case EType::비행:
+			return 2.f;
+		case EType::에스퍼:
+			return 1.f;
+		case EType::벌레:
+			return 2.f;
+		case EType::바위:
+			return 1.f;
+		case EType::고스트:
+			return 1.f;
+		case EType::드래곤:
+			return 1.f;
+		case EType::악:
+			return 1.f;
+		case EType::강철:
+			return 0.5f;
+		case EType::페어리:
+			return 1.f;
+		default:
+			break;
+		}
+		break;
+	case EType::고스트:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 0.f;
+		case EType::불꽃:
+			return 1.f;
+		case EType::물:
+			return 1.f;
+		case EType::풀:
+			return 1.f;
+		case EType::전기:
+			return 1.f;
+		case EType::얼음:
+			return 1.f;
+		case EType::격투:
+			return 1.f;
+		case EType::독:
+			return 1.f;
+		case EType::땅:
+			return 1.f;
+		case EType::비행:
+			return 1.f;
+		case EType::에스퍼:
+			return 2.f;
+		case EType::벌레:
+			return 1.f;
+		case EType::바위:
+			return 1.f;
+		case EType::고스트:
+			return 2.f;
+		case EType::드래곤:
+			return 1.f;
+		case EType::악:
+			return 0.5f;
+		case EType::강철:
+			return 1.f;
+		case EType::페어리:
+			return 1.f;
+		default:
+			break;
+		}
+		break;
+	case EType::드래곤:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 1.f;
+		case EType::불꽃:
+			return 1.f;
+		case EType::물:
+			return 1.f;
+		case EType::풀:
+			return 1.f;
+		case EType::전기:
+			return 1.f;
+		case EType::얼음:
+			return 1.f;
+		case EType::격투:
+			return 1.f;
+		case EType::독:
+			return 1.f;
+		case EType::땅:
+			return 1.f;
+		case EType::비행:
+			return 1.f;
+		case EType::에스퍼:
+			return 1.f;
+		case EType::벌레:
+			return 1.f;
+		case EType::바위:
+			return 1.f;
+		case EType::고스트:
+			return 1.f;
+		case EType::드래곤:
+			return 2.f;
+		case EType::악:
+			return 1.f;
+		case EType::강철:
+			return 0.5f;
+		case EType::페어리:
+			return 0.f;
+		default:
+			break;
+		}
+		break;
+	case EType::악:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 1.f;
+		case EType::불꽃:
+			return 1.f;
+		case EType::물:
+			return 1.f;
+		case EType::풀:
+			return 1.f;
+		case EType::전기:
+			return 1.f;
+		case EType::얼음:
+			return 1.f;
+		case EType::격투:
+			return 0.5f;
+		case EType::독:
+			return 1.f;
+		case EType::땅:
+			return 1.f;
+		case EType::비행:
+			return 1.f;
+		case EType::에스퍼:
+			return 2.f;
+		case EType::벌레:
+			return 1.f;
+		case EType::바위:
+			return 1.f;
+		case EType::고스트:
+			return 2.f;
+		case EType::드래곤:
+			return 1.f;
+		case EType::악:
+			return 0.5f;
+		case EType::강철:
+			return 1.f;
+		case EType::페어리:
+			return 0.5f;
+		default:
+			break;
+		}
+		break;
+	case EType::강철:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 1.f;
+		case EType::불꽃:
+			return 0.5f;
+		case EType::물:
+			return 0.5f;
+		case EType::풀:
+			return 1.f;
+		case EType::전기:
+			return 0.5f;
+		case EType::얼음:
+			return 2.f;
+		case EType::격투:
+			return 1.f;
+		case EType::독:
+			return 1.f;
+		case EType::땅:
+			return 1.f;
+		case EType::비행:
+			return 1.f;
+		case EType::에스퍼:
+			return 1.f;
+		case EType::벌레:
+			return 1.f;
+		case EType::바위:
+			return 2.f;
+		case EType::고스트:
+			return 1.f;
+		case EType::드래곤:
+			return 1.f;
+		case EType::악:
+			return 1.f;
+		case EType::강철:
+			return 0.5f;
+		case EType::페어리:
+			return 2.f;
+		default:
+			break;
+		}
+		break;
+	case EType::페어리:
+		switch (_DType)
+		{
+		case EType::None:
+			return 1.f;
+		case EType::노말:
+			return 1.f;
+		case EType::불꽃:
+			return 0.5f;
+		case EType::물:
+			return 1.f;
+		case EType::풀:
+			return 1.f;
+		case EType::전기:
+			return 1.f;
+		case EType::얼음:
+			return 1.f;
+		case EType::격투:
+			return 2.f;
+		case EType::독:
+			return 0.5f;
+		case EType::땅:
+			return 1.f;
+		case EType::비행:
+			return 1.f;
+		case EType::에스퍼:
+			return 1.f;
+		case EType::벌레:
+			return 1.f;
+		case EType::바위:
+			return 1.f;
+		case EType::고스트:
+			return 1.f;
+		case EType::드래곤:
+			return 2.f;
+		case EType::악:
+			return 2.f;
+		case EType::강철:
+			return 0.5f;
+		case EType::페어리:
+			return 1.f;
+		default:
+			break;
+		}
+		break;
+	default:
+		break;
+	}
+}
+
 int BattleHelper::CalExp(int _EnemyLevel, EEnemyCategory _EnemyCategory)
 {
 	int Level2 = _EnemyLevel * _EnemyLevel;
+
 	switch (_EnemyCategory)
 	{
 	case EEnemyCategory::Wild:
