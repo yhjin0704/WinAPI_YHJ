@@ -51,6 +51,17 @@ private:
 	EBattleSequence BattleSequence = EBattleSequence::Start;
 	EBattleSelect BattleSelectCursor = EBattleSelect::Fight;
 
+	MoveInfo MySelectMove;
+	MoveInfo EnemySelectMove;
+
+	MoveInfo TemMove;
+	std::string Move1Name;
+	std::string Move2Name;
+	std::string Move3Name;
+	std::string Move4Name;
+	void SetMovesName();
+
+	int EnemyMoveCount;
 	//1~16중 1이면 급소
 	bool AccCheck = false;
 	int CriCheck = 0;
@@ -68,6 +79,6 @@ private:
 	PokemonInfo SpawnWildPokemon(int _DexNo, int _Level);
 	void TurnChange();
 	void CursorMovePos(float _X, float _Y, EBattleSelect _MoveLength, EBattleSelect _MoveWidth);
-	void FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInfo& _Defder);
+	void FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInfo& _Defder, MoveInfo& _AtkMove);
 };
 

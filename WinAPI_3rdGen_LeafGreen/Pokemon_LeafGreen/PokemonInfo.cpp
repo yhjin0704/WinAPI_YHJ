@@ -322,6 +322,8 @@ void PokemonInfo::Evolve()
 	NextEvolveDexNo = NextEvolve.NextEvolveDexNo;
 	UseItemEvolve = NextEvolve.UseItemEvolve;
 	EvolveItem = NextEvolve.EvolveItem;
+	MLevelUpMoves.clear();
+	MLevelUpMoves = NextEvolve.MLevelUpMoves;
 	CalImageNo(NextEvolve.DexNo);
 
 	int PrevMaxHp = MaxHp;

@@ -70,7 +70,11 @@ void UBattleLevel::Tick(float _DeltaTime)
 			switch (BattleSelectCursor)
 			{
 			case EBattleSelect::Fight:
-				IsPlayerSelect = true;
+				SelectBox->ChangeToMoveSelect(true);
+				SelectBox->SetSelectBoxTextActive(false);
+				SelectBox->SetSelectBoxMoveTextActive(true);
+				BattleSelectCursor = EBattleSelect::Move1;
+				//IsPlayerSelect = true;
 				break;
 			case EBattleSelect::Bag:
 				GEngine->ChangeLevel("MyBagLevel");
@@ -82,16 +86,88 @@ void UBattleLevel::Tick(float _DeltaTime)
 				BattleSequence = EBattleSequence::Run;
 				break;
 			case EBattleSelect::Move1:
+				MyPokemon.LPossessMovesIter = MyPokemon.LPossessMoves.begin();
+				MySelectMove = *(MyPokemon.LPossessMovesIter);
+				SelectBox->ChangeToMoveSelect(false);
+				SelectBox->SetSelectBoxMoveTextActive(false);
+				BattleSelectCursor = EBattleSelect::Fight;
+				IsPlayerSelect = true;
 				break;
 			case EBattleSelect::Move2:
+				MyPokemon.LPossessMovesIter = MyPokemon.LPossessMoves.begin();
+				MyPokemon.LPossessMovesIter++;
+				if (MyPokemon.LPossessMoves.end() != MyPokemon.LPossessMovesIter)
+				{
+					MySelectMove = *(MyPokemon.LPossessMovesIter);
+					SelectBox->ChangeToMoveSelect(false);
+					SelectBox->SetSelectBoxMoveTextActive(false);
+					BattleSelectCursor = EBattleSelect::Fight;
+					IsPlayerSelect = true;
+				}
 				break;
 			case EBattleSelect::Move3:
+				MyPokemon.LPossessMovesIter = MyPokemon.LPossessMoves.begin();
+				MyPokemon.LPossessMovesIter++;
+				MyPokemon.LPossessMovesIter++;
+				if (MyPokemon.LPossessMoves.end() != MyPokemon.LPossessMovesIter)
+				{
+					MySelectMove = *(MyPokemon.LPossessMovesIter);
+					SelectBox->ChangeToMoveSelect(false);
+					SelectBox->SetSelectBoxMoveTextActive(false);
+					BattleSelectCursor = EBattleSelect::Fight;
+					IsPlayerSelect = true;
+				}
 				break;
 			case EBattleSelect::Move4:
+				MyPokemon.LPossessMovesIter = MyPokemon.LPossessMoves.begin();
+				MyPokemon.LPossessMovesIter++;
+				MyPokemon.LPossessMovesIter++;
+				MyPokemon.LPossessMovesIter++;
+				if (MyPokemon.LPossessMoves.end() != MyPokemon.LPossessMovesIter)
+				{
+					MySelectMove = *(MyPokemon.LPossessMovesIter);
+					SelectBox->ChangeToMoveSelect(false);
+					SelectBox->SetSelectBoxMoveTextActive(false);
+					BattleSelectCursor = EBattleSelect::Fight;
+					IsPlayerSelect = true;
+				}
 				break;
 			default:
 				break;
 			}
+			break;
+		default:
+			break;
+		}
+	}
+
+	if (true == UEngineInput::IsDown('L') && false == IsDelay)
+	{
+		switch (BattleSelectCursor)
+		{
+		case EBattleSelect::Move1:
+			BattleSelectCursor = EBattleSelect::Fight;
+			SelectBox->ChangeToMoveSelect(false);
+			SelectBox->SetSelectBoxTextActive(true);
+			SelectBox->SetSelectBoxMoveTextActive(false);
+			break;
+		case EBattleSelect::Move2:
+			BattleSelectCursor = EBattleSelect::Fight;
+			SelectBox->ChangeToMoveSelect(false);
+			SelectBox->SetSelectBoxTextActive(true);
+			SelectBox->SetSelectBoxMoveTextActive(false);
+			break;
+		case EBattleSelect::Move3:
+			BattleSelectCursor = EBattleSelect::Fight;
+			SelectBox->ChangeToMoveSelect(false);
+			SelectBox->SetSelectBoxTextActive(true);
+			SelectBox->SetSelectBoxMoveTextActive(false);
+			break;
+		case EBattleSelect::Move4:
+			BattleSelectCursor = EBattleSelect::Fight;
+			SelectBox->ChangeToMoveSelect(false);
+			SelectBox->SetSelectBoxTextActive(true);
+			SelectBox->SetSelectBoxMoveTextActive(false);
 			break;
 		default:
 			break;
@@ -103,6 +179,7 @@ void UBattleLevel::Tick(float _DeltaTime)
 	case EBattleSequence::SetPokemon:
 		TextBox->TextOff();
 		TextBox->SetTextTop("°¡¶ù " + MyPokemon.Name + "!");
+		SetMovesName();
 
 		IsDelay = true;
 		Delay -= _DeltaTime;
@@ -126,6 +203,7 @@ void UBattleLevel::Tick(float _DeltaTime)
 		IsPlayerSelect = false;
 		TextBox->TextOff();
 		TextBox->SetTextTop("°¡¶ù " + MyPokemon.Name + "!");
+		SetMovesName();
 
 		BattleSelectCursor = EBattleSelect::Fight;
 
@@ -279,22 +357,37 @@ void UBattleLevel::Tick(float _DeltaTime)
 			TextBox->SetTextBottom("¹«¾ùÀ» ÇÒ±î?");
 
 			SelectBox->SetSelectBoxActive(true);
-			SelectBox->SetSelectBoxTextActive(true);
 			SelectBox->SetCursorActive(true);
 
 			switch (BattleSelectCursor)
 			{
 			case EBattleSelect::Fight:
+				SelectBox->SetSelectBoxTextActive(true);
 				CursorMovePos(132.0f, 129.0f, EBattleSelect::Pokemon, EBattleSelect::Bag);
 				break;
 			case EBattleSelect::Bag:
+				SelectBox->SetSelectBoxTextActive(true);
 				CursorMovePos(188.0f, 129.0f, EBattleSelect::Run, EBattleSelect::Fight);
 				break;
 			case EBattleSelect::Pokemon:
+				SelectBox->SetSelectBoxTextActive(true);
 				CursorMovePos(132.0f, 145.0f, EBattleSelect::Fight, EBattleSelect::Run);
 				break;
 			case EBattleSelect::Run:
+				SelectBox->SetSelectBoxTextActive(true);
 				CursorMovePos(188.0f, 145.0f, EBattleSelect::Bag, EBattleSelect::Pokemon);
+				break;
+			case EBattleSelect::Move1:
+				CursorMovePos(12.0f, 129.0f, EBattleSelect::Move3, EBattleSelect::Move2);
+				break;
+			case EBattleSelect::Move2:
+				CursorMovePos(72.0f, 129.0f, EBattleSelect::Move4, EBattleSelect::Move1);
+				break;
+			case EBattleSelect::Move3:
+				CursorMovePos(12.0f, 145.0f, EBattleSelect::Move1, EBattleSelect::Move4);
+				break;
+			case EBattleSelect::Move4:
+				CursorMovePos(72.0f, 145.0f, EBattleSelect::Move2, EBattleSelect::Move3);
 				break;
 			default:
 				break;
@@ -328,12 +421,20 @@ void UBattleLevel::Tick(float _DeltaTime)
 		}
 		else
 		{
-			FightBattle(_DeltaTime, MyPokemon, EnemyPokemon);
+			FightBattle(_DeltaTime, MyPokemon, EnemyPokemon, MySelectMove);
 		}
 		break;
 	case EBattleSequence::EnemyTurn:
 		IsPlayerSelect = false;
-		FightBattle(_DeltaTime, EnemyPokemon, MyPokemon);
+		EnemyMoveCount = UEngineRandom::MainRandom.RandomInt(1, EnemyPokemon.LPossessMoves.size());
+		EnemyMoveCount--;
+		EnemyPokemon.LPossessMovesIter = EnemyPokemon.LPossessMoves.begin();
+		while (0 < EnemyMoveCount)
+		{
+			EnemyPokemon.LPossessMovesIter++;
+		}
+		EnemySelectMove = *(EnemyPokemon.LPossessMovesIter);
+		FightBattle(_DeltaTime, EnemyPokemon, MyPokemon, EnemySelectMove);
 		break;
 	case EBattleSequence::Run:
 		IsPlayerSelect = false;
@@ -442,6 +543,67 @@ void UBattleLevel::LevelEnd(ULevel* _NextLevel)
 	dynamic_cast<Pokemon3rdGen_Core*>(GEngine)->SetEntry(BattleEntry);
 }
 
+void UBattleLevel::SetMovesName()
+{
+	switch (MyPokemon.LPossessMoves.size())
+	{
+	case 1:
+		MyPokemon.LPossessMovesIter = MyPokemon.LPossessMoves.begin();
+		TemMove = *(MyPokemon.LPossessMovesIter);
+		Move1Name = TemMove.Name;
+
+		SelectBox->SetMoveText(Move1Name);
+		break;
+	case 2:
+		MyPokemon.LPossessMovesIter = MyPokemon.LPossessMoves.begin();
+		TemMove = *(MyPokemon.LPossessMovesIter);
+		Move1Name = TemMove.Name;
+
+		MyPokemon.LPossessMovesIter++;
+		TemMove = *(MyPokemon.LPossessMovesIter);
+		Move2Name = TemMove.Name;
+
+		SelectBox->SetMoveText(Move1Name, Move2Name);
+		break;
+	case 3:
+		MyPokemon.LPossessMovesIter = MyPokemon.LPossessMoves.begin();
+		TemMove = *(MyPokemon.LPossessMovesIter);
+		Move1Name = TemMove.Name;
+
+		MyPokemon.LPossessMovesIter++;
+		TemMove = *(MyPokemon.LPossessMovesIter);
+		Move2Name = TemMove.Name;
+
+		MyPokemon.LPossessMovesIter++;
+		TemMove = *(MyPokemon.LPossessMovesIter);
+		Move3Name = TemMove.Name;
+
+		SelectBox->SetMoveText(Move1Name, Move2Name, Move3Name);
+		break;
+	case 4:
+		MyPokemon.LPossessMovesIter = MyPokemon.LPossessMoves.begin();
+		TemMove = *(MyPokemon.LPossessMovesIter);
+		Move1Name = TemMove.Name;
+
+		MyPokemon.LPossessMovesIter++;
+		TemMove = *(MyPokemon.LPossessMovesIter);
+		Move2Name = TemMove.Name;
+
+		MyPokemon.LPossessMovesIter++;
+		TemMove = *(MyPokemon.LPossessMovesIter);
+		Move3Name = TemMove.Name;
+
+		MyPokemon.LPossessMovesIter++;
+		TemMove = *(MyPokemon.LPossessMovesIter);
+		Move4Name = TemMove.Name;
+
+		SelectBox->SetMoveText(Move1Name, Move2Name, Move3Name, Move4Name);
+		break;
+	default:
+		break;
+	}
+}
+
 PokemonInfo UBattleLevel::SpawnWildPokemon(int _DexNo, int _Level)
 {
 	PokemonInfo info = Pokemon3rdGen_Core::GetAllPokemonInfo()[_DexNo];
@@ -449,6 +611,19 @@ PokemonInfo UBattleLevel::SpawnWildPokemon(int _DexNo, int _Level)
 	if (0 == info.MeetLevel)
 	{
 		info.MeetLevel = _Level;
+	}
+	int i = _Level;
+	while(i > 0)
+	{
+		if (info.MLevelUpMoves.end() != info.MLevelUpMoves.find(i))
+		{
+			if (4 == info.LPossessMoves.size())
+			{
+				info.LPossessMoves.pop_front();
+			}
+			info.AddPossessMoves(info.MLevelUpMoves[_Level]);
+		}
+		i--;
 	}
 	return info;
 }
@@ -478,7 +653,7 @@ void UBattleLevel::CursorMovePos(float _X, float _Y, EBattleSelect _MoveLength, 
 	}
 }
 
-void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInfo& _Defder)
+void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInfo& _Defder, MoveInfo& _AtkMove)
 {
 	switch (Sequence)
 	{
@@ -505,7 +680,7 @@ void UBattleLevel::FightBattle(float _DeltaTime, PokemonInfo& _Atker, PokemonInf
 	case 1:
 		TextBox->TextOff();
 		TextBox->SetTextTop(_Atker.Name + "ÀÇ");
-		TextBox->SetTextBottom("¸öÅë¹ÚÄ¡±â!");
+		TextBox->SetTextBottom(_AtkMove.Name + "!");
 
 		SelectBox->SetSelectBoxActive(false);
 		SelectBox->SetSelectBoxTextActive(false);

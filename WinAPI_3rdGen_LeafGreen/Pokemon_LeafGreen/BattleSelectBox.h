@@ -1,6 +1,12 @@
 #pragma once
 #include <EngineCore\Actor.h>
 
+enum class EBattleSelectBoxMode
+{
+	Common,
+	Move,
+};
+
 class ABattleSelectBox : public AActor
 {
 public:
@@ -18,6 +24,10 @@ public:
 	void SetSelectBoxTextActive(bool _OnOff);
 	void SetCursorActive(bool _OnOff);
 
+	void ChangeToMoveSelect(bool _OnOff);
+	void SetSelectBoxMoveTextActive(bool _OnOff);
+	void SetMoveText(std::string _Move1Name, std::string _Move2Name = "-", std::string _Move3Name = "-", std::string _Move4Name = "-");
+
 	void SetCursorLocation(float _X, float _Y);
 
 protected:
@@ -25,6 +35,8 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
+	EBattleSelectBoxMode BoxMode = EBattleSelectBoxMode::Common;
+
 	UImageRenderer* CursorRender;
 
 	UImageRenderer* BoxRenderer = nullptr;

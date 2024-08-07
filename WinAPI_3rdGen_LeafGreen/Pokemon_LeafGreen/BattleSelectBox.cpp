@@ -61,6 +61,11 @@ void ABattleSelectBox::BeginPlay()
 
 	Global::SetPokemonText(TextRendererRun, Gdiplus::StringAlignment::StringAlignmentNear, "µµ¸ÁÄ£´Ù", Color8Bit::BlackA, 12.0f);
 	TextRendererRun->SetTransform({ {190.0f * FScaleMultiple, 145.0f * FScaleMultiple }, { 0, 0 } });
+
+	MoveTextRenderer1->SetTransform({ {20.0f * FScaleMultiple, 129.0f * FScaleMultiple }, { 0, 0 } });
+	MoveTextRenderer2->SetTransform({ {80.0f * FScaleMultiple, 129.0f * FScaleMultiple }, { 0, 0 } });
+	MoveTextRenderer3->SetTransform({ {20.0f * FScaleMultiple, 145.0f * FScaleMultiple }, { 0, 0 } });
+	MoveTextRenderer4->SetTransform({ {80.0f * FScaleMultiple, 145.0f * FScaleMultiple }, { 0, 0 } });
 }
 
 void ABattleSelectBox::Tick(float _DeltaTime)
@@ -108,6 +113,50 @@ void ABattleSelectBox::SetCursorActive(bool _OnOff)
 	{
 		CursorRender->ActiveOff();
 	}
+}
+
+void ABattleSelectBox::ChangeToMoveSelect(bool _OnOff)
+{
+	if (true == _OnOff)
+	{
+		BoxRenderer->SetImage("BattleMoveSelectBox.png");
+		UWindowImage* Image = BoxRenderer->GetImage();
+		FVector ImageScale = Image->GetScale();
+		BoxRenderer->SetTransform({ {240.0f * FScaleMultiple, 136.0f * FScaleMultiple }, { ImageScale * FScaleMultiple } });
+	}
+	else
+	{
+		BoxRenderer->SetImage("BattleSelectBox.png");
+		UWindowImage* Image = BoxRenderer->GetImage();
+		FVector ImageScale = Image->GetScale();
+		BoxRenderer->SetTransform({ {240.0f * FScaleMultiple, 136.0f * FScaleMultiple }, { ImageScale * FScaleMultiple } });
+	}
+}
+
+void ABattleSelectBox::SetSelectBoxMoveTextActive(bool _OnOff)
+{
+	if (true == _OnOff)
+	{
+		MoveTextRenderer1->ActiveOn();
+		MoveTextRenderer2->ActiveOn();
+		MoveTextRenderer3->ActiveOn();
+		MoveTextRenderer4->ActiveOn();
+	}
+	else
+	{
+		MoveTextRenderer1->ActiveOff();
+		MoveTextRenderer2->ActiveOff();
+		MoveTextRenderer3->ActiveOff();
+		MoveTextRenderer4->ActiveOff();
+	}
+}
+
+void ABattleSelectBox::SetMoveText(std::string _Move1Name, std::string _Move2Name, std::string _Move3Name, std::string _Move4Name)
+{
+	Global::SetPokemonText(MoveTextRenderer1, Gdiplus::StringAlignment::StringAlignmentNear, _Move1Name, Color8Bit::BlackA, 12.0f);
+	Global::SetPokemonText(MoveTextRenderer2, Gdiplus::StringAlignment::StringAlignmentNear, _Move2Name, Color8Bit::BlackA, 12.0f);
+	Global::SetPokemonText(MoveTextRenderer3, Gdiplus::StringAlignment::StringAlignmentNear, _Move3Name, Color8Bit::BlackA, 12.0f);
+	Global::SetPokemonText(MoveTextRenderer4, Gdiplus::StringAlignment::StringAlignmentNear, _Move4Name, Color8Bit::BlackA, 12.0f);
 }
 
 void ABattleSelectBox::SetCursorLocation(float _X, float _Y)

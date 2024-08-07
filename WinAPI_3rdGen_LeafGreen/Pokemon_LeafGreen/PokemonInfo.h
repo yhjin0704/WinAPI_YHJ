@@ -101,6 +101,7 @@ public:
 	std::list<MoveInfo>::iterator LPossessMovesIter;
 
 	std::map<int, MoveInfo> MLevelUpMoves;
+	std::map<int, MoveInfo>::iterator MLevelUpMovesIter;
 
 	std::list<MoveInfo> LLearnReadyMoves;
 

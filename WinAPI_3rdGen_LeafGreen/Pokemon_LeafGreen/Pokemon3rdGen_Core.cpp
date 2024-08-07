@@ -98,6 +98,196 @@ void Pokemon3rdGen_Core::BeginPlay()
 		}
 	}
 
+	// 기술 Info
+	{
+		// 노말
+		// 분노
+		{
+			MoveInfo Info;
+			Info.Name = "분노";
+			Info.Type = EType::노말;
+			Info.Caterory = EPSMove::물리;
+			Info.Power = 20;
+			Info.Acc = 100;
+			Info.MaxPP = 20;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		// 몸통박치기
+		{
+			MoveInfo Info;
+			Info.Name = "몸통박치기";
+			Info.Type = EType::노말;
+			Info.Caterory = EPSMove::물리;
+			Info.Power = 35;
+			Info.Acc = 95;
+			Info.MaxPP = 35;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		// 할퀴기
+		{
+			MoveInfo Info;
+			Info.Name = "할퀴기";
+			Info.Type = EType::노말;
+			Info.Caterory = EPSMove::물리;
+			Info.Power = 40;
+			Info.Acc = 100;
+			Info.MaxPP = 35;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		// 전광석화
+		{
+			MoveInfo Info;
+			Info.Name = "전광석화";
+			Info.Type = EType::노말;
+			Info.Caterory = EPSMove::물리;
+			Info.Power = 40;
+			Info.Acc = 100;
+			Info.MaxPP = 30;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		// 필살앞니
+		{
+			MoveInfo Info;
+			Info.Name = "전광석화";
+			Info.Type = EType::노말;
+			Info.Caterory = EPSMove::물리;
+			Info.Power = 80;
+			Info.Acc = 90;
+			Info.MaxPP = 15;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		// 분노의앞니
+		{
+			MoveInfo Info;
+			Info.Name = "분노의앞니";
+			Info.Type = EType::노말;
+			Info.Caterory = EPSMove::물리;
+			Info.Power = 120;
+			Info.Acc = 90;
+			Info.MaxPP = 15;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		// 불꽃
+		// 불꽃세례
+		{
+			MoveInfo Info;
+			Info.Name = "불꽃세례";
+			Info.Type = EType::불꽃;
+			Info.Caterory = EPSMove::특수;
+			Info.Power = 40;
+			Info.Acc = 100;
+			Info.MaxPP = 25;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		// 풀
+		// 덩굴채찍
+		{
+			MoveInfo Info;
+			Info.Name = "덩굴채찍";
+			Info.Type = EType::풀;
+			Info.Caterory = EPSMove::물리;
+			Info.Power = 35;
+			Info.Acc = 100;
+			Info.MaxPP = 10;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		// 잎날가르기
+		{
+			MoveInfo Info;
+			Info.Name = "잎날가르기";
+			Info.Type = EType::풀;
+			Info.Caterory = EPSMove::물리;
+			Info.Power = 55;
+			Info.Acc = 95;
+			Info.MaxPP = 25;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		// 솔라빔
+		{
+			MoveInfo Info;
+			Info.Name = "솔라빔";
+			Info.Type = EType::풀;
+			Info.Caterory = EPSMove::특수;
+			Info.Power = 120;
+			Info.Acc = 100;
+			Info.MaxPP = 10;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		// 비행
+		// 날개치기
+		{
+			MoveInfo Info;
+			Info.Name = "날개치기";
+			Info.Type = EType::비행;
+			Info.Caterory = EPSMove::물리;
+			Info.Power = 60;
+			Info.Acc = 100;
+			Info.MaxPP = 35;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		// 바람일으키기
+		{
+			MoveInfo Info;
+			Info.Name = "바람일으키기";
+			Info.Type = EType::비행;
+			Info.Caterory = EPSMove::특수;
+			Info.Power = 40;
+			Info.Acc = 100;
+			Info.MaxPP = 35;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+
+		//악
+		//따라가때리기
+		{
+			MoveInfo Info;
+			Info.Name = "따라가때리기";
+			Info.Type = EType::악;
+			Info.Caterory = EPSMove::물리;
+			Info.Power = 40;
+			Info.Acc = 100;
+			Info.MaxPP = 20;
+			Info.PP = Info.MaxPP;
+
+			AllMovesInfo[Info.Name] = Info;
+		}
+	}
+
 	// 포켓몬 Info
 	{
 		// 이상해씨
@@ -118,6 +308,12 @@ void Pokemon3rdGen_Core::BeginPlay()
 			Info.EvolveLevel = 16;
 			Info.NextEvolveDexNo = 2;
 			Info.CalImageNo(Info.DexNo);
+
+			Info.LPossessMoves.push_back(AllMovesInfo["몸통박치기"]);
+
+			Info.MLevelUpMoves[10] = AllMovesInfo["덩굴채찍"];
+			Info.MLevelUpMoves[20] = AllMovesInfo["잎날가르기"];
+			Info.MLevelUpMoves[46] = AllMovesInfo["솔라빔"];
 
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
@@ -141,6 +337,12 @@ void Pokemon3rdGen_Core::BeginPlay()
 			Info.NextEvolveDexNo = 3;
 			Info.CalImageNo(Info.DexNo);
 
+			Info.LPossessMoves.push_back(AllMovesInfo["몸통박치기"]);
+
+			Info.MLevelUpMoves[10] = AllMovesInfo["덩굴채찍"];
+			Info.MLevelUpMoves[22] = AllMovesInfo["잎날가르기"];
+			Info.MLevelUpMoves[56] = AllMovesInfo["솔라빔"];
+
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
@@ -162,6 +364,13 @@ void Pokemon3rdGen_Core::BeginPlay()
 			Info.EvolveLevel = 101;
 			Info.NextEvolveDexNo = 0;
 			Info.CalImageNo(Info.DexNo);
+
+			Info.LPossessMoves.push_back(AllMovesInfo["몸통박치기"]);
+			Info.LPossessMoves.push_back(AllMovesInfo["덩굴채찍"]);
+
+			Info.MLevelUpMoves[10] = AllMovesInfo["덩굴채찍"];
+			Info.MLevelUpMoves[22] = AllMovesInfo["잎날가르기"];
+			Info.MLevelUpMoves[65] = AllMovesInfo["솔라빔"];
 
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
@@ -312,6 +521,12 @@ void Pokemon3rdGen_Core::BeginPlay()
 			Info.NextEvolveDexNo = 17;
 			Info.CalImageNo(Info.DexNo);
 
+			Info.LPossessMoves.push_back(AllMovesInfo["몸통박치기"]);
+
+			Info.MLevelUpMoves[9] = AllMovesInfo["바람일으키기"];
+			Info.MLevelUpMoves[13] = AllMovesInfo["전광석화"];
+			Info.MLevelUpMoves[25] = AllMovesInfo["날개치기"];
+
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
 
@@ -377,6 +592,13 @@ void Pokemon3rdGen_Core::BeginPlay()
 			Info.EvolveLevel = 20;
 			Info.NextEvolveDexNo = 20;
 			Info.CalImageNo(Info.DexNo);
+
+			Info.LPossessMoves.push_back(AllMovesInfo["몸통박치기"]);
+
+			Info.MLevelUpMoves[7] = AllMovesInfo["전광석화"];
+			Info.MLevelUpMoves[13] = AllMovesInfo["필살앞니"];
+			Info.MLevelUpMoves[27] = AllMovesInfo["따라가때리기"];
+			Info.MLevelUpMoves[34] = AllMovesInfo["분노의앞니"];
 
 			AllPokemonInfo[Info.DexNo] = Info;
 		}
@@ -495,110 +717,6 @@ void Pokemon3rdGen_Core::BeginPlay()
 			Info.CalImageNo(Info.DexNo);
 
 			AllPokemonInfo[Info.DexNo] = Info;
-		}
-	}
-
-	// 기술 Info
-	{
-		//노말
-		// 분노
-		{
-			MoveInfo Info;
-			Info.Name = "분노";
-			Info.Type = EType::노말;
-			Info.Caterory = EPSMove::물리;
-			Info.Power = 20;
-			Info.Acc = 100;
-			Info.MaxPP = 20;
-			Info.PP = Info.MaxPP;
-
-			AllMovesInfo[Info.Name] = Info;
-		}
-
-		// 몸통박치기
-		{
-			MoveInfo Info;
-			Info.Name = "몸통박치기";
-			Info.Type = EType::노말;
-			Info.Caterory = EPSMove::물리;
-			Info.Power = 35;
-			Info.Acc = 95;
-			Info.MaxPP = 35;
-			Info.PP = Info.MaxPP;
-
-			AllMovesInfo[Info.Name] = Info;
-		}
-
-		// 할퀴기
-		{
-			MoveInfo Info;
-			Info.Name = "할퀴기";
-			Info.Type = EType::노말;
-			Info.Caterory = EPSMove::물리;
-			Info.Power = 40;
-			Info.Acc = 100;
-			Info.MaxPP = 35;
-			Info.PP = Info.MaxPP;
-
-			AllMovesInfo[Info.Name] = Info;
-		}
-
-		// 불꽃
-		// 불꽃세례
-		{
-			MoveInfo Info;
-			Info.Name = "불꽃세례";
-			Info.Type = EType::불꽃;
-			Info.Caterory = EPSMove::특수;
-			Info.Power = 40;
-			Info.Acc = 100;
-			Info.MaxPP = 25;
-			Info.PP = Info.MaxPP;
-
-			AllMovesInfo[Info.Name] = Info;
-		}
-
-		// 풀
-		// 덩굴채찍
-		{
-			MoveInfo Info;
-			Info.Name = "덩굴채찍";
-			Info.Type = EType::풀;
-			Info.Caterory = EPSMove::물리;
-			Info.Power = 35;
-			Info.Acc = 100;
-			Info.MaxPP = 10;
-			Info.PP = Info.MaxPP;
-
-			AllMovesInfo[Info.Name] = Info;
-		}
-
-		// 잎날가르기
-		{
-			MoveInfo Info;
-			Info.Name = "잎날가르기";
-			Info.Type = EType::풀;
-			Info.Caterory = EPSMove::물리;
-			Info.Power = 55;
-			Info.Acc = 95;
-			Info.MaxPP = 25;
-			Info.PP = Info.MaxPP;
-
-			AllMovesInfo[Info.Name] = Info;
-		}
-
-		// 솔라빔
-		{
-			MoveInfo Info;
-			Info.Name = "솔라빔";
-			Info.Type = EType::풀;
-			Info.Caterory = EPSMove::특수;
-			Info.Power = 120;
-			Info.Acc = 100;
-			Info.MaxPP = 10;
-			Info.PP = Info.MaxPP;
-
-			AllMovesInfo[Info.Name] = Info;
 		}
 	}
 
